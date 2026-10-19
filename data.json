@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-18T21:01:21-04:00",
+  "updated_at": "2026-10-19T07:40:33-04:00",
   "groups": {
     "1": "G1 · GM 6.6L gas L8T 2024-26",
     "2": "G2 · GM 6.6L gas L8T 2020-23",
@@ -32,7 +32,7 @@
       "eng": "6.6L V8 gas L8T",
       "fuel": "gas",
       "cond_new": false,
-      "cab": "Crew / standard box (159 in WB)",
+      "cab": "Crew / standard box",
       "drv": "4WD",
       "mi": 159,
       "price": 49991,
@@ -44,6 +44,10 @@
         },
         {
           "date": "2026-10-18",
+          "price": 49991
+        },
+        {
+          "date": "2026-10-19",
           "price": 49991
         }
       ],
@@ -67,14 +71,14 @@
         "edge_of_radius"
       ],
       "first_seen": "2026-10-17",
-      "last_checked": "2026-10-18"
+      "last_checked": "2026-10-19"
     },
     {
       "rank": 2,
       "g": 1,
       "grp": "G1 · GM 6.6L gas L8T 2024-26",
       "grade": "A",
-      "status": "live, PRICE DROP -$1,251",
+      "status": "live, no change",
       "yr": 2024,
       "mk": "Chevrolet",
       "model": "Silverado 2500HD",
@@ -86,7 +90,7 @@
       "drv": "4WD",
       "mi": 40325,
       "price": 46732,
-      "prev": 47983,
+      "prev": 46732,
       "price_history": [
         {
           "date": "2026-10-17",
@@ -94,6 +98,10 @@
         },
         {
           "date": "2026-10-18",
+          "price": 46732
+        },
+        {
+          "date": "2026-10-19",
           "price": 46732
         }
       ],
@@ -114,71 +122,17 @@
         "24V894",
         "26V530"
       ],
-      "flags": "LOCATION CONFLICT: Clearwater store site still listed it at 8:35 PM ET, but the 9 PM autonation.com search lists it at Mercedes-Benz of Sarasota (75.5 mi, entry 10/11): https://www.autonation.com/cars/2gc4yme70r1111477/chevrolet-silverado-2500hd-2024 . Confirm where it is.",
+      "flags": "LOCATION CONFLICT (still, Oct 19 7:34 AM ET): Clearwater store site lists it, but the autonation.com search lists it at Mercedes-Benz of Sarasota (75.5 mi, entry 10/11): https://www.autonation.com/cars/2gc4yme70r1111477/chevrolet-silverado-2500hd-2024 . Confirm where it is.",
       "flag_tags": [
         "possibly_unavailable",
         "location_conflict",
         "price_drop"
       ],
       "first_seen": "2026-10-17",
-      "last_checked": "2026-10-18"
+      "last_checked": "2026-10-19"
     },
     {
       "rank": 3,
-      "g": 1,
-      "grp": "G1 · GM 6.6L gas L8T 2024-26",
-      "grade": "A",
-      "status": "live, no change",
-      "yr": 2024,
-      "mk": "Chevrolet",
-      "model": "Silverado 2500HD",
-      "trim": "WT",
-      "eng": "6.6L V8 gas L8T, 10-spd Allison",
-      "fuel": "gas",
-      "cond_new": false,
-      "cab": "Crew / standard box (6.5 ft)",
-      "drv": "2WD",
-      "mi": 92912,
-      "price": 38990,
-      "prev": 38990,
-      "price_history": [
-        {
-          "date": "2026-10-17",
-          "price": 38990
-        },
-        {
-          "date": "2026-10-18",
-          "price": 38990
-        }
-      ],
-      "loc": "Tampa dealer, (813) 296-5913",
-      "d": 27,
-      "src": "Craigslist",
-      "url": "https://www.craigslist.org/view/d/tampa-2024-chevrolet-silverado-2500-hd/OB4rbISz8RGvI6VvMk_Hhw",
-      "vin": "2GC4WLE73R1117581",
-      "tow": "14,500 (17\") / 16,000 (18-20\")",
-      "tow_lb": 14500,
-      "tsrc": "GMC 2024 Sierra HD guide (twin truck; tow/gmc24)",
-      "pay_lo": 571,
-      "pay_hi": 885,
-      "pay": "$571–$885/mo",
-      "rec": [
-        "23V549",
-        "24V060",
-        "24V894",
-        "26V530"
-      ],
-      "flags": "Same truck posted twice (also https://www.craigslist.org/view/d/tampa-2024-chevrolet-silverado-2500-hd/tj64aISz8RGe8otz_Bwdmw). Ad pushes in-house financing; posted 9/18 (a month). High miles for a 2024.",
-      "flag_tags": [
-        "duplicate_post",
-        "high_miles",
-        "stale_listing"
-      ],
-      "first_seen": "2026-10-17",
-      "last_checked": "2026-10-18"
-    },
-    {
-      "rank": 4,
       "g": 1,
       "grp": "G1 · GM 6.6L gas L8T 2024-26",
       "grade": "A",
@@ -190,7 +144,7 @@
       "eng": "6.6L V8 gas L8T",
       "fuel": "gas",
       "cond_new": false,
-      "cab": "Crew / long box, dually (172 in WB)",
+      "cab": "Crew / long box, dually",
       "drv": "4WD",
       "mi": 15306,
       "price": 64989,
@@ -202,6 +156,10 @@
         },
         {
           "date": "2026-10-18",
+          "price": 64989
+        },
+        {
+          "date": "2026-10-19",
           "price": 64989
         }
       ],
@@ -224,14 +182,14 @@
         "dually"
       ],
       "first_seen": "2026-10-17",
-      "last_checked": "2026-10-18"
+      "last_checked": "2026-10-19"
     },
     {
-      "rank": 5,
+      "rank": 4,
       "g": 1,
       "grp": "G1 · GM 6.6L gas L8T 2024-26",
       "grade": "A",
-      "status": "NEW today (76-150 mi)",
+      "status": "live, no change",
       "yr": 2025,
       "mk": "Chevrolet",
       "model": "Silverado 2500HD",
@@ -239,14 +197,18 @@
       "eng": "6.6L V8 gas L8T",
       "fuel": "gas",
       "cond_new": false,
-      "cab": "Crew / standard box (159 in WB)",
+      "cab": "Crew / standard box",
       "drv": "4WD",
       "mi": 13372,
       "price": 63859,
-      "prev": null,
+      "prev": 63859,
       "price_history": [
         {
           "date": "2026-10-18",
+          "price": 63859
+        },
+        {
+          "date": "2026-10-19",
           "price": 63859
         }
       ],
@@ -267,14 +229,14 @@
       "flags": "Used, 13k miles. Recall 26V530 for MY: confirm done by VIN.",
       "flag_tags": [],
       "first_seen": "2026-10-18",
-      "last_checked": "2026-10-18"
+      "last_checked": "2026-10-19"
     },
     {
-      "rank": 6,
+      "rank": 5,
       "g": 1,
       "grp": "G1 · GM 6.6L gas L8T 2024-26",
       "grade": "A",
-      "status": "live (new), no change",
+      "status": "live, no change",
       "yr": 2026,
       "mk": "Chevrolet",
       "model": "Silverado 2500HD",
@@ -282,7 +244,7 @@
       "eng": "6.6L V8 gas L8T",
       "fuel": "gas",
       "cond_new": true,
-      "cab": "Crew / standard box (159 in WB)",
+      "cab": "Crew / standard box",
       "drv": "2WD",
       "mi": 10,
       "price": 58509,
@@ -294,6 +256,10 @@
         },
         {
           "date": "2026-10-18",
+          "price": 58509
+        },
+        {
+          "date": "2026-10-19",
           "price": 58509
         }
       ],
@@ -318,14 +284,14 @@
         "in_transit"
       ],
       "first_seen": "2026-10-17",
-      "last_checked": "2026-10-18"
+      "last_checked": "2026-10-19"
     },
     {
-      "rank": 7,
+      "rank": 6,
       "g": 1,
       "grp": "G1 · GM 6.6L gas L8T 2024-26",
       "grade": "A",
-      "status": "live (new), no change",
+      "status": "live, no change",
       "yr": 2026,
       "mk": "Chevrolet",
       "model": "Silverado 2500HD",
@@ -333,7 +299,7 @@
       "eng": "6.6L V8 gas L8T",
       "fuel": "gas",
       "cond_new": true,
-      "cab": "Crew / standard box (159 in WB)",
+      "cab": "Crew / standard box",
       "drv": "4WD",
       "mi": 5,
       "price": 60978,
@@ -345,6 +311,10 @@
         },
         {
           "date": "2026-10-18",
+          "price": 60978
+        },
+        {
+          "date": "2026-10-19",
           "price": 60978
         }
       ],
@@ -369,14 +339,14 @@
         "edge_of_radius"
       ],
       "first_seen": "2026-10-17",
-      "last_checked": "2026-10-18"
+      "last_checked": "2026-10-19"
     },
     {
-      "rank": 8,
+      "rank": 7,
       "g": 1,
       "grp": "G1 · GM 6.6L gas L8T 2024-26",
       "grade": "A",
-      "status": "live (new), no change",
+      "status": "live, no change",
       "yr": 2026,
       "mk": "Chevrolet",
       "model": "Silverado 2500HD",
@@ -384,7 +354,7 @@
       "eng": "6.6L V8 gas L8T",
       "fuel": "gas",
       "cond_new": true,
-      "cab": "Crew / LONG box (172 in WB)",
+      "cab": "Crew / LONG box",
       "drv": "4WD",
       "mi": 5,
       "price": 64734,
@@ -396,6 +366,10 @@
         },
         {
           "date": "2026-10-18",
+          "price": 64734
+        },
+        {
+          "date": "2026-10-19",
           "price": 64734
         }
       ],
@@ -417,14 +391,14 @@
       "flags": "$5,606 under MSRP. Only new A-grade long box found.",
       "flag_tags": [],
       "first_seen": "2026-10-17",
-      "last_checked": "2026-10-18"
+      "last_checked": "2026-10-19"
     },
     {
-      "rank": 9,
+      "rank": 8,
       "g": 1,
       "grp": "G1 · GM 6.6L gas L8T 2024-26",
       "grade": "A",
-      "status": "live (new), no change",
+      "status": "live, no change",
       "yr": 2026,
       "mk": "Chevrolet",
       "model": "Silverado 2500HD",
@@ -432,7 +406,7 @@
       "eng": "6.6L V8 gas L8T",
       "fuel": "gas",
       "cond_new": true,
-      "cab": "Crew / standard box (159 in WB)",
+      "cab": "Crew / standard box",
       "drv": "4WD",
       "mi": 10,
       "price": 69884,
@@ -444,6 +418,10 @@
         },
         {
           "date": "2026-10-18",
+          "price": 69884
+        },
+        {
+          "date": "2026-10-19",
           "price": 69884
         }
       ],
@@ -468,10 +446,10 @@
         "in_transit"
       ],
       "first_seen": "2026-10-17",
-      "last_checked": "2026-10-18"
+      "last_checked": "2026-10-19"
     },
     {
-      "rank": 10,
+      "rank": 9,
       "g": 2,
       "grp": "G2 · GM 6.6L gas L8T 2020-23",
       "grade": "A",
@@ -496,6 +474,10 @@
         {
           "date": "2026-10-18",
           "price": 33900
+        },
+        {
+          "date": "2026-10-19",
+          "price": 33900
         }
       ],
       "loc": "Gator Truck Center of Ocala",
@@ -517,10 +499,10 @@
         "high_miles"
       ],
       "first_seen": "2026-10-17",
-      "last_checked": "2026-10-18"
+      "last_checked": "2026-10-19"
     },
     {
-      "rank": 11,
+      "rank": 10,
       "g": 2,
       "grp": "G2 · GM 6.6L gas L8T 2020-23",
       "grade": "A",
@@ -544,6 +526,10 @@
         },
         {
           "date": "2026-10-18",
+          "price": 21700
+        },
+        {
+          "date": "2026-10-19",
           "price": 21700
         }
       ],
@@ -578,14 +564,14 @@
         "open_recall_risk"
       ],
       "first_seen": "2026-10-17",
-      "last_checked": "2026-10-18"
+      "last_checked": "2026-10-19"
     },
     {
-      "rank": 12,
+      "rank": 11,
       "g": 3,
       "grp": "G3 · GM L5P Duramax 2017-19 (2500 crew long box / 3500 long or DRW)",
       "grade": "A",
-      "status": "NEW today (76-150 mi)",
+      "status": "live, no change",
       "yr": 2018,
       "mk": "Chevrolet",
       "model": "Silverado 3500HD",
@@ -593,14 +579,18 @@
       "eng": "6.6L Duramax L5P",
       "fuel": "diesel",
       "cond_new": false,
-      "cab": "Crew / long box (167.7 in WB)",
+      "cab": "Crew / long box",
       "drv": "4WD",
       "mi": 121245,
       "price": 43428,
-      "prev": null,
+      "prev": 43428,
       "price_history": [
         {
           "date": "2026-10-18",
+          "price": 43428
+        },
+        {
+          "date": "2026-10-19",
           "price": 43428
         }
       ],
@@ -628,14 +618,14 @@
         "far"
       ],
       "first_seen": "2026-10-18",
-      "last_checked": "2026-10-18"
+      "last_checked": "2026-10-19"
     },
     {
-      "rank": 13,
+      "rank": 12,
       "g": 3,
       "grp": "G3 · GM L5P Duramax 2017-19 (2500 crew long box / 3500 long or DRW)",
       "grade": "A",
-      "status": "NEW tonight (0-75 mi)",
+      "status": "live, no change",
       "yr": 2018,
       "mk": "Chevrolet",
       "model": "Silverado 3500HD",
@@ -647,10 +637,14 @@
       "drv": "4x4",
       "mi": 227300,
       "price": 32900,
-      "prev": null,
+      "prev": 32900,
       "price_history": [
         {
           "date": "2026-10-18",
+          "price": 32900
+        },
+        {
+          "date": "2026-10-19",
           "price": 32900
         }
       ],
@@ -680,7 +674,7 @@
         "dually"
       ],
       "first_seen": "2026-10-18",
-      "last_checked": "2026-10-18"
+      "last_checked": "2026-10-19"
     }
   ],
   "conditional": [
@@ -689,7 +683,7 @@
       "g": 3,
       "grp": "G3 · GM L5P Duramax 2017-19 (2500 crew long box / 3500 long or DRW)",
       "grade": "A",
-      "status": "NEW today (76-150 mi)",
+      "status": "live, no change",
       "yr": 2018,
       "mk": "Chevrolet",
       "model": "Silverado 3500HD",
@@ -701,10 +695,14 @@
       "drv": "4WD",
       "mi": 295749,
       "price": 18999,
-      "prev": null,
+      "prev": 18999,
       "price_history": [
         {
           "date": "2026-10-18",
+          "price": 18999
+        },
+        {
+          "date": "2026-10-19",
           "price": 18999
         }
       ],
@@ -734,14 +732,14 @@
         "below_market"
       ],
       "first_seen": "2026-10-18",
-      "last_checked": "2026-10-18"
+      "last_checked": "2026-10-19"
     },
     {
       "rank": "C2",
       "g": 3,
       "grp": "G3 · GM L5P Duramax 2017-19 (2500 crew long box / 3500 long or DRW)",
       "grade": "A",
-      "status": "NEW today (76-150 mi)",
+      "status": "live, no change",
       "yr": 2017,
       "mk": "Chevrolet",
       "model": "Silverado 2500HD",
@@ -753,10 +751,14 @@
       "drv": "4WD",
       "mi": 201570,
       "price": 25990,
-      "prev": null,
+      "prev": 25990,
       "price_history": [
         {
           "date": "2026-10-18",
+          "price": 25990
+        },
+        {
+          "date": "2026-10-19",
           "price": 25990
         }
       ],
@@ -785,7 +787,7 @@
         "far"
       ],
       "first_seen": "2026-10-18",
-      "last_checked": "2026-10-18"
+      "last_checked": "2026-10-19"
     },
     {
       "rank": "C3",
@@ -812,6 +814,10 @@
         },
         {
           "date": "2026-10-18",
+          "price": 17995
+        },
+        {
+          "date": "2026-10-19",
           "price": 17995
         }
       ],
@@ -841,7 +847,7 @@
         "high_miles"
       ],
       "first_seen": "2026-10-17",
-      "last_checked": "2026-10-18"
+      "last_checked": "2026-10-19"
     },
     {
       "rank": "C4",
@@ -868,6 +874,10 @@
         },
         {
           "date": "2026-10-18",
+          "price": 10500
+        },
+        {
+          "date": "2026-10-19",
           "price": 10500
         }
       ],
@@ -898,8 +908,8 @@
         "high_miles"
       ],
       "first_seen": "2026-10-17",
-      "last_checked": "2026-10-18"
+      "last_checked": "2026-10-19"
     }
   ],
-  "sources": "Checked Oct 18, 2026, 8:33-9:05 PM ET. Craigslist Hudson-centered city search (radius 75 and 150 mi, 17 queries each, all 200; covers Orlando, Gainesville, Lakeland, Ocala, Sarasota, Fort Myers, Daytona, Space Coast and Jacksonville-edge posts); AutoNation fetcher: two narrow GM-HD-only runs tonight (75 mi: ok, 10 loads; 150 mi: 10 loads, 42 vehicles, stopped by a 403 on a vehicle page, search results kept); AutoNation Chevrolet South Clearwater store pages; gatortruckcenter.com and avinenterprises.com (curl 200); vPIC; NHTSA recalls by model year; OEM towing guides. Not reachable: hillsboroautomart.com (hung), garageauto407.com (403), duvaltrucks.com (JS inventory). Not used: Cars.com, AutoTrader, CarGurus, Facebook, browser. Research only: nobody contacted."
+  "sources": "Checked Oct 19, 2026, 7:33-7:45 AM ET. Craigslist Hudson-centered city search (radius 150 mi, 17 queries, all HTTP 200, 790 unique posts, 26 not seen before and none an A-grade GM HD crew) plus all Craigslist listing pages in the feed; AutoNation fetcher: ONE narrow GM-HD-only run (150 mi, no detail pages, 6 loads, 42 vehicles, status ok, no 403); AutoNation Chevrolet South Clearwater store pages; gatortruckcenter.com and avinenterprises.com inventory and detail pages (curl 200); NHTSA recalls by model year (no new campaigns); OEM towing guides on file. Not used: Cars.com, AutoTrader, CarGurus, Facebook, browser. Research only: nobody contacted."
 }
