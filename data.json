@@ -1,20 +1,22 @@
 {
-  "updated_at": "2026-10-18T20:50:00-04:00",
+  "updated_at": "2026-10-18T21:01:21-04:00",
   "groups": {
     "1": "G1 · GM 6.6L gas L8T 2024-26",
-    "2": "G2 · Ford 6.7L Power Stroke diesel 2023-26",
-    "3": "G3 · Ram 6.4L HEMI gas 2022-25"
+    "2": "G2 · GM 6.6L gas L8T 2020-23",
+    "3": "G3 · GM L5P Duramax 2017-19 (2500 crew long box / 3500 long or DRW)",
+    "4": "G4 · GM 6.0L gas L96 2016-19 (2WD long box + 4.10 only)"
   },
   "specs": {
     "radius_mi": 150,
-    "center": "Hudson FL",
+    "center": "Hudson FL 34669",
     "criteria": [
-      "Heavy-duty trucks within 150 miles of Hudson, FL",
-      "Conventional tow rating from the manufacturer chart for the listed config",
-      "Gas or diesel",
-      "Crew cab preferred"
+      "Crew cab only",
+      "Conventional (bumper-pull) tow rating >= 14,000 lb from the OEM towing guide for the exact config",
+      "A-grade reliability groups only: G1 · GM 6.6L gas L8T 2024-26; G2 · GM 6.6L gas L8T 2020-23; G3 · GM L5P Duramax 2017-19 (2500 crew long box / 3500 long or DRW); G4 · GM 6.0L gas L96 2016-19 (2WD long box + 4.10 only)",
+      "Within 150 mi of Hudson FL 34669",
+      "No salvage/rebuilt titles"
     ],
-    "notes": "Read-only search criteria. Truck Deals shows this file only. It does not scrape dealer sites or call vehicle APIs."
+    "notes": "Craigslist/dealer distances are straight-line; AutoNation distances are the site's. Recalls are model-year NHTSA campaigns, not open status per VIN. \"conditional\" listings qualify only if the missing item (bed, axle, drive) checks out. tow_lb is the lowest stated conventional rating for the listed config (for conditional rows, the failing value). Payments are informational estimates."
   },
   "ranked": [
     {
@@ -22,7 +24,7 @@
       "g": 1,
       "grp": "G1 · GM 6.6L gas L8T 2024-26",
       "grade": "A",
-      "status": "Price dropped",
+      "status": "live, no change",
       "yr": 2026,
       "mk": "Chevrolet",
       "model": "Silverado 2500HD",
@@ -30,66 +32,653 @@
       "eng": "6.6L V8 gas L8T",
       "fuel": "gas",
       "cond_new": false,
-      "cab": "Crew / standard box",
+      "cab": "Crew / standard box (159 in WB)",
       "drv": "4WD",
       "mi": 159,
       "price": 49991,
-      "prev": 51242,
+      "prev": 49991,
       "price_history": [
-        {"date": "2026-10-17", "price": 51242},
-        {"date": "2026-10-18", "price": 49991}
+        {
+          "date": "2026-10-17",
+          "price": 49991
+        },
+        {
+          "date": "2026-10-18",
+          "price": 49991
+        }
       ],
-      "doc": 0,
-      "dealer": true,
       "loc": "AutoNation Chevrolet West Colonial, Orlando",
       "d": 74.5,
       "src": "AutoNation",
       "url": "https://www.autonation.com/cars/2gc4kme78t1182483/chevrolet-silverado-2500hd-2026",
       "vin": "2GC4KME78T1182483",
-      "tow": "14,500 / 16,000 by wheel size",
+      "tow": "14,500 (17\" wheels) / 16,000 (18-22\")",
       "tow_lb": 14500,
-      "tsrc": "2026 Chevrolet Silverado 2500HD towing chart",
+      "tsrc": "2026 Chevrolet Silverado 2500HD chart (tow/gm26_2500)",
       "pay_lo": 790,
       "pay_hi": 1176,
       "pay": "$790–$1,176/mo",
-      "rec": ["25V815", "26V114"],
-      "flags": "Dealer listing. Doc fee is $0 in this sample. Recalls are model-year campaigns, not a per-VIN open-status check.",
+      "rec": [
+        "25V815",
+        "26V114"
+      ],
+      "flags": "AN 1Price includes $995 service + $499 e-filing fees. Recalls 25V815/26V114 for MY: confirm done by VIN.",
+      "flag_tags": [
+        "edge_of_radius"
+      ],
       "first_seen": "2026-10-17",
       "last_checked": "2026-10-18"
     },
     {
       "rank": 2,
-      "g": 2,
-      "grp": "G2 · Ford 6.7L Power Stroke diesel 2023-26",
-      "grade": "B",
-      "status": "NEW today",
+      "g": 1,
+      "grp": "G1 · GM 6.6L gas L8T 2024-26",
+      "grade": "A",
+      "status": "live, PRICE DROP -$1,251",
       "yr": 2024,
-      "mk": "Ford",
-      "model": "F-250",
-      "trim": "Lariat",
-      "eng": "6.7L Power Stroke diesel",
-      "fuel": "diesel",
-      "cond_new": true,
-      "cab": "Crew / long box",
+      "mk": "Chevrolet",
+      "model": "Silverado 2500HD",
+      "trim": "Custom Z71",
+      "eng": "6.6L V8 gas L8T, 10-spd",
+      "fuel": "gas",
+      "cond_new": false,
+      "cab": "Crew / standard box",
       "drv": "4WD",
-      "mi": 18,
-      "price": 72950,
-      "prev": 72950,
-      "doc": 899,
-      "dealer": true,
-      "loc": "Ford of Daytona, Daytona Beach",
-      "d": 128.4,
+      "mi": 40325,
+      "price": 46732,
+      "prev": 47983,
+      "price_history": [
+        {
+          "date": "2026-10-17",
+          "price": 47983
+        },
+        {
+          "date": "2026-10-18",
+          "price": 46732
+        }
+      ],
+      "loc": "AutoNation Chevrolet South Clearwater",
+      "d": 31.0,
+      "src": "AutoNation store site",
+      "url": "https://www.autonationchevroletclearwater.com/used-Clearwater-2024-Chevrolet-Silverado+2500HD-Custom-2GC4YME70R1111477",
+      "vin": "2GC4YME70R1111477",
+      "tow": "14,500 (17\") / 16,000 (18-20\"); 3.73 axle per VDP",
+      "tow_lb": 14500,
+      "tsrc": "GMC 2024 Sierra HD guide (twin truck; tow/gmc24)",
+      "pay_lo": 719,
+      "pay_hi": 1082,
+      "pay": "$719–$1,082/mo",
+      "rec": [
+        "23V549",
+        "24V060",
+        "24V894",
+        "26V530"
+      ],
+      "flags": "LOCATION CONFLICT: Clearwater store site still listed it at 8:35 PM ET, but the 9 PM autonation.com search lists it at Mercedes-Benz of Sarasota (75.5 mi, entry 10/11): https://www.autonation.com/cars/2gc4yme70r1111477/chevrolet-silverado-2500hd-2024 . Confirm where it is.",
+      "flag_tags": [
+        "possibly_unavailable",
+        "location_conflict",
+        "price_drop"
+      ],
+      "first_seen": "2026-10-17",
+      "last_checked": "2026-10-18"
+    },
+    {
+      "rank": 3,
+      "g": 1,
+      "grp": "G1 · GM 6.6L gas L8T 2024-26",
+      "grade": "A",
+      "status": "live, no change",
+      "yr": 2024,
+      "mk": "Chevrolet",
+      "model": "Silverado 2500HD",
+      "trim": "WT",
+      "eng": "6.6L V8 gas L8T, 10-spd Allison",
+      "fuel": "gas",
+      "cond_new": false,
+      "cab": "Crew / standard box (6.5 ft)",
+      "drv": "2WD",
+      "mi": 92912,
+      "price": 38990,
+      "prev": 38990,
+      "price_history": [
+        {
+          "date": "2026-10-17",
+          "price": 38990
+        },
+        {
+          "date": "2026-10-18",
+          "price": 38990
+        }
+      ],
+      "loc": "Tampa dealer, (813) 296-5913",
+      "d": 27,
+      "src": "Craigslist",
+      "url": "https://www.craigslist.org/view/d/tampa-2024-chevrolet-silverado-2500-hd/OB4rbISz8RGvI6VvMk_Hhw",
+      "vin": "2GC4WLE73R1117581",
+      "tow": "14,500 (17\") / 16,000 (18-20\")",
+      "tow_lb": 14500,
+      "tsrc": "GMC 2024 Sierra HD guide (twin truck; tow/gmc24)",
+      "pay_lo": 571,
+      "pay_hi": 885,
+      "pay": "$571–$885/mo",
+      "rec": [
+        "23V549",
+        "24V060",
+        "24V894",
+        "26V530"
+      ],
+      "flags": "Same truck posted twice (also https://www.craigslist.org/view/d/tampa-2024-chevrolet-silverado-2500-hd/tj64aISz8RGe8otz_Bwdmw). Ad pushes in-house financing; posted 9/18 (a month). High miles for a 2024.",
+      "flag_tags": [
+        "duplicate_post",
+        "high_miles",
+        "stale_listing"
+      ],
+      "first_seen": "2026-10-17",
+      "last_checked": "2026-10-18"
+    },
+    {
+      "rank": 4,
+      "g": 1,
+      "grp": "G1 · GM 6.6L gas L8T 2024-26",
+      "grade": "A",
+      "status": "live, no change",
+      "yr": 2025,
+      "mk": "Chevrolet",
+      "model": "Silverado 3500HD",
+      "trim": "LTZ DRW",
+      "eng": "6.6L V8 gas L8T",
+      "fuel": "gas",
+      "cond_new": false,
+      "cab": "Crew / long box, dually (172 in WB)",
+      "drv": "4WD",
+      "mi": 15306,
+      "price": 64989,
+      "prev": 64989,
+      "price_history": [
+        {
+          "date": "2026-10-17",
+          "price": 64989
+        },
+        {
+          "date": "2026-10-18",
+          "price": 64989
+        }
+      ],
+      "loc": "AutoNation Toyota Pinellas Park",
+      "d": 34.9,
+      "src": "AutoNation",
+      "url": "https://www.autonation.com/cars/1gc4kue75sf180634/chevrolet-silverado-3500hd-2025",
+      "vin": "1GC4KUE75SF180634",
+      "tow": "17,600-17,800 (crew long 4x4 DRW gas)",
+      "tow_lb": 17600,
+      "tsrc": "2025 Chevrolet Silverado 3500HD chart (tow/gm25_3500)",
+      "pay_lo": 1117,
+      "pay_hi": 1612,
+      "pay": "$1,117–$1,612/mo",
+      "rec": [
+        "26V129"
+      ],
+      "flags": "Dually is wide for daily use. Recall 26V129 (dual-tank fuel-pump control) applies only with dual tanks: check by VIN.",
+      "flag_tags": [
+        "dually"
+      ],
+      "first_seen": "2026-10-17",
+      "last_checked": "2026-10-18"
+    },
+    {
+      "rank": 5,
+      "g": 1,
+      "grp": "G1 · GM 6.6L gas L8T 2024-26",
+      "grade": "A",
+      "status": "NEW today (76-150 mi)",
+      "yr": 2025,
+      "mk": "Chevrolet",
+      "model": "Silverado 2500HD",
+      "trim": "LTZ",
+      "eng": "6.6L V8 gas L8T",
+      "fuel": "gas",
+      "cond_new": false,
+      "cab": "Crew / standard box (159 in WB)",
+      "drv": "4WD",
+      "mi": 13372,
+      "price": 63859,
+      "prev": null,
+      "price_history": [
+        {
+          "date": "2026-10-18",
+          "price": 63859
+        }
+      ],
+      "loc": "AutoNation Chevrolet Airport, Orlando",
+      "d": 80.6,
+      "src": "AutoNation",
+      "url": "https://www.autonation.com/cars/2gc4kpe75s1152700/chevrolet-silverado-2500hd-2025",
+      "vin": "2GC4KPE75S1152700",
+      "tow": "14,500 (17\" wheels) / 16,000 (18-22\")",
+      "tow_lb": 14500,
+      "tsrc": "2025 Chevrolet Silverado 2500HD chart (tow/gm25_2500)",
+      "pay_lo": 1092,
+      "pay_hi": 1579,
+      "pay": "$1,092–$1,579/mo",
+      "rec": [
+        "26V530"
+      ],
+      "flags": "Used, 13k miles. Recall 26V530 for MY: confirm done by VIN.",
+      "flag_tags": [],
+      "first_seen": "2026-10-18",
+      "last_checked": "2026-10-18"
+    },
+    {
+      "rank": 6,
+      "g": 1,
+      "grp": "G1 · GM 6.6L gas L8T 2024-26",
+      "grade": "A",
+      "status": "live (new), no change",
+      "yr": 2026,
+      "mk": "Chevrolet",
+      "model": "Silverado 2500HD",
+      "trim": "Custom",
+      "eng": "6.6L V8 gas L8T",
+      "fuel": "gas",
+      "cond_new": true,
+      "cab": "Crew / standard box (159 in WB)",
+      "drv": "2WD",
+      "mi": 10,
+      "price": 58509,
+      "prev": 58509,
+      "price_history": [
+        {
+          "date": "2026-10-17",
+          "price": 58509
+        },
+        {
+          "date": "2026-10-18",
+          "price": 58509
+        }
+      ],
+      "loc": "AutoNation Chevrolet South Clearwater",
+      "d": 31.0,
+      "src": "AutoNation",
+      "url": "https://www.autonation.com/cars/2gc4ame72t1241997/chevrolet-silverado-2500hd-2026",
+      "vin": "2GC4AME72T1241997",
+      "tow": "14,500 (17\") / 16,000 (18-22\")",
+      "tow_lb": 14500,
+      "tsrc": "2026 Chevrolet Silverado 2500HD chart (tow/gm26_2500)",
+      "pay_lo": 976,
+      "pay_hi": 1424,
+      "pay": "$976–$1,424/mo",
+      "rec": [
+        "25V815",
+        "26V114"
+      ],
+      "flags": "Priced ABOVE MSRP (AN fees included). AN entry date 10/26/2026 is in the future: may still be in transit.",
+      "flag_tags": [
+        "above_msrp",
+        "in_transit"
+      ],
+      "first_seen": "2026-10-17",
+      "last_checked": "2026-10-18"
+    },
+    {
+      "rank": 7,
+      "g": 1,
+      "grp": "G1 · GM 6.6L gas L8T 2024-26",
+      "grade": "A",
+      "status": "live (new), no change",
+      "yr": 2026,
+      "mk": "Chevrolet",
+      "model": "Silverado 2500HD",
+      "trim": "Custom",
+      "eng": "6.6L V8 gas L8T",
+      "fuel": "gas",
+      "cond_new": true,
+      "cab": "Crew / standard box (159 in WB)",
+      "drv": "4WD",
+      "mi": 5,
+      "price": 60978,
+      "prev": 60978,
+      "price_history": [
+        {
+          "date": "2026-10-17",
+          "price": 60978
+        },
+        {
+          "date": "2026-10-18",
+          "price": 60978
+        }
+      ],
+      "loc": "AutoNation Chevrolet West Colonial, Orlando",
+      "d": 74.5,
+      "src": "AutoNation",
+      "url": "https://www.autonation.com/cars/1gc4kme70tf331896/chevrolet-silverado-2500hd-2026",
+      "vin": "1GC4KME70TF331896",
+      "tow": "14,500 (17\") / 16,000 (18-22\")",
+      "tow_lb": 14500,
+      "tsrc": "2026 Chevrolet Silverado 2500HD chart (tow/gm26_2500)",
+      "pay_lo": 1030,
+      "pay_hi": 1496,
+      "pay": "$1,030–$1,496/mo",
+      "rec": [
+        "25V815",
+        "26V114"
+      ],
+      "flags": "Priced above MSRP. 74.5 mi.",
+      "flag_tags": [
+        "above_msrp",
+        "edge_of_radius"
+      ],
+      "first_seen": "2026-10-17",
+      "last_checked": "2026-10-18"
+    },
+    {
+      "rank": 8,
+      "g": 1,
+      "grp": "G1 · GM 6.6L gas L8T 2024-26",
+      "grade": "A",
+      "status": "live (new), no change",
+      "yr": 2026,
+      "mk": "Chevrolet",
+      "model": "Silverado 2500HD",
+      "trim": "LT",
+      "eng": "6.6L V8 gas L8T",
+      "fuel": "gas",
+      "cond_new": true,
+      "cab": "Crew / LONG box (172 in WB)",
+      "drv": "4WD",
+      "mi": 5,
+      "price": 64734,
+      "prev": 64734,
+      "price_history": [
+        {
+          "date": "2026-10-17",
+          "price": 64734
+        },
+        {
+          "date": "2026-10-18",
+          "price": 64734
+        }
+      ],
+      "loc": "AutoNation Chevrolet South Clearwater",
+      "d": 31.0,
+      "src": "AutoNation",
+      "url": "https://www.autonation.com/cars/1gc4kne76tf384978/chevrolet-silverado-2500hd-2026",
+      "vin": "1GC4KNE76TF384978",
+      "tow": "14,500 (17\") / 16,000 (18-22\")",
+      "tow_lb": 14500,
+      "tsrc": "2026 Chevrolet Silverado 2500HD chart (tow/gm26_2500)",
+      "pay_lo": 1111,
+      "pay_hi": 1605,
+      "pay": "$1,111–$1,605/mo",
+      "rec": [
+        "25V815",
+        "26V114"
+      ],
+      "flags": "$5,606 under MSRP. Only new A-grade long box found.",
+      "flag_tags": [],
+      "first_seen": "2026-10-17",
+      "last_checked": "2026-10-18"
+    },
+    {
+      "rank": 9,
+      "g": 1,
+      "grp": "G1 · GM 6.6L gas L8T 2024-26",
+      "grade": "A",
+      "status": "live (new), no change",
+      "yr": 2026,
+      "mk": "Chevrolet",
+      "model": "Silverado 2500HD",
+      "trim": "LT",
+      "eng": "6.6L V8 gas L8T",
+      "fuel": "gas",
+      "cond_new": true,
+      "cab": "Crew / standard box (159 in WB)",
+      "drv": "4WD",
+      "mi": 10,
+      "price": 69884,
+      "prev": 69884,
+      "price_history": [
+        {
+          "date": "2026-10-17",
+          "price": 69884
+        },
+        {
+          "date": "2026-10-18",
+          "price": 69884
+        }
+      ],
+      "loc": "AutoNation Chevrolet South Clearwater",
+      "d": 31.0,
+      "src": "AutoNation",
+      "url": "https://www.autonation.com/cars/1gc4kne70tf406053/chevrolet-silverado-2500hd-2026",
+      "vin": "1GC4KNE70TF406053",
+      "tow": "14,500 (17\") / 16,000 (18-22\")",
+      "tow_lb": 14500,
+      "tsrc": "2026 Chevrolet Silverado 2500HD chart (tow/gm26_2500)",
+      "pay_lo": 1224,
+      "pay_hi": 1754,
+      "pay": "$1,224–$1,754/mo",
+      "rec": [
+        "25V815",
+        "26V114"
+      ],
+      "flags": "Priced ABOVE MSRP. AN entry date 10/27/2026 is in the future: may be in transit.",
+      "flag_tags": [
+        "above_msrp",
+        "in_transit"
+      ],
+      "first_seen": "2026-10-17",
+      "last_checked": "2026-10-18"
+    },
+    {
+      "rank": 10,
+      "g": 2,
+      "grp": "G2 · GM 6.6L gas L8T 2020-23",
+      "grade": "A",
+      "status": "live, no change",
+      "yr": 2023,
+      "mk": "Chevrolet",
+      "model": "Silverado 2500HD",
+      "trim": "WT",
+      "eng": "6.6L V8 gas L8T, 6-spd",
+      "fuel": "gas",
+      "cond_new": false,
+      "cab": "Crew / long box",
+      "drv": "4x4",
+      "mi": 112015,
+      "price": 33900,
+      "prev": 33900,
+      "price_history": [
+        {
+          "date": "2026-10-17",
+          "price": 33900
+        },
+        {
+          "date": "2026-10-18",
+          "price": 33900
+        }
+      ],
+      "loc": "Gator Truck Center of Ocala",
+      "d": 68,
+      "src": "Craigslist",
+      "url": "https://www.craigslist.org/view/d/ocala-2023-chevrolet-chevy-silverado/KLVc4XDG8RGT3PnI4Lkt8w",
+      "vin": "1GC1YLE79PF261543",
+      "tow": "14,500 (crew gas, any box/drive, 3.73)",
+      "tow_lb": 14500,
+      "tsrc": "2023 Chevrolet trailering guide (tow/gm23)",
+      "pay_lo": 460,
+      "pay_hi": 737,
+      "pay": "$460–$737/mo",
+      "rec": [
+        "24V060"
+      ],
+      "flags": "High miles for age.",
+      "flag_tags": [
+        "high_miles"
+      ],
+      "first_seen": "2026-10-17",
+      "last_checked": "2026-10-18"
+    },
+    {
+      "rank": 11,
+      "g": 2,
+      "grp": "G2 · GM 6.6L gas L8T 2020-23",
+      "grade": "A",
+      "status": "live, no change",
+      "yr": 2020,
+      "mk": "Chevrolet",
+      "model": "Silverado 2500HD",
+      "trim": "(not stated)",
+      "eng": "6.6L V8 gas",
+      "fuel": "gas",
+      "cond_new": false,
+      "cab": "Crew / standard box (7 ft)",
+      "drv": "4WD",
+      "mi": 154000,
+      "price": 21700,
+      "prev": 21700,
+      "price_history": [
+        {
+          "date": "2026-10-17",
+          "price": 21700
+        },
+        {
+          "date": "2026-10-18",
+          "price": 21700
+        }
+      ],
+      "loc": "Largo, private-style seller",
+      "d": 34,
+      "src": "Craigslist",
+      "url": "https://www.craigslist.org/view/d/pinellas-park-2020-chevrolet-silverado/h7HveWiX1xQUcvMNJsJ7rQ",
+      "vin": "",
+      "tow": "14,500 (crew gas, any box)",
+      "tow_lb": 14500,
+      "tsrc": "2020 Chevrolet trailering guide (tow/gm20)",
+      "pay_lo": 191,
+      "pay_hi": 371,
+      "pay": "$191–$371/mo",
+      "rec": [
+        "19V814",
+        "20V142",
+        "20V324",
+        "20V446",
+        "20V650",
+        "20V792",
+        "21V578",
+        "24V060",
+        "24V797",
+        "26V083"
+      ],
+      "flags": "NO VIN. CURBSTONER SIGNS: same Largo poster has several trucks + vans up, each \"1 owner\": verify title is in the seller's name. 2020 transmission-control recalls 24V797/26V083: confirm done.",
+      "flag_tags": [
+        "no_vin",
+        "curbstoner",
+        "high_miles",
+        "open_recall_risk"
+      ],
+      "first_seen": "2026-10-17",
+      "last_checked": "2026-10-18"
+    },
+    {
+      "rank": 12,
+      "g": 3,
+      "grp": "G3 · GM L5P Duramax 2017-19 (2500 crew long box / 3500 long or DRW)",
+      "grade": "A",
+      "status": "NEW today (76-150 mi)",
+      "yr": 2018,
+      "mk": "Chevrolet",
+      "model": "Silverado 3500HD",
+      "trim": "High Country",
+      "eng": "6.6L Duramax L5P",
+      "fuel": "diesel",
+      "cond_new": false,
+      "cab": "Crew / long box (167.7 in WB)",
+      "drv": "4WD",
+      "mi": 121245,
+      "price": 43428,
+      "prev": null,
+      "price_history": [
+        {
+          "date": "2026-10-18",
+          "price": 43428
+        }
+      ],
+      "loc": "AutoNation USA Fort Myers",
+      "d": 130.5,
+      "src": "AutoNation",
+      "url": "https://www.autonation.com/cars/1gc4k1ey7jf197148/chevrolet-silverado-3500hd-2018",
+      "vin": "1GC4K1EY7JF197148",
+      "tow": "15,000 (3500HD crew long box 4x4 SRW) / 20,000 if dually; Duramax 3.73",
+      "tow_lb": 15000,
+      "tsrc": "2018 Chevrolet trailering guide p.12 (tow/gm18)",
+      "pay_lo": 647,
+      "pay_hi": 986,
+      "pay": "$647–$986/mo",
+      "rec": [
+        "17V567",
+        "19V088",
+        "19V328",
+        "21V496",
+        "23V047",
+        "24V756"
+      ],
+      "flags": "130.5 mi. Not opened in detail (fetcher stopped on a 403 before reaching it), so axle/options unverified. Recalls for MY include 23V047 (diesel tank): confirm by VIN.",
+      "flag_tags": [
+        "far"
+      ],
+      "first_seen": "2026-10-18",
+      "last_checked": "2026-10-18"
+    },
+    {
+      "rank": 13,
+      "g": 3,
+      "grp": "G3 · GM L5P Duramax 2017-19 (2500 crew long box / 3500 long or DRW)",
+      "grade": "A",
+      "status": "NEW tonight (0-75 mi)",
+      "yr": 2018,
+      "mk": "Chevrolet",
+      "model": "Silverado 3500HD",
+      "trim": "High Country DRW",
+      "eng": "6.6L Duramax L5P, 6-spd Allison",
+      "fuel": "diesel",
+      "cond_new": false,
+      "cab": "Crew / long box, dually",
+      "drv": "4x4",
+      "mi": 227300,
+      "price": 32900,
+      "prev": null,
+      "price_history": [
+        {
+          "date": "2026-10-18",
+          "price": 32900
+        }
+      ],
+      "loc": "Gator Truck Center of Ocala",
+      "d": 68,
       "src": "Dealer site",
-      "url": "https://www.example.com/ford-f250-2024-sample",
-      "vin": "1FT8W2BT5REA00001",
-      "tow": "18,000 conventional",
-      "tow_lb": 18000,
-      "tsrc": "2024 Ford F-250 towing guide",
-      "pay_lo": 1040,
-      "pay_hi": 1495,
-      "pay": "$1,040–$1,495/mo",
-      "rec": ["24V271"],
-      "flags": "First showed up in today's file.",
+      "url": "https://www.gatortruckcenter.com/details/used-2018-chevrolet-silverado-3500hd/123078592",
+      "vin": "1GC4K1EYXJF285482",
+      "tow": "20,000 conventional (crew 3500HD long box 4x4 dually, Duramax 3.73)",
+      "tow_lb": 20000,
+      "tsrc": "2018 Chevrolet trailering guide p.12 (tow/gm18)",
+      "pay_lo": 439,
+      "pay_hi": 708,
+      "pay": "$439–$708/mo",
+      "rec": [
+        "17V567",
+        "19V088",
+        "19V328",
+        "21V496",
+        "23V047",
+        "24V756"
+      ],
+      "flags": "227k miles. Title status not stated. Dealer feed lists \"Axle 4.10\" but the 2018 Duramax was 3.73 only (feed spec likely generic).",
+      "flag_tags": [
+        "high_miles",
+        "title_unknown",
+        "dually"
+      ],
       "first_seen": "2026-10-18",
       "last_checked": "2026-10-18"
     }
@@ -98,43 +687,219 @@
     {
       "rank": "C1",
       "g": 3,
-      "grp": "G3 · Ram 6.4L HEMI gas 2022-25",
-      "grade": "C",
-      "status": "needs a check",
-      "yr": 2022,
-      "mk": "Ram",
-      "model": "2500",
-      "trim": "Tradesman",
-      "eng": "6.4L HEMI gas",
+      "grp": "G3 · GM L5P Duramax 2017-19 (2500 crew long box / 3500 long or DRW)",
+      "grade": "A",
+      "status": "NEW today (76-150 mi)",
+      "yr": 2018,
+      "mk": "Chevrolet",
+      "model": "Silverado 3500HD",
+      "trim": "LTZ Z71",
+      "eng": "6.6L Duramax L5P",
+      "fuel": "diesel",
+      "cond_new": false,
+      "cab": "Crew / BED NOT STATED",
+      "drv": "4WD",
+      "mi": 295749,
+      "price": 18999,
+      "prev": null,
+      "price_history": [
+        {
+          "date": "2026-10-18",
+          "price": 18999
+        }
+      ],
+      "loc": "Garage Autos, Casselberry",
+      "d": 86,
+      "src": "Craigslist",
+      "url": "https://www.craigslist.org/view/d/casselberry-2018-chevy-silverado-3500hd/dQruXshQBSkjRj1p7aqz9c",
+      "vin": "1GC4K0EY8JF290979",
+      "tow": "15,000 if long box SRW / 20,000 if DRW; standard box = 13,000 (FAILS)",
+      "tow_lb": 13000,
+      "tsrc": "2018 Chevrolet trailering guide p.12 (tow/gm18)",
+      "pay_lo": 135,
+      "pay_hi": 304,
+      "pay": "$135–$304/mo",
+      "rec": [
+        "17V567",
+        "19V088",
+        "19V328",
+        "21V496",
+        "23V047",
+        "24V756"
+      ],
+      "flags": "296k miles; price very low; ad pushes dealer financing. Qualifies only if long box or dually.",
+      "flag_tags": [
+        "bed_unconfirmed",
+        "high_miles",
+        "below_market"
+      ],
+      "first_seen": "2026-10-18",
+      "last_checked": "2026-10-18"
+    },
+    {
+      "rank": "C2",
+      "g": 3,
+      "grp": "G3 · GM L5P Duramax 2017-19 (2500 crew long box / 3500 long or DRW)",
+      "grade": "A",
+      "status": "NEW today (76-150 mi)",
+      "yr": 2017,
+      "mk": "Chevrolet",
+      "model": "Silverado 2500HD",
+      "trim": "LTZ",
+      "eng": "6.6L Duramax L5P, Allison",
+      "fuel": "diesel",
+      "cond_new": false,
+      "cab": "Crew / BED NOT STATED",
+      "drv": "4WD",
+      "mi": 201570,
+      "price": 25990,
+      "prev": null,
+      "price_history": [
+        {
+          "date": "2026-10-18",
+          "price": 25990
+        }
+      ],
+      "loc": "Duval Trucks, Jacksonville",
+      "d": 145,
+      "src": "Craigslist",
+      "url": "https://www.craigslist.org/view/d/jacksonville-2017-chevrolet-silverado/27fzoL2kLrNYwW5c7LjvPM",
+      "vin": "1GC1KWEY7HF223130",
+      "tow": "14,500 ONLY if crew LONG box; standard box = 13,000 (FAILS)",
+      "tow_lb": 13000,
+      "tsrc": "2017 Chevrolet trailering guide (tow/gm17)",
+      "pay_lo": 288,
+      "pay_hi": 507,
+      "pay": "$288–$507/mo",
+      "rec": [
+        "16V651",
+        "17V567",
+        "19V328",
+        "21V496",
+        "23V047"
+      ],
+      "flags": "145 mi straight-line (longer by road). 202k miles. Qualifies only if long box.",
+      "flag_tags": [
+        "bed_unconfirmed",
+        "high_miles",
+        "far"
+      ],
+      "first_seen": "2026-10-18",
+      "last_checked": "2026-10-18"
+    },
+    {
+      "rank": "C3",
+      "g": 4,
+      "grp": "G4 · GM 6.0L gas L96 2016-19 (2WD long box + 4.10 only)",
+      "grade": "A",
+      "status": "live, no change",
+      "yr": 2019,
+      "mk": "Chevrolet",
+      "model": "Silverado 2500HD",
+      "trim": "WT",
+      "eng": "6.0L V8 gas L96",
       "fuel": "gas",
       "cond_new": false,
-      "cab": "Crew / standard box",
-      "drv": "4WD",
-      "mi": 86420,
-      "price": 34900,
-      "prev": 34900,
+      "cab": "Crew / long box",
+      "drv": "2WD",
+      "mi": 198972,
+      "price": 17995,
+      "prev": 17995,
       "price_history": [
-        {"date": "2026-10-16", "price": 34900}
+        {
+          "date": "2026-10-17",
+          "price": 17995
+        },
+        {
+          "date": "2026-10-18",
+          "price": 17995
+        }
       ],
-      "doc": 0,
-      "dealer": false,
-      "loc": "Private seller, Spring Hill",
-      "d": 12.8,
+      "loc": "Avin Enterprises, Tampa",
+      "d": 29,
+      "src": "Dealer site",
+      "url": "https://www.avinenterprises.com/vdp/23381696/Used-2019-Chevrolet-Silverado-2500HD-for-sale-in-Tampa-FL",
+      "vin": "1GC1CREG2KF122638",
+      "tow": "14,300 ONLY with 4.10 axle (GT5); 9,800 with 3.73",
+      "tow_lb": 9800,
+      "tsrc": "2019 Chevrolet trailering guide (tow/gm19)",
+      "pay_lo": 114,
+      "pay_hi": 275,
+      "pay": "$114–$275/mo",
+      "rec": [
+        "19V328",
+        "21V496",
+        "23V047",
+        "24V756",
+        "25V432",
+        "26V166",
+        "26V325"
+      ],
+      "flags": "AXLE NOT CONFIRMED (not on VDP): check RPO glovebox sticker for GT5. 199k miles.",
+      "flag_tags": [
+        "axle_unconfirmed",
+        "high_miles"
+      ],
+      "first_seen": "2026-10-17",
+      "last_checked": "2026-10-18"
+    },
+    {
+      "rank": "C4",
+      "g": 4,
+      "grp": "G4 · GM 6.0L gas L96 2016-19 (2WD long box + 4.10 only)",
+      "grade": "A",
+      "status": "live, no change",
+      "yr": 2017,
+      "mk": "Chevrolet",
+      "model": "Silverado 2500HD",
+      "trim": "(not stated)",
+      "eng": "6.0L V8 gas",
+      "fuel": "gas",
+      "cond_new": false,
+      "cab": "Crew / 8 ft bed",
+      "drv": "UNKNOWN (needs 2WD)",
+      "mi": 223000,
+      "price": 10500,
+      "prev": 10500,
+      "price_history": [
+        {
+          "date": "2026-10-17",
+          "price": 10500
+        },
+        {
+          "date": "2026-10-18",
+          "price": 10500
+        }
+      ],
+      "loc": "Largo, same multi-truck poster",
+      "d": 34,
       "src": "Craigslist",
-      "url": "https://www.example.com/ram-2500-2022-sample",
-      "vin": null,
-      "tow": "tow unconfirmed",
-      "tow_lb": 12000,
-      "tsrc": "2022 Ram 2500 towing chart (config unconfirmed)",
-      "pay_lo": 560,
-      "pay_hi": 840,
-      "pay": "$560–$840/mo",
-      "rec": ["22V765"],
-      "flags": "No VIN posted. The ad may already be gone. Confirm the truck is still available before driving out.",
-      "flag_tags": ["no_vin", "possibly_unavailable", "some_unknown_tag"],
-      "first_seen": "2026-10-16",
+      "url": "https://www.craigslist.org/view/d/pinellas-park-2017-chevrolet-silverado/9fHJoo7gJMKLvZcTzE3FHC",
+      "vin": "",
+      "tow": "14,300 ONLY if 2WD + 4.10; 4x4 long box 4.10 = 13,900 (fails)",
+      "tow_lb": 9800,
+      "tsrc": "2017 Chevrolet trailering guide (tow/gm17)",
+      "pay_lo": 0,
+      "pay_hi": 46,
+      "pay": "$0–$46/mo",
+      "rec": [
+        "16V651",
+        "17V567",
+        "19V328",
+        "21V496",
+        "23V047"
+      ],
+      "flags": "NO VIN; drive and axle unknown; curbstoner signs (same Largo poster). 223k miles.",
+      "flag_tags": [
+        "no_vin",
+        "curbstoner",
+        "drive_unconfirmed",
+        "axle_unconfirmed",
+        "high_miles"
+      ],
+      "first_seen": "2026-10-17",
       "last_checked": "2026-10-18"
     }
   ],
-  "sources": "Sample file for Truck Deals, dated 2026-10-18. Ranked row 1 is a price drop first seen 2026-10-17. Ranked row 2 is new on the latest data date and has no price history. Conditional C1 has a null VIN. Distances are straight-line miles from Hudson, FL."
+  "sources": "Checked Oct 18, 2026, 8:33-9:05 PM ET. Craigslist Hudson-centered city search (radius 75 and 150 mi, 17 queries each, all 200; covers Orlando, Gainesville, Lakeland, Ocala, Sarasota, Fort Myers, Daytona, Space Coast and Jacksonville-edge posts); AutoNation fetcher: two narrow GM-HD-only runs tonight (75 mi: ok, 10 loads; 150 mi: 10 loads, 42 vehicles, stopped by a 403 on a vehicle page, search results kept); AutoNation Chevrolet South Clearwater store pages; gatortruckcenter.com and avinenterprises.com (curl 200); vPIC; NHTSA recalls by model year; OEM towing guides. Not reachable: hillsboroautomart.com (hung), garageauto407.com (403), duvaltrucks.com (JS inventory). Not used: Cars.com, AutoTrader, CarGurus, Facebook, browser. Research only: nobody contacted."
 }
