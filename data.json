@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-19T07:40:33-04:00",
+  "updated_at": "2026-10-19T07:57:00-04:00",
   "groups": {
     "1": "G1 · GM 6.6L gas L8T 2024-26",
     "2": "G2 · GM 6.6L gas L8T 2020-23",
@@ -51,6 +51,8 @@
           "price": 49991
         }
       ],
+      "doc": 0,
+      "dealer": true,
       "loc": "AutoNation Chevrolet West Colonial, Orlando",
       "d": 74.5,
       "src": "AutoNation",
@@ -105,6 +107,8 @@
           "price": 46732
         }
       ],
+      "doc": 0,
+      "dealer": true,
       "loc": "AutoNation Chevrolet South Clearwater",
       "d": 31.0,
       "src": "AutoNation store site",
@@ -163,6 +167,8 @@
           "price": 64989
         }
       ],
+      "doc": 0,
+      "dealer": true,
       "loc": "AutoNation Toyota Pinellas Park",
       "d": 34.9,
       "src": "AutoNation",
@@ -212,6 +218,8 @@
           "price": 63859
         }
       ],
+      "doc": 0,
+      "dealer": true,
       "loc": "AutoNation Chevrolet Airport, Orlando",
       "d": 80.6,
       "src": "AutoNation",
@@ -263,6 +271,8 @@
           "price": 58509
         }
       ],
+      "doc": 0,
+      "dealer": true,
       "loc": "AutoNation Chevrolet South Clearwater",
       "d": 31.0,
       "src": "AutoNation",
@@ -318,6 +328,8 @@
           "price": 60978
         }
       ],
+      "doc": 0,
+      "dealer": true,
       "loc": "AutoNation Chevrolet West Colonial, Orlando",
       "d": 74.5,
       "src": "AutoNation",
@@ -373,6 +385,8 @@
           "price": 64734
         }
       ],
+      "doc": 0,
+      "dealer": true,
       "loc": "AutoNation Chevrolet South Clearwater",
       "d": 31.0,
       "src": "AutoNation",
@@ -425,6 +439,8 @@
           "price": 69884
         }
       ],
+      "doc": 0,
+      "dealer": true,
       "loc": "AutoNation Chevrolet South Clearwater",
       "d": 31.0,
       "src": "AutoNation",
@@ -480,6 +496,8 @@
           "price": 33900
         }
       ],
+      "doc": 969,
+      "dealer": true,
       "loc": "Gator Truck Center of Ocala",
       "d": 68,
       "src": "Craigslist",
@@ -533,6 +551,8 @@
           "price": 21700
         }
       ],
+      "doc": null,
+      "dealer": false,
       "loc": "Largo, private-style seller",
       "d": 34,
       "src": "Craigslist",
@@ -594,6 +614,8 @@
           "price": 43428
         }
       ],
+      "doc": 0,
+      "dealer": true,
       "loc": "AutoNation USA Fort Myers",
       "d": 130.5,
       "src": "AutoNation",
@@ -648,6 +670,8 @@
           "price": 32900
         }
       ],
+      "doc": 969,
+      "dealer": true,
       "loc": "Gator Truck Center of Ocala",
       "d": 68,
       "src": "Dealer site",
@@ -706,6 +730,8 @@
           "price": 18999
         }
       ],
+      "doc": 969,
+      "dealer": true,
       "loc": "Garage Autos, Casselberry",
       "d": 86,
       "src": "Craigslist",
@@ -762,6 +788,8 @@
           "price": 25990
         }
       ],
+      "doc": 969,
+      "dealer": true,
       "loc": "Duval Trucks, Jacksonville",
       "d": 145,
       "src": "Craigslist",
@@ -821,6 +849,8 @@
           "price": 17995
         }
       ],
+      "doc": 969,
+      "dealer": true,
       "loc": "Avin Enterprises, Tampa",
       "d": 29,
       "src": "Dealer site",
@@ -881,6 +911,8 @@
           "price": 10500
         }
       ],
+      "doc": null,
+      "dealer": false,
       "loc": "Largo, same multi-truck poster",
       "d": 34,
       "src": "Craigslist",
