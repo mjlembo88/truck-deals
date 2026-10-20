@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-20T07:34:30-04:00",
+  "updated_at": "2026-10-20T17:38:44-04:00",
   "groups": {
     "1": "G1 · GM 6.6L gas L8T 2024-26",
     "2": "G2 · GM 6.6L gas L8T 2020-23",
@@ -134,7 +134,7 @@
         "24V894",
         "26V530"
       ],
-      "flags": "LOCATION CONFLICT (still, Oct 20 7:35 AM ET): Clearwater store site lists it, but the autonation.com search lists it at Mercedes-Benz of Sarasota (75.5 mi, entry 10/11): https://www.autonation.com/cars/2gc4yme70r1111477/chevrolet-silverado-2500hd-2024 . Confirm where it is.",
+      "flags": "LOCATION CONFLICT (still, Oct 20 5:40 PM ET): Clearwater store site lists it, but the autonation.com search lists it at Mercedes-Benz of Sarasota (75.5 mi, entry 10/11): https://www.autonation.com/cars/2gc4yme70r1111477/chevrolet-silverado-2500hd-2024 . Confirm where it is.",
       "flag_tags": [
         "possibly_unavailable",
         "location_conflict",
@@ -158,7 +158,7 @@
       "cond_new": false,
       "cab": "Crew / long box, dually",
       "drv": "4WD",
-      "mi": 15306,
+      "mi": 15307,
       "price": 63990,
       "prev": 63990,
       "price_history": [
@@ -383,7 +383,7 @@
       "g": 1,
       "grp": "G1 · GM 6.6L gas L8T 2024-26",
       "grade": "A",
-      "status": "live, no change",
+      "status": "live, PRICE DROP -$242",
       "yr": 2026,
       "mk": "Chevrolet",
       "model": "Silverado 2500HD",
@@ -394,7 +394,7 @@
       "cab": "Crew / LONG box",
       "drv": "4WD",
       "mi": 5,
-      "price": 64734,
+      "price": 64492,
       "prev": 64734,
       "price_history": [
         {
@@ -411,7 +411,7 @@
         },
         {
           "date": "2026-10-20",
-          "price": 64734
+          "price": 64492
         }
       ],
       "doc": 0,
@@ -424,15 +424,17 @@
       "tow": "14,500 (17\") / 16,000 (18-22\")",
       "tow_lb": 14500,
       "tsrc": "2026 Chevrolet Silverado 2500HD chart (tow/gm26_2500)",
-      "pay_lo": 1111,
-      "pay_hi": 1605,
-      "pay": "$1,111–$1,605/mo",
+      "pay_lo": 1106,
+      "pay_hi": 1598,
+      "pay": "$1,106–$1,598/mo",
       "rec": [
         "25V815",
         "26V114"
       ],
       "flags": "$5,606 under MSRP. Only new A-grade long box found.",
-      "flag_tags": [],
+      "flag_tags": [
+        "price_drop"
+      ],
       "first_seen": "2026-10-17",
       "last_checked": "2026-10-20"
     },
@@ -1009,5 +1011,5 @@
       "last_checked": "2026-10-20"
     }
   ],
-  "sources": "Checked Oct 20, 2026, 7:31-7:40 AM ET. Craigslist Hudson-centered city search (radius 150 mi, 17 queries, all HTTP 200, 785 unique posts, 30 not seen yesterday; the only new GM HD crew cab in the year range, a 2019 Silverado 2500HD 6.0L gas utility-body truck in Largo, can't be verified against the pickup towing tables) plus all Craigslist listing pages in the feed; AutoNation fetcher: ONE narrow GM-HD-only run (150 mi, no detail pages, 6 loads, 41 vehicles, status ok, no 403); AutoNation Chevrolet South Clearwater store VDP and used Silverado HD page; gatortruckcenter.com and avinenterprises.com inventory and detail pages (curl 200); NHTSA recalls by model year; OEM towing guides on file. Not used: Cars.com, AutoTrader, CarGurus, Facebook, browser. Research only: nobody contacted."
+  "sources": "Checked Oct 20, 2026, 5:36-5:45 PM ET. Craigslist Hudson-centered city search (radius 150 mi, 17 queries, all HTTP 200, 803 unique posts, 68 not seen in the last two pulls; no new GM HD crew cab in an A-grade group's year range) plus all Craigslist listing pages in the feed; AutoNation fetcher: ONE narrow GM-HD-only run (150 mi, no detail pages, 6 loads, 41 vehicles, status ok, no 403); AutoNation Chevrolet South Clearwater store VDP and used Silverado HD page; gatortruckcenter.com and avinenterprises.com inventory and detail pages (curl 200); NHTSA recalls by model year; OEM towing guides on file. Not used: Cars.com, AutoTrader, CarGurus, Facebook, browser. Research only: nobody contacted."
 }
