@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-21T07:39:54-04:00",
+  "updated_at": "2026-10-21T17:40:59-04:00",
   "groups": {
     "1": "G1 · GM 6.6L gas L8T 2024-26",
     "2": "G2 · GM 6.6L gas L8T 2020-23",
@@ -142,7 +142,7 @@
         "24V894",
         "26V530"
       ],
-      "flags": "LOCATION CONFLICT (still, Oct 21 7:40 AM ET): Clearwater store site lists it, but the autonation.com search lists it at Mercedes-Benz of Sarasota (75.5 mi, entry 10/11): https://www.autonation.com/cars/2gc4yme70r1111477/chevrolet-silverado-2500hd-2024 . Confirm where it is.",
+      "flags": "LOCATION CONFLICT (still, Oct 21 5:41 PM ET): Clearwater store site lists it, but the autonation.com search lists it at Mercedes-Benz of Sarasota (75.5 mi, entry 10/11): https://www.autonation.com/cars/2gc4yme70r1111477/chevrolet-silverado-2500hd-2024 . Confirm where it is.",
       "flag_tags": [
         "possibly_unavailable",
         "location_conflict",
@@ -156,7 +156,7 @@
       "g": 1,
       "grp": "G1 · GM 6.6L gas L8T 2024-26",
       "grade": "A",
-      "status": "live, no change",
+      "status": "live, PRICE DROP -$761",
       "yr": 2025,
       "mk": "Chevrolet",
       "model": "Silverado 3500HD",
@@ -167,7 +167,7 @@
       "cab": "Crew / long box, dually",
       "drv": "4WD",
       "mi": 15307,
-      "price": 63990,
+      "price": 63229,
       "prev": 63990,
       "price_history": [
         {
@@ -188,7 +188,7 @@
         },
         {
           "date": "2026-10-21",
-          "price": 63990
+          "price": 63229
         }
       ],
       "doc": 0,
@@ -201,9 +201,9 @@
       "tow": "17,600-17,800 (crew long 4x4 DRW gas)",
       "tow_lb": 17600,
       "tsrc": "2025 Chevrolet Silverado 3500HD chart (tow/gm25_3500)",
-      "pay_lo": 1095,
-      "pay_hi": 1583,
-      "pay": "$1,095–$1,583/mo",
+      "pay_lo": 1079,
+      "pay_hi": 1561,
+      "pay": "$1,079–$1,561/mo",
       "rec": [
         "26V129"
       ],
@@ -287,7 +287,7 @@
       "cond_new": true,
       "cab": "Crew / standard box",
       "drv": "2WD",
-      "mi": 10,
+      "mi": 5,
       "price": 58509,
       "prev": 58509,
       "price_history": [
@@ -329,11 +329,10 @@
         "25V815",
         "26V114"
       ],
-      "flags": "Priced ABOVE MSRP (AN fees included). AN entry date 10/26/2026 is in the future: may still be in transit. Oct 21 7:39 AM ET: dropped out of the autonation.com search (the Clearwater store split went 6 -> 5 trucks), but the store site VDP still lists it In Transit at $58,509. Could be sold/pending; confirm availability.",
+      "flags": "Priced ABOVE MSRP (AN fees included). Still \"In Transit\" on the Clearwater store VDP (Oct 21 5:41 PM ET). It was missing from the autonation.com search this morning but is back this evening (entry date now 10/20/2026, 5 mi), so the possibly-unavailable flag is cleared.",
       "flag_tags": [
         "above_msrp",
-        "in_transit",
-        "possibly_unavailable"
+        "in_transit"
       ],
       "first_seen": "2026-10-17",
       "last_checked": "2026-10-21"
@@ -1010,5 +1009,5 @@
       "last_checked": "2026-10-21"
     }
   ],
-  "sources": "Checked Oct 21, 2026, 7:37-7:45 AM ET. Craigslist Hudson-centered city search (radius 150 mi, 17 queries, all HTTP 200, 799 unique posts, 30 not seen in the last three pulls; no new GM HD crew cab in an A-grade group's year range) plus all Craigslist listing pages in the feed; AutoNation fetcher: ONE narrow GM-HD-only run (150 mi, no detail pages, 6 loads, 40 vehicles, status ok, no 403); AutoNation Chevrolet South Clearwater store VDPs and used Silverado HD page; gatortruckcenter.com and avinenterprises.com inventory and detail pages (curl 200; one Gator detail page now 404). NHTSA recalls by model year; OEM towing guides on file. Not used: Cars.com, AutoTrader, CarGurus, Facebook, browser. Research only: nobody contacted."
+  "sources": "Checked Oct 21, 2026, 5:38-5:50 PM ET. Craigslist Hudson-centered city search (radius 150 mi, 17 queries, all HTTP 200, 817 unique posts, 74 not seen in the last three pulls; no new GM HD crew cab in an A-grade group's year range; one was a same-VIN repost of conditional C1) plus all Craigslist listing pages in the feed; AutoNation fetcher: ONE narrow GM-HD-only run (150 mi, no detail pages, 6 loads, 42 vehicles, status ok, no 403); AutoNation Chevrolet South Clearwater store VDPs and used Silverado HD page; gatortruckcenter.com and avinenterprises.com inventory and detail pages (curl 200). NHTSA recalls by model year; OEM towing guides on file. Not used: Cars.com, AutoTrader, CarGurus, Facebook, browser. Research only: nobody contacted."
 }
