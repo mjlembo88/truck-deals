@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-22T17:32:39-04:00",
+  "updated_at": "2026-10-23T07:33:15-04:00",
   "groups": {
     "1": "G1 · GM 6.6L gas L8T 2024-26",
     "2": "G2 · GM 6.6L gas L8T 2020-23",
@@ -61,6 +61,10 @@
         {
           "date": "2026-10-22",
           "price": 49991
+        },
+        {
+          "date": "2026-10-23",
+          "price": 49991
         }
       ],
       "doc": 0,
@@ -85,7 +89,7 @@
         "edge_of_radius"
       ],
       "first_seen": "2026-10-17",
-      "last_checked": "2026-10-22"
+      "last_checked": "2026-10-23"
     },
     {
       "rank": 2,
@@ -129,6 +133,10 @@
         {
           "date": "2026-10-22",
           "price": 46732
+        },
+        {
+          "date": "2026-10-23",
+          "price": 46732
         }
       ],
       "doc": 0,
@@ -150,14 +158,14 @@
         "24V894",
         "26V530"
       ],
-      "flags": "LOCATION CONFLICT (still, Oct 22 5:30 PM ET; AutoNation search not rechecked this evening): Clearwater store site lists it, but the autonation.com search lists it at Mercedes-Benz of Sarasota (75.5 mi, entry 10/11): https://www.autonation.com/cars/2gc4yme70r1111477/chevrolet-silverado-2500hd-2024 . Confirm where it is.",
+      "flags": "LOCATION CONFLICT (still, Oct 23 7:30 AM ET): Clearwater store site lists it, but the autonation.com search lists it at Mercedes-Benz of Sarasota (75.5 mi, entry 10/11): https://www.autonation.com/cars/2gc4yme70r1111477/chevrolet-silverado-2500hd-2024 . Confirm where it is.",
       "flag_tags": [
         "possibly_unavailable",
         "location_conflict",
         "price_drop"
       ],
       "first_seen": "2026-10-17",
-      "last_checked": "2026-10-22"
+      "last_checked": "2026-10-23"
     },
     {
       "rank": 3,
@@ -201,6 +209,10 @@
         {
           "date": "2026-10-22",
           "price": 63229
+        },
+        {
+          "date": "2026-10-23",
+          "price": 63229
         }
       ],
       "doc": 0,
@@ -225,7 +237,7 @@
         "price_drop"
       ],
       "first_seen": "2026-10-17",
-      "last_checked": "2026-10-22"
+      "last_checked": "2026-10-23"
     },
     {
       "rank": 4,
@@ -265,6 +277,10 @@
         {
           "date": "2026-10-22",
           "price": 63859
+        },
+        {
+          "date": "2026-10-23",
+          "price": 63859
         }
       ],
       "doc": 0,
@@ -286,7 +302,7 @@
       "flags": "Used, 13k miles. Recall 26V530 for MY: confirm done by VIN.",
       "flag_tags": [],
       "first_seen": "2026-10-18",
-      "last_checked": "2026-10-22"
+      "last_checked": "2026-10-23"
     },
     {
       "rank": 5,
@@ -330,6 +346,10 @@
         {
           "date": "2026-10-22",
           "price": 58509
+        },
+        {
+          "date": "2026-10-23",
+          "price": 58509
         }
       ],
       "doc": 0,
@@ -355,7 +375,7 @@
         "in_transit"
       ],
       "first_seen": "2026-10-17",
-      "last_checked": "2026-10-22"
+      "last_checked": "2026-10-23"
     },
     {
       "rank": 6,
@@ -399,6 +419,10 @@
         {
           "date": "2026-10-22",
           "price": 55978
+        },
+        {
+          "date": "2026-10-23",
+          "price": 55978
         }
       ],
       "doc": 0,
@@ -424,7 +448,7 @@
         "price_drop"
       ],
       "first_seen": "2026-10-17",
-      "last_checked": "2026-10-22"
+      "last_checked": "2026-10-23"
     },
     {
       "rank": 7,
@@ -468,6 +492,10 @@
         {
           "date": "2026-10-22",
           "price": 64492
+        },
+        {
+          "date": "2026-10-23",
+          "price": 64492
         }
       ],
       "doc": 0,
@@ -492,7 +520,7 @@
         "price_drop"
       ],
       "first_seen": "2026-10-17",
-      "last_checked": "2026-10-22"
+      "last_checked": "2026-10-23"
     },
     {
       "rank": 8,
@@ -536,6 +564,10 @@
         {
           "date": "2026-10-22",
           "price": 69884
+        },
+        {
+          "date": "2026-10-23",
+          "price": 69884
         }
       ],
       "doc": 0,
@@ -561,7 +593,7 @@
         "in_transit"
       ],
       "first_seen": "2026-10-17",
-      "last_checked": "2026-10-22"
+      "last_checked": "2026-10-23"
     },
     {
       "rank": 9,
@@ -605,6 +637,10 @@
         {
           "date": "2026-10-22",
           "price": 33900
+        },
+        {
+          "date": "2026-10-23",
+          "price": 33900
         }
       ],
       "doc": 969,
@@ -628,7 +664,7 @@
         "high_miles"
       ],
       "first_seen": "2026-10-17",
-      "last_checked": "2026-10-22"
+      "last_checked": "2026-10-23"
     },
     {
       "rank": 10,
@@ -672,6 +708,10 @@
         {
           "date": "2026-10-22",
           "price": 21700
+        },
+        {
+          "date": "2026-10-23",
+          "price": 21700
         }
       ],
       "doc": null,
@@ -707,7 +747,7 @@
         "open_recall_risk"
       ],
       "first_seen": "2026-10-17",
-      "last_checked": "2026-10-22"
+      "last_checked": "2026-10-23"
     },
     {
       "rank": 11,
@@ -747,6 +787,10 @@
         {
           "date": "2026-10-22",
           "price": 42452
+        },
+        {
+          "date": "2026-10-23",
+          "price": 42452
         }
       ],
       "doc": 0,
@@ -776,7 +820,7 @@
         "price_drop"
       ],
       "first_seen": "2026-10-18",
-      "last_checked": "2026-10-22"
+      "last_checked": "2026-10-23"
     }
   ],
   "conditional": [
@@ -818,6 +862,10 @@
         {
           "date": "2026-10-22",
           "price": 18999
+        },
+        {
+          "date": "2026-10-23",
+          "price": 18999
         }
       ],
       "doc": 969,
@@ -848,7 +896,7 @@
         "below_market"
       ],
       "first_seen": "2026-10-18",
-      "last_checked": "2026-10-22"
+      "last_checked": "2026-10-23"
     },
     {
       "rank": "C2",
@@ -888,6 +936,10 @@
         {
           "date": "2026-10-22",
           "price": 25990
+        },
+        {
+          "date": "2026-10-23",
+          "price": 25990
         }
       ],
       "doc": 969,
@@ -917,7 +969,7 @@
         "far"
       ],
       "first_seen": "2026-10-18",
-      "last_checked": "2026-10-22"
+      "last_checked": "2026-10-23"
     },
     {
       "rank": "C3",
@@ -961,6 +1013,10 @@
         {
           "date": "2026-10-22",
           "price": 17995
+        },
+        {
+          "date": "2026-10-23",
+          "price": 17995
         }
       ],
       "doc": 969,
@@ -991,7 +1047,7 @@
         "high_miles"
       ],
       "first_seen": "2026-10-17",
-      "last_checked": "2026-10-22"
+      "last_checked": "2026-10-23"
     },
     {
       "rank": "C4",
@@ -1035,6 +1091,10 @@
         {
           "date": "2026-10-22",
           "price": 10500
+        },
+        {
+          "date": "2026-10-23",
+          "price": 10500
         }
       ],
       "doc": null,
@@ -1066,8 +1126,8 @@
         "high_miles"
       ],
       "first_seen": "2026-10-17",
-      "last_checked": "2026-10-22"
+      "last_checked": "2026-10-23"
     }
   ],
-  "sources": "Checked Oct 22, 2026, 5:30-5:45 PM ET. Craigslist Hudson-centered city search (radius 150 mi, 17 queries, all HTTP 200, 796 unique posts, 60 not seen in the last three pulls; no new GM HD crew cab in an A-grade group's year range) plus all Craigslist listing pages in the feed; AutoNation fetcher: ONE narrow GM-HD-only run (150 mi, no detail pages) was cut short by a Cloudflare 403 after 4 loads: the new-truck pages came back (31 vehicles, all 4 new trucks in the feed confirmed) but the used-truck pages did not, so the AutoNation used listings keep their 7:39 AM check; AutoNation Chevrolet South Clearwater store VDP and used Silverado HD page; gatortruckcenter.com and avinenterprises.com inventory and detail pages (curl 200). NHTSA recalls by model year; OEM towing guides on file. Not used: Cars.com, AutoTrader, CarGurus, Facebook, browser. Research only: nobody contacted."
+  "sources": "Checked Oct 23, 2026, 7:30-7:45 AM ET. Craigslist Hudson-centered city search (radius 150 mi, 17 queries, all HTTP 200, 776 unique posts, 36 not seen in the last three pulls; no new GM HD crew cab in an A-grade group's year range) plus all Craigslist listing pages in the feed; AutoNation fetcher: ONE narrow GM-HD-only run (150 mi, no detail pages, status ok, 6 loads, 43 vehicles, no Cloudflare block); AutoNation Chevrolet South Clearwater store VDP and used Silverado HD page; gatortruckcenter.com and avinenterprises.com inventory and detail pages (curl 200). NHTSA recalls by model year; OEM towing guides on file. Not used: Cars.com, AutoTrader, CarGurus, Facebook, browser. Research only: nobody contacted."
 }
