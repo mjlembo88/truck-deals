@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-24T07:38:26-04:00",
+  "updated_at": "2026-10-24T17:39:28-04:00",
   "groups": {
     "1": "G1 · GM 6.6L gas L8T 2024-26",
     "2": "G2 · GM 6.6L gas L8T 2020-23",
@@ -166,7 +166,7 @@
         "24V894",
         "26V530"
       ],
-      "flags": "LOCATION CONFLICT (still, Oct 24 7:37 AM ET): Clearwater store site lists it, but the autonation.com search lists it at Mercedes-Benz of Sarasota (75.5 mi, entry 10/11): https://www.autonation.com/cars/2gc4yme70r1111477/chevrolet-silverado-2500hd-2024 . Confirm where it is.",
+      "flags": "LOCATION CONFLICT (still, Oct 24 5:38 PM ET): Clearwater store site lists it, but the autonation.com search lists it at Mercedes-Benz of Sarasota (75.5 mi, entry 10/11): https://www.autonation.com/cars/2gc4yme70r1111477/chevrolet-silverado-2500hd-2024 . Confirm where it is.",
       "flag_tags": [
         "possibly_unavailable",
         "location_conflict",
@@ -1189,5 +1189,5 @@
       "last_checked": "2026-10-24"
     }
   ],
-  "sources": "Checked Oct 24, 2026, 7:36-7:50 AM ET. Craigslist Hudson-centered city search (radius 150 mi, 17 queries, all HTTP 200, 782 unique posts, 45 not seen in the last three pulls; no new GM HD crew cab in an A-grade group's year and engine range) plus all Craigslist listing pages in the feed; AutoNation fetcher: ONE narrow GM-HD-only run (150 mi, no detail pages, status ok, 6 loads, 42 vehicles, no Cloudflare block); AutoNation Chevrolet South Clearwater store VDP and used Silverado HD page; gatortruckcenter.com and avinenterprises.com inventory and detail pages (curl 200). NHTSA recalls by model year; OEM towing guides on file. Not used: Cars.com, AutoTrader, CarGurus, Facebook, browser. Research only: nobody contacted."
+  "sources": "Checked Oct 24, 2026, 5:36-5:45 PM ET. Craigslist Hudson-centered city search (radius 150 mi, 17 queries, all HTTP 200, 790 unique posts, 64 not seen in the last three pulls; no new GM HD crew cab in an A-grade group's year and engine range) plus all Craigslist listing pages in the feed; AutoNation fetcher: ONE narrow GM-HD-only run (150 mi, no detail pages, status ok, 6 loads, 42 vehicles, no Cloudflare block); AutoNation Chevrolet South Clearwater store VDP and used Silverado HD page; gatortruckcenter.com and avinenterprises.com inventory and detail pages (curl 200). NHTSA recalls by model year; OEM towing guides on file. Not used: Cars.com, AutoTrader, CarGurus, Facebook, browser. Research only: nobody contacted."
 }
