@@ -55,3 +55,21 @@ The PWA (`index.html`, `app.js`, `styles.css`, `sw.js`, `manifest.webmanifest`, 
 2. `python3 scripts/geocode_dealers.py` (or add the entry by hand with a full street `address` first, then run it). Check any `NEEDS ADDRESS` lines, fill `address` or `city`, and rerun.
 3. `python3 scripts/enrich_data.py` (or the next `publish_data.sh`) merges the coordinates into `data.json`.
 4. Commit `scripts/dealers.json` with the data. The app needs no change.
+
+## Manual listings (kept across refreshes)
+
+The private refresh (`/workspace/truck-deals/mk_grade_a.py runs/<date>-<am|pm>.json`) rebuilds `/workspace/truck-deals/app/data.json` from `grade_a.json`. Listings that the generator does not track live in `/workspace/truck-deals/app/manual_listings.json` and are merged in on every run by `/workspace/truck-deals/manual_merge.py`:
+
+- Dedupe key is the VIN (case-insensitive), else the `url`. If a manual entry matches a generated listing, the manual fields win for that listing; otherwise it is appended to its `section` (`ranked` or `conditional`) and re-ranked after the generated listings. No other listing is changed.
+- Group names for manual groups come from the file's `groups` map. Group 5 is `US 19 · GM HD gas (dealers on 19)` (Coast Buick GMC, Castriota, Ferman Tarpon Springs); group 6 is reserved for deep-dive used finds.
+- Edit a manual listing by editing `manual_listings.json`; the next refresh plus `scripts/publish_data.sh` publishes it.
+- Dry-run a refresh without touching live files: `python3 mk_grade_a.py runs/<run>.json --out-dir /tmp/td-dry` (writes `grade_a.json`, `app/data.json`, the md and html under that folder).
+
+### Truck Deal Finder deep-dive import
+
+`/workspace/truck-deals/import_deep_dive.py` reads `/workspace/truck-search/deep_dive_used.json` (a list of records or `{"listings": [...]}`) and appends new used-truck finds to `manual_listings.json`. It runs automatically at the start of every merge and is a no-op if the file is missing; run it alone with `python3 import_deep_dive.py [--src PATH] [--dry-run]`.
+
+- Field aliases: year/yr, make/mk, model, trim, engine/eng, fuel, cab, drive/drv, mileage/miles/mi, price, doc_fee/doc, dealer/dealer_name + address/location/loc, url/link, vin, tow/tow_lb, lat/lng (or lon), distance/d, grade, g.
+- Dedupes by VIN (else url) against the manual file and the generated listings; existing entries are never overwritten. Records missing year, make, model, price or url are skipped and reported.
+- Coordinates come from the record or from `scripts/dealers.json` (matched on loc); distance `d` to Hudson FL is computed from them. Without coordinates `d` stays null and the app hides the listing, so add the dealer to `scripts/dealers.json` (`scripts/geocode_dealers.py`).
+- New entries get group 6, `status` "NEW (Truck Deal Finder deep dive)", `flag_tags` `["deep_dive"]`, `cond_new` false and a one-point price history.
