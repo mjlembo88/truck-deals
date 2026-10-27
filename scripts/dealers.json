@@ -463,6 +463,29 @@
       "lng": -82.355461,
       "precision": "address",
       "coord_source": "US Census geocoder"
+    },
+    {
+      "name": "Jenkins Chevrolet of Homosassa",
+      "address": "1035 S Suncoast Blvd, Homosassa, FL 34448",
+      "match": [
+        "Jenkins Chevrolet of Homosassa",
+        "Jenkins Homosassa"
+      ],
+      "lat": 28.847501,
+      "lng": -82.579391,
+      "precision": "address",
+      "coord_source": "US Census geocoder"
+    },
+    {
+      "name": "CarMax Bradenton",
+      "address": "5324 14th St W, Bradenton, FL 34207",
+      "match": [
+        "CarMax Bradenton"
+      ],
+      "lat": 27.446684,
+      "lng": -82.575481,
+      "precision": "address",
+      "coord_source": "US Census geocoder"
     }
   ]
 }

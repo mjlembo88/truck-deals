@@ -625,7 +625,7 @@
       "</p>" +
       (tow ? '<p class="tow">Conventional tow ' + esc(tow) + "</p>" : "") +
       payLineHtml(listing) +
-      (Array.isArray(listing.rec) ? '<p class="sub">' + esc(recallLabel) + "</p>" : "") +
+      recallLineHtml(listing, recallLabel) +
       ddLinesHtml(listing) +
       flagHtml(listing) +
       (seen.length ? '<p class="seen">' + esc(seen.join(" · ")) + "</p>" : "") +
@@ -637,6 +637,24 @@
       "</div>" +
       "</article>"
     );
+  }
+
+  /* Recalls: rec = campaign ids (refresh); rec_open = unrepaired recalls for this VIN and
+     rec_n = make/model/year campaign count (deep dive). */
+  function recallText(listing) {
+    var bits = [];
+    if (isNum(listing.rec_open)) bits.push("VIN check: " + (listing.rec_open === 0 ? "0 open recalls" : listing.rec_open + " open recall" + (listing.rec_open === 1 ? "" : "s")));
+    if (!Array.isArray(listing.rec) && isNum(listing.rec_n)) bits.push(listing.rec_n + " NHTSA campaign" + (listing.rec_n === 1 ? "" : "s") + " for this model year (not VIN-specific)");
+    return bits.join(" · ");
+  }
+
+  function recallLineHtml(listing, recallLabel) {
+    var bits = [];
+    if (Array.isArray(listing.rec)) bits.push(recallLabel);
+    var extra = recallText(listing);
+    if (extra) bits.push(extra);
+    if (!bits.length) return "";
+    return '<p class="sub' + (listing.rec_open === 0 ? " rec-ok" : "") + '" data-testid="card-recalls">' + esc(bits.join(" · ")) + "</p>";
   }
 
   /* Truck Deal Finder deep-dive status: needs-check reason, Carfax/title note, exclusion. */
@@ -890,7 +908,8 @@
       rowHtml("VIN", vinHtml) +
       rowText("Conventional tow", towText(listing)) +
       rowHtml("Tow source", '<span data-testid="tow-source">' + esc(listing.tsrc || "No tow source listed") + "</span>") +
-      rowHtml("Recalls", recallLinks || (Array.isArray(listing.rec) ? "No recalls" : "Not looked up (see flags)")) +
+      rowHtml("Recalls", recallLinks || (Array.isArray(listing.rec) ? "No recalls" : (recallText(listing) ? esc(recallText(listing)) : "Not looked up (see flags)"))) +
+      rowText("VIN recall check", isNum(listing.rec_open) ? listing.rec_open + " open (unrepaired)" + (listing.rec_open_src ? " · " + listing.rec_open_src : "") : "") +
       rowText("Payment", payText(listing) ? payText(listing) + " (estimate, info only)" : "") +
       rowText("Seller", sellerDoc) +
       rowText("Source", listing.src) +

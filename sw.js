@@ -1,6 +1,6 @@
 /* Truck Deals service worker.
    CACHE_VERSION: bump this when the app shell changes. */
-const CACHE_VERSION = "td-v5-fees-ungraded";
+const CACHE_VERSION = "td-v6-recalls";
 
 const SHELL = [
   "./",
