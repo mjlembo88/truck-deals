@@ -64,6 +64,11 @@ LISTING_KEYS = (
     "rec",
     "flags",
     "flag_tags",
+    "dd_status",
+    "dd_reason",
+    "dd_note",
+    "excluded",
+    "excluded_reason",
     "first_seen",
     "last_checked",
 )

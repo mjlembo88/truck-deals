@@ -246,7 +246,8 @@
       "name": "Ferman Chevrolet Tampa",
       "address": "9751 E Adamo Dr, Tampa, FL 33619",
       "match": [
-        "Ferman Chevrolet Tampa"
+        "Ferman Chevrolet Tampa",
+        "Ferman Chevrolet of Tampa"
       ],
       "lat": 27.949232,
       "lng": -82.346013,
@@ -279,9 +280,21 @@
       "coord_source": "US Census geocoder"
     },
     {
+      "name": "Jim Browne CJDR Dade City",
+      "address": "12020 US Highway 301, Dade City, FL 33525",
+      "match": [
+        "Jim Browne CJDR"
+      ],
+      "lat": 28.331571,
+      "lng": -82.187436,
+      "precision": "address",
+      "coord_source": "US Census geocoder"
+    },
+    {
       "name": "Jim Browne Chevrolet Dade City",
       "address": "10741 US Highway 301, Dade City, FL 33525",
       "match": [
+        "Jim Browne Chevrolet",
         "Jim Browne"
       ],
       "lat": 28.313268,
@@ -291,15 +304,15 @@
       "coord_source": "US Census geocoder"
     },
     {
-      "name": "Ferman CJDR Wesley Chapel",
-      "address": "24314 State Road 54, Lutz, FL 33559",
+      "name": "Ferman Buick GMC Lutz",
+      "address": "24252 State Road 54, Lutz, FL 33559",
       "match": [
-        "Ferman CJDR Lutz",
+        "Ferman Buick GMC Lutz",
         "Ferman Lutz",
-        "Ferman CJDR Wesley Chapel"
+        "Ferman CJDR Lutz"
       ],
-      "lat": 28.185708,
-      "lng": -82.414525,
+      "lat": 28.185714,
+      "lng": -82.415375,
       "address_source": "fermancjdrwesleychapel.com (assumed to be the 'Ferman Lutz' store)",
       "precision": "address",
       "coord_source": "US Census geocoder"
@@ -349,6 +362,105 @@
       "lat": 28.046171,
       "lng": -82.459483,
       "address_source": "discoveryautotampa.com",
+      "precision": "address",
+      "coord_source": "US Census geocoder"
+    },
+    {
+      "name": "Dimmitt Chevrolet",
+      "address": "25485 US Hwy 19 N, Clearwater, FL 33763",
+      "match": [
+        "Dimmitt Chevrolet"
+      ],
+      "lat": 28.004237,
+      "lng": -82.729219,
+      "precision": "address",
+      "coord_source": "US Census geocoder"
+    },
+    {
+      "name": "Chevrolet of Wesley Chapel",
+      "address": "26922 Wesley Chapel Blvd, Wesley Chapel, FL 33544",
+      "match": [
+        "Chevrolet of Wesley Chapel"
+      ],
+      "lat": 28.232766,
+      "lng": -82.371241,
+      "precision": "address",
+      "coord_source": "US Census geocoder"
+    },
+    {
+      "name": "Jarrett Ford Dade City",
+      "address": "12621 U.S. 301, Dade City, FL 33525",
+      "match": [
+        "Jarrett Ford"
+      ],
+      "lat": 28.347021,
+      "lng": -82.187618,
+      "precision": "address",
+      "coord_source": "US Census geocoder"
+    },
+    {
+      "name": "Wesley Chapel Honda",
+      "address": "27750 Wesley Chapel Blvd, Wesley Chapel, FL 33544",
+      "match": [
+        "Wesley Chapel Honda"
+      ],
+      "lat": 28.237284,
+      "lng": -82.356618,
+      "precision": "address",
+      "coord_source": "US Census geocoder"
+    },
+    {
+      "name": "Lee Auto Group Tampa",
+      "address": "4027 S 50th St, Tampa, FL 33619",
+      "match": [
+        "Lee Auto Group"
+      ],
+      "lat": 27.911539,
+      "lng": -82.401968,
+      "precision": "address",
+      "coord_source": "US Census geocoder"
+    },
+    {
+      "name": "Courtesy Toyota of Brandon",
+      "address": "9210 E Adamo Dr, Tampa, FL 33619",
+      "match": [
+        "Courtesy Toyota of Brandon"
+      ],
+      "lat": 27.949556,
+      "lng": -82.353742,
+      "precision": "address",
+      "coord_source": "US Census geocoder"
+    },
+    {
+      "name": "Stingray Chevrolet",
+      "address": "2002 N Frontage Rd, Plant City, FL 33563",
+      "match": [
+        "Stingray Chevrolet"
+      ],
+      "lat": 28.039222,
+      "lng": -82.104327,
+      "precision": "address",
+      "coord_source": "US Census geocoder"
+    },
+    {
+      "name": "Lovering Auto Sales",
+      "address": "111 Bartow Rd, Lakeland, FL 33801",
+      "match": [
+        "Lovering Auto Sales"
+      ],
+      "lat": 28.043645,
+      "lng": -81.946631,
+      "precision": "address",
+      "coord_source": "US Census geocoder"
+    },
+    {
+      "name": "Brandon Ford",
+      "address": "9090 E Adamo Dr, Tampa, FL 33619",
+      "match": [
+        "Brandon Ford"
+      ],
+      "lat": 27.949378,
+      "lng": -82.355461,
       "precision": "address",
       "coord_source": "US Census geocoder"
     }

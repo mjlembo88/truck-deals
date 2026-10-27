@@ -727,3 +727,8 @@ input[type="radio"] { width: 20px; height: 20px; accent-color: var(--accent); }
 /* deep-dive "needs check" status on cards */
 .needs-check { margin: 2px 0; padding: 6px 8px; border-radius: 10px; background: #3a2a12; color: #ffe7bf; font-size: 0.85rem; font-weight: 600; }
 [data-theme="light"] .needs-check { background: #fff1d6; color: #5c3b08; }
+.dd-note { margin: 2px 0; padding: 6px 8px; border-radius: 10px; background: #3d1717; color: #ffd0d0; font-size: 0.85rem; font-weight: 600; }
+[data-theme="light"] .dd-note { background: #ffe1e1; color: #6b1010; }
+.excluded-line { margin: 2px 0; padding: 6px 8px; border-radius: 10px; border: 1px dashed currentColor; font-size: 0.85rem; opacity: 0.9; }
+.fee-line { margin: 0; color: var(--muted); font-size: 0.8rem; }
+.pop .pf { color: var(--muted); font-size: 0.78rem; }

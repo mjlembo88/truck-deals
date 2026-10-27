@@ -97,7 +97,9 @@ def main(argv: list[str] | None = None) -> int:
     table = json.loads(TABLE.read_text(encoding="utf-8"))
     dealers = table.setdefault("dealers", [])
     data = json.loads(Path(args.data).read_text(encoding="utf-8"))
-    locs = sorted({str(l.get("loc") or "") for s in ("ranked", "conditional") for l in data.get(s) or [] if l.get("loc")})
+    # online-only sellers (e.g. Carvana, "online": true) never get a map pin
+    locs = sorted({str(l.get("loc") or "") for s in ("ranked", "conditional") for l in data.get(s) or []
+                   if l.get("loc") and not l.get("online")})
 
     for loc in locs:
         if not any(matches(e, loc) for e in dealers):

@@ -9,6 +9,9 @@
   var PAY_KEY = "td_pay_v1";
   var UI_KEY = "td_ui_v1";
   var CABS = ["regular", "double", "crew"];
+  /* "none" = Ungraded (listings without an A-D grade). */
+  var GRADES = ["A", "B", "C", "D", "none"];
+  var FILTER_SCHEMA = 2;
 
   /* Payment estimator config. Edit rates here.
      Base APRs: credit-union research Oct 27, 2026 (PenFed / Suncoast best tier).
@@ -284,7 +287,7 @@
 
   function defaultFilters() {
     return {
-      grades: ["A", "B", "C", "D"],
+      grades: GRADES.slice(),
       priceMin: "",
       priceMax: "",
       maxMiles: "",
@@ -295,6 +298,7 @@
       newOnly: false,
       dropsOnly: false,
       hideFlagged: false,
+      showExcluded: false,
       sort: "rank",
       cabs: CABS.slice(),
       dealersOff: []
@@ -310,8 +314,10 @@
       if (!parsed || typeof parsed !== "object") return filters;
       if (Array.isArray(parsed.grades)) {
         filters.grades = parsed.grades.filter(function (grade) {
-          return grade === "A" || grade === "B" || grade === "C" || grade === "D";
+          return GRADES.indexOf(grade) !== -1;
         });
+        /* Saved before the Ungraded option existed: keep ungraded trucks visible. */
+        if (parsed.v !== FILTER_SCHEMA && filters.grades.indexOf("none") === -1) filters.grades.push("none");
       }
       ["priceMin", "priceMax", "maxMiles", "minTow"].forEach(function (key) {
         if (parsed[key] != null) filters[key] = String(parsed[key]);
@@ -323,6 +329,7 @@
       filters.newOnly = !!parsed.newOnly;
       filters.dropsOnly = !!parsed.dropsOnly;
       filters.hideFlagged = !!parsed.hideFlagged;
+      filters.showExcluded = parsed.showExcluded === true;
       if (Array.isArray(parsed.cabs)) {
         filters.cabs = parsed.cabs.filter(function (cab) {
           return CABS.indexOf(cab) !== -1;
@@ -340,7 +347,7 @@
   }
 
   function writeFiltersToDom(filters) {
-    ["A", "B", "C", "D"].forEach(function (grade) {
+    GRADES.forEach(function (grade) {
       var box = document.querySelector('[data-testid="filter-grade-' + grade + '"]');
       if (box) box.checked = filters.grades.indexOf(grade) !== -1;
     });
@@ -355,6 +362,7 @@
     document.querySelector('[data-testid="filter-new-only"]').checked = filters.newOnly;
     document.querySelector('[data-testid="filter-drops-only"]').checked = filters.dropsOnly;
     document.querySelector('[data-testid="filter-hide-flagged"]').checked = filters.hideFlagged;
+    document.querySelector('[data-testid="filter-show-excluded"]').checked = !!filters.showExcluded;
     $("sort-select").value = filters.sort;
     CABS.forEach(function (cab) {
       var box = document.querySelector('[data-testid="filter-cab-' + cab + '"]');
@@ -378,7 +386,7 @@
 
   function readFiltersFromDom() {
     return {
-      grades: ["A", "B", "C", "D"].filter(function (grade) {
+      grades: GRADES.filter(function (grade) {
         var box = document.querySelector('[data-testid="filter-grade-' + grade + '"]');
         return box && box.checked;
       }),
@@ -392,6 +400,7 @@
       newOnly: document.querySelector('[data-testid="filter-new-only"]').checked,
       dropsOnly: document.querySelector('[data-testid="filter-drops-only"]').checked,
       hideFlagged: document.querySelector('[data-testid="filter-hide-flagged"]').checked,
+      showExcluded: document.querySelector('[data-testid="filter-show-excluded"]').checked,
       sort: $("sort-select").value || "rank",
       cabs: CABS.filter(function (cab) {
         var box = document.querySelector('[data-testid="filter-cab-' + cab + '"]');
@@ -420,7 +429,9 @@
 
   function persistFilters(filters) {
     try {
-      localStorage.setItem(FILTER_KEY, JSON.stringify(filters));
+      var saved = JSON.parse(JSON.stringify(filters));
+      saved.v = FILTER_SCHEMA;
+      localStorage.setItem(FILTER_KEY, JSON.stringify(saved));
     } catch (err) {}
   }
 
@@ -441,9 +452,12 @@
     filters.grades.forEach(function (grade) {
       gradeOn[grade] = true;
     });
-    var allGrades = filters.grades.length === 4;
+    var allGrades = filters.grades.length === GRADES.length;
     return (listings || []).filter(function (listing) {
+      /* Deep-dive exclusions stay in the data but are hidden unless "Show excluded" is on. */
+      if (listing.excluded === true && !filters.showExcluded) return false;
       var grade = String(listing.grade || "").toUpperCase();
+      if (!/^[ABCD]$/.test(grade)) grade = "none";
       if (!allGrades && !gradeOn[grade]) return false;
       if (priceMin != null && (!isNum(listing.price) || listing.price < priceMin)) return false;
       if (priceMax != null && (!isNum(listing.price) || listing.price > priceMax)) return false;
@@ -612,9 +626,7 @@
       (tow ? '<p class="tow">Conventional tow ' + esc(tow) + "</p>" : "") +
       payLineHtml(listing) +
       (Array.isArray(listing.rec) ? '<p class="sub">' + esc(recallLabel) + "</p>" : "") +
-      (/^needs check/i.test(String(listing.status || ""))
-        ? '<p class="needs-check" data-testid="needs-check">' + esc(listing.status) + "</p>"
-        : "") +
+      ddLinesHtml(listing) +
       flagHtml(listing) +
       (seen.length ? '<p class="seen">' + esc(seen.join(" · ")) + "</p>" : "") +
       '<div class="card-actions">' +
@@ -625,6 +637,27 @@
       "</div>" +
       "</article>"
     );
+  }
+
+  /* Truck Deal Finder deep-dive status: needs-check reason, Carfax/title note, exclusion. */
+  function ddLinesHtml(listing) {
+    var out = "";
+    var status = String(listing.status || "");
+    if (listing.excluded === true) {
+      out += '<p class="excluded-line" data-testid="excluded-line">Excluded by deep dive: ' +
+        esc(listing.excluded_reason || "no reason given") + " (shown because Show excluded is on)</p>";
+    }
+    if (/^needs check/i.test(status)) {
+      out += '<p class="needs-check" data-testid="needs-check">' + esc(status) + "</p>";
+    } else if (listing.dd_status === "needs_check") {
+      out += '<p class="needs-check" data-testid="needs-check">NEEDS CHECK: ' + esc(listing.dd_reason || "see deep dive") + "</p>";
+    } else if (listing.dd_status === "kept" && listing.dd_reason) {
+      out += '<p class="needs-check" data-testid="dd-kept">Deep dive: ' + esc(listing.dd_reason) + "</p>";
+    }
+    if (listing.dd_note) {
+      out += '<p class="dd-note" data-testid="dd-note">⚠ ' + esc(listing.dd_note) + "</p>";
+    }
+    return out;
   }
 
   function sectionHtml(title, label, listings, latest) {
@@ -655,6 +688,9 @@
     }
     var filters = readFiltersFromDom();
     var latest = latestDataDate(state.data);
+    var exCount = allListings().filter(function (l) { return l.excluded === true; }).length;
+    var exEl = $("excluded-count");
+    if (exEl) exEl.textContent = "(" + exCount + ")";
     var ranked = sortListings(applyFilters(state.data.ranked || [], filters, latest), filters.sort);
     var conditional = sortListings(applyFilters(state.data.conditional || [], filters, latest), filters.sort);
     var total = (state.data.ranked || []).length + (state.data.conditional || []).length;
@@ -1212,7 +1248,7 @@
   function updateActiveCount(filters) {
     var def = defaultFilters();
     var n = 0;
-    if (filters.grades.length !== 4) n++;
+    if (filters.grades.length !== GRADES.length) n++;
     if (filters.cabs.length !== CABS.length) n++;
     ["priceMin", "priceMax", "maxMiles", "minTow"].forEach(function (key) {
       if (String(filters[key] || "").trim()) n++;
@@ -1223,6 +1259,7 @@
     if (filters.newOnly) n++;
     if (filters.dropsOnly) n++;
     if (filters.hideFlagged) n++;
+    if (filters.showExcluded) n++;
     if (filters.dealersOff.length) n++;
     $("filter-active").textContent = n ? n + " active" : "";
     updateDealerReadout();
@@ -1283,13 +1320,23 @@
     return isFinite(yr) && yr >= PAY_CONFIG.newMinYear;
   }
 
-  function dealerFee(listing) {
-    if (listing.dealer === false) return PAY_CONFIG.privateSellerFee;
+  /* Fee priority: the listing's own fee (doc / doc_fee / fee in the data), then the
+     PAY_CONFIG dealer table (private seller $0), then the $1,000 default. */
+  function dealerFeeInfo(listing) {
+    var own = [listing.doc, listing.doc_fee, listing.fee];
+    for (var j = 0; j < own.length; j++) {
+      if (isNum(own[j]) && own[j] >= 0) return { fee: own[j], src: "listing" };
+    }
+    if (listing.dealer === false) return { fee: PAY_CONFIG.privateSellerFee, src: "private seller" };
     var loc = String(listing.loc || "").toLowerCase();
     for (var i = 0; i < PAY_CONFIG.dealerFees.length; i++) {
-      if (loc.indexOf(PAY_CONFIG.dealerFees[i].match) !== -1) return PAY_CONFIG.dealerFees[i].fee;
+      if (loc.indexOf(PAY_CONFIG.dealerFees[i].match) !== -1) return { fee: PAY_CONFIG.dealerFees[i].fee, src: "dealer table" };
     }
-    return PAY_CONFIG.defaultDealerFee;
+    return { fee: PAY_CONFIG.defaultDealerFee, src: "default" };
+  }
+
+  function dealerFee(listing) {
+    return dealerFeeInfo(listing).fee;
   }
 
   /* Returns null when the listing has no usable price. */
@@ -1303,12 +1350,20 @@
     var apr = PAY_CONFIG.baseApr[kind][term] + (PAY_CONFIG.tierAdd[pay.tier] || 0);
     var price = listing.price;
     var tax = PAY_CONFIG.taxRate * Math.max(price - trade, 0);
-    var fee = dealerFee(listing);
+    var feeInfo = dealerFeeInfo(listing);
+    var fee = feeInfo.fee;
     var otd = price + tax + PAY_CONFIG.countySurtax + fee + PAY_CONFIG.tagTitle;
     var financed = Math.max(otd - down - trade, 0);
     var r = apr / 100 / 12;
     var monthly = financed === 0 ? 0 : r === 0 ? financed / term : (financed * r) / (1 - Math.pow(1 + r, -term));
-    return { monthly: monthly, apr: apr, term: term, kind: kind, otd: otd, financed: financed, tax: tax, fee: fee };
+    return { monthly: monthly, apr: apr, term: term, kind: kind, otd: otd, financed: financed, tax: tax, fee: fee, feeSrc: feeInfo.src };
+  }
+
+  function feeSrcText(src) {
+    if (src === "listing") return "from listing";
+    if (src === "dealer table") return "dealer default";
+    if (src === "private seller") return "private seller";
+    return "default";
   }
 
   function payShort(listing) {
@@ -1325,7 +1380,9 @@
       esc(money(Math.round(est.monthly))) +
       '/mo <span class="info">' +
       esc(est.term + " mo · " + est.apr.toFixed(1) + "% " + est.kind + " rate · OTD " + money(Math.round(est.otd))) +
-      "</span></p>"
+      '</span></p><p class="fee-line" data-testid="card-fee">' +
+      esc("Dealer fee " + money(est.fee) + " (" + feeSrcText(est.feeSrc) + ")") +
+      "</p>"
     );
   }
 
@@ -1442,6 +1499,10 @@
           esc(isNum(listing.price) ? money(listing.price) : "Price n/a") +
           "</span> · est. " +
           esc(payShort(listing)) +
+          (estimatePayment(listing)
+            ? '</div><div class="pf">fee ' +
+              esc(money(estimatePayment(listing).fee) + " · " + feeSrcText(estimatePayment(listing).feeSrc))
+            : "") +
           '</div><div class="pl">' +
           (href ? '<a href="' + esc(href) + '" target="_blank" rel="noopener noreferrer">Listing ↗</a>' : "") +
           '<a href="#/l/' +
