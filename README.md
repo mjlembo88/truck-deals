@@ -34,3 +34,24 @@ GitHub Pages usually serves the new file within 1-2 minutes; the app needs no re
 ```bash
 curl -s "https://mjlembo88.github.io/truck-deals/data.json?t=$(date +%s)" | python3 -c 'import json,sys; d=json.load(sys.stdin); print(d["updated_at"], len(d["ranked"])+len(d["conditional"]))'
 ```
+
+## App front end (GitHub Pages)
+
+The PWA (`index.html`, `app.js`, `styles.css`, `sw.js`, `manifest.webmanifest`, `icons/`, `vendor/leaflet/`) is served from this repo at https://mjlembo88.github.io/truck-deals/. Its working copy is mirrored in `/workspace/truck-deals-pwa` on the box; keep the two in sync. Bump `CACHE_VERSION` in `sw.js` whenever an app file changes, and add any new asset to its `SHELL` list so phones precache it.
+
+- **Dealer map:** Leaflet 1.9.4, self-hosted in `vendor/leaflet/` (sha256 matches the official SRI: js `20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=`, css `p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=`). Basemap is Esri World Dark Gray Canvas (base + reference; Light Gray in the light theme), no API key. Never use Carto, Mapbox or Google tiles. One marker per dealer location; popups list the trucks that pass the current filters. Tapping a card focuses its dealer; the card's Details button opens the detail view. Listings without `lat`/`lng` are skipped on the map.
+- **Filters:** grade, cab style (regular / extended-double / crew, derived from `cab` + `trim`), price, miles, tow, distance, fuel, condition, dealer multi-select, NEW, drops, flagged. Saved in localStorage (`td_filters_v1`); Reset restores defaults.
+- **Payment estimator:** collapsible panel; inputs saved in localStorage (`td_pay_v1`), never published. Rates, fees and tax live in `PAY_CONFIG` at the top of `app.js`.
+
+## Dealer coordinates and derived fields
+
+- `scripts/dealers.json`: static dealer table (`name`, `address`, `match` strings, `lat`, `lng`, `precision`). A listing gets coordinates when its `loc` contains one of an entry's `match` strings.
+- `scripts/enrich_data.py`: adds `lat`/`lng` from the table, and fills `cab` (from trim/model text, e.g. "Regular Cab"), `fuel` (from engine or group text) and `tow_lb` (first number in `tow`) only where they are missing. It never changes an existing value; anything it cannot derive is set to null. `build_public_data.py` runs it on every publish, so `publish_data.sh` keeps these fields. Run it alone with `python3 scripts/enrich_data.py` (in place) or `--check`.
+- `scripts/geocode_dealers.py`: finds every `loc` in `data.json` that no table entry matches, appends a stub (name and street address parsed from `loc`), and geocodes entries missing coordinates once (US Census geocoder for street addresses, Nominatim at 1 req/s with a User-Agent as fallback / for city-only entries). Results are written into `dealers.json`.
+
+### Adding a dealer
+
+1. Publish or copy the new listings into `data.json` as usual.
+2. `python3 scripts/geocode_dealers.py` (or add the entry by hand with a full street `address` first, then run it). Check any `NEEDS ADDRESS` lines, fill `address` or `city`, and rerun.
+3. `python3 scripts/enrich_data.py` (or the next `publish_data.sh`) merges the coordinates into `data.json`.
+4. Commit `scripts/dealers.json` with the data. The app needs no change.

@@ -16,6 +16,9 @@ import tempfile
 from datetime import datetime
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from enrich_data import enrich  # noqa: E402
+
 ROOT = Path(__file__).resolve().parent.parent
 PRIMARY_SRC = Path("/workspace/truck-deals/app/data.json")
 FALLBACK_SRC = Path("/workspace/truck-deals/grade_a.json")
@@ -45,6 +48,8 @@ LISTING_KEYS = (
     "doc",
     "dealer",
     "loc",
+    "lat",
+    "lng",
     "d",
     "src",
     "url",
@@ -204,6 +209,14 @@ def build(raw: object) -> tuple[dict | None, list[str], list[str], list[str]]:
         ]
     if "sources" in raw:
         out["sources"] = raw["sources"]
+    # Add dealer coordinates (scripts/dealers.json) and derived cab/fuel/tow_lb
+    # where missing. Never overwrites a value the source already has.
+    summary = enrich(out)
+    notes.append(
+        f"enriched: coords on {summary['coords']} listing(s), no coords {summary['no_coords']}, "
+        f"cab+{len(summary['cab'])} fuel+{len(summary['fuel'])} tow_lb+{len(summary['tow_lb'])}, "
+        f"undetermined {summary['unknown']}"
+    )
     errors.extend(validate(out))
     return out, dropped, notes, errors
 

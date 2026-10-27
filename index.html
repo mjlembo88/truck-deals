@@ -14,6 +14,7 @@
   <link rel="manifest" href="./manifest.webmanifest">
   <link rel="icon" href="./icons/icon-192.png" sizes="192x192" type="image/png">
   <link rel="apple-touch-icon" href="./icons/icon-192.png">
+  <link rel="stylesheet" href="./vendor/leaflet/leaflet.css">
   <link rel="stylesheet" href="./styles.css">
   <script>
     (function () {
@@ -57,9 +58,13 @@
     <div class="wrap">
       <div class="filter-panel" id="filter-panel">
         <div class="panel-head">
-          <h2>Filters</h2>
-          <button type="button" class="btn btn-small" id="filter-clear" data-testid="filter-clear">Clear</button>
+          <h2>Filters <span class="filter-active" id="filter-active" data-testid="filter-active"></span></h2>
+          <div class="panel-actions">
+            <button type="button" class="btn btn-small" id="filter-clear" data-testid="filter-clear">Reset</button>
+            <button type="button" class="btn btn-small" id="filter-toggle" data-testid="filter-toggle" aria-expanded="true" aria-controls="filter-body">Hide</button>
+          </div>
         </div>
+        <div id="filter-body">
 
         <div class="field">
           <label class="lbl" for="sort-select">Sort</label>
@@ -81,6 +86,15 @@
             <label class="chip-toggle"><input type="checkbox" data-testid="filter-grade-B" value="B" checked> B</label>
             <label class="chip-toggle"><input type="checkbox" data-testid="filter-grade-C" value="C" checked> C</label>
             <label class="chip-toggle"><input type="checkbox" data-testid="filter-grade-D" value="D" checked> D</label>
+          </div>
+        </div>
+
+        <div class="field">
+          <span class="lbl" id="cab-label">Cab style</span>
+          <div class="grades" role="group" aria-labelledby="cab-label">
+            <label class="chip-toggle"><input type="checkbox" data-testid="filter-cab-regular" value="regular" checked> Regular</label>
+            <label class="chip-toggle"><input type="checkbox" data-testid="filter-cab-double" value="double" checked> Extended / Double</label>
+            <label class="chip-toggle"><input type="checkbox" data-testid="filter-cab-crew" value="crew" checked> Crew</label>
           </div>
         </div>
 
@@ -122,12 +136,62 @@
           </div>
         </div>
 
+        <details class="field dealer-filter" id="dealer-filter" data-testid="dealer-filter">
+          <summary class="lbl"><span>Dealers</span> <strong id="dealer-readout">All</strong></summary>
+          <div class="dealer-actions">
+            <button type="button" class="btn btn-small" id="dealer-all" data-testid="dealer-all">All</button>
+            <button type="button" class="btn btn-small" id="dealer-none" data-testid="dealer-none">None</button>
+          </div>
+          <div class="dealer-list" id="dealer-list" role="group" aria-label="Dealers"></div>
+        </details>
+
         <div class="checks">
           <label class="check-row"><input type="checkbox" data-testid="filter-new-only"> NEW only</label>
           <label class="check-row"><input type="checkbox" data-testid="filter-drops-only"> Price drops only</label>
           <label class="check-row"><input type="checkbox" data-testid="filter-hide-flagged"> Hide flagged</label>
         </div>
+        </div>
       </div>
+
+      <details class="pay-panel" id="pay-panel" data-testid="pay-panel">
+        <summary><span class="pay-title">Payment estimator</span> <span class="pay-summary" id="pay-summary" data-testid="pay-summary"></span></summary>
+        <div class="pay-grid">
+          <div class="field">
+            <label class="lbl" for="pay-down">Down payment ($)</label>
+            <input id="pay-down" data-testid="pay-down" type="number" inputmode="numeric" min="0" step="100" placeholder="0" autocomplete="off">
+          </div>
+          <div class="field">
+            <label class="lbl" for="pay-trade">Trade-in ($, optional)</label>
+            <input id="pay-trade" data-testid="pay-trade" type="number" inputmode="numeric" min="0" step="100" placeholder="0" autocomplete="off">
+          </div>
+          <div class="field">
+            <label class="lbl" for="pay-tier">Credit tier</label>
+            <select id="pay-tier" data-testid="pay-tier">
+              <option value="excellent">Excellent 760+</option>
+              <option value="good">Good 700-759</option>
+              <option value="fair">Fair 640-699</option>
+              <option value="rebuilding">Rebuilding &lt;640</option>
+            </select>
+          </div>
+          <div class="field">
+            <span class="lbl" id="term-label">Term</span>
+            <div class="grades" role="radiogroup" aria-labelledby="term-label">
+              <label class="chip-toggle"><input type="radio" name="pay-term" data-testid="pay-term-60" value="60"> 60 mo</label>
+              <label class="chip-toggle"><input type="radio" name="pay-term" data-testid="pay-term-72" value="72" checked> 72 mo</label>
+            </div>
+          </div>
+        </div>
+        <p class="pay-note">Estimate, not a quote. OTD = price + 6% FL tax (price minus trade) + $50 Pasco surtax + dealer fee + $400 tag/title. Base APRs from credit-union research Oct 27, 2026; the tier rates are estimates.</p>
+      </details>
+
+      <section class="map-panel" id="map-panel" data-testid="map-panel" aria-label="Dealer map">
+        <div class="map-head">
+          <h2>Dealer map</h2>
+          <span class="map-note" id="map-note" data-testid="map-note"></span>
+          <button type="button" class="btn btn-small" id="map-toggle" data-testid="map-toggle" aria-expanded="true" aria-controls="map">Hide map</button>
+        </div>
+        <div id="map" class="map" data-testid="map"></div>
+      </section>
 
       <p id="result-count" class="result-count" aria-live="polite"></p>
       <div id="list"></div>
@@ -151,6 +215,7 @@
     <div id="detail-foot" class="detail-foot"></div>
   </div>
 
+  <script src="./vendor/leaflet/leaflet.js"></script>
   <script src="./app.js"></script>
 </body>
 </html>

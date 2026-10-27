@@ -1,6 +1,6 @@
 /* Truck Deals service worker.
    CACHE_VERSION: bump this when the app shell changes. */
-const CACHE_VERSION = "td-v1";
+const CACHE_VERSION = "td-v2-map-pay";
 
 const SHELL = [
   "./",
@@ -8,6 +8,13 @@ const SHELL = [
   "./styles.css",
   "./app.js",
   "./manifest.webmanifest",
+  "./vendor/leaflet/leaflet.js",
+  "./vendor/leaflet/leaflet.css",
+  "./vendor/leaflet/images/layers.png",
+  "./vendor/leaflet/images/layers-2x.png",
+  "./vendor/leaflet/images/marker-icon.png",
+  "./vendor/leaflet/images/marker-icon-2x.png",
+  "./vendor/leaflet/images/marker-shadow.png",
   "./icons/icon-192.png",
   "./icons/icon-512.png",
   "./icons/icon-maskable-512.png"

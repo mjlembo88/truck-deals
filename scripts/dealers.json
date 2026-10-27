@@ -1,0 +1,137 @@
+{
+  "about": "Static dealer -> coordinates table. Listings match an entry when their loc contains one of its match strings (case-insensitive). Coordinates are geocoded once by scripts/geocode_dealers.py and then hardcoded here. precision: address | city.",
+  "dealers": [
+    {
+      "name": "Castriota Chevrolet",
+      "address": "12930 US Hwy 19, Hudson, FL 34667",
+      "match": [
+        "Castriota Chevrolet"
+      ],
+      "lat": 28.34502,
+      "lng": -82.699011,
+      "precision": "address"
+    },
+    {
+      "name": "Coast Buick GMC",
+      "address": "10133 US Hwy 19, Port Richey, FL 34668",
+      "match": [
+        "Coast Buick GMC"
+      ],
+      "lat": 28.301899,
+      "lng": -82.704585,
+      "precision": "address"
+    },
+    {
+      "name": "Ford of Port Richey",
+      "address": "10715 US Hwy 19, Port Richey, FL 34668",
+      "match": [
+        "Ford of Port Richey"
+      ],
+      "lat": 28.284372,
+      "lng": -82.71485,
+      "precision": "address"
+    },
+    {
+      "name": "AutoNation Chevrolet West Colonial",
+      "address": "3707 W Colonial Dr, Orlando, FL 32808",
+      "match": [
+        "AutoNation Chevrolet West Colonial"
+      ],
+      "lat": 28.552869,
+      "lng": -81.42359,
+      "precision": "address"
+    },
+    {
+      "name": "AutoNation Chevrolet South Clearwater",
+      "address": "15005 US Highway 19 N, Clearwater, FL 33764",
+      "match": [
+        "AutoNation Chevrolet South Clearwater"
+      ],
+      "lat": 27.909106,
+      "lng": -82.728962,
+      "precision": "address"
+    },
+    {
+      "name": "AutoNation Toyota Pinellas Park",
+      "address": "8501 US Highway 19 N, Pinellas Park, FL 33781",
+      "match": [
+        "AutoNation Toyota Pinellas Park"
+      ],
+      "lat": 27.848398,
+      "lng": -82.690074,
+      "precision": "address"
+    },
+    {
+      "name": "AutoNation Chevrolet Airport",
+      "address": "5600 Lee Vista Blvd, Orlando, FL 32812",
+      "match": [
+        "AutoNation Chevrolet Airport"
+      ],
+      "lat": 28.468888,
+      "lng": -81.311254,
+      "precision": "address"
+    },
+    {
+      "name": "Gator Truck Center of Ocala",
+      "address": "4235 N US Highway 441, Ocala, FL 34475",
+      "match": [
+        "Gator Truck Center"
+      ],
+      "lat": 29.228349,
+      "lng": -82.148864,
+      "precision": "address"
+    },
+    {
+      "name": "AutoNation USA Fort Myers",
+      "address": "4440 Executive Cir, Fort Myers, FL 33916",
+      "match": [
+        "AutoNation USA Fort Myers"
+      ],
+      "lat": 26.599028,
+      "lng": -81.84027,
+      "precision": "address"
+    },
+    {
+      "name": "Garage Autos",
+      "address": "125 Marion Ln, Casselberry, FL 32707",
+      "match": [
+        "Garage Autos"
+      ],
+      "lat": 28.685799,
+      "lng": -81.330998,
+      "precision": "address"
+    },
+    {
+      "name": "Duval Trucks",
+      "address": "1907 Cassat Ave, Jacksonville, FL 32210",
+      "match": [
+        "Duval Trucks"
+      ],
+      "lat": 30.283779,
+      "lng": -81.730308,
+      "precision": "address"
+    },
+    {
+      "name": "Avin Enterprises",
+      "address": "5702 N Florida Ave, Tampa, FL 33604",
+      "match": [
+        "Avin Enterprises"
+      ],
+      "lat": 27.998851,
+      "lng": -82.459494,
+      "precision": "address"
+    },
+    {
+      "name": "Largo private seller (Craigslist)",
+      "address": null,
+      "city": "Largo, FL",
+      "match": [
+        "Largo, private-style seller",
+        "Largo, same multi-truck poster"
+      ],
+      "lat": 27.909467,
+      "lng": -82.787324,
+      "precision": "city"
+    }
+  ]
+}

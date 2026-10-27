@@ -106,7 +106,9 @@
         "edge_of_radius"
       ],
       "first_seen": "2026-10-17",
-      "last_checked": "2026-10-27"
+      "last_checked": "2026-10-27",
+      "lat": 28.552869,
+      "lng": -81.42359
     },
     {
       "rank": 2,
@@ -198,7 +200,9 @@
         "price_drop"
       ],
       "first_seen": "2026-10-17",
-      "last_checked": "2026-10-27"
+      "last_checked": "2026-10-27",
+      "lat": 27.909106,
+      "lng": -82.728962
     },
     {
       "rank": 3,
@@ -286,7 +290,9 @@
         "price_drop"
       ],
       "first_seen": "2026-10-17",
-      "last_checked": "2026-10-27"
+      "last_checked": "2026-10-27",
+      "lat": 27.848398,
+      "lng": -82.690074
     },
     {
       "rank": 4,
@@ -367,7 +373,9 @@
       "flags": "Used, 13k miles. Recall 26V530 for MY: confirm done by VIN.",
       "flag_tags": [],
       "first_seen": "2026-10-18",
-      "last_checked": "2026-10-27"
+      "last_checked": "2026-10-27",
+      "lat": 28.468888,
+      "lng": -81.311254
     },
     {
       "rank": 5,
@@ -456,7 +464,9 @@
         "in_transit"
       ],
       "first_seen": "2026-10-17",
-      "last_checked": "2026-10-27"
+      "last_checked": "2026-10-27",
+      "lat": 27.909106,
+      "lng": -82.728962
     },
     {
       "rank": 6,
@@ -545,7 +555,9 @@
         "price_drop"
       ],
       "first_seen": "2026-10-17",
-      "last_checked": "2026-10-27"
+      "last_checked": "2026-10-27",
+      "lat": 28.552869,
+      "lng": -81.42359
     },
     {
       "rank": 7,
@@ -633,7 +645,9 @@
         "price_drop"
       ],
       "first_seen": "2026-10-17",
-      "last_checked": "2026-10-27"
+      "last_checked": "2026-10-27",
+      "lat": 27.909106,
+      "lng": -82.728962
     },
     {
       "rank": 8,
@@ -722,7 +736,9 @@
         "in_transit"
       ],
       "first_seen": "2026-10-17",
-      "last_checked": "2026-10-27"
+      "last_checked": "2026-10-27",
+      "lat": 27.909106,
+      "lng": -82.728962
     },
     {
       "rank": 9,
@@ -809,7 +825,9 @@
         "high_miles"
       ],
       "first_seen": "2026-10-17",
-      "last_checked": "2026-10-27"
+      "last_checked": "2026-10-27",
+      "lat": 29.228349,
+      "lng": -82.148864
     },
     {
       "rank": 10,
@@ -908,7 +926,9 @@
         "open_recall_risk"
       ],
       "first_seen": "2026-10-17",
-      "last_checked": "2026-10-27"
+      "last_checked": "2026-10-27",
+      "lat": 27.909467,
+      "lng": -82.787324
     },
     {
       "rank": 11,
@@ -997,7 +1017,9 @@
         "price_drop"
       ],
       "first_seen": "2026-10-18",
-      "last_checked": "2026-10-27"
+      "last_checked": "2026-10-27",
+      "lat": 26.599028,
+      "lng": -81.84027
     },
     {
       "rank": 12,
@@ -1036,7 +1058,10 @@
         "fleet"
       ],
       "first_seen": "2026-10-27",
-      "last_checked": "2026-10-27"
+      "last_checked": "2026-10-27",
+      "lat": 28.301899,
+      "lng": -82.704585,
+      "cab": "Regular Cab"
     },
     {
       "rank": 13,
@@ -1075,7 +1100,10 @@
         "fleet"
       ],
       "first_seen": "2026-10-27",
-      "last_checked": "2026-10-27"
+      "last_checked": "2026-10-27",
+      "lat": 28.301899,
+      "lng": -82.704585,
+      "cab": "Regular Cab"
     },
     {
       "rank": 14,
@@ -1113,7 +1141,10 @@
         "us19_lookup"
       ],
       "first_seen": "2026-10-27",
-      "last_checked": "2026-10-27"
+      "last_checked": "2026-10-27",
+      "lat": 28.34502,
+      "lng": -82.699011,
+      "cab": "Double Cab"
     },
     {
       "rank": 15,
@@ -1151,7 +1182,10 @@
         "us19_lookup"
       ],
       "first_seen": "2026-10-27",
-      "last_checked": "2026-10-27"
+      "last_checked": "2026-10-27",
+      "lat": 28.34502,
+      "lng": -82.699011,
+      "cab": "Crew Cab"
     },
     {
       "rank": 16,
@@ -1189,7 +1223,10 @@
         "us19_lookup"
       ],
       "first_seen": "2026-10-27",
-      "last_checked": "2026-10-27"
+      "last_checked": "2026-10-27",
+      "lat": 28.34502,
+      "lng": -82.699011,
+      "cab": "Crew Cab"
     },
     {
       "rank": 17,
@@ -1227,7 +1264,10 @@
         "us19_lookup"
       ],
       "first_seen": "2026-10-27",
-      "last_checked": "2026-10-27"
+      "last_checked": "2026-10-27",
+      "lat": 28.301899,
+      "lng": -82.704585,
+      "cab": "Regular Cab"
     },
     {
       "rank": 18,
@@ -1265,7 +1305,10 @@
         "us19_lookup"
       ],
       "first_seen": "2026-10-27",
-      "last_checked": "2026-10-27"
+      "last_checked": "2026-10-27",
+      "lat": 28.34502,
+      "lng": -82.699011,
+      "cab": "Crew Cab"
     },
     {
       "rank": 19,
@@ -1303,7 +1346,10 @@
         "us19_lookup"
       ],
       "first_seen": "2026-10-27",
-      "last_checked": "2026-10-27"
+      "last_checked": "2026-10-27",
+      "lat": 28.301899,
+      "lng": -82.704585,
+      "cab": "Crew Cab"
     },
     {
       "rank": 20,
@@ -1341,7 +1387,10 @@
         "us19_lookup"
       ],
       "first_seen": "2026-10-27",
-      "last_checked": "2026-10-27"
+      "last_checked": "2026-10-27",
+      "lat": 28.301899,
+      "lng": -82.704585,
+      "cab": "Crew Cab"
     },
     {
       "rank": 21,
@@ -1379,7 +1428,10 @@
         "us19_lookup"
       ],
       "first_seen": "2026-10-27",
-      "last_checked": "2026-10-27"
+      "last_checked": "2026-10-27",
+      "lat": 28.301899,
+      "lng": -82.704585,
+      "cab": "Crew Cab"
     }
   ],
   "conditional": [
@@ -1471,7 +1523,9 @@
         "below_market"
       ],
       "first_seen": "2026-10-18",
-      "last_checked": "2026-10-27"
+      "last_checked": "2026-10-27",
+      "lat": 28.685799,
+      "lng": -81.330998
     },
     {
       "rank": "C2",
@@ -1560,7 +1614,9 @@
         "far"
       ],
       "first_seen": "2026-10-18",
-      "last_checked": "2026-10-27"
+      "last_checked": "2026-10-27",
+      "lat": 30.283779,
+      "lng": -81.730308
     },
     {
       "rank": "C3",
@@ -1654,7 +1710,9 @@
         "high_miles"
       ],
       "first_seen": "2026-10-17",
-      "last_checked": "2026-10-27"
+      "last_checked": "2026-10-27",
+      "lat": 27.998851,
+      "lng": -82.459494
     },
     {
       "rank": "C4",
@@ -1749,7 +1807,9 @@
         "high_miles"
       ],
       "first_seen": "2026-10-17",
-      "last_checked": "2026-10-27"
+      "last_checked": "2026-10-27",
+      "lat": 27.909467,
+      "lng": -82.787324
     }
   ],
   "sources": "Checked Oct 27, 2026, 5:30-5:33 PM ET. Craigslist Hudson-centered city search (radius 150 mi, 17 queries at 4 s spacing, all HTTP 200; 801 unique posts, 58 not seen in the last four pulls, 3 of them GM HD pickups, none qualifying) plus every Craigslist listing page in the feed (all 200); AutoNation fetcher: ONE narrow GM-HD-only run (150 mi, no detail pages, status ok, 6 loads, 42 vehicles, no Cloudflare block); AutoNation Chevrolet South Clearwater store VDP and used Silverado HD page; gatortruckcenter.com and avinenterprises.com inventory and detail pages (curl 200). NHTSA recalls by model year; OEM towing guides on file. Not used: Cars.com, AutoTrader, CarGurus, Facebook, browser. Research only: nobody contacted."

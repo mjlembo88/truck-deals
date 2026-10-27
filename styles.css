@@ -641,3 +641,85 @@ input[type="checkbox"] {
     transition: none !important;
   }
 }
+
+/* ---- Filters: collapse, cab, dealers ---- */
+.panel-actions { display: flex; gap: 8px; }
+.filter-active { font-size: 0.8rem; font-weight: 600; color: var(--accent); margin-left: 6px; }
+.filter-panel.collapsed #filter-body { display: none; }
+.filter-panel.collapsed .panel-head { margin-bottom: 0; }
+.dealer-filter summary { cursor: pointer; min-height: 44px; align-items: center; list-style: none; padding: 0 12px; border: 1px solid var(--line); border-radius: 12px; background: var(--bg); margin-bottom: 0; }
+.dealer-filter summary::-webkit-details-marker { display: none; }
+.dealer-filter summary::after { content: "▾"; margin-left: 6px; }
+.dealer-filter[open] summary::after { content: "▴"; }
+.dealer-actions { display: flex; gap: 8px; margin: 8px 0; }
+.dealer-list { display: grid; gap: 6px; }
+.dealer-list .check-row { width: 100%; justify-content: flex-start; }
+.dealer-list .dealer-count { margin-left: auto; color: var(--muted); font-size: 0.85rem; font-variant-numeric: tabular-nums; }
+
+/* ---- Dealer map ---- */
+.map-panel {
+  margin-top: 12px;
+  background: var(--bg-elev);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 10px;
+  box-shadow: var(--shadow);
+  position: relative;
+  z-index: 0;
+  isolation: isolate;
+}
+.map-head { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 8px; }
+.map-head h2 { margin: 0; font-size: 1.05rem; }
+.map-note { color: var(--muted); font-size: 0.82rem; flex: 1 1 auto; }
+.map { height: 440px; border-radius: 12px; overflow: hidden; background: #1b1b1b; }
+.map-panel.collapsed .map { display: none; }
+.map-panel.collapsed .map-head { margin-bottom: 0; }
+.leaflet-container { font: inherit; }
+.dealer-pin {
+  display: grid; place-items: center;
+  width: 34px; height: 34px; border-radius: 50%;
+  background: var(--accent); color: var(--accent-ink);
+  border: 2px solid #fff; font-weight: 800; font-size: 0.95rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+}
+.dealer-pin.active { background: #fff; color: #111; border-color: var(--accent); }
+.leaflet-popup-content-wrapper, .leaflet-popup-tip { background: var(--bg-elev); color: var(--text); }
+.leaflet-popup-content { margin: 10px 12px; max-height: 210px; overflow-y: auto; min-width: 210px; }
+.leaflet-container a.leaflet-popup-close-button { color: var(--muted); }
+.pop h4 { margin: 0 0 2px; font-size: 0.98rem; }
+.pop .pop-sub { margin: 0 0 6px; color: var(--muted); font-size: 0.8rem; }
+.pop ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+.pop li { border-top: 1px solid var(--line); padding-top: 6px; }
+.pop li.hl { background: var(--chip); border-radius: 8px; padding: 6px; }
+.pop .pt { font-weight: 700; font-size: 0.88rem; }
+.pop .pp { font-weight: 800; }
+.pop .pl { display: flex; gap: 12px; font-size: 0.85rem; }
+.pop a { color: var(--accent); font-weight: 600; }
+
+/* card actions */
+.card-actions { display: flex; gap: 8px; margin-top: 6px; }
+.card-actions .btn { flex: 1; }
+.card.focused { outline: 3px solid var(--accent); outline-offset: 2px; }
+
+/* ---- Payment estimator ---- */
+.pay-panel {
+  margin-top: 12px;
+  background: var(--bg-elev);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 0 12px;
+  box-shadow: var(--shadow);
+}
+.pay-panel summary {
+  display: flex; align-items: center; flex-wrap: wrap; gap: 4px 10px;
+  min-height: 48px; cursor: pointer; list-style: none;
+}
+.pay-panel summary::-webkit-details-marker { display: none; }
+.pay-panel summary::after { content: "▾"; margin-left: auto; color: var(--muted); }
+.pay-panel[open] summary::after { content: "▴"; }
+.pay-title { font-weight: 700; font-size: 1.05rem; }
+.pay-summary { color: var(--muted); font-size: 0.82rem; }
+.pay-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 10px; }
+.pay-grid .field { margin-top: 4px; }
+.pay-note { margin: 10px 0 12px; color: var(--muted); font-size: 0.78rem; }
+input[type="radio"] { width: 20px; height: 20px; accent-color: var(--accent); }

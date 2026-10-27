@@ -6,6 +6,39 @@
   var THEME_KEY = "td_theme";
   var DATA_KEY = "td_last_data_v1";
   var PULL_THRESHOLD = 72;
+  var PAY_KEY = "td_pay_v1";
+  var UI_KEY = "td_ui_v1";
+  var CABS = ["regular", "double", "crew"];
+
+  /* Payment estimator config. Edit rates here.
+     Base APRs: credit-union research Oct 27, 2026 (PenFed / Suncoast best tier).
+     Tier adders are rough estimates, not quotes. "New" = 0-500 miles OR model
+     year 2025+ (Suncoast rule). */
+  var PAY_CONFIG = {
+    researched: "2026-10-27",
+    baseApr: {
+      new: { 60: 4.6, 72: 4.8 },
+      used: { 60: 5.1, 72: 5.4 }
+    },
+    tierAdd: { excellent: 0, good: 1.5, fair: 4, rebuilding: 8 },
+    tierLabels: {
+      excellent: "Excellent 760+",
+      good: "Good 700-759",
+      fair: "Fair 640-699",
+      rebuilding: "Rebuilding <640"
+    },
+    newMaxMiles: 500,
+    newMinYear: 2025,
+    taxRate: 0.06,
+    countySurtax: 50,
+    tagTitle: 400,
+    dealerFees: [
+      { match: "castriota", fee: 1594 },
+      { match: "coast buick", fee: 1298 }
+    ],
+    defaultDealerFee: 1000,
+    privateSellerFee: 0
+  };
 
   var FLAG_LABELS = {
     no_vin: "No VIN",
@@ -32,7 +65,13 @@
 
   var state = {
     data: null,
-    loading: false
+    loading: false,
+    dealersOff: [],
+    pay: null,
+    refit: true,
+    map: null,
+    markers: {},
+    groupOf: {}
   };
 
   function $(id) {
@@ -251,7 +290,9 @@
       newOnly: false,
       dropsOnly: false,
       hideFlagged: false,
-      sort: "rank"
+      sort: "rank",
+      cabs: CABS.slice(),
+      dealersOff: []
     };
   }
 
@@ -277,6 +318,16 @@
       filters.newOnly = !!parsed.newOnly;
       filters.dropsOnly = !!parsed.dropsOnly;
       filters.hideFlagged = !!parsed.hideFlagged;
+      if (Array.isArray(parsed.cabs)) {
+        filters.cabs = parsed.cabs.filter(function (cab) {
+          return CABS.indexOf(cab) !== -1;
+        });
+      }
+      if (Array.isArray(parsed.dealersOff)) {
+        filters.dealersOff = parsed.dealersOff.filter(function (name) {
+          return typeof name === "string";
+        });
+      }
       var sorts = { rank: 1, price: 1, miles: 1, distance: 1, tow: 1, grade: 1, newest: 1 };
       if (sorts[parsed.sort]) filters.sort = parsed.sort;
     } catch (err) {}
@@ -300,6 +351,16 @@
     document.querySelector('[data-testid="filter-drops-only"]').checked = filters.dropsOnly;
     document.querySelector('[data-testid="filter-hide-flagged"]').checked = filters.hideFlagged;
     $("sort-select").value = filters.sort;
+    CABS.forEach(function (cab) {
+      var box = document.querySelector('[data-testid="filter-cab-' + cab + '"]');
+      if (box) box.checked = filters.cabs.indexOf(cab) !== -1;
+    });
+    state.dealersOff = filters.dealersOff.slice();
+    var boxes = document.querySelectorAll("#dealer-list input[type='checkbox']");
+    for (var i = 0; i < boxes.length; i++) {
+      boxes[i].checked = state.dealersOff.indexOf(boxes[i].value) === -1;
+    }
+    updateDealerReadout();
   }
 
   function parseBound(value) {
@@ -326,8 +387,30 @@
       newOnly: document.querySelector('[data-testid="filter-new-only"]').checked,
       dropsOnly: document.querySelector('[data-testid="filter-drops-only"]').checked,
       hideFlagged: document.querySelector('[data-testid="filter-hide-flagged"]').checked,
-      sort: $("sort-select").value || "rank"
+      sort: $("sort-select").value || "rank",
+      cabs: CABS.filter(function (cab) {
+        var box = document.querySelector('[data-testid="filter-cab-' + cab + '"]');
+        return box && box.checked;
+      }),
+      dealersOff: readDealersOff()
     };
+  }
+
+  function readDealersOff() {
+    var boxes = document.querySelectorAll("#dealer-list input[type='checkbox']");
+    if (!boxes.length) return (state.dealersOff || []).slice();
+    var off = [];
+    var shown = {};
+    for (var i = 0; i < boxes.length; i++) {
+      shown[boxes[i].value] = true;
+      if (!boxes[i].checked) off.push(boxes[i].value);
+    }
+    /* keep exclusions for dealers that are not in the current file */
+    (state.dealersOff || []).forEach(function (name) {
+      if (!shown[name] && off.indexOf(name) === -1) off.push(name);
+    });
+    state.dealersOff = off.slice();
+    return off;
   }
 
   function persistFilters(filters) {
@@ -368,6 +451,11 @@
       if (filters.newOnly && !isNewListing(listing, latest)) return false;
       if (filters.dropsOnly && !isDrop(listing)) return false;
       if (filters.hideFlagged && isFlagged(listing)) return false;
+      var cab = cabStyle(listing);
+      if (cab === "unknown") {
+        if (filters.cabs.length !== CABS.length) return false;
+      } else if (filters.cabs.indexOf(cab) === -1) return false;
+      if (filters.dealersOff && filters.dealersOff.length && filters.dealersOff.indexOf(dealerName(listing)) !== -1) return false;
       return true;
     });
   }
@@ -472,7 +560,6 @@
     var locBits = [];
     if (listing.loc) locBits.push(esc(listing.loc));
     locBits.push(esc(distanceText(listing.d)));
-    var pay = payText(listing);
     var tow = towText(listing);
     var recallCount = recallsOf(listing).length;
     var recallLabel = recallCount === 1 ? "1 recall" : recallCount + " recalls";
@@ -512,12 +599,18 @@
       locBits.join(" · ") +
       "</p>" +
       (tow ? '<p class="tow">Conventional tow ' + esc(tow) + "</p>" : "") +
-      (pay ? '<p class="pay">' + esc(pay) + ' <span class="info">info only</span></p>' : "") +
+      payLineHtml(listing) +
       '<p class="sub">' +
       esc(recallLabel) +
       "</p>" +
       flagHtml(listing) +
       (seen.length ? '<p class="seen">' + esc(seen.join(" · ")) + "</p>" : "") +
+      '<div class="card-actions">' +
+      (hasCoords(listing)
+        ? '<button type="button" class="btn btn-small" data-action="map" data-testid="card-map">Show on map</button>'
+        : '<span class="sub">No map location</span>') +
+      '<button type="button" class="btn btn-small" data-action="details" data-testid="card-details">Details</button>' +
+      "</div>" +
       "</article>"
     );
   }
@@ -555,6 +648,9 @@
     var total = (state.data.ranked || []).length + (state.data.conditional || []).length;
     count.textContent = "Showing " + (ranked.length + conditional.length) + " of " + total;
     list.innerHTML = sectionHtml("Ranked", "", ranked, latest) + sectionHtml("Conditional", "needs a check", conditional, latest);
+    updateActiveCount(filters);
+    renderMarkers(ranked.concat(conditional), state.refit);
+    state.refit = false;
   }
 
   function renderUpdated() {
@@ -823,6 +919,8 @@
     var saved = readSavedData() || state.data;
     if (saved) {
       state.data = saved;
+      state.refit = true;
+      renderDealerList();
       showOfflineNotice(saved);
       renderUpdated();
       renderSpecs();
@@ -865,6 +963,8 @@
           localStorage.setItem(DATA_KEY, JSON.stringify(result.data));
         } catch (err) {}
         state.data = result.data;
+        state.refit = true;
+        renderDealerList();
         if (result.fromCache || navigator.onLine === false) showOfflineNotice(result.data);
         else hideOfflineNotice();
         renderUpdated();
@@ -947,12 +1047,14 @@
       localStorage.setItem(THEME_KEY, theme);
     } catch (err) {}
     syncThemeButton();
+    setBasemap();
   }
 
   function onFilterInput() {
     var filters = readFiltersFromDom();
     $("dist-readout").textContent = filters.maxDistance + " mi";
     persistFilters(filters);
+    state.refit = true;
     renderList();
   }
 
@@ -960,6 +1062,7 @@
     var filters = defaultFilters();
     writeFiltersToDom(filters);
     persistFilters(filters);
+    state.refit = true;
     renderList();
   }
 
@@ -1019,6 +1122,448 @@
     document.addEventListener("touchcancel", reset, { passive: true });
   }
 
+  /* ---------- cab style, dealer name, coords ---------- */
+
+  function cabStyle(listing) {
+    var text = [listing.cab, listing.trim, listing.model].filter(Boolean).join(" ").toLowerCase();
+    if (/\bcrew\b/.test(text)) return "crew";
+    if (/\b(double|extended|quad|super\s*cab|supercab|king\s*cab|access\s*cab)\b/.test(text)) return "double";
+    if (/\b(regular|reg\.?)\s*cab\b/.test(text) || /\bstandard\s*cab\b/.test(text)) return "regular";
+    return "unknown";
+  }
+
+  function dealerName(listing) {
+    var loc = String(listing.loc || "").trim();
+    if (!loc) return "Unknown seller";
+    var cut = loc.indexOf(" (");
+    return cut > 0 ? loc.slice(0, cut).trim() : loc;
+  }
+
+  function hasCoords(listing) {
+    return isNum(listing.lat) && isNum(listing.lng) && Math.abs(listing.lat) <= 90 && Math.abs(listing.lng) <= 180;
+  }
+
+  function allListings() {
+    return []
+      .concat((state.data && state.data.ranked) || [])
+      .concat((state.data && state.data.conditional) || []);
+  }
+
+  function renderDealerList() {
+    var host = $("dealer-list");
+    if (!host || !state.data) return;
+    var counts = {};
+    var names = [];
+    allListings().forEach(function (listing) {
+      var name = dealerName(listing);
+      if (!counts[name]) {
+        counts[name] = 0;
+        names.push(name);
+      }
+      counts[name]++;
+    });
+    names.sort(function (a, b) {
+      return a.toLowerCase() < b.toLowerCase() ? -1 : a.toLowerCase() > b.toLowerCase() ? 1 : 0;
+    });
+    var off = state.dealersOff || [];
+    host.innerHTML = names
+      .map(function (name) {
+        return (
+          '<label class="check-row"><input type="checkbox" data-testid="filter-dealer" value="' +
+          esc(name) +
+          '"' +
+          (off.indexOf(name) === -1 ? " checked" : "") +
+          "> " +
+          esc(name) +
+          '<span class="dealer-count">' +
+          counts[name] +
+          "</span></label>"
+        );
+      })
+      .join("");
+    updateDealerReadout();
+  }
+
+  function updateDealerReadout() {
+    var el = $("dealer-readout");
+    if (!el) return;
+    var boxes = document.querySelectorAll("#dealer-list input[type='checkbox']");
+    if (!boxes.length) {
+      el.textContent = (state.dealersOff || []).length ? "Some" : "All";
+      return;
+    }
+    var on = 0;
+    for (var i = 0; i < boxes.length; i++) if (boxes[i].checked) on++;
+    el.textContent = on === boxes.length ? "All" : on + " of " + boxes.length;
+  }
+
+  function updateActiveCount(filters) {
+    var def = defaultFilters();
+    var n = 0;
+    if (filters.grades.length !== 4) n++;
+    if (filters.cabs.length !== CABS.length) n++;
+    ["priceMin", "priceMax", "maxMiles", "minTow"].forEach(function (key) {
+      if (String(filters[key] || "").trim()) n++;
+    });
+    if (filters.maxDistance !== def.maxDistance) n++;
+    if (filters.fuel !== "any") n++;
+    if (filters.cond !== "any") n++;
+    if (filters.newOnly) n++;
+    if (filters.dropsOnly) n++;
+    if (filters.hideFlagged) n++;
+    if (filters.dealersOff.length) n++;
+    $("filter-active").textContent = n ? n + " active" : "";
+    updateDealerReadout();
+  }
+
+  /* ---------- payment estimator ---------- */
+
+  function defaultPay() {
+    return { down: "", trade: "", tier: "excellent", term: 72 };
+  }
+
+  function loadPay() {
+    var pay = defaultPay();
+    try {
+      var parsed = JSON.parse(localStorage.getItem(PAY_KEY) || "null");
+      if (parsed && typeof parsed === "object") {
+        if (parsed.down != null) pay.down = String(parsed.down);
+        if (parsed.trade != null) pay.trade = String(parsed.trade);
+        if (Object.prototype.hasOwnProperty.call(PAY_CONFIG.tierAdd, parsed.tier)) pay.tier = parsed.tier;
+        if (Number(parsed.term) === 60 || Number(parsed.term) === 72) pay.term = Number(parsed.term);
+      }
+    } catch (err) {}
+    return pay;
+  }
+
+  function writePayToDom(pay) {
+    $("pay-down").value = pay.down;
+    $("pay-trade").value = pay.trade;
+    $("pay-tier").value = pay.tier;
+    var radios = document.querySelectorAll("input[name='pay-term']");
+    for (var i = 0; i < radios.length; i++) radios[i].checked = Number(radios[i].value) === pay.term;
+    state.pay = pay;
+    updatePaySummary();
+  }
+
+  function readPayFromDom() {
+    var term = 72;
+    var radios = document.querySelectorAll("input[name='pay-term']");
+    for (var i = 0; i < radios.length; i++) if (radios[i].checked) term = Number(radios[i].value);
+    var tier = $("pay-tier").value;
+    if (!Object.prototype.hasOwnProperty.call(PAY_CONFIG.tierAdd, tier)) tier = "excellent";
+    return { down: $("pay-down").value, trade: $("pay-trade").value, tier: tier, term: term === 60 ? 60 : 72 };
+  }
+
+  function updatePaySummary() {
+    var pay = state.pay || defaultPay();
+    var bits = [money(Math.max(0, parseBound(pay.down) || 0)) + " down"];
+    var trade = parseBound(pay.trade);
+    if (trade) bits.push(money(trade) + " trade");
+    bits.push((PAY_CONFIG.tierLabels[pay.tier] || "").split(" ")[0]);
+    bits.push(pay.term + " mo");
+    $("pay-summary").textContent = bits.join(" · ");
+  }
+
+  function isNewForLoan(listing) {
+    if (isNum(listing.mi) && listing.mi <= PAY_CONFIG.newMaxMiles) return true;
+    var yr = Number(listing.yr);
+    return isFinite(yr) && yr >= PAY_CONFIG.newMinYear;
+  }
+
+  function dealerFee(listing) {
+    if (listing.dealer === false) return PAY_CONFIG.privateSellerFee;
+    var loc = String(listing.loc || "").toLowerCase();
+    for (var i = 0; i < PAY_CONFIG.dealerFees.length; i++) {
+      if (loc.indexOf(PAY_CONFIG.dealerFees[i].match) !== -1) return PAY_CONFIG.dealerFees[i].fee;
+    }
+    return PAY_CONFIG.defaultDealerFee;
+  }
+
+  /* Returns null when the listing has no usable price. */
+  function estimatePayment(listing, pay) {
+    if (!isNum(listing.price) || listing.price <= 0) return null;
+    pay = pay || state.pay || defaultPay();
+    var down = Math.max(0, parseBound(pay.down) || 0);
+    var trade = Math.max(0, parseBound(pay.trade) || 0);
+    var term = pay.term === 60 ? 60 : 72;
+    var kind = isNewForLoan(listing) ? "new" : "used";
+    var apr = PAY_CONFIG.baseApr[kind][term] + (PAY_CONFIG.tierAdd[pay.tier] || 0);
+    var price = listing.price;
+    var tax = PAY_CONFIG.taxRate * Math.max(price - trade, 0);
+    var fee = dealerFee(listing);
+    var otd = price + tax + PAY_CONFIG.countySurtax + fee + PAY_CONFIG.tagTitle;
+    var financed = Math.max(otd - down - trade, 0);
+    var r = apr / 100 / 12;
+    var monthly = financed === 0 ? 0 : r === 0 ? financed / term : (financed * r) / (1 - Math.pow(1 + r, -term));
+    return { monthly: monthly, apr: apr, term: term, kind: kind, otd: otd, financed: financed, tax: tax, fee: fee };
+  }
+
+  function payShort(listing) {
+    var est = estimatePayment(listing);
+    if (!est) return "n/a";
+    return money(Math.round(est.monthly)) + "/mo";
+  }
+
+  function payLineHtml(listing) {
+    var est = estimatePayment(listing);
+    if (!est) return '<p class="pay" data-testid="card-pay">Est. payment n/a <span class="info">no price</span></p>';
+    return (
+      '<p class="pay" data-testid="card-pay">Est. ' +
+      esc(money(Math.round(est.monthly))) +
+      '/mo <span class="info">' +
+      esc(est.term + " mo · " + est.apr.toFixed(1) + "% " + est.kind + " rate · OTD " + money(Math.round(est.otd))) +
+      "</span></p>"
+    );
+  }
+
+  function onPayInput() {
+    var pay = readPayFromDom();
+    state.pay = pay;
+    try {
+      localStorage.setItem(PAY_KEY, JSON.stringify(pay));
+    } catch (err) {}
+    updatePaySummary();
+    renderList();
+  }
+
+  /* ---------- panel open/closed state ---------- */
+
+  function loadUi() {
+    try {
+      var parsed = JSON.parse(localStorage.getItem(UI_KEY) || "null");
+      if (parsed && typeof parsed === "object") return parsed;
+    } catch (err) {}
+    return {};
+  }
+
+  function saveUi(patch) {
+    var ui = loadUi();
+    Object.keys(patch).forEach(function (key) {
+      ui[key] = patch[key];
+    });
+    try {
+      localStorage.setItem(UI_KEY, JSON.stringify(ui));
+    } catch (err) {}
+  }
+
+  function setFiltersOpen(open) {
+    $("filter-panel").classList.toggle("collapsed", !open);
+    $("filter-toggle").textContent = open ? "Hide" : "Show";
+    $("filter-toggle").setAttribute("aria-expanded", open ? "true" : "false");
+  }
+
+  function setMapOpen(open) {
+    $("map-panel").classList.toggle("collapsed", !open);
+    $("map-toggle").textContent = open ? "Hide map" : "Show map";
+    $("map-toggle").setAttribute("aria-expanded", open ? "true" : "false");
+    if (open && state.map) {
+      setTimeout(function () {
+        state.map.invalidateSize();
+      }, 0);
+    }
+  }
+
+  function applyUiState() {
+    var ui = loadUi();
+    setFiltersOpen(ui.filtersOpen !== false);
+    setMapOpen(ui.mapOpen !== false);
+    $("pay-panel").open = ui.payOpen === true;
+  }
+
+  /* ---------- dealer map (Leaflet, Esri no-key basemap) ---------- */
+
+  var ESRI = "https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/";
+  var ESRI_ATTR = 'Tiles &copy; <a href="https://www.esri.com/" target="_blank" rel="noopener noreferrer">Esri</a> &mdash; Esri, HERE, Garmin, &copy; OpenStreetMap contributors';
+
+  function initMap() {
+    if (state.map || typeof window.L === "undefined" || !$("map")) {
+      if (typeof window.L === "undefined") $("map-note").textContent = "Map unavailable";
+      return;
+    }
+    var map = window.L.map("map", { zoomControl: true, attributionControl: true, scrollWheelZoom: false, tap: true });
+    map.setView([28.35, -82.6], 8);
+    state.map = map;
+    state.markerLayer = window.L.layerGroup().addTo(map);
+    state.markers = {};
+    setBasemap();
+  }
+
+  function setBasemap() {
+    var map = state.map;
+    if (!map) return;
+    var light = document.documentElement.getAttribute("data-theme") === "light";
+    var name = light ? "World_Light_Gray" : "World_Dark_Gray";
+    if (state.basemapName === name) return;
+    (state.basemap || []).forEach(function (layer) {
+      map.removeLayer(layer);
+    });
+    var opts = { maxNativeZoom: 16, maxZoom: 18, crossOrigin: true };
+    var base = window.L.tileLayer(ESRI + name + "_Base/MapServer/tile/{z}/{y}/{x}", Object.assign({ attribution: ESRI_ATTR }, opts));
+    var ref = window.L.tileLayer(ESRI + name + "_Reference/MapServer/tile/{z}/{y}/{x}", opts);
+    base.addTo(map);
+    ref.addTo(map);
+    state.basemap = [base, ref];
+    state.basemapName = name;
+  }
+
+  function popupHtml(group, highlightRank) {
+    var names = [];
+    group.listings.forEach(function (listing) {
+      var name = dealerName(listing);
+      if (names.indexOf(name) === -1) names.push(name);
+    });
+    var items = group.listings
+      .map(function (listing) {
+        var href = safeHttpUrl(listing.url);
+        var title = [listing.yr, listing.model, listing.trim].filter(function (part) {
+          return part != null && String(part) !== "";
+        }).join(" ");
+        return (
+          '<li data-rank="' +
+          esc(listing.rank) +
+          '"' +
+          (String(listing.rank) === String(highlightRank) ? ' class="hl"' : "") +
+          '><div class="pt">' +
+          esc(title) +
+          '</div><div><span class="pp">' +
+          esc(isNum(listing.price) ? money(listing.price) : "Price n/a") +
+          "</span> · est. " +
+          esc(payShort(listing)) +
+          '</div><div class="pl">' +
+          (href ? '<a href="' + esc(href) + '" target="_blank" rel="noopener noreferrer">Listing ↗</a>' : "") +
+          '<a href="#/l/' +
+          esc(encodeURIComponent(String(listing.rank))) +
+          '">Details</a></div></li>'
+        );
+      })
+      .join("");
+    var count = group.listings.length;
+    return (
+      '<div class="pop" data-testid="map-popup"><h4>' +
+      esc(names.join(" / ")) +
+      '</h4><p class="pop-sub">' +
+      count +
+      (count === 1 ? " truck" : " trucks") +
+      " matching filters</p><ul>" +
+      items +
+      "</ul></div>"
+    );
+  }
+
+  function renderMarkers(listings, refit) {
+    var map = state.map;
+    if (!map) return;
+    state.markerLayer.clearLayers();
+    state.markers = {};
+    state.groupOf = {};
+    var groups = {};
+    var order = [];
+    var skipped = 0;
+    listings.forEach(function (listing) {
+      if (!hasCoords(listing)) {
+        skipped++;
+        return;
+      }
+      var key = listing.lat.toFixed(5) + "," + listing.lng.toFixed(5);
+      if (!groups[key]) {
+        groups[key] = { key: key, lat: listing.lat, lng: listing.lng, listings: [] };
+        order.push(key);
+      }
+      groups[key].listings.push(listing);
+      state.groupOf[String(listing.rank)] = key;
+    });
+    var bounds = [];
+    order.forEach(function (key) {
+      var group = groups[key];
+      var icon = window.L.divIcon({
+        className: "",
+        html: '<div class="dealer-pin" data-testid="map-marker">' + group.listings.length + "</div>",
+        iconSize: [34, 34],
+        iconAnchor: [17, 17],
+        popupAnchor: [0, -16]
+      });
+      var marker = window.L.marker([group.lat, group.lng], { icon: icon, keyboard: true, title: dealerName(group.listings[0]) });
+      marker.bindPopup(popupHtml(group), { maxWidth: 280, autoPanPaddingTopLeft: [10, 40] });
+      marker.addTo(state.markerLayer);
+      marker._tdGroup = group;
+      state.markers[key] = marker;
+      bounds.push([group.lat, group.lng]);
+    });
+    var note = order.length + (order.length === 1 ? " dealer" : " dealers") + " · " + (listings.length - skipped) + " trucks";
+    if (skipped) note += " · " + skipped + " without location";
+    $("map-note").textContent = note;
+    $("map-note").setAttribute("data-markers", String(order.length));
+    if (refit && bounds.length && !$("map-panel").classList.contains("collapsed")) {
+      if (bounds.length === 1) map.setView(bounds[0], 11);
+      else map.fitBounds(bounds, { padding: [30, 30], maxZoom: 11 });
+    }
+  }
+
+  function focusDealer(rank, card) {
+    var key = state.groupOf && state.groupOf[String(rank)];
+    var prev = document.querySelector(".card.focused");
+    if (prev) prev.classList.remove("focused");
+    if (card) card.classList.add("focused");
+    if (!key || !state.markers[key]) {
+      $("map-note").textContent = "No map location for this listing";
+      return;
+    }
+    if ($("map-panel").classList.contains("collapsed")) {
+      setMapOpen(true);
+      saveUi({ mapOpen: true });
+    }
+    var panel = $("map-panel");
+    var sticky = document.querySelector(".sticky-top");
+    var offset = (sticky ? sticky.getBoundingClientRect().height : 0) + 8;
+    var top = panel.getBoundingClientRect().top + window.scrollY - offset;
+    window.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
+    var marker = state.markers[key];
+    var map = state.map;
+    map.invalidateSize();
+    map.setView(marker.getLatLng(), Math.max(map.getZoom(), 12), { animate: true });
+    marker.setPopupContent(popupHtml(marker._tdGroup, rank));
+    marker.openPopup();
+    var pins = document.querySelectorAll(".dealer-pin.active");
+    for (var i = 0; i < pins.length; i++) pins[i].classList.remove("active");
+    var el = marker.getElement && marker.getElement();
+    var pin = el && el.querySelector(".dealer-pin");
+    if (pin) pin.classList.add("active");
+  }
+
+  function bindExtras() {
+    $("filter-toggle").addEventListener("click", function () {
+      var open = $("filter-panel").classList.contains("collapsed");
+      setFiltersOpen(open);
+      saveUi({ filtersOpen: open });
+    });
+    $("map-toggle").addEventListener("click", function () {
+      var open = $("map-panel").classList.contains("collapsed");
+      setMapOpen(open);
+      saveUi({ mapOpen: open });
+      if (open) {
+        state.refit = true;
+        renderList();
+      }
+    });
+    function setAllDealers(on) {
+      var boxes = document.querySelectorAll("#dealer-list input[type='checkbox']");
+      for (var i = 0; i < boxes.length; i++) boxes[i].checked = on;
+      onFilterInput();
+    }
+    $("dealer-all").addEventListener("click", function () {
+      setAllDealers(true);
+    });
+    $("dealer-none").addEventListener("click", function () {
+      setAllDealers(false);
+    });
+    $("pay-panel").addEventListener("input", onPayInput);
+    $("pay-panel").addEventListener("change", onPayInput);
+    $("pay-panel").addEventListener("toggle", function () {
+      saveUi({ payOpen: $("pay-panel").open });
+    });
+  }
+
   function bind() {
     $("theme-toggle").addEventListener("click", toggleTheme);
     $("refresh-btn").addEventListener("click", loadData);
@@ -1045,14 +1590,20 @@
     $("list").addEventListener("click", function (event) {
       var card = event.target.closest("[data-testid='card']");
       if (!card || !$("list").contains(card)) return;
-      openRank(card.getAttribute("data-rank"));
+      var action = event.target.closest("[data-action]");
+      if (action && action.getAttribute("data-action") === "details") {
+        openRank(card.getAttribute("data-rank"));
+        return;
+      }
+      focusDealer(card.getAttribute("data-rank"), card);
     });
     $("list").addEventListener("keydown", function (event) {
       if (event.key !== "Enter" && event.key !== " ") return;
+      if (event.target.closest("button")) return;
       var card = event.target.closest("[data-testid='card']");
       if (!card || !$("list").contains(card)) return;
       event.preventDefault();
-      openRank(card.getAttribute("data-rank"));
+      focusDealer(card.getAttribute("data-rank"), card);
     });
     $("detail").addEventListener("click", function (event) {
       var button = event.target.closest("[data-testid='vin-copy']");
@@ -1061,6 +1612,7 @@
     });
     window.addEventListener("hashchange", applyRoute);
     bindPullToRefresh();
+    bindExtras();
   }
 
   function registerWorker() {
@@ -1071,6 +1623,9 @@
   bind();
   syncThemeButton();
   writeFiltersToDom(loadStoredFilters());
+  writePayToDom(loadPay());
+  applyUiState();
+  initMap();
   $("list").innerHTML = '<p class="empty">Loading listings…</p>';
   applyRoute();
   loadData();
