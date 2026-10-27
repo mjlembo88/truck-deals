@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-27T19:26:05-04:00",
+  "updated_at": "2026-10-27T19:36:08-04:00",
   "groups": {
     "1": "G1 · GM 6.6L gas L8T 2024-26",
     "2": "G2 · GM 6.6L gas L8T 2020-23",
@@ -290,6 +290,7 @@
         "dually",
         "price_drop"
       ],
+      "dd_status": "confirmed",
       "first_seen": "2026-10-17",
       "last_checked": "2026-10-27",
       "lat": 27.848398,
@@ -926,6 +927,8 @@
         "high_miles",
         "open_recall_risk"
       ],
+      "dd_status": "needs_check",
+      "dd_reason": "no VIN, private, scam check",
       "first_seen": "2026-10-17",
       "last_checked": "2026-10-27",
       "lat": 27.909467,
@@ -1144,6 +1147,8 @@
       "flag_tags": [
         "us19_lookup"
       ],
+      "dd_status": "kept",
+      "dd_reason": "excluded (double cab, not crew); kept per CoS Oct 27 (the #14 double cab stays)",
       "first_seen": "2026-10-27",
       "last_checked": "2026-10-27"
     },
@@ -1187,6 +1192,8 @@
       "flag_tags": [
         "us19_lookup"
       ],
+      "dd_status": "confirmed",
+      "dd_note": "Carfax: MINOR TO MODERATE DAMAGE",
       "first_seen": "2026-10-27",
       "last_checked": "2026-10-27"
     },
@@ -1254,6 +1261,7 @@
           "price": 52389
         }
       ],
+      "doc": 1594,
       "dealer": true,
       "loc": "Castriota Chevrolet (727-755-5843), 12930 US Hwy 19, Hudson",
       "lat": 28.34502,
@@ -1269,6 +1277,7 @@
       "flag_tags": [
         "us19_lookup"
       ],
+      "dd_status": "confirmed",
       "first_seen": "2026-10-27",
       "last_checked": "2026-10-27"
     },
@@ -1482,45 +1491,6 @@
       "g": 6,
       "grp": "Used finds · Truck Deal Finder deep dive",
       "status": "Confirmed (Truck Deal Finder deep dive)",
-      "yr": 2026,
-      "mk": "Chevrolet",
-      "model": "Silverado 2500HD",
-      "trim": "LT 4WD",
-      "eng": "Gasoline 6.6L (L8T)",
-      "fuel": "gas",
-      "cond_new": false,
-      "cab": "Crew Cab",
-      "mi": 17503,
-      "price": 49999,
-      "prev": null,
-      "price_history": [
-        {
-          "date": "2026-10-27",
-          "price": 49999
-        }
-      ],
-      "dealer": true,
-      "loc": "Nissan of Clearwater, 15232 US Highway 19 N, Clearwater, FL 33764",
-      "lat": 27.910769,
-      "lng": -82.728118,
-      "d": 31.4,
-      "src": "CarGurus",
-      "url": "https://www.cargurus.com/Cars/listing/461589208",
-      "vin": "1GC1KNE71TF262760",
-      "tow": "14,500-16,000 est.",
-      "tow_lb": 14500,
-      "flags": "Title: clean. 2 NHTSA campaign(s) for this make/model/year (not VIN-specific). Phone (727) 758-3579. FLAG: 1 accident reported; former rental. Dealer fee not captured. Deep-dive rank 1.",
-      "flag_tags": [
-        "deep_dive"
-      ],
-      "first_seen": "2026-10-27",
-      "last_checked": "2026-10-27"
-    },
-    {
-      "rank": 24,
-      "g": 6,
-      "grp": "Used finds · Truck Deal Finder deep dive",
-      "status": "Confirmed (Truck Deal Finder deep dive)",
       "yr": 2024,
       "mk": "Chevrolet",
       "model": "Silverado 2500HD",
@@ -1538,6 +1508,7 @@
           "price": 59044
         }
       ],
+      "doc": 0,
       "dealer": true,
       "loc": "Tasca Buick GMC Clearwater, 18200 US Highway 19 N, Clearwater, FL 33764",
       "lat": 27.937761,
@@ -1548,15 +1519,16 @@
       "vin": "1GC4YPE79RF331906",
       "tow": "14,500-16,000 est.",
       "tow_lb": 14500,
-      "flags": "Title: clean, 0 accidents. 4 NHTSA campaign(s) for this make/model/year (not VIN-specific). Phone (727) 591-4651. Price listed as fees included. Deep-dive rank 2.",
+      "flags": "Price already includes dealer fees (amount not captured). Title: clean, 0 accidents. 4 NHTSA campaign(s) for this make/model/year (not VIN-specific). Phone (727) 591-4651. Price listed as fees included. Price: $59,044 on CarGurus (fees incl) vs $58,299 on Carfax. 2024 tow uses the 2024-26 wheel-size rule (no 2024 Chevy chart on file; 2025/26 charts: 17\" 14,500, 18-22\" 16,000). Deep-dive rank 2.",
       "flag_tags": [
         "deep_dive"
       ],
+      "dd_status": "confirmed",
       "first_seen": "2026-10-27",
       "last_checked": "2026-10-27"
     },
     {
-      "rank": 25,
+      "rank": 24,
       "g": 6,
       "grp": "Used finds · Truck Deal Finder deep dive",
       "status": "Confirmed (Truck Deal Finder deep dive)",
@@ -1587,10 +1559,289 @@
       "url": "https://www.tascabuickgmcpalmharbor.com/inventory/used-2026-gmc-sierra-2500-hd-slt-four-wheel-drive-crew-cab-1gt4une71tf182267/",
       "vin": "1GT4UNE71TF182267",
       "tow_lb": 16000,
-      "flags": "Title: clean (Carfax), one owner. Wheels: 22\". 1 NHTSA campaign(s) for this make/model/year (not VIN-specific). Phone (877) 701-7890. Fees: $1,195 doc + $349 e-filing. Crew cab per URL slug. Tow from Chevy Silverado 2500HD 2026 chart (same 6.6 gas powertrain); GMC 2026 chart not on file. Deep-dive rank 4.",
+      "flags": "Title: clean (Carfax), one owner. Wheels: 22\". 1 NHTSA campaign(s) for this make/model/year (not VIN-specific). Phone (877) 701-7890. Fees: $1,195 doc + $349 e-filing. Crew cab per URL slug. Tow from Chevy Silverado 2500HD 2026 chart (same 6.6 gas powertrain); GMC 2026 chart not on file. Deep-dive rank 3.",
       "flag_tags": [
         "deep_dive"
       ],
+      "dd_status": "confirmed",
+      "first_seen": "2026-10-27",
+      "last_checked": "2026-10-27"
+    },
+    {
+      "rank": 25,
+      "g": 6,
+      "grp": "Used finds · Truck Deal Finder deep dive",
+      "status": "Confirmed (Truck Deal Finder deep dive)",
+      "yr": 2025,
+      "mk": "Chevrolet",
+      "model": "Silverado 2500HD",
+      "trim": "Custom",
+      "eng": "Gasoline 6.6L (L8T)",
+      "fuel": "gas",
+      "cond_new": false,
+      "cab": "Crew Cab",
+      "mi": 16061,
+      "price": 49074,
+      "prev": null,
+      "price_history": [
+        {
+          "date": "2026-10-27",
+          "price": 49074
+        }
+      ],
+      "doc": 0,
+      "dealer": true,
+      "loc": "Fields Motorcars Lakeland, 4141 N Florida Ave, Lakeland, FL 33805",
+      "lat": 28.094141,
+      "lng": -81.955657,
+      "d": 48.6,
+      "src": "CarGurus",
+      "url": "https://www.cargurus.com/Cars/listing/437748055",
+      "vin": "1GC4KME77SF101741",
+      "tow": "14,500-16,000 est.",
+      "tow_lb": 14500,
+      "flags": "Price already includes dealer fees (amount not captured). Title: clean, 0 accidents, 1 owner. 1 NHTSA campaign(s) for this make/model/year (not VIN-specific). Phone (863) 593-8088. Dealer fee not captured. Lakeland ~48 mi, edge of radius. Price includes fees. About 50 mi, edge of radius. Deep-dive rank 1.",
+      "flag_tags": [
+        "deep_dive"
+      ],
+      "dd_status": "confirmed",
+      "dd_note": "edge of 50-mi radius",
+      "first_seen": "2026-10-27",
+      "last_checked": "2026-10-27"
+    },
+    {
+      "rank": 26,
+      "g": 6,
+      "grp": "Used finds · Truck Deal Finder deep dive",
+      "status": "Confirmed (Truck Deal Finder deep dive)",
+      "yr": 2026,
+      "mk": "Chevrolet",
+      "model": "Silverado 2500HD",
+      "trim": "Custom RWD (CPO)",
+      "eng": "Gasoline 6.6L (L8T)",
+      "fuel": "gas",
+      "cond_new": false,
+      "cab": "Crew Cab",
+      "mi": 4936,
+      "price": 48012,
+      "prev": null,
+      "price_history": [
+        {
+          "date": "2026-10-27",
+          "price": 48012
+        }
+      ],
+      "dealer": true,
+      "loc": "Dimmitt Chevrolet, 25485 US Hwy 19 N, Clearwater, FL 33763",
+      "lat": 28.004237,
+      "lng": -82.729219,
+      "d": 25.0,
+      "src": "Carfax",
+      "url": "https://www.carfax.com/vehicle/2GC4AME72T1182790",
+      "vin": "2GC4AME72T1182790",
+      "tow_lb": 16000,
+      "flags": "Wheels: 20\". 2 NHTSA campaign(s) for this make/model/year (not VIN-specific). Phone (727) 496-4665. CPO. Carfax: no accidents, 1 owner. Dealer fee not captured. Deep-dive rank 4.",
+      "flag_tags": [
+        "deep_dive"
+      ],
+      "dd_status": "confirmed",
+      "first_seen": "2026-10-27",
+      "last_checked": "2026-10-27"
+    },
+    {
+      "rank": 27,
+      "g": 6,
+      "grp": "Used finds · Truck Deal Finder deep dive",
+      "status": "Confirmed (Truck Deal Finder deep dive)",
+      "yr": 2024,
+      "mk": "Chevrolet",
+      "model": "Silverado 2500HD",
+      "trim": "LT RWD",
+      "eng": "Gasoline 6.6L (L8T)",
+      "fuel": "gas",
+      "cond_new": false,
+      "cab": "Crew Cab",
+      "mi": 43630,
+      "price": 41221,
+      "prev": null,
+      "price_history": [
+        {
+          "date": "2026-10-27",
+          "price": 41221
+        }
+      ],
+      "dealer": true,
+      "loc": "Dimmitt Chevrolet, 25485 US Hwy 19 N, Clearwater, FL 33763",
+      "lat": 28.004237,
+      "lng": -82.729219,
+      "d": 25.0,
+      "src": "Carfax",
+      "url": "https://www.carfax.com/vehicle/1GC4WNE78RF118729",
+      "vin": "1GC4WNE78RF118729",
+      "tow_lb": 14500,
+      "flags": "Wheels: 17\". 4 NHTSA campaign(s) for this make/model/year (not VIN-specific). Phone (727) 496-4665. Carfax: no accidents, 2 owners; title brand not stated. Dealer fee not captured. 2024 tow uses the 2024-26 wheel-size rule (no 2024 Chevy chart on file; 2025/26 charts: 17\" 14,500, 18-22\" 16,000). Deep-dive rank 7.",
+      "flag_tags": [
+        "deep_dive"
+      ],
+      "dd_status": "confirmed",
+      "first_seen": "2026-10-27",
+      "last_checked": "2026-10-27"
+    },
+    {
+      "rank": 28,
+      "g": 6,
+      "grp": "Used finds · Truck Deal Finder deep dive",
+      "status": "Confirmed (Truck Deal Finder deep dive)",
+      "yr": 2024,
+      "mk": "Chevrolet",
+      "model": "Silverado 2500HD",
+      "trim": "Work Truck 4WD",
+      "eng": "Gasoline 6.6L (L8T)",
+      "fuel": "gas",
+      "cond_new": false,
+      "cab": "Crew Cab",
+      "mi": 22502,
+      "price": 48609,
+      "prev": null,
+      "price_history": [
+        {
+          "date": "2026-10-27",
+          "price": 48609
+        }
+      ],
+      "dealer": true,
+      "loc": "Courtesy Toyota of Brandon, 9210 E Adamo Dr, Tampa, FL 33619",
+      "lat": 27.949556,
+      "lng": -82.353742,
+      "d": 35.4,
+      "src": "Carfax",
+      "url": "https://www.carfax.com/vehicle/2GC4YLE7XR1128362",
+      "vin": "2GC4YLE7XR1128362",
+      "tow_lb": 14500,
+      "flags": "Wheels: 17\". 4 NHTSA campaign(s) for this make/model/year (not VIN-specific). Phone (813) 213-4794. Carfax: no accidents, 1 owner. 2024 tow uses the 2024-26 wheel-size rule (no 2024 Chevy chart on file; 2025/26 charts: 17\" 14,500, 18-22\" 16,000). Deep-dive rank 12.",
+      "flag_tags": [
+        "deep_dive"
+      ],
+      "dd_status": "confirmed",
+      "first_seen": "2026-10-27",
+      "last_checked": "2026-10-27"
+    },
+    {
+      "rank": 29,
+      "g": 6,
+      "grp": "Used finds · Truck Deal Finder deep dive",
+      "status": "Confirmed (Truck Deal Finder deep dive)",
+      "yr": 2020,
+      "mk": "Chevrolet",
+      "model": "Silverado 2500HD",
+      "trim": "Custom 4WD",
+      "eng": "Gasoline 6.6L (L8T)",
+      "fuel": "gas",
+      "cond_new": false,
+      "cab": "Crew Cab",
+      "mi": 71328,
+      "price": 36342,
+      "prev": null,
+      "price_history": [
+        {
+          "date": "2026-10-27",
+          "price": 36342
+        }
+      ],
+      "dealer": true,
+      "loc": "Jarrett Ford Dade City, 12621 U.S. 301, Dade City, FL 33525",
+      "lat": 28.347021,
+      "lng": -82.187618,
+      "d": 30.8,
+      "src": "Carfax",
+      "url": "https://www.carfax.com/vehicle/1GC4YME75LF219111",
+      "vin": "1GC4YME75LF219111",
+      "tow_lb": 14500,
+      "flags": "Wheels: 20\". 10 NHTSA campaign(s) for this make/model/year (not VIN-specific). Phone (352) 758-4792. Carfax: no accidents, 1 owner. VIN decode: Crew Cab. Deep-dive rank 14.",
+      "flag_tags": [
+        "deep_dive"
+      ],
+      "dd_status": "confirmed",
+      "first_seen": "2026-10-27",
+      "last_checked": "2026-10-27"
+    },
+    {
+      "rank": 30,
+      "g": 6,
+      "grp": "Used finds · Truck Deal Finder deep dive",
+      "status": "Confirmed (Truck Deal Finder deep dive)",
+      "yr": 2024,
+      "mk": "Chevrolet",
+      "model": "Silverado 2500HD",
+      "trim": "LT 4WD",
+      "eng": "Gasoline 6.6L (L8T)",
+      "fuel": "gas",
+      "cond_new": false,
+      "cab": "Crew Cab",
+      "mi": 33241,
+      "price": 50627,
+      "prev": null,
+      "price_history": [
+        {
+          "date": "2026-10-27",
+          "price": 50627
+        }
+      ],
+      "dealer": true,
+      "loc": "Wesley Chapel Honda, 27750 Wesley Chapel Blvd, Wesley Chapel, FL 33544",
+      "lat": 28.237284,
+      "lng": -82.356618,
+      "d": 22.3,
+      "src": "Carfax",
+      "url": "https://www.carfax.com/vehicle/2GC4YNE74R1236391",
+      "vin": "2GC4YNE74R1236391",
+      "tow": "14,500-16,000 est.",
+      "tow_lb": 14500,
+      "flags": "4 NHTSA campaign(s) for this make/model/year (not VIN-specific). Phone (813) 578-4720. Carfax: no accidents, 1 owner. Wheel size unknown. 2024 tow uses the 2024-26 wheel-size rule (no 2024 Chevy chart on file; 2025/26 charts: 17\" 14,500, 18-22\" 16,000). Deep-dive rank 17.",
+      "flag_tags": [
+        "deep_dive"
+      ],
+      "dd_status": "confirmed",
+      "first_seen": "2026-10-27",
+      "last_checked": "2026-10-27"
+    },
+    {
+      "rank": 31,
+      "g": 6,
+      "grp": "Used finds · Truck Deal Finder deep dive",
+      "status": "Confirmed (Truck Deal Finder deep dive)",
+      "yr": 2024,
+      "mk": "Chevrolet",
+      "model": "Silverado 2500HD",
+      "trim": "LT 4WD",
+      "eng": "Gasoline 6.6L (L8T)",
+      "fuel": "gas",
+      "cond_new": false,
+      "cab": "Crew Cab",
+      "mi": 86497,
+      "price": 38000,
+      "prev": null,
+      "price_history": [
+        {
+          "date": "2026-10-27",
+          "price": 38000
+        }
+      ],
+      "dealer": true,
+      "loc": "Lee Auto Group Tampa, 4027 S 50th St, Tampa, FL 33619",
+      "lat": 27.911539,
+      "lng": -82.401968,
+      "d": 36.0,
+      "src": "Carfax",
+      "url": "https://www.carfax.com/vehicle/1GC4YNE76RF102782",
+      "vin": "1GC4YNE76RF102782",
+      "tow_lb": 16000,
+      "flags": "Wheels: 18\". 4 NHTSA campaign(s) for this make/model/year (not VIN-specific). Phone (813) 534-1686. 2024 tow uses the 2024-26 wheel-size rule (no 2024 Chevy chart on file; 2025/26 charts: 17\" 14,500, 18-22\" 16,000). Deep-dive rank 30.",
+      "flag_tags": [
+        "deep_dive"
+      ],
+      "dd_status": "confirmed",
+      "dd_note": "ACCIDENT reported",
       "first_seen": "2026-10-27",
       "last_checked": "2026-10-27"
     }
@@ -1976,47 +2227,50 @@
       "rank": "C5",
       "g": 6,
       "grp": "Used finds · Truck Deal Finder deep dive",
-      "status": "NEEDS CHECK: cab, title and dealer address not verified",
-      "yr": 2025,
+      "status": "NEEDS CHECK: cab disputed: listing says crew, VIN pattern may be double",
+      "yr": 2026,
       "mk": "Chevrolet",
       "model": "Silverado 2500HD",
-      "trim": "Custom",
+      "trim": "LT 4WD",
       "eng": "Gasoline 6.6L (L8T)",
       "fuel": "gas",
       "cond_new": false,
-      "mi": 16061,
-      "price": 49074,
+      "cab": "Crew Cab",
+      "mi": 17503,
+      "price": 49999,
       "prev": null,
       "price_history": [
         {
           "date": "2026-10-27",
-          "price": 49074
+          "price": 49999
         }
       ],
       "dealer": true,
-      "loc": "Fields Motorcars Lakeland, 4141 N Florida Ave, Lakeland, FL 33805",
-      "lat": 28.094141,
-      "lng": -81.955657,
-      "d": 48.6,
+      "loc": "Nissan of Clearwater, 15232 US Highway 19 N, Clearwater, FL 33764",
+      "lat": 27.910769,
+      "lng": -82.728118,
+      "d": 31.4,
       "src": "CarGurus",
-      "url": "https://www.cargurus.com/Cars/listing/437748055",
-      "vin": "1GC4KME77SF101741",
+      "url": "https://www.cargurus.com/Cars/listing/461589208",
+      "vin": "1GC1KNE71TF262760",
       "tow": "14,500-16,000 est.",
       "tow_lb": 14500,
-      "flags": "NEEDS CHECK: cab, title and dealer address not verified. 1 NHTSA campaign(s) for this make/model/year (not VIN-specific). Dealer fee not captured. Lakeland ~48 mi, edge of radius. Deep-dive rank 5.",
+      "flags": "NEEDS CHECK: cab disputed: listing says crew, VIN pattern may be double. Title: clean. 2 NHTSA campaign(s) for this make/model/year (not VIN-specific). Phone (727) 758-3579. FLAG: 1 accident reported; former rental. Dealer fee not captured. BodyCabType not decoded by vPIC. VIN evidence: vPIC's GM 2020-21 schema reads VIN position 4 as cab+GVWR (1=crew Class 2H, 4=crew Class 3, 2/5=double, 3=regular; tested 10/27); vPIC does not decode cab for 2022+ GM HD, so this is consistent-with, not proof. Position 4 here is '1' (crew Class 2H in the 2020-21 schema), which argues against double cab. Deep-dive rank 29.",
       "flag_tags": [
         "deep_dive",
         "needs_check"
       ],
+      "dd_status": "needs_check",
+      "dd_reason": "cab disputed: listing says crew, VIN pattern may be double",
+      "dd_note": "1 accident; former rental",
       "first_seen": "2026-10-27",
-      "last_checked": "2026-10-27",
-      "cab": null
+      "last_checked": "2026-10-27"
     },
     {
       "rank": "C6",
       "g": 6,
       "grp": "Used finds · Truck Deal Finder deep dive",
-      "status": "NEEDS CHECK: URL not captured; cab not confirmed",
+      "status": "NEEDS CHECK: title not shown on dealer site (TrueCar earlier said clean)",
       "yr": 2024,
       "mk": "Chevrolet",
       "model": "Silverado 2500HD",
@@ -2024,6 +2278,7 @@
       "eng": "Gasoline 6.6L (L8T)",
       "fuel": "gas",
       "cond_new": false,
+      "cab": "Crew Cab",
       "mi": 32843,
       "price": 45728,
       "prev": null,
@@ -2033,30 +2288,32 @@
           "price": 45728
         }
       ],
+      "doc": 0,
       "dealer": true,
       "loc": "Century Buick GMC, 3308 W Hillsborough Ave, Tampa, FL 33614",
       "lat": 27.995951,
       "lng": -82.49692,
       "d": 28.1,
       "src": "TrueCar",
-      "url": "https://www.google.com/search?q=2GC4YME75R1113743",
+      "url": "https://www.centurybuickgmc.com/used-Tampa-2024-Chevrolet-Silverado+2500+HD-Custom-2GC4YME75R1113743",
       "vin": "2GC4YME75R1113743",
       "tow": "14,500-16,000 est.",
       "tow_lb": 14500,
-      "flags": "NEEDS CHECK: URL not captured; cab not confirmed. Listing URL not captured; the link is a web search for the VIN. Title: clean. 4 NHTSA campaign(s) for this make/model/year (not VIN-specific). Dealer fee not captured. Deep-dive rank 6.",
+      "flags": "NEEDS CHECK: title not shown on dealer site (TrueCar earlier said clean). Price already includes the $1,278 dealer fee. 4 NHTSA campaign(s) for this make/model/year (not VIN-specific). Phone 813-774-5456 (sales). Dealer fee not captured. $45,728 = $51,998 retail - $7,548 discount + $999 doc + $279 private agency fee. 2024 tow uses the 2024-26 wheel-size rule (no 2024 Chevy chart on file; 2025/26 charts: 17\" 14,500, 18-22\" 16,000). Deep-dive rank 9.",
       "flag_tags": [
         "deep_dive",
         "needs_check"
       ],
+      "dd_status": "needs_check",
+      "dd_reason": "title not shown on dealer site (TrueCar earlier said clean)",
       "first_seen": "2026-10-27",
-      "last_checked": "2026-10-27",
-      "cab": null
+      "last_checked": "2026-10-27"
     },
     {
       "rank": "C7",
       "g": 6,
       "grp": "Used finds · Truck Deal Finder deep dive",
-      "status": "NEEDS CHECK: cab, title and dealer address not verified",
+      "status": "NEEDS CHECK: cab disputed: listing says crew, VIN pattern may be double",
       "yr": 2025,
       "mk": "Chevrolet",
       "model": "Silverado 2500HD",
@@ -2064,6 +2321,7 @@
       "eng": "Gasoline 6.6L (L8T)",
       "fuel": "gas",
       "cond_new": false,
+      "cab": "Crew Cab (CarGurus; disputed)",
       "mi": 28482,
       "price": 47980,
       "prev": null,
@@ -2073,6 +2331,7 @@
           "price": 47980
         }
       ],
+      "doc": 0,
       "dealer": true,
       "loc": "Kia of Wesley Chapel, 28555 State Road 54, Wesley Chapel, FL 33543",
       "lat": 28.238567,
@@ -2081,22 +2340,22 @@
       "src": "CarGurus",
       "url": "https://www.cargurus.com/Cars/listing/462110335",
       "vin": "2GC1KME7XS1177111",
-      "tow": "14,500-16,000 est.",
-      "tow_lb": 14500,
-      "flags": "NEEDS CHECK: cab, title and dealer address not verified. 1 NHTSA campaign(s) for this make/model/year (not VIN-specific). Dealer fee not captured. Deep-dive rank 7.",
+      "tow_lb": 16000,
+      "flags": "NEEDS CHECK: cab disputed: listing says crew, VIN pattern may be double. Price already includes dealer fees (amount not captured). Title: clean, 0 accidents, 1 owner. Wheels: 20\". 1 NHTSA campaign(s) for this make/model/year (not VIN-specific). Phone (813) 722-1765. Dealer fee not captured. BodyCabType not decoded by vPIC. VIN evidence: vPIC's GM 2020-21 schema reads VIN position 4 as cab+GVWR (1=crew Class 2H, 4=crew Class 3, 2/5=double, 3=regular; tested 10/27); vPIC does not decode cab for 2022+ GM HD, so this is consistent-with, not proof. Position 4 here is '1' (crew Class 2H in the 2020-21 schema), which argues against double cab. Price includes fees. Deep-dive rank 6.",
       "flag_tags": [
         "deep_dive",
         "needs_check"
       ],
+      "dd_status": "needs_check",
+      "dd_reason": "cab disputed: listing says crew, VIN pattern may be double",
       "first_seen": "2026-10-27",
-      "last_checked": "2026-10-27",
-      "cab": null
+      "last_checked": "2026-10-27"
     },
     {
       "rank": "C8",
       "g": 6,
       "grp": "Used finds · Truck Deal Finder deep dive",
-      "status": "NEEDS CHECK: delivery location/fees not confirmed; cab and title not shown",
+      "status": "NEEDS CHECK: cab disputed: listing says crew, VIN pattern may be double; delivery location/fees not confirmed; title not shown",
       "yr": 2025,
       "mk": "Chevrolet",
       "model": "Silverado 2500HD",
@@ -2120,12 +2379,14 @@
       "url": "https://www.carvana.com/vehicle/4830922",
       "vin": "2GC1KNE73S1221598",
       "tow_lb": 14500,
-      "flags": "NEEDS CHECK: delivery location/fees not confirmed; cab and title not shown. Wheels: 17\". 1 NHTSA campaign(s) for this make/model/year (not VIN-specific). 17\" wheels -> 14,500 per 2025 chart. Deep-dive rank 8.",
+      "flags": "NEEDS CHECK: cab disputed: listing says crew, VIN pattern may be double; delivery location/fees not confirmed; title not shown. Wheels: 17\". 1 NHTSA campaign(s) for this make/model/year (not VIN-specific). 17\" wheels -> 14,500 per 2025 chart. BodyCabType not decoded by vPIC. VIN evidence: vPIC's GM 2020-21 schema reads VIN position 4 as cab+GVWR (1=crew Class 2H, 4=crew Class 3, 2/5=double, 3=regular; tested 10/27); vPIC does not decode cab for 2022+ GM HD, so this is consistent-with, not proof. Position 4 here is '1' (crew Class 2H in the 2020-21 schema), which argues against double cab. Deep-dive rank 10.",
       "flag_tags": [
         "deep_dive",
         "needs_check",
         "online"
       ],
+      "dd_status": "needs_check",
+      "dd_reason": "cab disputed: listing says crew, VIN pattern may be double; delivery location/fees not confirmed; title not shown",
       "first_seen": "2026-10-27",
       "last_checked": "2026-10-27",
       "cab": null
@@ -2134,7 +2395,7 @@
       "rank": "C9",
       "g": 6,
       "grp": "Used finds · Truck Deal Finder deep dive",
-      "status": "NEEDS CHECK: cab, title and dealer address not verified",
+      "status": "NEEDS CHECK: cab unconfirmed; title not shown",
       "yr": 2025,
       "mk": "Chevrolet",
       "model": "Silverado 2500HD",
@@ -2152,20 +2413,21 @@
         }
       ],
       "dealer": true,
-      "loc": "Ferman CJDR Wesley Chapel, 24314 State Road 54, Lutz, FL 33559",
-      "lat": 28.185708,
-      "lng": -82.414525,
-      "d": 21.0,
+      "loc": "Ferman Buick GMC Lutz, 24252 State Road 54, Lutz, FL 33559",
+      "lat": 28.185714,
+      "lng": -82.415375,
+      "d": 20.9,
       "src": "CarGurus",
       "url": "https://www.cargurus.com/Cars/listing/462096427",
       "vin": "1GC4KME78SF149779",
-      "tow": "14,500-16,000 est.",
-      "tow_lb": 14500,
-      "flags": "NEEDS CHECK: cab, title and dealer address not verified. Listed as: Ferman CJDR Lutz. 1 NHTSA campaign(s) for this make/model/year (not VIN-specific). Dealer fee not captured. Deep-dive rank 9.",
+      "tow_lb": 16000,
+      "flags": "NEEDS CHECK: cab unconfirmed; title not shown. Carfax: https://www.carfax.com/vehicle/1GC4KME78SF149779 Wheels: 20\". 1 NHTSA campaign(s) for this make/model/year (not VIN-specific). Phone (813) 328-6462. Dealer fee not captured. CarGurus listed the dealer as 'Ferman CJDR Lutz'; gap-fill pass names it Ferman Buick GMC Lutz. Carfax: no accidents, 1 owner. VIN evidence: vPIC's GM 2020-21 schema reads VIN position 4 as cab+GVWR (1=crew Class 2H, 4=crew Class 3, 2/5=double, 3=regular; tested 10/27); vPIC does not decode cab for 2022+ GM HD, so this is consistent-with, not proof. Deep-dive rank 8.",
       "flag_tags": [
         "deep_dive",
         "needs_check"
       ],
+      "dd_status": "needs_check",
+      "dd_reason": "cab unconfirmed; title not shown",
       "first_seen": "2026-10-27",
       "last_checked": "2026-10-27",
       "cab": null
@@ -2174,7 +2436,7 @@
       "rank": "C10",
       "g": 6,
       "grp": "Used finds · Truck Deal Finder deep dive",
-      "status": "NEEDS CHECK: cab, title and dealer address not verified",
+      "status": "NEEDS CHECK: cab unconfirmed; title not shown",
       "yr": 2023,
       "mk": "Chevrolet",
       "model": "Silverado 2500HD",
@@ -2200,11 +2462,13 @@
       "url": "https://www.cargurus.com/Cars/listing/461826536",
       "vin": "2GC4YME72P1729588",
       "tow_lb": 14500,
-      "flags": "NEEDS CHECK: cab, title and dealer address not verified. 1 NHTSA campaign(s) for this make/model/year (not VIN-specific). Dealer fee not captured. Deep-dive rank 10.",
+      "flags": "NEEDS CHECK: cab unconfirmed; title not shown. Carfax: https://www.carfax.com/vehicle/2GC4YME72P1729588 Wheels: 20\". 1 NHTSA campaign(s) for this make/model/year (not VIN-specific). Phone (813) 566-0245. Dealer fee not captured. Carfax: no accidents, 1 owner. VIN evidence: vPIC's GM 2020-21 schema reads VIN position 4 as cab+GVWR (1=crew Class 2H, 4=crew Class 3, 2/5=double, 3=regular; tested 10/27); vPIC does not decode cab for 2022+ GM HD, so this is consistent-with, not proof. Deep-dive rank 11.",
       "flag_tags": [
         "deep_dive",
         "needs_check"
       ],
+      "dd_status": "needs_check",
+      "dd_reason": "cab unconfirmed; title not shown",
       "first_seen": "2026-10-27",
       "last_checked": "2026-10-27",
       "cab": null
@@ -2213,7 +2477,7 @@
       "rank": "C11",
       "g": 6,
       "grp": "Used finds · Truck Deal Finder deep dive",
-      "status": "NEEDS CHECK: crew cab not confirmed on listing or VIN decode; title not shown",
+      "status": "NEEDS CHECK: crew cab inferred (172\" wheelbase, 6.5 ft bed), not confirmed; title not shown",
       "yr": 2022,
       "mk": "Chevrolet",
       "model": "Silverado 2500HD",
@@ -2221,6 +2485,7 @@
       "eng": "Gasoline 6.6L (L8T)",
       "fuel": "gas",
       "cond_new": false,
+      "cab": "Crew Cab (inferred, unconfirmed)",
       "mi": 26945,
       "price": 44998,
       "prev": null,
@@ -2230,6 +2495,7 @@
           "price": 44998
         }
       ],
+      "doc": 2950,
       "dealer": true,
       "loc": "CarMax Tampa, 14920 N Nebraska Ave, Tampa, FL 33613",
       "lat": 28.086398,
@@ -2239,14 +2505,15 @@
       "url": "https://www.carmax.com/car/28875956",
       "vin": "1GC4WNE73NF230705",
       "tow_lb": 14500,
-      "flags": "NEEDS CHECK: crew cab not confirmed on listing or VIN decode; title not shown. 3 NHTSA campaign(s) for this make/model/year (not VIN-specific). Miles ~27k on CarMax, 26,945 on CarGurus. CarMax shows ~$2,950 est. tax/title/fees (includes sales tax, so not comparable to dealer doc fees; all_in excludes it). 2WD. Deep-dive rank 11.",
+      "flags": "NEEDS CHECK: crew cab inferred (172\" wheelbase, 6.5 ft bed), not confirmed; title not shown. Wheels: 20\"+. 3 NHTSA campaign(s) for this make/model/year (not VIN-specific). Phone (833) 417-2811. Miles ~27k on CarMax, 26,945 on CarGurus. CarMax shows ~$2,950 est. tax/title/fees (includes sales tax, so not comparable to dealer doc fees; all_in excludes it). 2WD. AutoCheck: 1 owner, no flood or frame damage. all_in uses CarMax's $2,950 est. tax/title/fees (includes sales tax, so it reads high next to dealer doc fees). VIN evidence: vPIC's GM 2020-21 schema reads VIN position 4 as cab+GVWR (1=crew Class 2H, 4=crew Class 3, 2/5=double, 3=regular; tested 10/27); vPIC does not decode cab for 2022+ GM HD, so this is consistent-with, not proof. Deep-dive rank 16.",
       "flag_tags": [
         "deep_dive",
         "needs_check"
       ],
+      "dd_status": "needs_check",
+      "dd_reason": "crew cab inferred (172\" wheelbase, 6.5 ft bed), not confirmed; title not shown",
       "first_seen": "2026-10-27",
-      "last_checked": "2026-10-27",
-      "cab": null
+      "last_checked": "2026-10-27"
     },
     {
       "rank": "C12",
@@ -2277,12 +2544,14 @@
       "url": "https://www.carvana.com/vehicle/4793045",
       "vin": "1GC1YME72MF314021",
       "tow_lb": 14500,
-      "flags": "NEEDS CHECK: delivery location/fees not confirmed; title not shown. Wheels: 20\". 6 NHTSA campaign(s) for this make/model/year (not VIN-specific). Carvana delivery/shipping fee to 34669 not captured. VIN decode: Crew Cab. Deep-dive rank 14.",
+      "flags": "NEEDS CHECK: delivery location/fees not confirmed; title not shown. Wheels: 20\". 6 NHTSA campaign(s) for this make/model/year (not VIN-specific). Carvana delivery/shipping fee to 34669 not captured. VIN decode: Crew Cab. Deep-dive rank 19.",
       "flag_tags": [
         "deep_dive",
         "needs_check",
         "online"
       ],
+      "dd_status": "needs_check",
+      "dd_reason": "delivery location/fees not confirmed; title not shown",
       "first_seen": "2026-10-27",
       "last_checked": "2026-10-27"
     },
@@ -2317,11 +2586,13 @@
       "vin": "2GC4YME7XR1105086",
       "tow": "14,500-16,000 est.",
       "tow_lb": 14500,
-      "flags": "NEEDS CHECK: cab, title and dealer address not verified. 4 NHTSA campaign(s) for this make/model/year (not VIN-specific). Dealer fee not captured. Deep-dive rank 16.",
+      "flags": "NEEDS CHECK: cab, title and dealer address not verified. 4 NHTSA campaign(s) for this make/model/year (not VIN-specific). Phone (813) 516-6030. Dealer fee not captured. 2024 tow uses the 2024-26 wheel-size rule (no 2024 Chevy chart on file; 2025/26 charts: 17\" 14,500, 18-22\" 16,000). Deep-dive rank 21.",
       "flag_tags": [
         "deep_dive",
         "needs_check"
       ],
+      "dd_status": "needs_check",
+      "dd_reason": "cab, title and dealer address not verified",
       "first_seen": "2026-10-27",
       "last_checked": "2026-10-27",
       "cab": null
@@ -2357,11 +2628,13 @@
       "vin": "2GC4KNE70T1148088",
       "tow": "14,500-16,000 est.",
       "tow_lb": 14500,
-      "flags": "NEEDS CHECK: cab, title and dealer address not verified. Listed as: Maus Nissan Brooksville. 2 NHTSA campaign(s) for this make/model/year (not VIN-specific). Dealer fee not captured. Deep-dive rank 17.",
+      "flags": "NEEDS CHECK: cab, title and dealer address not verified. Listed as: Maus Nissan Brooksville. 2 NHTSA campaign(s) for this make/model/year (not VIN-specific). Phone 352-423-6287. Dealer fee not captured. Deep-dive rank 22.",
       "flag_tags": [
         "deep_dive",
         "needs_check"
       ],
+      "dd_status": "needs_check",
+      "dd_reason": "cab, title and dealer address not verified",
       "first_seen": "2026-10-27",
       "last_checked": "2026-10-27",
       "cab": null
@@ -2370,7 +2643,7 @@
       "rank": "C15",
       "g": 6,
       "grp": "Used finds · Truck Deal Finder deep dive",
-      "status": "NEEDS CHECK: URL not captured; title not shown; cab not confirmed",
+      "status": "NEEDS CHECK: cab disputed: listing says crew, VIN pattern may be double; URL not captured; title not shown",
       "yr": 2025,
       "mk": "Chevrolet",
       "model": "Silverado 2500HD",
@@ -2397,11 +2670,13 @@
       "vin": "2GC1KME71S1197585",
       "tow": "14,500-16,000 est.",
       "tow_lb": 14500,
-      "flags": "NEEDS CHECK: URL not captured; title not shown; cab not confirmed. Listing URL not captured; the link is a web search for the VIN. 1 NHTSA campaign(s) for this make/model/year (not VIN-specific). Dealer fee not captured. Deep-dive rank 18.",
+      "flags": "NEEDS CHECK: cab disputed: listing says crew, VIN pattern may be double; URL not captured; title not shown. Listing URL not captured; the link is a web search for the VIN. 1 NHTSA campaign(s) for this make/model/year (not VIN-specific). Phone 727-290-4314. Dealer fee not captured. BodyCabType not decoded by vPIC. VIN evidence: vPIC's GM 2020-21 schema reads VIN position 4 as cab+GVWR (1=crew Class 2H, 4=crew Class 3, 2/5=double, 3=regular; tested 10/27); vPIC does not decode cab for 2022+ GM HD, so this is consistent-with, not proof. Position 4 here is '1' (crew Class 2H in the 2020-21 schema), which argues against double cab. Deep-dive rank 23.",
       "flag_tags": [
         "deep_dive",
         "needs_check"
       ],
+      "dd_status": "needs_check",
+      "dd_reason": "cab disputed: listing says crew, VIN pattern may be double; URL not captured; title not shown",
       "first_seen": "2026-10-27",
       "last_checked": "2026-10-27",
       "cab": null
@@ -2410,7 +2685,7 @@
       "rank": "C16",
       "g": 6,
       "grp": "Used finds · Truck Deal Finder deep dive",
-      "status": "NEEDS CHECK: cab, title and dealer address not verified",
+      "status": "NEEDS CHECK: title not shown",
       "yr": 2022,
       "mk": "Chevrolet",
       "model": "Silverado 2500HD",
@@ -2418,6 +2693,7 @@
       "eng": "Gasoline 6.6L (L8T)",
       "fuel": "gas",
       "cond_new": false,
+      "cab": "Crew Cab",
       "mi": 105741,
       "price": 41574,
       "prev": null,
@@ -2428,22 +2704,24 @@
         }
       ],
       "dealer": true,
-      "loc": "Jim Browne Chevrolet Dade City, 10741 US Highway 301, Dade City, FL 33525",
-      "lat": 28.313268,
-      "lng": -82.187805,
-      "d": 31.0,
+      "loc": "Jim Browne CJDR Dade City, 12020 US Highway 301, Dade City, FL 33525",
+      "lat": 28.331571,
+      "lng": -82.187436,
+      "d": 30.9,
       "src": "CarGurus",
       "url": "https://www.cargurus.com/Cars/listing/461431898",
       "vin": "1GC4YPE76NF158386",
       "tow_lb": 14500,
-      "flags": "NEEDS CHECK: cab, title and dealer address not verified. 3 NHTSA campaign(s) for this make/model/year (not VIN-specific). Dealer fee not captured. Deep-dive rank 19.",
+      "flags": "NEEDS CHECK: title not shown. Wheels: 18\". 3 NHTSA campaign(s) for this make/model/year (not VIN-specific). Phone (352) 593-3035. Dealer fee not captured. Deep-dive rank 33.",
       "flag_tags": [
         "deep_dive",
         "needs_check"
       ],
+      "dd_status": "needs_check",
+      "dd_reason": "title not shown",
+      "dd_note": "accident/minor damage; commercial use",
       "first_seen": "2026-10-27",
-      "last_checked": "2026-10-27",
-      "cab": null
+      "last_checked": "2026-10-27"
     },
     {
       "rank": "C17",
@@ -2467,20 +2745,22 @@
         }
       ],
       "dealer": true,
-      "loc": "Ferman CJDR Wesley Chapel, 24314 State Road 54, Lutz, FL 33559",
-      "lat": 28.185708,
-      "lng": -82.414525,
-      "d": 21.0,
+      "loc": "Ferman Buick GMC Lutz, 24252 State Road 54, Lutz, FL 33559",
+      "lat": 28.185714,
+      "lng": -82.415375,
+      "d": 20.9,
       "src": "CarGurus",
       "url": "https://www.google.com/search?q=1GT49PE74RF155909",
       "vin": "1GT49PE74RF155909",
       "tow": "14,500-16,000 est.",
       "tow_lb": 14500,
-      "flags": "NEEDS CHECK: no listing URL captured; cab, title, address not verified. Listing URL not captured; the link is a web search for the VIN. Listed as: Ferman Lutz. 4 NHTSA campaign(s) for this make/model/year (not VIN-specific). Dealer fee not captured. Tow from Chevy Silverado 2500HD chart (same 6.6 gas powertrain). Deep-dive rank 20.",
+      "flags": "NEEDS CHECK: no listing URL captured; cab, title, address not verified. Listing URL not captured; the link is a web search for the VIN. Listed as: Ferman Lutz. 4 NHTSA campaign(s) for this make/model/year (not VIN-specific). Dealer fee not captured. Tow from Chevy Silverado 2500HD chart (same 6.6 gas powertrain). 2024 tow uses the 2024-26 wheel-size rule (no 2024 Chevy chart on file; 2025/26 charts: 17\" 14,500, 18-22\" 16,000). Deep-dive rank 25.",
       "flag_tags": [
         "deep_dive",
         "needs_check"
       ],
+      "dd_status": "needs_check",
+      "dd_reason": "no listing URL captured; cab, title, address not verified",
       "first_seen": "2026-10-27",
       "last_checked": "2026-10-27",
       "cab": null
@@ -2489,7 +2769,7 @@
       "rank": "C18",
       "g": 6,
       "grp": "Used finds · Truck Deal Finder deep dive",
-      "status": "NEEDS CHECK: URL not captured; title not shown",
+      "status": "NEEDS CHECK: title not shown",
       "yr": 2020,
       "mk": "Chevrolet",
       "model": "Silverado 2500HD",
@@ -2513,14 +2793,16 @@
       "lng": -82.346013,
       "d": 35.7,
       "src": "TrueCar",
-      "url": "https://www.google.com/search?q=1GC4YRE76LF132234",
+      "url": "https://www.carfax.com/vehicle/1GC4YRE76LF132234",
       "vin": "1GC4YRE76LF132234",
       "tow_lb": 14500,
-      "flags": "NEEDS CHECK: URL not captured; title not shown. Listing URL not captured; the link is a web search for the VIN. 10 NHTSA campaign(s) for this make/model/year (not VIN-specific). Dealer fee not captured. Deep-dive rank 21.",
+      "flags": "NEEDS CHECK: title not shown. Listed as: Ferman Chevrolet of Tampa. 10 NHTSA campaign(s) for this make/model/year (not VIN-specific). Phone (813) 578-4124. Dealer fee not captured. Carfax: crew per description, no accident, 1 owner. Deep-dive rank 26.",
       "flag_tags": [
         "deep_dive",
         "needs_check"
       ],
+      "dd_status": "needs_check",
+      "dd_reason": "title not shown",
       "first_seen": "2026-10-27",
       "last_checked": "2026-10-27"
     },
@@ -2555,11 +2837,13 @@
       "vin": "2GC4KRE79T1183137",
       "tow": "14,500-16,000 est.",
       "tow_lb": 14500,
-      "flags": "NEEDS CHECK: cab, title and dealer address not verified. 2 NHTSA campaign(s) for this make/model/year (not VIN-specific). Dealer fee not captured. Deep-dive rank 22.",
+      "flags": "NEEDS CHECK: cab, title and dealer address not verified. 2 NHTSA campaign(s) for this make/model/year (not VIN-specific). Phone 727-290-4314. Dealer fee not captured. CarGurus dealer name was just 'Maher'; address/phone are Maher Chevrolet's (the only Maher dealer in the area), so confirm on the listing. Deep-dive rank 27.",
       "flag_tags": [
         "deep_dive",
         "needs_check"
       ],
+      "dd_status": "needs_check",
+      "dd_reason": "cab, title and dealer address not verified",
       "first_seen": "2026-10-27",
       "last_checked": "2026-10-27",
       "cab": null
@@ -2595,11 +2879,13 @@
       "url": "https://www.google.com/search?q=1GT49PE75MF293564",
       "vin": "1GT49PE75MF293564",
       "tow_lb": 14500,
-      "flags": "NEEDS CHECK: no listing URL captured; cab, title, address not verified. Listing URL not captured; the link is a web search for the VIN. 6 NHTSA campaign(s) for this make/model/year (not VIN-specific). Dealer fee not captured. VIN decode: Crew Cab. Tow from Chevy Silverado 2500HD chart (same 6.6 gas powertrain). Deep-dive rank 23.",
+      "flags": "NEEDS CHECK: no listing URL captured; cab, title, address not verified. Listing URL not captured; the link is a web search for the VIN. 6 NHTSA campaign(s) for this make/model/year (not VIN-specific). Dealer fee not captured. VIN decode: Crew Cab. Tow from Chevy Silverado 2500HD chart (same 6.6 gas powertrain). Deep-dive rank 28.",
       "flag_tags": [
         "deep_dive",
         "needs_check"
       ],
+      "dd_status": "needs_check",
+      "dd_reason": "no listing URL captured; cab, title, address not verified",
       "first_seen": "2026-10-27",
       "last_checked": "2026-10-27"
     },
@@ -2638,6 +2924,9 @@
         "deep_dive",
         "needs_check"
       ],
+      "dd_status": "needs_check",
+      "dd_reason": "no listing URL captured; cab, title, address not verified",
+      "dd_note": "MILES MISSING (unranked)",
       "first_seen": "2026-10-27",
       "last_checked": "2026-10-27",
       "cab": null
@@ -2672,11 +2961,14 @@
       "vin": "1GT4UPE7XTF412366",
       "tow": "14,500-16,000 est.",
       "tow_lb": 14500,
-      "flags": "NEEDS CHECK: no listing URL captured; cab, title, address not verified. Listing URL not captured; the link is a web search for the VIN. 1 NHTSA campaign(s) for this make/model/year (not VIN-specific). Mileage not captured. Dealer fee not captured. Dealer location not captured; verify it is within ~50 mi. Tow from Chevy Silverado 2500HD chart (same 6.6 gas powertrain).",
+      "flags": "NEEDS CHECK: no listing URL captured; cab, title, address not verified. Listing URL not captured; the link is a web search for the VIN. Listed as: Coast Buick GMC Port Richey. 1 NHTSA campaign(s) for this make/model/year (not VIN-specific). Phone 727-470-6615. Mileage not captured. Dealer fee not captured. Dealer location not captured; verify it is within ~50 mi. Tow from Chevy Silverado 2500HD chart (same 6.6 gas powertrain). Port Richey location per Carfax, not Bradenton.",
       "flag_tags": [
         "deep_dive",
         "needs_check"
       ],
+      "dd_status": "needs_check",
+      "dd_reason": "no listing URL captured; cab, title, address not verified",
+      "dd_note": "MILES MISSING (unranked)",
       "first_seen": "2026-10-27",
       "last_checked": "2026-10-27",
       "cab": null
@@ -2711,14 +3003,267 @@
       "vin": "1GT49ZE75RF172651",
       "tow": "14,500-16,000 est.",
       "tow_lb": 14500,
-      "flags": "NEEDS CHECK: no listing URL captured; cab, title, address not verified. Listing URL not captured; the link is a web search for the VIN. 4 NHTSA campaign(s) for this make/model/year (not VIN-specific). Mileage not captured. Dealer fee not captured. Tow from Chevy Silverado 2500HD chart (same 6.6 gas powertrain).",
+      "flags": "NEEDS CHECK: no listing URL captured; cab, title, address not verified. Listing URL not captured; the link is a web search for the VIN. 4 NHTSA campaign(s) for this make/model/year (not VIN-specific). Mileage not captured. Dealer fee not captured. Tow from Chevy Silverado 2500HD chart (same 6.6 gas powertrain). 2024 tow uses the 2024-26 wheel-size rule (no 2024 Chevy chart on file; 2025/26 charts: 17\" 14,500, 18-22\" 16,000).",
       "flag_tags": [
         "deep_dive",
         "needs_check"
       ],
+      "dd_status": "needs_check",
+      "dd_reason": "no listing URL captured; cab, title, address not verified",
+      "dd_note": "MILES MISSING (unranked)",
       "first_seen": "2026-10-27",
       "last_checked": "2026-10-27",
       "cab": null
+    },
+    {
+      "rank": "C24",
+      "g": 6,
+      "grp": "Used finds · Truck Deal Finder deep dive",
+      "status": "NEEDS CHECK: cab unconfirmed",
+      "yr": 2025,
+      "mk": "Chevrolet",
+      "model": "Silverado 2500HD",
+      "trim": "Custom 4WD (CPO)",
+      "eng": "Gasoline 6.6L (L8T)",
+      "fuel": "gas",
+      "cond_new": false,
+      "mi": 22915,
+      "price": 46097,
+      "prev": null,
+      "price_history": [
+        {
+          "date": "2026-10-27",
+          "price": 46097
+        }
+      ],
+      "dealer": true,
+      "loc": "Chevrolet of Wesley Chapel, 26922 Wesley Chapel Blvd, Wesley Chapel, FL 33544",
+      "lat": 28.232766,
+      "lng": -82.371241,
+      "d": 21.6,
+      "src": "Carfax",
+      "url": "https://www.carfax.com/vehicle/2GC4KME72S1227738",
+      "vin": "2GC4KME72S1227738",
+      "tow_lb": 16000,
+      "flags": "NEEDS CHECK: cab unconfirmed. Wheels: 20\". 1 NHTSA campaign(s) for this make/model/year (not VIN-specific). Phone (877) 884-1909. CPO. Carfax: no accidents, 1 owner. VIN evidence: vPIC's GM 2020-21 schema reads VIN position 4 as cab+GVWR (1=crew Class 2H, 4=crew Class 3, 2/5=double, 3=regular; tested 10/27); vPIC does not decode cab for 2022+ GM HD, so this is consistent-with, not proof. Deep-dive rank 5.",
+      "flag_tags": [
+        "deep_dive",
+        "needs_check"
+      ],
+      "dd_status": "needs_check",
+      "dd_reason": "cab unconfirmed",
+      "first_seen": "2026-10-27",
+      "last_checked": "2026-10-27",
+      "cab": null
+    },
+    {
+      "rank": "C25",
+      "g": 6,
+      "grp": "Used finds · Truck Deal Finder deep dive",
+      "status": "NEEDS CHECK: cab unknown",
+      "yr": 2024,
+      "mk": "Chevrolet",
+      "model": "Silverado 2500HD",
+      "trim": "Custom",
+      "eng": "Gasoline 6.6L (L8T)",
+      "fuel": "gas",
+      "cond_new": false,
+      "mi": 82817,
+      "price": 41496,
+      "prev": null,
+      "price_history": [
+        {
+          "date": "2026-10-27",
+          "price": 41496
+        }
+      ],
+      "dealer": true,
+      "loc": "Stingray Chevrolet, 2002 N Frontage Rd, Plant City, FL 33563",
+      "lat": 28.039222,
+      "lng": -82.104327,
+      "d": 42.3,
+      "src": "Carfax",
+      "url": "https://www.carfax.com/vehicle/2GC4YME78R1123571",
+      "vin": "2GC4YME78R1123571",
+      "tow_lb": 16000,
+      "flags": "NEEDS CHECK: cab unknown. Wheels: 20\". 4 NHTSA campaign(s) for this make/model/year (not VIN-specific). Phone (813) 519-3450. No existing Stingray entry in this file to merge (earlier Stingray finds were chassis cabs, never added). VIN evidence: vPIC's GM 2020-21 schema reads VIN position 4 as cab+GVWR (1=crew Class 2H, 4=crew Class 3, 2/5=double, 3=regular; tested 10/27); vPIC does not decode cab for 2022+ GM HD, so this is consistent-with, not proof. 2024 tow uses the 2024-26 wheel-size rule (no 2024 Chevy chart on file; 2025/26 charts: 17\" 14,500, 18-22\" 16,000). Deep-dive rank 15.",
+      "flag_tags": [
+        "deep_dive",
+        "needs_check"
+      ],
+      "dd_status": "needs_check",
+      "dd_reason": "cab unknown",
+      "first_seen": "2026-10-27",
+      "last_checked": "2026-10-27",
+      "cab": null
+    },
+    {
+      "rank": "C26",
+      "g": 6,
+      "grp": "Used finds · Truck Deal Finder deep dive",
+      "status": "NEEDS CHECK: cab unknown",
+      "yr": 2026,
+      "mk": "Chevrolet",
+      "model": "Silverado 2500HD",
+      "trim": "LTZ",
+      "eng": "Gasoline 6.6L (L8T)",
+      "fuel": "gas",
+      "cond_new": false,
+      "mi": 3812,
+      "price": 66995,
+      "prev": null,
+      "price_history": [
+        {
+          "date": "2026-10-27",
+          "price": 66995
+        }
+      ],
+      "dealer": true,
+      "loc": "Brandon Ford, 9090 E Adamo Dr, Tampa, FL 33619",
+      "lat": 27.949378,
+      "lng": -82.355461,
+      "d": 35.3,
+      "src": "Carfax",
+      "url": "https://www.carfax.com/vehicle/1GC4KPE71TF201031",
+      "vin": "1GC4KPE71TF201031",
+      "tow": "14,500-16,000 est.",
+      "tow_lb": 14500,
+      "flags": "NEEDS CHECK: cab unknown. 2 NHTSA campaign(s) for this make/model/year (not VIN-specific). Phone (813) 212-3059. VIN evidence: vPIC's GM 2020-21 schema reads VIN position 4 as cab+GVWR (1=crew Class 2H, 4=crew Class 3, 2/5=double, 3=regular; tested 10/27); vPIC does not decode cab for 2022+ GM HD, so this is consistent-with, not proof. Deep-dive rank 24.",
+      "flag_tags": [
+        "deep_dive",
+        "needs_check"
+      ],
+      "dd_status": "needs_check",
+      "dd_reason": "cab unknown",
+      "first_seen": "2026-10-27",
+      "last_checked": "2026-10-27",
+      "cab": null
+    },
+    {
+      "rank": "C27",
+      "g": 6,
+      "grp": "Used finds · Truck Deal Finder deep dive",
+      "status": "NEEDS CHECK: cab unknown; Lakeland edge of radius",
+      "yr": 2023,
+      "mk": "Chevrolet",
+      "model": "Silverado 2500HD",
+      "trim": "High Country",
+      "eng": "Gasoline 6.6L (L8T)",
+      "fuel": "gas",
+      "cond_new": false,
+      "mi": 64761,
+      "price": 47988,
+      "prev": null,
+      "price_history": [
+        {
+          "date": "2026-10-27",
+          "price": 47988
+        }
+      ],
+      "dealer": true,
+      "loc": "Lovering Auto Sales, 111 Bartow Rd, Lakeland, FL 33801",
+      "lat": 28.043645,
+      "lng": -81.946631,
+      "d": 50.6,
+      "src": "Carfax",
+      "url": "https://www.carfax.com/vehicle/1GC4YRE79PF148210",
+      "vin": "1GC4YRE79PF148210",
+      "tow_lb": 14500,
+      "flags": "NEEDS CHECK: cab unknown; Lakeland edge of radius. 1 NHTSA campaign(s) for this make/model/year (not VIN-specific). Phone (863) 591-3372. VIN evidence: vPIC's GM 2020-21 schema reads VIN position 4 as cab+GVWR (1=crew Class 2H, 4=crew Class 3, 2/5=double, 3=regular; tested 10/27); vPIC does not decode cab for 2022+ GM HD, so this is consistent-with, not proof. Deep-dive rank 31.",
+      "flag_tags": [
+        "deep_dive",
+        "needs_check"
+      ],
+      "dd_status": "needs_check",
+      "dd_reason": "cab unknown; Lakeland edge of radius",
+      "dd_note": "minor damage; edge of 50-mi radius",
+      "first_seen": "2026-10-27",
+      "last_checked": "2026-10-27",
+      "cab": null
+    },
+    {
+      "rank": "C28",
+      "g": 6,
+      "grp": "Used finds · Truck Deal Finder deep dive",
+      "status": "NEEDS CHECK: cab unconfirmed; miles unknown",
+      "yr": 2025,
+      "mk": "Chevrolet",
+      "model": "Silverado 2500HD",
+      "trim": "Custom 4WD (CPO)",
+      "eng": "Gasoline 6.6L (L8T)",
+      "fuel": "gas",
+      "cond_new": false,
+      "price": 46634,
+      "prev": null,
+      "price_history": [
+        {
+          "date": "2026-10-27",
+          "price": 46634
+        }
+      ],
+      "dealer": true,
+      "loc": "Chevrolet of Wesley Chapel, 26922 Wesley Chapel Blvd, Wesley Chapel, FL 33544",
+      "lat": 28.232766,
+      "lng": -82.371241,
+      "d": 21.6,
+      "src": "Carfax",
+      "url": "https://www.carfax.com/vehicle/2GC4KME72S1105588",
+      "vin": "2GC4KME72S1105588",
+      "tow": "14,500-16,000 est.",
+      "tow_lb": 14500,
+      "flags": "NEEDS CHECK: cab unconfirmed; miles unknown. 1 NHTSA campaign(s) for this make/model/year (not VIN-specific). Phone (877) 884-1909. CPO. VIN evidence: vPIC's GM 2020-21 schema reads VIN position 4 as cab+GVWR (1=crew Class 2H, 4=crew Class 3, 2/5=double, 3=regular; tested 10/27); vPIC does not decode cab for 2022+ GM HD, so this is consistent-with, not proof.",
+      "flag_tags": [
+        "deep_dive",
+        "needs_check"
+      ],
+      "dd_status": "needs_check",
+      "dd_reason": "cab unconfirmed; miles unknown",
+      "dd_note": "MILES MISSING (unranked)",
+      "first_seen": "2026-10-27",
+      "last_checked": "2026-10-27",
+      "cab": null
+    },
+    {
+      "rank": "C29",
+      "g": 6,
+      "grp": "Used finds · Truck Deal Finder deep dive",
+      "status": "NEEDS CHECK: 'Call for Price' (price null); listed 0 mi looks like a placeholder",
+      "yr": 2021,
+      "mk": "Chevrolet",
+      "model": "Silverado 2500HD",
+      "trim": "Custom",
+      "eng": "Gasoline 6.6L (L8T)",
+      "fuel": "gas",
+      "cond_new": false,
+      "cab": "Crew Cab (VIN decode)",
+      "mi": 0,
+      "price": null,
+      "prev": null,
+      "price_history": [
+        {
+          "date": "2026-10-27",
+          "price": null
+        }
+      ],
+      "dealer": true,
+      "loc": "Ferman Chevrolet Tampa, 9751 E Adamo Dr, Tampa, FL 33619",
+      "lat": 27.949232,
+      "lng": -82.346013,
+      "d": 35.7,
+      "src": "Carfax",
+      "url": "https://www.carfax.com/vehicle/1GC4YME70MF163077",
+      "vin": "1GC4YME70MF163077",
+      "tow_lb": 14500,
+      "flags": "NEEDS CHECK: 'Call for Price' (price null); listed 0 mi looks like a placeholder. Listed as: Ferman Chevrolet of Tampa. 6 NHTSA campaign(s) for this make/model/year (not VIN-specific). Phone (813) 578-4124.",
+      "flag_tags": [
+        "deep_dive",
+        "needs_check"
+      ],
+      "dd_status": "needs_check",
+      "dd_reason": "'Call for Price' (price null); listed 0 mi looks like a placeholder",
+      "dd_note": "NO PRICE (unranked)",
+      "first_seen": "2026-10-27",
+      "last_checked": "2026-10-27"
     }
   ],
   "sources": "Checked Oct 27, 2026, 5:30-5:33 PM ET. Craigslist Hudson-centered city search (radius 150 mi, 17 queries at 4 s spacing, all HTTP 200; 801 unique posts, 58 not seen in the last four pulls, 3 of them GM HD pickups, none qualifying) plus every Craigslist listing page in the feed (all 200); AutoNation fetcher: ONE narrow GM-HD-only run (150 mi, no detail pages, status ok, 6 loads, 42 vehicles, no Cloudflare block); AutoNation Chevrolet South Clearwater store VDP and used Silverado HD page; gatortruckcenter.com and avinenterprises.com inventory and detail pages (curl 200). NHTSA recalls by model year; OEM towing guides on file. Not used: Cars.com, AutoTrader, CarGurus, Facebook, browser. Research only: nobody contacted."
