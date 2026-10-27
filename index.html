@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0e1512">
+  <meta name="color-scheme" content="dark light">
+  <meta name="description" content="Truck listings within 150 miles of Hudson, FL. Updated once a day.">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Truck Deals">
+  <title>Truck Deals</title>
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="icon" href="./icons/icon-192.png" sizes="192x192" type="image/png">
+  <link rel="apple-touch-icon" href="./icons/icon-192.png">
+  <link rel="stylesheet" href="./styles.css">
+  <script>
+    (function () {
+      var theme = "dark";
+      try {
+        var stored = localStorage.getItem("td_theme");
+        if (stored === "light" || stored === "dark") theme = stored;
+      } catch (err) {}
+      document.documentElement.setAttribute("data-theme", theme);
+      var meta = document.querySelector('meta[name="theme-color"]');
+      if (meta) meta.setAttribute("content", theme === "light" ? "#f3f6f4" : "#0e1512");
+    })();
+  </script>
+</head>
+<body>
+  <div class="sticky-top">
+    <header class="top">
+      <div class="brand">
+        <img class="logo" src="./icons/icon-192.png" alt="" width="40" height="40">
+        <div>
+          <p class="eyebrow">Hudson, FL · 150 mi</p>
+          <h1>Truck Deals</h1>
+          <p class="updated" id="last-updated" data-testid="last-updated">Last updated …</p>
+        </div>
+      </div>
+      <div class="top-actions">
+        <button type="button" class="btn" id="theme-toggle" data-testid="theme-toggle">Light</button>
+        <button type="button" class="btn btn-accent" id="refresh-btn">Refresh</button>
+      </div>
+    </header>
+    <nav class="tabs" aria-label="Primary">
+      <button type="button" class="tab" id="nav-list" data-testid="nav-list" aria-current="page">Listings</button>
+      <button type="button" class="tab" id="nav-specs" data-testid="nav-specs" aria-current="false">Search specs</button>
+    </nav>
+    <p id="offline-notice" class="offline" data-testid="offline-notice" role="status" hidden></p>
+  </div>
+
+  <div id="pull-indicator" class="pull" hidden>Pull to refresh</div>
+
+  <main id="list-view">
+    <div class="wrap">
+      <div class="filter-panel" id="filter-panel">
+        <div class="panel-head">
+          <h2>Filters</h2>
+          <button type="button" class="btn btn-small" id="filter-clear" data-testid="filter-clear">Clear</button>
+        </div>
+
+        <div class="field">
+          <label class="lbl" for="sort-select">Sort</label>
+          <select id="sort-select" data-testid="sort-select">
+            <option value="rank">Rank</option>
+            <option value="price">Price</option>
+            <option value="miles">Miles</option>
+            <option value="distance">Distance</option>
+            <option value="tow">Tow</option>
+            <option value="grade">Grade</option>
+            <option value="newest">Newest first seen</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <span class="lbl" id="grade-label">Grade</span>
+          <div class="grades" role="group" aria-labelledby="grade-label">
+            <label class="chip-toggle"><input type="checkbox" data-testid="filter-grade-A" value="A" checked> A</label>
+            <label class="chip-toggle"><input type="checkbox" data-testid="filter-grade-B" value="B" checked> B</label>
+            <label class="chip-toggle"><input type="checkbox" data-testid="filter-grade-C" value="C" checked> C</label>
+            <label class="chip-toggle"><input type="checkbox" data-testid="filter-grade-D" value="D" checked> D</label>
+          </div>
+        </div>
+
+        <div class="filter-grid">
+          <div class="field">
+            <span class="lbl" id="price-label">Price</span>
+            <div class="split">
+              <input id="filter-price-min" data-testid="filter-price-min" type="number" inputmode="numeric" min="0" step="1" placeholder="Min $" aria-label="Minimum price" autocomplete="off">
+              <input id="filter-price-max" data-testid="filter-price-max" type="number" inputmode="numeric" min="0" step="1" placeholder="Max $" aria-label="Maximum price" autocomplete="off">
+            </div>
+          </div>
+          <div class="field">
+            <label class="lbl" for="filter-max-miles">Max miles</label>
+            <input id="filter-max-miles" data-testid="filter-max-miles" type="number" inputmode="numeric" min="0" step="1" placeholder="Any" autocomplete="off">
+          </div>
+          <div class="field">
+            <label class="lbl" for="filter-min-tow">Min tow (lb)</label>
+            <input id="filter-min-tow" data-testid="filter-min-tow" type="number" inputmode="numeric" min="0" step="100" placeholder="Any" autocomplete="off">
+          </div>
+          <div class="field">
+            <label class="lbl" for="filter-max-distance">Max distance <strong id="dist-readout">150 mi</strong></label>
+            <input id="filter-max-distance" data-testid="filter-max-distance" type="range" min="0" max="150" value="150" step="1" aria-valuemin="0" aria-valuemax="150">
+          </div>
+          <div class="field">
+            <label class="lbl" for="filter-fuel">Fuel</label>
+            <select id="filter-fuel" data-testid="filter-fuel">
+              <option value="any">Any fuel</option>
+              <option value="gas">Gas</option>
+              <option value="diesel">Diesel</option>
+            </select>
+          </div>
+          <div class="field">
+            <label class="lbl" for="filter-cond">Condition</label>
+            <select id="filter-cond" data-testid="filter-cond">
+              <option value="any">New or used</option>
+              <option value="new">New</option>
+              <option value="used">Used</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="checks">
+          <label class="check-row"><input type="checkbox" data-testid="filter-new-only"> NEW only</label>
+          <label class="check-row"><input type="checkbox" data-testid="filter-drops-only"> Price drops only</label>
+          <label class="check-row"><input type="checkbox" data-testid="filter-hide-flagged"> Hide flagged</label>
+        </div>
+      </div>
+
+      <p id="result-count" class="result-count" aria-live="polite"></p>
+      <div id="list"></div>
+      <footer class="foot">
+        <p>Payments are estimates, info only. Display only: no accounts, ads, or analytics.</p>
+        <p>Add Truck Deals to your home screen for offline use.</p>
+      </footer>
+    </div>
+  </main>
+
+  <section id="specs-view" data-testid="specs-view" hidden>
+    <div class="wrap" id="specs-body"></div>
+  </section>
+
+  <div id="detail" data-testid="detail" hidden>
+    <div class="detail-bar">
+      <button type="button" class="btn" id="detail-back">Back</button>
+      <p id="detail-kicker" class="detail-kicker"></p>
+    </div>
+    <div id="detail-body" class="detail-body"></div>
+    <div id="detail-foot" class="detail-foot"></div>
+  </div>
+
+  <script src="./app.js"></script>
+</body>
+</html>
