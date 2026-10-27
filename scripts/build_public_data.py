@@ -48,6 +48,7 @@ LISTING_KEYS = (
     "doc",
     "dealer",
     "loc",
+    "online",
     "lat",
     "lng",
     "d",

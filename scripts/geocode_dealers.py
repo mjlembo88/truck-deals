@@ -110,16 +110,18 @@ def main(argv: list[str] | None = None) -> int:
         if e.get("lat") is not None and e.get("lng") is not None:
             continue
         hit, how = None, None
+        src = None
         if e.get("address"):
-            hit, how = census(e["address"]), "address"
+            hit, how, src = census(e["address"]), "address", "US Census geocoder"
             if not hit:
-                hit = nominatim(e["address"])
+                hit, src = nominatim(e["address"]), "Nominatim (check it is not just the road centroid)"
         if not hit and e.get("city"):
             hit, how = nominatim(e["city"]), "city"
         if not hit and not e.get("address") and not e.get("city"):
             hit, how = nominatim(f"{e['name']}, Florida"), "name"
         if hit:
             e["lat"], e["lng"], e["precision"] = hit[0], hit[1], how
+            e["coord_source"] = src or "Nominatim"
             print(f"geocoded {e['name']}: {hit[0]}, {hit[1]} ({how})")
         else:
             missing.append(e["name"])

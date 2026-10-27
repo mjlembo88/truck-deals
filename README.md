@@ -73,3 +73,12 @@ The private refresh (`/workspace/truck-deals/mk_grade_a.py runs/<date>-<am|pm>.j
 - Dedupes by VIN (else url) against the manual file and the generated listings; existing entries are never overwritten. Records missing year, make, model, price or url are skipped and reported.
 - Coordinates come from the record or from `scripts/dealers.json` (matched on loc); distance `d` to Hudson FL is computed from them. Without coordinates `d` stays null and the app hides the listing, so add the dealer to `scripts/dealers.json` (`scripts/geocode_dealers.py`).
 - New entries get group 6, `status` "NEW (Truck Deal Finder deep dive)", `flag_tags` `["deep_dive"]`, `cond_new` false and a one-point price history.
+
+### Deep-dive import rules (Oct 27 update)
+
+- The importer reads Truck Deal Finder's schema as-is: `dealer`, `loc`, `phone`, `yr`, `model` (make prefix such as "Chevrolet Silverado 2500HD" is split into `mk`/`model`), `trim`, `cab`, `fuel` (text kept as `eng`, normalized to gas/diesel), `miles`, `price`, `fee` (-> `doc`), `vin`, `url`, `tow_lb` (text such as "14,500-16,000 est." kept in `tow`, first number in `tow_lb`), `status`, `title`, `wheels`, `recalls` (count), `notes`, `source`, `rank`.
+- `status`: `confirmed` -> ranked section; `needs_check: <why>` -> conditional section ("Conditional · needs a check") with status `NEEDS CHECK: <why>`, a `needs_check` tag, and a highlighted line on the card; `excluded: ...` (or a salvage / rebuilt / flood title) -> not imported, just reported.
+- Dedupe order: VIN; else url; else dealer + year + model + price.
+- Missing listing URL but a VIN: `url` becomes a web search for the VIN and the flags say so.
+- Dealer matched in `scripts/dealers.json`: `loc` becomes "<dealer>, <street address>" and coordinates/distance come from the table. Unknown dealers keep the record's location text and have no pin until added to the table.
+- Online sellers (Carvana, Vroom): `online: true`, no pin, no distance. The app shows "Online · delivery", keeps them in the list at any distance setting, and leaves them off the map. Listings that are neither online nor located only show while the distance filter is at its maximum.

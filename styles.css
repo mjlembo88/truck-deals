@@ -723,3 +723,7 @@ input[type="checkbox"] {
 .pay-grid .field { margin-top: 4px; }
 .pay-note { margin: 10px 0 12px; color: var(--muted); font-size: 0.78rem; }
 input[type="radio"] { width: 20px; height: 20px; accent-color: var(--accent); }
+
+/* deep-dive "needs check" status on cards */
+.needs-check { margin: 2px 0; padding: 6px 8px; border-radius: 10px; background: #3a2a12; color: #ffe7bf; font-size: 0.85rem; font-weight: 600; }
+[data-theme="light"] .needs-check { background: #fff1d6; color: #5c3b08; }

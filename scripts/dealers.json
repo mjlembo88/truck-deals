@@ -55,7 +55,8 @@
       "name": "AutoNation Toyota Pinellas Park",
       "address": "8501 US Highway 19 N, Pinellas Park, FL 33781",
       "match": [
-        "AutoNation Toyota Pinellas Park"
+        "AutoNation Toyota Pinellas Park",
+        "AutoNation Pinellas Park"
       ],
       "lat": 27.848398,
       "lng": -82.690074,
@@ -127,7 +128,8 @@
       "city": "Largo, FL",
       "match": [
         "Largo, private-style seller",
-        "Largo, same multi-truck poster"
+        "Largo, same multi-truck poster",
+        "Private seller (Craigslist), Largo"
       ],
       "lat": 27.909467,
       "lng": -82.787324,
@@ -143,6 +145,212 @@
       "lng": -82.740621,
       "city": "Tarpon Springs, FL",
       "precision": "address"
+    },
+    {
+      "name": "Nissan of Clearwater",
+      "address": "15232 US Highway 19 N, Clearwater, FL 33764",
+      "match": [
+        "Nissan of Clearwater"
+      ],
+      "lat": 27.910769,
+      "lng": -82.728118,
+      "address_source": "nissanofclearwater.com",
+      "precision": "poi",
+      "coord_source": "OpenStreetMap shop=car point 'Autoway Nissan' (former name) on US 19 N; Census and Nominatim could not match 15232 (Nominatim returned the road centroid)"
+    },
+    {
+      "name": "Tasca Buick GMC Clearwater",
+      "address": "18200 US Highway 19 N, Clearwater, FL 33764",
+      "match": [
+        "Tasca Buick GMC Clearwater"
+      ],
+      "lat": 27.937761,
+      "lng": -82.730996,
+      "address_source": "given by CoS",
+      "precision": "address",
+      "coord_source": "Nominatim: OSM point 'Dick Norris Buick GMC, 18200 US Hwy 19 N' (former name of this store); Census no match"
+    },
+    {
+      "name": "Tasca Buick GMC Palm Harbor",
+      "address": "30777 US Highway 19 N, Palm Harbor, FL 34684",
+      "match": [
+        "Tasca Buick GMC Palm Harbor"
+      ],
+      "lat": 28.051885,
+      "lng": -82.738664,
+      "address_source": "given by CoS",
+      "precision": "address",
+      "coord_source": "US Census geocoder"
+    },
+    {
+      "name": "Fields Motorcars Lakeland",
+      "address": "4141 N Florida Ave, Lakeland, FL 33805",
+      "match": [
+        "Fields Motorcars"
+      ],
+      "lat": 28.094141,
+      "lng": -81.955657,
+      "address_source": "fieldsmotorcars.com",
+      "precision": "address",
+      "coord_source": "US Census geocoder"
+    },
+    {
+      "name": "Century Buick GMC",
+      "address": "3308 W Hillsborough Ave, Tampa, FL 33614",
+      "match": [
+        "Century Buick GMC"
+      ],
+      "lat": 27.995951,
+      "lng": -82.49692,
+      "address_source": "centurybuickgmc.com",
+      "precision": "address",
+      "coord_source": "US Census geocoder"
+    },
+    {
+      "name": "Kia of Wesley Chapel",
+      "address": "28555 State Road 54, Wesley Chapel, FL 33543",
+      "match": [
+        "Kia of Wesley Chapel"
+      ],
+      "lat": 28.238567,
+      "lng": -82.34204,
+      "address_source": "kiaofwesleychapel.com",
+      "precision": "address",
+      "coord_source": "US Census geocoder"
+    },
+    {
+      "name": "CarMax Tampa",
+      "address": "14920 N Nebraska Ave, Tampa, FL 33613",
+      "match": [
+        "CarMax Tampa"
+      ],
+      "lat": 28.086398,
+      "lng": -82.451431,
+      "address_source": "carmax.com/stores/7105",
+      "precision": "address",
+      "coord_source": "US Census geocoder"
+    },
+    {
+      "name": "Maher Chevrolet",
+      "address": "2901 34th St N, St. Petersburg, FL 33713",
+      "match": [
+        "Maher"
+      ],
+      "lat": 27.79745,
+      "lng": -82.679407,
+      "address_source": "maherchevrolet.com",
+      "precision": "address",
+      "coord_source": "US Census geocoder"
+    },
+    {
+      "name": "Ferman Chevrolet Tampa",
+      "address": "9751 E Adamo Dr, Tampa, FL 33619",
+      "match": [
+        "Ferman Chevrolet Tampa"
+      ],
+      "lat": 27.949232,
+      "lng": -82.346013,
+      "address_source": "fermanchevy.com",
+      "precision": "address",
+      "coord_source": "US Census geocoder"
+    },
+    {
+      "name": "Unique Motors of Tampa",
+      "address": "8440 N Florida Ave, Tampa, FL 33604",
+      "match": [
+        "Unique Motors"
+      ],
+      "lat": 28.026862,
+      "lng": -82.459571,
+      "address_source": "uniquemotorsoftampa.com",
+      "precision": "address",
+      "coord_source": "US Census geocoder"
+    },
+    {
+      "name": "Rivard Buick GMC",
+      "address": "9740 E Adamo Dr, Tampa, FL 33619",
+      "match": [
+        "Rivard Buick GMC"
+      ],
+      "lat": 27.949415,
+      "lng": -82.346225,
+      "address_source": "rivardbuickgmc.com",
+      "precision": "address",
+      "coord_source": "US Census geocoder"
+    },
+    {
+      "name": "Jim Browne Chevrolet Dade City",
+      "address": "10741 US Highway 301, Dade City, FL 33525",
+      "match": [
+        "Jim Browne"
+      ],
+      "lat": 28.313268,
+      "lng": -82.187805,
+      "address_source": "jimbrownechevygmc.com",
+      "precision": "address",
+      "coord_source": "US Census geocoder"
+    },
+    {
+      "name": "Ferman CJDR Wesley Chapel",
+      "address": "24314 State Road 54, Lutz, FL 33559",
+      "match": [
+        "Ferman CJDR Lutz",
+        "Ferman Lutz",
+        "Ferman CJDR Wesley Chapel"
+      ],
+      "lat": 28.185708,
+      "lng": -82.414525,
+      "address_source": "fermancjdrwesleychapel.com (assumed to be the 'Ferman Lutz' store)",
+      "precision": "address",
+      "coord_source": "US Census geocoder"
+    },
+    {
+      "name": "Maus Nissan of Brooksville",
+      "address": "15220 Wiscon Rd, Brooksville, FL 34601",
+      "match": [
+        "Maus Nissan"
+      ],
+      "lat": 28.533748,
+      "lng": -82.476675,
+      "address_source": "mausnissanofbrooksville.com",
+      "precision": "address",
+      "coord_source": "US Census geocoder"
+    },
+    {
+      "name": "Sun Toyota",
+      "address": "3001 US Highway 19, Holiday, FL 34691",
+      "match": [
+        "Sun Toyota"
+      ],
+      "lat": 28.202075,
+      "lng": -82.739942,
+      "address_source": "toyota.com dealer page",
+      "precision": "address",
+      "coord_source": "US Census geocoder"
+    },
+    {
+      "name": "Brooksville Ford",
+      "address": "7200 S Broad St, Brooksville, FL 34601",
+      "match": [
+        "Brooksville Ford"
+      ],
+      "lat": 28.539193,
+      "lng": -82.40428,
+      "address_source": "brooksvilleford.com",
+      "precision": "address",
+      "coord_source": "US Census geocoder"
+    },
+    {
+      "name": "Discovery Auto Center",
+      "address": "10536 N Florida Ave, Tampa, FL 33612",
+      "match": [
+        "Discovery Auto"
+      ],
+      "lat": 28.046171,
+      "lng": -82.459483,
+      "address_source": "discoveryautotampa.com",
+      "precision": "address",
+      "coord_source": "US Census geocoder"
     }
   ]
 }

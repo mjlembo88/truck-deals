@@ -61,7 +61,11 @@
     open_recall_risk: "Open recall risk",
     title_unknown: "Title unknown",
     below_market: "Below market",
-    drive_unconfirmed: "Drive unconfirmed"
+    drive_unconfirmed: "Drive unconfirmed",
+    deep_dive: "Deep dive",
+    needs_check: "Needs check",
+    online: "Online · delivery",
+    us19_lookup: "US 19 lookup"
   };
 
   var state = {
@@ -444,7 +448,13 @@
       if (priceMin != null && (!isNum(listing.price) || listing.price < priceMin)) return false;
       if (priceMax != null && (!isNum(listing.price) || listing.price > priceMax)) return false;
       if (maxMiles != null && (!isNum(listing.mi) || listing.mi > maxMiles)) return false;
-      if (!isNum(listing.d) || listing.d > filters.maxDistance) return false;
+      /* Online (delivery) listings have no distance: the distance filter does not apply.
+         Other listings with no distance show only while the distance filter is at its max. */
+      if (listing.online !== true) {
+        if (!isNum(listing.d)) {
+          if (filters.maxDistance < 150) return false;
+        } else if (listing.d > filters.maxDistance) return false;
+      }
       if (minTow != null && (!isNum(listing.tow_lb) || listing.tow_lb < minTow)) return false;
       if (!fuelMatches(listing, filters.fuel)) return false;
       if (filters.cond === "new" && listing.cond_new !== true) return false;
@@ -560,7 +570,7 @@
     var was = isDrop(listing) ? '<span class="was">' + esc(money(listing.prev)) + "</span>" : "";
     var locBits = [];
     if (listing.loc) locBits.push(esc(listing.loc));
-    locBits.push(esc(distanceText(listing.d)));
+    locBits.push(esc(listing.online === true ? "Online · delivery" : distanceText(listing.d)));
     var tow = towText(listing);
     var recallCount = recallsOf(listing).length;
     var recallLabel = recallCount === 1 ? "1 recall" : recallCount + " recalls";
@@ -601,15 +611,16 @@
       "</p>" +
       (tow ? '<p class="tow">Conventional tow ' + esc(tow) + "</p>" : "") +
       payLineHtml(listing) +
-      '<p class="sub">' +
-      esc(recallLabel) +
-      "</p>" +
+      (Array.isArray(listing.rec) ? '<p class="sub">' + esc(recallLabel) + "</p>" : "") +
+      (/^needs check/i.test(String(listing.status || ""))
+        ? '<p class="needs-check" data-testid="needs-check">' + esc(listing.status) + "</p>"
+        : "") +
       flagHtml(listing) +
       (seen.length ? '<p class="seen">' + esc(seen.join(" · ")) + "</p>" : "") +
       '<div class="card-actions">' +
       (hasCoords(listing)
         ? '<button type="button" class="btn btn-small" data-action="map" data-testid="card-map">Show on map</button>'
-        : '<span class="sub">No map location</span>') +
+        : '<span class="sub">' + (listing.online === true ? "Online · delivery, no map pin" : "No map location") + "</span>") +
       '<button type="button" class="btn btn-small" data-action="details" data-testid="card-details">Details</button>' +
       "</div>" +
       "</article>"
@@ -839,11 +850,11 @@
       rowText("Condition", condText(listing)) +
       rowText("Fuel", listing.fuel) +
       rowText("Location", listing.loc) +
-      rowText("Distance", distanceText(listing.d)) +
+      rowText("Distance", listing.online === true ? "Online · delivery" : distanceText(listing.d)) +
       rowHtml("VIN", vinHtml) +
       rowText("Conventional tow", towText(listing)) +
       rowHtml("Tow source", '<span data-testid="tow-source">' + esc(listing.tsrc || "No tow source listed") + "</span>") +
-      rowHtml("Recalls", recallLinks || "No recalls") +
+      rowHtml("Recalls", recallLinks || (Array.isArray(listing.rec) ? "No recalls" : "Not looked up (see flags)")) +
       rowText("Payment", payText(listing) ? payText(listing) + " (estimate, info only)" : "") +
       rowText("Seller", sellerDoc) +
       rowText("Source", listing.src) +
@@ -1136,8 +1147,8 @@
   function dealerName(listing) {
     var loc = String(listing.loc || "").trim();
     if (!loc) return "Unknown seller";
-    var cut = loc.indexOf(" (");
-    return cut > 0 ? loc.slice(0, cut).trim() : loc;
+    var name = loc.split(/\s*\(|,/)[0].trim();
+    return name || loc;
   }
 
   function hasCoords(listing) {
@@ -1492,7 +1503,11 @@
       bounds.push([group.lat, group.lng]);
     });
     var note = order.length + (order.length === 1 ? " dealer" : " dealers") + " · " + (listings.length - skipped) + " trucks";
-    if (skipped) note += " · " + skipped + " without location";
+    var online = listings.filter(function (l) {
+      return l.online === true;
+    }).length;
+    if (online) note += " · " + online + " online";
+    if (skipped - online > 0) note += " · " + (skipped - online) + " without location";
     $("map-note").textContent = note;
     $("map-note").setAttribute("data-markers", String(order.length));
     if (refit && bounds.length && !$("map-panel").classList.contains("collapsed")) {
@@ -1507,7 +1522,8 @@
     if (prev) prev.classList.remove("focused");
     if (card) card.classList.add("focused");
     if (!key || !state.markers[key]) {
-      $("map-note").textContent = "No map location for this listing";
+      var listing = findListing(rank);
+      $("map-note").textContent = listing && listing.online === true ? "Online listing (delivery), no map pin" : "No map location for this listing";
       return;
     }
     if ($("map-panel").classList.contains("collapsed")) {
