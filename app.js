@@ -34,7 +34,8 @@
     tagTitle: 400,
     dealerFees: [
       { match: "castriota", fee: 1594 },
-      { match: "coast buick", fee: 1298 }
+      { match: "coast buick", fee: 1298 },
+      { match: "ferman", fee: 1399 }
     ],
     defaultDealerFee: 1000,
     privateSellerFee: 0

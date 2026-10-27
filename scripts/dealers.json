@@ -132,6 +132,17 @@
       "lat": 27.909467,
       "lng": -82.787324,
       "precision": "city"
+    },
+    {
+      "name": "Ferman Chevrolet of Tarpon Springs",
+      "address": "43520 US Hwy 19 N, Tarpon Springs, FL 34689",
+      "match": [
+        "Ferman Chevrolet of Tarpon Springs"
+      ],
+      "lat": 28.167492,
+      "lng": -82.740621,
+      "city": "Tarpon Springs, FL",
+      "precision": "address"
     }
   ]
 }
