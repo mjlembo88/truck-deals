@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-28T01:07:58-04:00",
+  "updated_at": "2026-10-28T07:42:59-04:00",
   "groups": {
     "1": "G1 · GM 6.6L gas L8T 2024-26",
     "2": "G2 · GM 6.6L gas L8T 2020-23",
@@ -83,6 +83,10 @@
         {
           "date": "2026-10-27",
           "price": 49991
+        },
+        {
+          "date": "2026-10-28",
+          "price": 49991
         }
       ],
       "doc": 0,
@@ -107,7 +111,7 @@
         "edge_of_radius"
       ],
       "first_seen": "2026-10-17",
-      "last_checked": "2026-10-27",
+      "last_checked": "2026-10-28",
       "lat": 28.552869,
       "lng": -81.42359
     },
@@ -173,6 +177,10 @@
         {
           "date": "2026-10-27",
           "price": 46732
+        },
+        {
+          "date": "2026-10-28",
+          "price": 46732
         }
       ],
       "doc": 0,
@@ -202,7 +210,7 @@
         "price_drop"
       ],
       "first_seen": "2026-10-17",
-      "last_checked": "2026-10-27",
+      "last_checked": "2026-10-28",
       "lat": 27.909106,
       "lng": -82.728962
     },
@@ -268,6 +276,10 @@
         {
           "date": "2026-10-27",
           "price": 63229
+        },
+        {
+          "date": "2026-10-28",
+          "price": 63229
         }
       ],
       "doc": 0,
@@ -294,7 +306,7 @@
       ],
       "dd_status": "confirmed",
       "first_seen": "2026-10-17",
-      "last_checked": "2026-10-27",
+      "last_checked": "2026-10-28",
       "lat": 27.848398,
       "lng": -82.690074
     },
@@ -356,6 +368,10 @@
         {
           "date": "2026-10-27",
           "price": 63859
+        },
+        {
+          "date": "2026-10-28",
+          "price": 63859
         }
       ],
       "doc": 0,
@@ -377,103 +393,12 @@
       "flags": "Used, 13k miles. Recall 26V530 for MY: confirm done by VIN.",
       "flag_tags": [],
       "first_seen": "2026-10-18",
-      "last_checked": "2026-10-27",
+      "last_checked": "2026-10-28",
       "lat": 28.468888,
       "lng": -81.311254
     },
     {
       "rank": 5,
-      "g": 1,
-      "grp": "G1 · GM 6.6L gas L8T 2024-26",
-      "grade": "A",
-      "status": "live, no change",
-      "yr": 2026,
-      "mk": "Chevrolet",
-      "model": "Silverado 2500HD",
-      "trim": "Custom",
-      "eng": "6.6L V8 gas L8T",
-      "fuel": "gas",
-      "cond_new": true,
-      "cab": "Crew / standard box",
-      "drv": "2WD",
-      "mi": 5,
-      "price": 58509,
-      "prev": 58509,
-      "price_history": [
-        {
-          "date": "2026-10-17",
-          "price": 58509
-        },
-        {
-          "date": "2026-10-18",
-          "price": 58509
-        },
-        {
-          "date": "2026-10-19",
-          "price": 58509
-        },
-        {
-          "date": "2026-10-20",
-          "price": 58509
-        },
-        {
-          "date": "2026-10-21",
-          "price": 58509
-        },
-        {
-          "date": "2026-10-22",
-          "price": 58509
-        },
-        {
-          "date": "2026-10-23",
-          "price": 58509
-        },
-        {
-          "date": "2026-10-24",
-          "price": 58509
-        },
-        {
-          "date": "2026-10-25",
-          "price": 58509
-        },
-        {
-          "date": "2026-10-26",
-          "price": 58509
-        },
-        {
-          "date": "2026-10-27",
-          "price": 58509
-        }
-      ],
-      "doc": 0,
-      "dealer": true,
-      "loc": "AutoNation Chevrolet South Clearwater",
-      "d": 31.0,
-      "src": "AutoNation",
-      "url": "https://www.autonation.com/cars/2gc4ame72t1241997/chevrolet-silverado-2500hd-2026",
-      "vin": "2GC4AME72T1241997",
-      "tow": "14,500 (17\") / 16,000 (18-22\")",
-      "tow_lb": 14500,
-      "tsrc": "2026 Chevrolet Silverado 2500HD chart (tow/gm26_2500)",
-      "pay_lo": 976,
-      "pay_hi": 1424,
-      "pay": "$976–$1,424/mo",
-      "rec": [
-        "25V815",
-        "26V114"
-      ],
-      "flags": "Priced ABOVE MSRP (AN fees included). Still \"In Transit\" on the Clearwater store VDP (Oct 21 5:41 PM ET). It was missing from the autonation.com search this morning but is back this evening (entry date now 10/20/2026, 5 mi), so the possibly-unavailable flag is cleared.",
-      "flag_tags": [
-        "above_msrp",
-        "in_transit"
-      ],
-      "first_seen": "2026-10-17",
-      "last_checked": "2026-10-27",
-      "lat": 27.909106,
-      "lng": -82.728962
-    },
-    {
-      "rank": 6,
       "g": 1,
       "grp": "G1 · GM 6.6L gas L8T 2024-26",
       "grade": "A",
@@ -534,6 +459,10 @@
         {
           "date": "2026-10-27",
           "price": 55978
+        },
+        {
+          "date": "2026-10-28",
+          "price": 55978
         }
       ],
       "doc": 0,
@@ -559,12 +488,12 @@
         "price_drop"
       ],
       "first_seen": "2026-10-17",
-      "last_checked": "2026-10-27",
+      "last_checked": "2026-10-28",
       "lat": 28.552869,
       "lng": -81.42359
     },
     {
-      "rank": 7,
+      "rank": 6,
       "g": 1,
       "grp": "G1 · GM 6.6L gas L8T 2024-26",
       "grade": "A",
@@ -625,6 +554,10 @@
         {
           "date": "2026-10-27",
           "price": 64492
+        },
+        {
+          "date": "2026-10-28",
+          "price": 64492
         }
       ],
       "doc": 0,
@@ -649,12 +582,12 @@
         "price_drop"
       ],
       "first_seen": "2026-10-17",
-      "last_checked": "2026-10-27",
+      "last_checked": "2026-10-28",
       "lat": 27.909106,
       "lng": -82.728962
     },
     {
-      "rank": 8,
+      "rank": 7,
       "g": 1,
       "grp": "G1 · GM 6.6L gas L8T 2024-26",
       "grade": "A",
@@ -715,6 +648,10 @@
         {
           "date": "2026-10-27",
           "price": 69884
+        },
+        {
+          "date": "2026-10-28",
+          "price": 69884
         }
       ],
       "doc": 0,
@@ -740,12 +677,12 @@
         "in_transit"
       ],
       "first_seen": "2026-10-17",
-      "last_checked": "2026-10-27",
+      "last_checked": "2026-10-28",
       "lat": 27.909106,
       "lng": -82.728962
     },
     {
-      "rank": 9,
+      "rank": 8,
       "g": 2,
       "grp": "G2 · GM 6.6L gas L8T 2020-23",
       "grade": "A",
@@ -806,6 +743,10 @@
         {
           "date": "2026-10-27",
           "price": 33900
+        },
+        {
+          "date": "2026-10-28",
+          "price": 33900
         }
       ],
       "doc": 969,
@@ -830,12 +771,12 @@
         "high_miles"
       ],
       "first_seen": "2026-10-17",
-      "last_checked": "2026-10-27",
+      "last_checked": "2026-10-28",
       "lat": 29.228349,
       "lng": -82.148864
     },
     {
-      "rank": 10,
+      "rank": 9,
       "g": 2,
       "grp": "G2 · GM 6.6L gas L8T 2020-23",
       "grade": "A",
@@ -896,6 +837,10 @@
         {
           "date": "2026-10-27",
           "price": 21700
+        },
+        {
+          "date": "2026-10-28",
+          "price": 21700
         }
       ],
       "doc": null,
@@ -935,12 +880,12 @@
       "dd_status": "needs_check",
       "dd_reason": "no VIN, private, scam check",
       "first_seen": "2026-10-17",
-      "last_checked": "2026-10-27",
+      "last_checked": "2026-10-28",
       "lat": 27.909467,
       "lng": -82.787324
     },
     {
-      "rank": 11,
+      "rank": 10,
       "g": 3,
       "grp": "G3 · GM L5P Duramax 2017-19 (2500 crew long box / 3500 long or DRW)",
       "grade": "A",
@@ -997,6 +942,10 @@
         {
           "date": "2026-10-27",
           "price": 41696
+        },
+        {
+          "date": "2026-10-28",
+          "price": 41696
         }
       ],
       "doc": 0,
@@ -1026,12 +975,12 @@
         "price_drop"
       ],
       "first_seen": "2026-10-18",
-      "last_checked": "2026-10-27",
+      "last_checked": "2026-10-28",
       "lat": 26.599028,
       "lng": -81.84027
     },
     {
-      "rank": 12,
+      "rank": 11,
       "g": 5,
       "grp": "US 19 · GM HD gas (dealers on 19)",
       "grade": "B",
@@ -1074,7 +1023,7 @@
       "last_checked": "2026-10-27"
     },
     {
-      "rank": 13,
+      "rank": 12,
       "g": 5,
       "grp": "US 19 · GM HD gas (dealers on 19)",
       "grade": "B",
@@ -1117,7 +1066,7 @@
       "last_checked": "2026-10-27"
     },
     {
-      "rank": 14,
+      "rank": 13,
       "g": 5,
       "grp": "US 19 · GM HD gas (dealers on 19)",
       "grade": "B",
@@ -1162,7 +1111,7 @@
       "last_checked": "2026-10-27"
     },
     {
-      "rank": 15,
+      "rank": 14,
       "g": 5,
       "grp": "US 19 · GM HD gas (dealers on 19)",
       "grade": "B",
@@ -1208,7 +1157,7 @@
       "last_checked": "2026-10-27"
     },
     {
-      "rank": 16,
+      "rank": 15,
       "g": 5,
       "grp": "US 19 · GM HD gas (dealers on 19)",
       "grade": "B",
@@ -1250,7 +1199,7 @@
       "last_checked": "2026-10-27"
     },
     {
-      "rank": 17,
+      "rank": 16,
       "g": 5,
       "grp": "US 19 · GM HD gas (dealers on 19)",
       "grade": "B",
@@ -1295,7 +1244,7 @@
       "last_checked": "2026-10-27"
     },
     {
-      "rank": 18,
+      "rank": 17,
       "g": 5,
       "grp": "US 19 · GM HD gas (dealers on 19)",
       "grade": "B",
@@ -1336,7 +1285,7 @@
       "last_checked": "2026-10-27"
     },
     {
-      "rank": 19,
+      "rank": 18,
       "g": 5,
       "grp": "US 19 · GM HD gas (dealers on 19)",
       "grade": "C",
@@ -1378,7 +1327,7 @@
       "last_checked": "2026-10-27"
     },
     {
-      "rank": 20,
+      "rank": 19,
       "g": 5,
       "grp": "US 19 · GM HD gas (dealers on 19)",
       "grade": "C",
@@ -1420,7 +1369,7 @@
       "last_checked": "2026-10-27"
     },
     {
-      "rank": 21,
+      "rank": 20,
       "g": 5,
       "grp": "US 19 · GM HD gas (dealers on 19)",
       "grade": "C",
@@ -1462,7 +1411,7 @@
       "last_checked": "2026-10-27"
     },
     {
-      "rank": 22,
+      "rank": 21,
       "g": 5,
       "grp": "US 19 · GM HD gas (dealers on 19)",
       "grade": "C",
@@ -1504,7 +1453,7 @@
       "last_checked": "2026-10-27"
     },
     {
-      "rank": 23,
+      "rank": 22,
       "g": 6,
       "grp": "Used finds · Truck Deal Finder deep dive",
       "status": "Confirmed (Truck Deal Finder deep dive)",
@@ -1546,7 +1495,7 @@
       "last_checked": "2026-10-27"
     },
     {
-      "rank": 24,
+      "rank": 23,
       "g": 6,
       "grp": "Used finds · Truck Deal Finder deep dive",
       "status": "Confirmed (Truck Deal Finder deep dive)",
@@ -1589,7 +1538,7 @@
       "last_checked": "2026-10-27"
     },
     {
-      "rank": 25,
+      "rank": 24,
       "g": 6,
       "grp": "Used finds · Truck Deal Finder deep dive",
       "status": "Confirmed (Truck Deal Finder deep dive)",
@@ -1632,7 +1581,7 @@
       "last_checked": "2026-10-27"
     },
     {
-      "rank": 26,
+      "rank": 25,
       "g": 6,
       "grp": "Used finds · Truck Deal Finder deep dive",
       "status": "Confirmed (Truck Deal Finder deep dive)",
@@ -1676,7 +1625,7 @@
       "last_checked": "2026-10-27"
     },
     {
-      "rank": 27,
+      "rank": 26,
       "g": 6,
       "grp": "Used finds · Truck Deal Finder deep dive",
       "status": "Confirmed (Truck Deal Finder deep dive)",
@@ -1719,7 +1668,7 @@
       "last_checked": "2026-10-27"
     },
     {
-      "rank": 28,
+      "rank": 27,
       "g": 6,
       "grp": "Used finds · Truck Deal Finder deep dive",
       "status": "Confirmed (Truck Deal Finder deep dive)",
@@ -1761,7 +1710,7 @@
       "last_checked": "2026-10-27"
     },
     {
-      "rank": 29,
+      "rank": 28,
       "g": 6,
       "grp": "Used finds · Truck Deal Finder deep dive",
       "status": "Confirmed (Truck Deal Finder deep dive)",
@@ -1803,7 +1752,7 @@
       "last_checked": "2026-10-27"
     },
     {
-      "rank": 30,
+      "rank": 29,
       "g": 6,
       "grp": "Used finds · Truck Deal Finder deep dive",
       "status": "Confirmed (Truck Deal Finder deep dive)",
@@ -1843,7 +1792,7 @@
       "last_checked": "2026-10-27"
     },
     {
-      "rank": 31,
+      "rank": 30,
       "g": 6,
       "grp": "Used finds · Truck Deal Finder deep dive",
       "status": "Confirmed (Truck Deal Finder deep dive)",
@@ -1885,7 +1834,7 @@
       "last_checked": "2026-10-27"
     },
     {
-      "rank": 32,
+      "rank": 31,
       "g": 6,
       "grp": "Used finds · Truck Deal Finder deep dive",
       "status": "Confirmed (Truck Deal Finder deep dive)",
@@ -1926,7 +1875,7 @@
       "last_checked": "2026-10-27"
     },
     {
-      "rank": 33,
+      "rank": 32,
       "g": 6,
       "grp": "Used finds · Truck Deal Finder deep dive",
       "status": "Confirmed (Truck Deal Finder deep dive)",
@@ -1967,7 +1916,7 @@
       "last_checked": "2026-10-27"
     },
     {
-      "rank": 34,
+      "rank": 33,
       "g": 6,
       "grp": "Used finds · Truck Deal Finder deep dive",
       "status": "Confirmed (Truck Deal Finder deep dive)",
@@ -2012,7 +1961,7 @@
       "last_checked": "2026-10-27"
     },
     {
-      "rank": 35,
+      "rank": 34,
       "g": 6,
       "grp": "Used finds · Truck Deal Finder deep dive",
       "status": "Confirmed (Truck Deal Finder deep dive)",
@@ -2053,7 +2002,7 @@
       "last_checked": "2026-10-27"
     },
     {
-      "rank": 36,
+      "rank": 35,
       "g": 6,
       "grp": "Used finds · Truck Deal Finder deep dive",
       "status": "Confirmed (Truck Deal Finder deep dive)",
@@ -2095,7 +2044,7 @@
       "last_checked": "2026-10-27"
     },
     {
-      "rank": 37,
+      "rank": 36,
       "g": 6,
       "grp": "Used finds · Truck Deal Finder deep dive",
       "status": "Confirmed (Truck Deal Finder deep dive)",
@@ -2196,6 +2145,10 @@
         {
           "date": "2026-10-27",
           "price": 18999
+        },
+        {
+          "date": "2026-10-28",
+          "price": 18999
         }
       ],
       "doc": 969,
@@ -2227,7 +2180,7 @@
         "below_market"
       ],
       "first_seen": "2026-10-18",
-      "last_checked": "2026-10-27",
+      "last_checked": "2026-10-28",
       "lat": 28.685799,
       "lng": -81.330998
     },
@@ -2289,6 +2242,10 @@
         {
           "date": "2026-10-27",
           "price": 25990
+        },
+        {
+          "date": "2026-10-28",
+          "price": 25990
         }
       ],
       "doc": 969,
@@ -2319,7 +2276,7 @@
         "far"
       ],
       "first_seen": "2026-10-18",
-      "last_checked": "2026-10-27",
+      "last_checked": "2026-10-28",
       "lat": 30.283779,
       "lng": -81.730308
     },
@@ -2385,6 +2342,10 @@
         {
           "date": "2026-10-27",
           "price": 17995
+        },
+        {
+          "date": "2026-10-28",
+          "price": 17995
         }
       ],
       "doc": 969,
@@ -2416,7 +2377,7 @@
         "high_miles"
       ],
       "first_seen": "2026-10-17",
-      "last_checked": "2026-10-27",
+      "last_checked": "2026-10-28",
       "lat": 27.998851,
       "lng": -82.459494
     },
@@ -2482,6 +2443,10 @@
         {
           "date": "2026-10-27",
           "price": 10500
+        },
+        {
+          "date": "2026-10-28",
+          "price": 10500
         }
       ],
       "doc": null,
@@ -2514,7 +2479,7 @@
         "high_miles"
       ],
       "first_seen": "2026-10-17",
-      "last_checked": "2026-10-27",
+      "last_checked": "2026-10-28",
       "lat": 27.909467,
       "lng": -82.787324
     },
@@ -3505,5 +3470,5 @@
       "last_checked": "2026-10-27"
     }
   ],
-  "sources": "Checked Oct 27, 2026, 5:30-5:33 PM ET. Craigslist Hudson-centered city search (radius 150 mi, 17 queries at 4 s spacing, all HTTP 200; 801 unique posts, 58 not seen in the last four pulls, 3 of them GM HD pickups, none qualifying) plus every Craigslist listing page in the feed (all 200); AutoNation fetcher: ONE narrow GM-HD-only run (150 mi, no detail pages, status ok, 6 loads, 42 vehicles, no Cloudflare block); AutoNation Chevrolet South Clearwater store VDP and used Silverado HD page; gatortruckcenter.com and avinenterprises.com inventory and detail pages (curl 200). NHTSA recalls by model year; OEM towing guides on file. Not used: Cars.com, AutoTrader, CarGurus, Facebook, browser. Research only: nobody contacted."
+  "sources": "Checked Oct 28, 2026, 7:37-7:45 AM ET. Craigslist Hudson-centered city search (radius 150 mi, 17 queries at 4 s spacing, all HTTP 200; 791 unique posts, 24 not seen in the last four pulls, 2 of them GM HD pickups, both reposts already passed over) plus every Craigslist listing page in the feed (all 200); AutoNation fetcher: ONE narrow GM-HD-only run (150 mi, no detail pages, status ok, 6 loads, 43 vehicles, no Cloudflare block); AutoNation Chevrolet South Clearwater store VDPs and used Silverado HD page; gatortruckcenter.com and avinenterprises.com inventory and detail pages; Coast Buick GMC, Castriota, and Century Buick GMC detail pages (curl 200; Ferman, Tasca, and Jenkins pages returned 403). NHTSA recalls by model year; OEM towing guides on file. Not used: Cars.com, AutoTrader, CarGurus, Carfax, Edmunds, Carvana, CarMax, Facebook, browser. Research only: nobody contacted."
 }
