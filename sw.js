@@ -1,6 +1,6 @@
 /* Truck Deals service worker.
    CACHE_VERSION: bump this when the app shell changes. */
-const CACHE_VERSION = "td-v7-favs-thumbs";
+const CACHE_VERSION = "td-v8-grid";
 /* Cached thumbnail copies (./thumbs/*.jpg) are runtime-cached here, not precached. */
 const THUMB_CACHE = "td-thumbs-v1";
 const THUMB_MAX = 150;

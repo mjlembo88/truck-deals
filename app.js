@@ -12,10 +12,14 @@
   /* "none" = Ungraded (listings without an A-D grade). */
   var GRADES = ["A", "B", "C", "D", "none"];
   /* 3 = adds favOnly (defaults off). v2 added the Ungraded grade. */
-  var FILTER_SCHEMA = 3;
+  var FILTER_SCHEMA = 4; /* 4 = adds showHidden (defaults off) */
   /* Favorites live in their own key (never in filter state or data.json), mirroring
      the home-hunt board: JSON string[] of listing keys = VIN (upper-case), else url. */
   var FAV_KEY = "truck-deals-favorites-v1";
+  /* Grid / List view choice: its own key, so Reset filters never changes it. Default grid. */
+  var VIEW_KEY = "td_view_v1";
+  /* Hidden ("ignore") listings: own key, same VIN-then-url keys as favorites. Never touches data. */
+  var HIDE_KEY = "truck-deals-hidden-v1";
 
   /* Payment estimator config. Edit rates here.
      Base APRs: credit-union research Oct 27, 2026 (PenFed / Suncoast best tier).
@@ -304,6 +308,7 @@
       hideFlagged: false,
       showExcluded: false,
       favOnly: false,
+      showHidden: false,
       sort: "rank",
       cabs: CABS.slice(),
       dealersOff: []
@@ -336,6 +341,7 @@
       filters.hideFlagged = !!parsed.hideFlagged;
       filters.showExcluded = parsed.showExcluded === true;
       filters.favOnly = parsed.favOnly === true;
+      filters.showHidden = parsed.showHidden === true;
       if (Array.isArray(parsed.cabs)) {
         filters.cabs = parsed.cabs.filter(function (cab) {
           return CABS.indexOf(cab) !== -1;
@@ -370,6 +376,7 @@
     document.querySelector('[data-testid="filter-hide-flagged"]').checked = filters.hideFlagged;
     document.querySelector('[data-testid="filter-show-excluded"]').checked = !!filters.showExcluded;
     document.querySelector('[data-testid="filter-fav-only"]').checked = !!filters.favOnly;
+    document.querySelector('[data-testid="filter-show-hidden"]').checked = !!filters.showHidden;
     $("sort-select").value = filters.sort;
     CABS.forEach(function (cab) {
       var box = document.querySelector('[data-testid="filter-cab-' + cab + '"]');
@@ -409,6 +416,7 @@
       hideFlagged: document.querySelector('[data-testid="filter-hide-flagged"]').checked,
       showExcluded: document.querySelector('[data-testid="filter-show-excluded"]').checked,
       favOnly: document.querySelector('[data-testid="filter-fav-only"]').checked,
+      showHidden: document.querySelector('[data-testid="filter-show-hidden"]').checked,
       sort: $("sort-select").value || "rank",
       cabs: CABS.filter(function (cab) {
         var box = document.querySelector('[data-testid="filter-cab-' + cab + '"]');
@@ -465,6 +473,7 @@
       /* Deep-dive exclusions stay in the data but are hidden unless "Show excluded" is on. */
       if (listing.excluded === true && !filters.showExcluded) return false;
       if (filters.favOnly && !isFavorite(listing)) return false;
+      if (!filters.showHidden && isHidden(listing)) return false;
       var grade = String(listing.grade || "").toUpperCase();
       if (!/^[ABCD]$/.test(grade)) grade = "none";
       if (!allGrades && !gradeOn[grade]) return false;
@@ -603,7 +612,7 @@
     if (listing.last_checked) seen.push("Last checked " + formatDay(listing.last_checked));
     var group = groupName(listing, data);
     return (
-      '<article class="card" data-testid="card" data-rank="' +
+      '<article class="card' + (isHidden(listing) ? " is-hidden" : "") + '" data-testid="card" data-rank="' +
       esc(listing.rank) +
       '" data-grade="' +
       esc(grade) +
@@ -646,6 +655,7 @@
         ? '<button type="button" class="btn btn-small" data-action="map" data-testid="card-map">Show on map</button>'
         : '<span class="sub">' + (listing.online === true ? "Online · delivery, no map pin" : "No map location") + "</span>") +
       '<button type="button" class="btn btn-small" data-action="details" data-testid="card-details">Details</button>' +
+      hideBtnHtml(listing, "btn btn-small") +
       "</div>" +
       "</article>"
     );
@@ -712,6 +722,50 @@
     }
   }
 
+  /* ---------- hidden / ignored listings (localStorage HIDE_KEY) ---------- */
+  var hiddenKeys = loadKeyList(HIDE_KEY);
+
+  function loadKeyList(storageKey) {
+    try {
+      var arr = JSON.parse(localStorage.getItem(storageKey) || "[]");
+      return Array.isArray(arr) ? arr.filter(function (x) { return typeof x === "string" && x; }) : [];
+    } catch (err) {
+      return [];
+    }
+  }
+
+  function isHidden(listing) {
+    var key = favKey(listing);
+    return !!key && hiddenKeys.indexOf(key) !== -1;
+  }
+
+  function toggleHiddenKey(key) {
+    var i = hiddenKeys.indexOf(key);
+    if (i === -1) hiddenKeys.push(key);
+    else hiddenKeys.splice(i, 1);
+    try {
+      localStorage.setItem(HIDE_KEY, JSON.stringify(hiddenKeys));
+    } catch (err) {}
+    return i === -1;
+  }
+
+  function hideBtnHtml(listing, cls) {
+    var key = favKey(listing);
+    if (!key) return "";
+    var on = hiddenKeys.indexOf(key) !== -1;
+    return (
+      '<button type="button" class="hide-btn ' + (cls || "") + (on ? " is-hidden-btn" : "") + '" data-hide-id="' + esc(key) +
+      '" data-testid="' + (on ? "unhide-btn" : "hide-btn") + '" aria-label="' + (on ? "Unhide this truck" : "Hide this truck") + '">' +
+      (on ? "👁 Unhide" : "🚫 Hide") + "</button>"
+    );
+  }
+
+  function updateHiddenCount() {
+    var el = $("hidden-count");
+    if (!el) return;
+    el.textContent = "(" + allListings().filter(isHidden).length + ")";
+  }
+
   function updateFavCount() {
     var el = $("fav-count");
     if (!el) return;
@@ -723,6 +777,22 @@
   /* Star taps on cards, map popups and the detail view (capture phase so the card's
      own tap-to-map handler and Leaflet never see them). */
   function bindFavorites() {
+    document.addEventListener("click", function (event) {
+      var link = event.target.closest && event.target.closest("a.tile-link");
+      if (link) {
+        event.stopPropagation(); /* open the listing only; don't expand the tile */
+        return;
+      }
+      var hide = event.target.closest && event.target.closest(".hide-btn[data-hide-id]");
+      if (hide) {
+        event.preventDefault();
+        event.stopPropagation();
+        toggleHiddenKey(hide.getAttribute("data-hide-id"));
+        if (state.map) state.map.closePopup();
+        renderList();
+        return;
+      }
+    }, true);
     document.addEventListener("click", function (event) {
       var btn = event.target.closest && event.target.closest(".fav-btn[data-fav-id]");
       if (!btn) return;
@@ -803,11 +873,92 @@
     return out;
   }
 
+  /* ---------- grid view ---------- */
+  function loadView() {
+    try {
+      return localStorage.getItem(VIEW_KEY) === "list" ? "list" : "grid";
+    } catch (err) {
+      return "grid";
+    }
+  }
+
+  function setView(view) {
+    state.view = view === "list" ? "list" : "grid";
+    try {
+      localStorage.setItem(VIEW_KEY, state.view);
+    } catch (err) {}
+    state.expanded = null;
+    applyViewButtons();
+    renderList();
+  }
+
+  function applyViewButtons() {
+    ["grid", "list"].forEach(function (v) {
+      var b = $("view-" + v);
+      if (!b) return;
+      b.setAttribute("aria-pressed", state.view === v ? "true" : "false");
+      b.classList.toggle("active", state.view === v);
+    });
+  }
+
+  function shortTitle(listing) {
+    return [listing.yr, listing.model].filter(function (part) {
+      return part != null && String(part) !== "";
+    }).join(" ");
+  }
+
+  function tileHtml(listing) {
+    var grade = String(listing.grade || "").toUpperCase();
+    var gradeOk = /^[ABCD]$/.test(grade);
+    var miles = isNum(listing.mi) ? intFmt(listing.mi) + " mi" : "Miles n/a";
+    var href = safeHttpUrl(listing.url);
+    var vinSearch = /^https:\/\/(www\.)?google\.[a-z.]+\/search/i.test(String(listing.url || ""));
+    var where = listing.online === true ? "Online" : isNum(listing.d) ? Math.round(listing.d) + " mi away" : "";
+    var tags = [];
+    if (listing.excluded === true) tags.push('<span class="tile-tag tag-ex">Excluded</span>');
+    if (listing.dd_status === "needs_check" || /^needs check/i.test(String(listing.status || ""))) tags.push('<span class="tile-tag tag-nc">Check</span>');
+    if (listing.dd_note) tags.push('<span class="tile-tag tag-warn" title="' + esc(listing.dd_note) + '">⚠</span>');
+    var est = estimatePayment(listing);
+    return (
+      '<article class="tile' + (isHidden(listing) ? " is-hidden" : "") + '" data-testid="tile" data-rank="' + esc(listing.rank) + '" data-grade="' + esc(grade) +
+      '" role="button" tabindex="0" aria-label="' + esc(titleOf(listing)) + ', show details">' +
+      '<div class="tile-media">' + thumbHtml(listing, "tile-thumb") +
+      '<span class="grade grade-' + esc(grade) + ' tile-grade">' + esc(gradeOk ? grade : "–") + "</span>" +
+      favBtnHtml(listing) + "</div>" +
+      '<div class="tile-body">' +
+      '<p class="tile-title">' + esc(shortTitle(listing)) + "</p>" +
+      (listing.trim ? '<p class="tile-trim">' + esc(listing.trim) + "</p>" : "") +
+      '<p class="tile-price" data-testid="tile-price">' + esc(isNum(listing.price) ? money(listing.price) : "Price n/a") + "</p>" +
+      '<p class="tile-miles" data-testid="tile-miles">' + esc(miles) + "</p>" +
+      (where ? '<p class="tile-meta">' + esc(where) + "</p>" : "") +
+      (est ? '<p class="tile-pay" data-testid="tile-pay">Est. ' + esc(money(Math.round(est.monthly))) + "/mo</p>" : "") +
+      (tags.length ? '<p class="tile-tags">' + tags.join("") + "</p>" : "") +
+      '<div class="tile-actions">' +
+      (href
+        ? '<a class="tile-link" data-testid="tile-link" href="' + esc(href) + '" target="_blank" rel="noopener noreferrer">' +
+          (vinSearch ? "VIN search ↗" : "Listing ↗") + "</a>"
+        : '<span class="tile-link none">No link</span>') +
+      hideBtnHtml(listing, "tile-hide") +
+      "</div></div></article>"
+    );
+  }
+
+  function expandedHtml(listing, latest) {
+    return (
+      '<div class="tile-expanded" data-testid="tile-expanded" data-rank="' + esc(listing.rank) + '">' +
+      '<button type="button" class="btn btn-small tile-collapse" data-action="collapse" data-testid="tile-collapse">▲ Back to grid</button>' +
+      cardHtml(listing, latest) +
+      "</div>"
+    );
+  }
+
   function sectionHtml(title, label, listings, latest) {
+    var grid = state.view !== "list";
     var cards = listings.map(function (listing) {
-      return cardHtml(listing, latest);
+      if (!grid) return cardHtml(listing, latest);
+      return String(listing.rank) === String(state.expanded) ? expandedHtml(listing, latest) : tileHtml(listing);
     }).join("");
-    var body = cards ? '<div class="cards">' + cards + "</div>" : '<p class="empty">None in this section.</p>';
+    var body = cards ? '<div class="cards' + (grid ? " grid" : "") + '" data-testid="cards">' + cards + "</div>" : '<p class="empty">None in this section.</p>';
     return (
       '<section class="section"><h2><span>' +
       esc(title) +
@@ -832,6 +983,7 @@
     var filters = readFiltersFromDom();
     var latest = latestDataDate(state.data);
     updateFavCount();
+    updateHiddenCount();
     var exCount = allListings().filter(function (l) { return l.excluded === true; }).length;
     var exEl = $("excluded-count");
     if (exEl) exEl.textContent = "(" + exCount + ")";
@@ -1406,6 +1558,7 @@
     if (filters.hideFlagged) n++;
     if (filters.showExcluded) n++;
     if (filters.favOnly) n++;
+    if (filters.showHidden) n++;
     if (filters.dealersOff.length) n++;
     $("filter-active").textContent = n ? n + " active" : "";
     updateDealerReadout();
@@ -1656,7 +1809,9 @@
           (href ? '<a href="' + esc(href) + '" target="_blank" rel="noopener noreferrer">Listing ↗</a>' : "") +
           '<a href="#/l/' +
           esc(encodeURIComponent(String(listing.rank))) +
-          '">Details</a></div></li>'
+          '">Details</a>' +
+          hideBtnHtml(listing, "pop-hide") +
+          "</div></li>"
         );
       })
       .join("");
@@ -1816,6 +1971,40 @@
     });
     $("detail-back").addEventListener("click", function () {
       location.hash = "#/";
+    });
+    $("view-grid").addEventListener("click", function () { setView("grid"); });
+    $("view-list").addEventListener("click", function () { setView("list"); });
+    state.view = loadView();
+    applyViewButtons();
+    /* grid: tap a tile to expand it inline (full card, full row); collapse returns to tiles */
+    $("list").addEventListener("click", function (event) {
+      var collapse = event.target.closest("[data-action='collapse']");
+      if (collapse && $("list").contains(collapse)) {
+        var was = state.expanded;
+        state.expanded = null;
+        renderList();
+        var back = document.querySelector("[data-testid='tile'][data-rank='" + String(was).replace(/'/g, "") + "']");
+        if (back) back.scrollIntoView({ block: "center" });
+        return;
+      }
+      if (event.target.closest("a")) return; /* tile links open the listing, never expand */
+      var tile = event.target.closest("[data-testid='tile']");
+      if (!tile || !$("list").contains(tile)) return;
+      state.expanded = tile.getAttribute("data-rank");
+      renderList();
+      var open = document.querySelector("[data-testid='tile-expanded']");
+      if (open) {
+        var head = document.querySelector(".sticky-top");
+        var h = head ? head.getBoundingClientRect().height : 0;
+        window.scrollTo({ top: open.getBoundingClientRect().top + window.scrollY - h - 8, behavior: "auto" });
+      }
+    });
+    $("list").addEventListener("keydown", function (event) {
+      if (event.key !== "Enter" && event.key !== " ") return;
+      var tile = event.target.closest("[data-testid='tile']");
+      if (!tile || event.target.closest("button")) return;
+      event.preventDefault();
+      tile.click();
     });
     $("list").addEventListener("click", function (event) {
       var card = event.target.closest("[data-testid='card']");

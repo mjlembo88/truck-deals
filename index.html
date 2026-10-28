@@ -151,6 +151,7 @@
           <label class="check-row"><input type="checkbox" data-testid="filter-drops-only"> Price drops only</label>
           <label class="check-row"><input type="checkbox" data-testid="filter-hide-flagged"> Hide flagged</label>
           <label class="check-row"><input type="checkbox" data-testid="filter-fav-only"> ★ Favorites only <span id="fav-count" class="dealer-count"></span></label>
+          <label class="check-row"><input type="checkbox" data-testid="filter-show-hidden"> Show hidden <span id="hidden-count" class="dealer-count"></span></label>
           <label class="check-row"><input type="checkbox" data-testid="filter-show-excluded"> Show excluded <span id="excluded-count" class="dealer-count"></span></label>
         </div>
         </div>
@@ -196,7 +197,13 @@
         <div id="map" class="map" data-testid="map"></div>
       </section>
 
-      <p id="result-count" class="result-count" aria-live="polite"></p>
+      <div class="list-head">
+        <p id="result-count" class="result-count" aria-live="polite"></p>
+        <div class="view-toggle" role="group" aria-label="Listing view">
+          <button type="button" id="view-grid" data-view="grid" data-testid="view-grid" aria-pressed="true">▦ Grid</button>
+          <button type="button" id="view-list" data-view="list" data-testid="view-list" aria-pressed="false">☰ List</button>
+        </div>
+      </div>
       <div id="list"></div>
       <footer class="foot">
         <p>Payments are estimates, info only. Display only: no accounts, ads, or analytics.</p>
