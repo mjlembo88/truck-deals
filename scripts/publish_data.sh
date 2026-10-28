@@ -10,10 +10,12 @@ python3 scripts/build_public_data.py "$@"
 updated_at="$(python3 -c 'import json; print(json.load(open("data.json", encoding="utf-8"))["updated_at"])')"
 
 # git diff stays quiet for an untracked data.json, so also look at status.
-if git diff --quiet -- data.json && git diff --quiet --cached -- data.json && [ -z "$(git status --porcelain -- data.json)" ]; then
+# Cached thumbnail copies (written by /workspace/truck-deals/fetch_thumbs.py) are published with the data.
+if [ -z "$(git status --porcelain -- data.json thumbs)" ]; then
   echo "data.json unchanged, nothing to publish"
 else
   git add data.json
+  if [ -d thumbs ]; then git add thumbs; fi
   git commit -m "data: update ${updated_at}"
   git push origin main
 fi

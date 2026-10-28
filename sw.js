@@ -1,6 +1,9 @@
 /* Truck Deals service worker.
    CACHE_VERSION: bump this when the app shell changes. */
-const CACHE_VERSION = "td-v6-recalls";
+const CACHE_VERSION = "td-v7-favs-thumbs";
+/* Cached thumbnail copies (./thumbs/*.jpg) are runtime-cached here, not precached. */
+const THUMB_CACHE = "td-thumbs-v1";
+const THUMB_MAX = 150;
 
 const SHELL = [
   "./",
@@ -44,7 +47,7 @@ self.addEventListener("activate", (event) => {
     (async () => {
       const keys = await caches.keys();
       await Promise.all(
-        keys.filter((key) => key !== CACHE_VERSION).map((key) => caches.delete(key))
+        keys.filter((key) => key !== CACHE_VERSION && key !== THUMB_CACHE).map((key) => caches.delete(key))
       );
       await self.clients.claim();
     })()
@@ -107,6 +110,23 @@ async function cacheFirst(req) {
   return fresh;
 }
 
+async function thumbCacheFirst(req) {
+  const cache = await caches.open(THUMB_CACHE);
+  const cached = await cache.match(req);
+  if (cached) return cached;
+  const fresh = await fetch(req);
+  if (fresh && fresh.ok && fresh.type === "basic") {
+    try {
+      await cache.put(req, fresh.clone());
+      const keys = await cache.keys();
+      for (let i = 0; i < keys.length - THUMB_MAX; i++) await cache.delete(keys[i]);
+    } catch (err) {
+      /* ignore */
+    }
+  }
+  return fresh;
+}
+
 self.addEventListener("fetch", (event) => {
   const req = event.request;
   if (req.method !== "GET") return;
@@ -117,6 +137,11 @@ self.addEventListener("fetch", (event) => {
     return;
   }
   if (url.origin !== self.location.origin) return;
+
+  if (/\/thumbs\/[^/]+\.(jpg|webp)$/.test(url.pathname)) {
+    event.respondWith(thumbCacheFirst(req));
+    return;
+  }
 
   if (isDataJson(url.pathname)) {
     event.respondWith(networkFirstData(req));

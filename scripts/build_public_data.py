@@ -54,6 +54,7 @@ LISTING_KEYS = (
     "d",
     "src",
     "url",
+    "thumb",
     "vin",
     "tow",
     "tow_lb",
@@ -137,6 +138,12 @@ def clean_listing(listing: object, path: str, dropped: list[str]) -> object:
             continue
         if key == "price_history":
             kept[key] = clean_history(value, f"{path}.price_history", dropped)
+        elif key == "thumb":
+            # remote https image or a cached copy committed under thumbs/
+            if isinstance(value, str) and (re.match(r"^https://[^\s\"'<>]+$", value) or re.match(r"^thumbs/[A-Za-z0-9_-]+\.(jpg|webp)$", value)):
+                kept[key] = value
+            else:
+                dropped.append(f"{path}.thumb")
         else:
             kept[key] = value
     return {key: kept[key] for key in LISTING_KEYS if key in kept}

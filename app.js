@@ -11,7 +11,11 @@
   var CABS = ["regular", "double", "crew"];
   /* "none" = Ungraded (listings without an A-D grade). */
   var GRADES = ["A", "B", "C", "D", "none"];
-  var FILTER_SCHEMA = 2;
+  /* 3 = adds favOnly (defaults off). v2 added the Ungraded grade. */
+  var FILTER_SCHEMA = 3;
+  /* Favorites live in their own key (never in filter state or data.json), mirroring
+     the home-hunt board: JSON string[] of listing keys = VIN (upper-case), else url. */
+  var FAV_KEY = "truck-deals-favorites-v1";
 
   /* Payment estimator config. Edit rates here.
      Base APRs: credit-union research Oct 27, 2026 (PenFed / Suncoast best tier).
@@ -299,6 +303,7 @@
       dropsOnly: false,
       hideFlagged: false,
       showExcluded: false,
+      favOnly: false,
       sort: "rank",
       cabs: CABS.slice(),
       dealersOff: []
@@ -317,7 +322,7 @@
           return GRADES.indexOf(grade) !== -1;
         });
         /* Saved before the Ungraded option existed: keep ungraded trucks visible. */
-        if (parsed.v !== FILTER_SCHEMA && filters.grades.indexOf("none") === -1) filters.grades.push("none");
+        if (!(Number(parsed.v) >= 2) && filters.grades.indexOf("none") === -1) filters.grades.push("none");
       }
       ["priceMin", "priceMax", "maxMiles", "minTow"].forEach(function (key) {
         if (parsed[key] != null) filters[key] = String(parsed[key]);
@@ -330,6 +335,7 @@
       filters.dropsOnly = !!parsed.dropsOnly;
       filters.hideFlagged = !!parsed.hideFlagged;
       filters.showExcluded = parsed.showExcluded === true;
+      filters.favOnly = parsed.favOnly === true;
       if (Array.isArray(parsed.cabs)) {
         filters.cabs = parsed.cabs.filter(function (cab) {
           return CABS.indexOf(cab) !== -1;
@@ -363,6 +369,7 @@
     document.querySelector('[data-testid="filter-drops-only"]').checked = filters.dropsOnly;
     document.querySelector('[data-testid="filter-hide-flagged"]').checked = filters.hideFlagged;
     document.querySelector('[data-testid="filter-show-excluded"]').checked = !!filters.showExcluded;
+    document.querySelector('[data-testid="filter-fav-only"]').checked = !!filters.favOnly;
     $("sort-select").value = filters.sort;
     CABS.forEach(function (cab) {
       var box = document.querySelector('[data-testid="filter-cab-' + cab + '"]');
@@ -401,6 +408,7 @@
       dropsOnly: document.querySelector('[data-testid="filter-drops-only"]').checked,
       hideFlagged: document.querySelector('[data-testid="filter-hide-flagged"]').checked,
       showExcluded: document.querySelector('[data-testid="filter-show-excluded"]').checked,
+      favOnly: document.querySelector('[data-testid="filter-fav-only"]').checked,
       sort: $("sort-select").value || "rank",
       cabs: CABS.filter(function (cab) {
         var box = document.querySelector('[data-testid="filter-cab-' + cab + '"]');
@@ -456,6 +464,7 @@
     return (listings || []).filter(function (listing) {
       /* Deep-dive exclusions stay in the data but are hidden unless "Show excluded" is on. */
       if (listing.excluded === true && !filters.showExcluded) return false;
+      if (filters.favOnly && !isFavorite(listing)) return false;
       var grade = String(listing.grade || "").toUpperCase();
       if (!/^[ABCD]$/.test(grade)) grade = "none";
       if (!allGrades && !gradeOn[grade]) return false;
@@ -609,7 +618,10 @@
       (group ? '<span class="grp">' + esc(group) + "</span>" : "") +
       '<span class="badges">' +
       badgeHtml(listing, latest) +
-      "</span></div>" +
+      "</span>" +
+      favBtnHtml(listing) +
+      "</div>" +
+      thumbHtml(listing, "card-thumb") +
       '<h3 class="title">' +
       esc(titleOf(listing)) +
       "</h3>" +
@@ -636,6 +648,119 @@
       '<button type="button" class="btn btn-small" data-action="details" data-testid="card-details">Details</button>' +
       "</div>" +
       "</article>"
+    );
+  }
+
+  /* ---------- favorites (localStorage FAV_KEY, separate from filters) ---------- */
+  function favKey(listing) {
+    var vin = String((listing && listing.vin) || "").trim().toUpperCase();
+    return vin || String((listing && listing.url) || "").trim();
+  }
+
+  var favorites = loadFavorites();
+
+  function loadFavorites() {
+    try {
+      var arr = JSON.parse(localStorage.getItem(FAV_KEY) || "[]");
+      return Array.isArray(arr) ? arr.filter(function (x) { return typeof x === "string" && x; }) : [];
+    } catch (err) {
+      return [];
+    }
+  }
+
+  function saveFavorites() {
+    try {
+      localStorage.setItem(FAV_KEY, JSON.stringify(favorites));
+    } catch (err) {}
+  }
+
+  function isFavorite(listing) {
+    var key = favKey(listing);
+    return !!key && favorites.indexOf(key) !== -1;
+  }
+
+  function toggleFavoriteKey(key) {
+    var i = favorites.indexOf(key);
+    if (i === -1) favorites.push(key);
+    else favorites.splice(i, 1);
+    saveFavorites();
+    return i === -1;
+  }
+
+  function favBtnHtml(listing) {
+    var key = favKey(listing);
+    if (!key) return "";
+    var on = favorites.indexOf(key) !== -1;
+    return (
+      '<button type="button" class="fav-btn' + (on ? " is-fav" : "") + '" data-fav-id="' + esc(key) +
+      '" data-testid="fav-btn" aria-pressed="' + (on ? "true" : "false") + '" aria-label="' +
+      (on ? "Remove from favorites" : "Add to favorites") + '" title="' + (on ? "Unfavorite" : "Favorite") + '">' +
+      (on ? "★" : "☆") + "</button>"
+    );
+  }
+
+  function syncFavButtons(key, on) {
+    var buttons = document.querySelectorAll(".fav-btn[data-fav-id]");
+    for (var i = 0; i < buttons.length; i++) {
+      var b = buttons[i];
+      if (b.getAttribute("data-fav-id") !== key) continue;
+      b.classList.toggle("is-fav", on);
+      b.setAttribute("aria-pressed", on ? "true" : "false");
+      b.setAttribute("aria-label", on ? "Remove from favorites" : "Add to favorites");
+      b.title = on ? "Unfavorite" : "Favorite";
+      b.textContent = on ? "★" : "☆";
+    }
+  }
+
+  function updateFavCount() {
+    var el = $("fav-count");
+    if (!el) return;
+    var keys = {};
+    allListings().forEach(function (l) { keys[favKey(l)] = true; });
+    el.textContent = "(" + favorites.filter(function (k) { return keys[k]; }).length + ")";
+  }
+
+  /* Star taps on cards, map popups and the detail view (capture phase so the card's
+     own tap-to-map handler and Leaflet never see them). */
+  function bindFavorites() {
+    document.addEventListener("click", function (event) {
+      var btn = event.target.closest && event.target.closest(".fav-btn[data-fav-id]");
+      if (!btn) return;
+      event.preventDefault();
+      event.stopPropagation();
+      var key = btn.getAttribute("data-fav-id");
+      var on = toggleFavoriteKey(key);
+      syncFavButtons(key, on);
+      updateFavCount();
+      var favOnlyBox = document.querySelector('[data-testid="filter-fav-only"]');
+      if (favOnlyBox && favOnlyBox.checked) renderList();
+    }, true);
+    /* thumbnails that fail to load fall back to the placeholder */
+    document.addEventListener("error", function (event) {
+      var img = event.target;
+      if (!img || img.tagName !== "IMG" || !img.classList.contains("thumb-img")) return;
+      var box = img.parentNode;
+      if (box) box.classList.add("thumb-none");
+      img.remove();
+    }, true);
+  }
+
+  /* ---------- thumbnails ---------- */
+  function thumbUrl(listing) {
+    var t = String((listing && listing.thumb) || "");
+    if (/^https:\/\/[^\s"'<>]+$/.test(t)) return t;
+    if (/^thumbs\/[A-Za-z0-9_-]+\.(jpg|webp)$/.test(t)) return "./" + t;
+    return "";
+  }
+
+  function thumbHtml(listing, cls) {
+    var src = thumbUrl(listing);
+    return (
+      '<div class="thumb ' + cls + (src ? "" : " thumb-none") + '" data-testid="thumb">' +
+      (src
+        ? '<img class="thumb-img" src="' + esc(src) + '" alt="" loading="lazy" decoding="async" referrerpolicy="strict-origin-when-cross-origin">'
+        : "") +
+      "</div>"
     );
   }
 
@@ -706,6 +831,7 @@
     }
     var filters = readFiltersFromDom();
     var latest = latestDataDate(state.data);
+    updateFavCount();
     var exCount = allListings().filter(function (l) { return l.excluded === true; }).length;
     var exEl = $("excluded-count");
     if (exEl) exEl.textContent = "(" + exCount + ")";
@@ -1279,6 +1405,7 @@
     if (filters.dropsOnly) n++;
     if (filters.hideFlagged) n++;
     if (filters.showExcluded) n++;
+    if (filters.favOnly) n++;
     if (filters.dealersOff.length) n++;
     $("filter-active").textContent = n ? n + " active" : "";
     updateDealerReadout();
@@ -1512,7 +1639,10 @@
           esc(listing.rank) +
           '"' +
           (String(listing.rank) === String(highlightRank) ? ' class="hl"' : "") +
-          '><div class="pt">' +
+          ">" +
+          thumbHtml(listing, "pop-thumb") +
+          '<div class="pt">' +
+          favBtnHtml(listing) +
           esc(title) +
           '</div><div><span class="pp">' +
           esc(isNum(listing.price) ? money(listing.price) : "Price n/a") +
@@ -1576,7 +1706,10 @@
         popupAnchor: [0, -16]
       });
       var marker = window.L.marker([group.lat, group.lng], { icon: icon, keyboard: true, title: dealerName(group.listings[0]) });
-      marker.bindPopup(popupHtml(group), { maxWidth: 280, autoPanPaddingTopLeft: [10, 40] });
+      /* content is rebuilt on every open so favorite stars stay current */
+      marker.bindPopup(function () {
+        return popupHtml(group);
+      }, { maxWidth: 280, autoPanPaddingTopLeft: [10, 40] });
       marker.addTo(state.markerLayer);
       marker._tdGroup = group;
       state.markers[key] = marker;
@@ -1710,6 +1843,7 @@
     window.addEventListener("hashchange", applyRoute);
     bindPullToRefresh();
     bindExtras();
+    bindFavorites();
   }
 
   function registerWorker() {
