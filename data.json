@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-28T07:42:59-04:00",
+  "updated_at": "2026-10-29T07:41:25-04:00",
   "groups": {
     "1": "G1 · GM 6.6L gas L8T 2024-26",
     "2": "G2 · GM 6.6L gas L8T 2020-23",
@@ -26,7 +26,7 @@
       "g": 1,
       "grp": "G1 · GM 6.6L gas L8T 2024-26",
       "grade": "A",
-      "status": "live, no change",
+      "status": "live, PRICE DROP -$1,000",
       "yr": 2026,
       "mk": "Chevrolet",
       "model": "Silverado 2500HD",
@@ -37,7 +37,7 @@
       "cab": "Crew / standard box",
       "drv": "4WD",
       "mi": 159,
-      "price": 49991,
+      "price": 48991,
       "prev": 49991,
       "price_history": [
         {
@@ -87,6 +87,10 @@
         {
           "date": "2026-10-28",
           "price": 49991
+        },
+        {
+          "date": "2026-10-29",
+          "price": 48991
         }
       ],
       "doc": 0,
@@ -99,19 +103,20 @@
       "tow": "14,500 (17\" wheels) / 16,000 (18-22\")",
       "tow_lb": 14500,
       "tsrc": "2026 Chevrolet Silverado 2500HD chart (tow/gm26_2500)",
-      "pay_lo": 790,
-      "pay_hi": 1176,
-      "pay": "$790–$1,176/mo",
+      "pay_lo": 768,
+      "pay_hi": 1147,
+      "pay": "$768–$1,147/mo",
       "rec": [
         "25V815",
         "26V114"
       ],
       "flags": "AN 1Price includes $995 service + $499 e-filing fees. Recalls 25V815/26V114 for MY: confirm done by VIN.",
       "flag_tags": [
-        "edge_of_radius"
+        "edge_of_radius",
+        "price_drop"
       ],
       "first_seen": "2026-10-17",
-      "last_checked": "2026-10-28",
+      "last_checked": "2026-10-29",
       "lat": 28.552869,
       "lng": -81.42359
     },
@@ -181,6 +186,10 @@
         {
           "date": "2026-10-28",
           "price": 46732
+        },
+        {
+          "date": "2026-10-29",
+          "price": 46732
         }
       ],
       "doc": 0,
@@ -203,14 +212,14 @@
         "24V894",
         "26V530"
       ],
-      "flags": "LOCATION CONFLICT (still, Oct 27 5:32 PM ET): Clearwater store site lists it, but the autonation.com search lists it at Mercedes-Benz of Sarasota (75.5 mi, entry 10/11): https://www.autonation.com/cars/2gc4yme70r1111477/chevrolet-silverado-2500hd-2024 . Confirm where it is.",
+      "flags": "LOCATION CONFLICT (still, Oct 29 7:39 AM ET): Clearwater store site lists it, but the autonation.com search lists it at Mercedes-Benz of Sarasota (75.5 mi, entry 10/11): https://www.autonation.com/cars/2gc4yme70r1111477/chevrolet-silverado-2500hd-2024 . Confirm where it is.",
       "flag_tags": [
         "possibly_unavailable",
         "location_conflict",
         "price_drop"
       ],
       "first_seen": "2026-10-17",
-      "last_checked": "2026-10-28",
+      "last_checked": "2026-10-29",
       "lat": 27.909106,
       "lng": -82.728962
     },
@@ -280,6 +289,10 @@
         {
           "date": "2026-10-28",
           "price": 63229
+        },
+        {
+          "date": "2026-10-29",
+          "price": 63229
         }
       ],
       "doc": 0,
@@ -306,7 +319,7 @@
       ],
       "dd_status": "confirmed",
       "first_seen": "2026-10-17",
-      "last_checked": "2026-10-28",
+      "last_checked": "2026-10-29",
       "lat": 27.848398,
       "lng": -82.690074
     },
@@ -372,6 +385,10 @@
         {
           "date": "2026-10-28",
           "price": 63859
+        },
+        {
+          "date": "2026-10-29",
+          "price": 63859
         }
       ],
       "doc": 0,
@@ -393,7 +410,7 @@
       "flags": "Used, 13k miles. Recall 26V530 for MY: confirm done by VIN.",
       "flag_tags": [],
       "first_seen": "2026-10-18",
-      "last_checked": "2026-10-28",
+      "last_checked": "2026-10-29",
       "lat": 28.468888,
       "lng": -81.311254
     },
@@ -463,6 +480,10 @@
         {
           "date": "2026-10-28",
           "price": 55978
+        },
+        {
+          "date": "2026-10-29",
+          "price": 55978
         }
       ],
       "doc": 0,
@@ -488,7 +509,7 @@
         "price_drop"
       ],
       "first_seen": "2026-10-17",
-      "last_checked": "2026-10-28",
+      "last_checked": "2026-10-29",
       "lat": 28.552869,
       "lng": -81.42359
     },
@@ -558,6 +579,10 @@
         {
           "date": "2026-10-28",
           "price": 64492
+        },
+        {
+          "date": "2026-10-29",
+          "price": 64492
         }
       ],
       "doc": 0,
@@ -582,7 +607,7 @@
         "price_drop"
       ],
       "first_seen": "2026-10-17",
-      "last_checked": "2026-10-28",
+      "last_checked": "2026-10-29",
       "lat": 27.909106,
       "lng": -82.728962
     },
@@ -652,6 +677,10 @@
         {
           "date": "2026-10-28",
           "price": 69884
+        },
+        {
+          "date": "2026-10-29",
+          "price": 69884
         }
       ],
       "doc": 0,
@@ -677,7 +706,7 @@
         "in_transit"
       ],
       "first_seen": "2026-10-17",
-      "last_checked": "2026-10-28",
+      "last_checked": "2026-10-29",
       "lat": 27.909106,
       "lng": -82.728962
     },
@@ -747,6 +776,10 @@
         {
           "date": "2026-10-28",
           "price": 33900
+        },
+        {
+          "date": "2026-10-29",
+          "price": 33900
         }
       ],
       "doc": 969,
@@ -771,7 +804,7 @@
         "high_miles"
       ],
       "first_seen": "2026-10-17",
-      "last_checked": "2026-10-28",
+      "last_checked": "2026-10-29",
       "lat": 29.228349,
       "lng": -82.148864
     },
@@ -841,6 +874,10 @@
         {
           "date": "2026-10-28",
           "price": 21700
+        },
+        {
+          "date": "2026-10-29",
+          "price": 21700
         }
       ],
       "doc": null,
@@ -880,7 +917,7 @@
       "dd_status": "needs_check",
       "dd_reason": "no VIN, private, scam check",
       "first_seen": "2026-10-17",
-      "last_checked": "2026-10-28",
+      "last_checked": "2026-10-29",
       "lat": 27.909467,
       "lng": -82.787324
     },
@@ -946,6 +983,10 @@
         {
           "date": "2026-10-28",
           "price": 41696
+        },
+        {
+          "date": "2026-10-29",
+          "price": 41696
         }
       ],
       "doc": 0,
@@ -975,7 +1016,7 @@
         "price_drop"
       ],
       "first_seen": "2026-10-18",
-      "last_checked": "2026-10-28",
+      "last_checked": "2026-10-29",
       "lat": 26.599028,
       "lng": -81.84027
     },
@@ -1020,7 +1061,7 @@
         "fleet"
       ],
       "first_seen": "2026-10-27",
-      "last_checked": "2026-10-27"
+      "last_checked": "2026-10-29"
     },
     {
       "rank": 12,
@@ -1063,55 +1104,10 @@
         "fleet"
       ],
       "first_seen": "2026-10-27",
-      "last_checked": "2026-10-27"
+      "last_checked": "2026-10-29"
     },
     {
       "rank": 13,
-      "g": 5,
-      "grp": "US 19 · GM HD gas (dealers on 19)",
-      "grade": "B",
-      "status": "live, new (US 19 lookup)",
-      "yr": 2025,
-      "mk": "Chevrolet",
-      "model": "Silverado 2500HD",
-      "trim": "Custom Double Cab 4WD",
-      "eng": "6.6L V8 gas L8T",
-      "fuel": "gas",
-      "cond_new": false,
-      "cab": "Double Cab",
-      "mi": 23261,
-      "price": 48991,
-      "prev": 48991,
-      "price_history": [
-        {
-          "date": "2026-10-27",
-          "price": 48991
-        }
-      ],
-      "dealer": true,
-      "loc": "Castriota Chevrolet (727-755-5843), 12930 US Hwy 19, Hudson",
-      "lat": 28.34502,
-      "lng": -82.699011,
-      "d": 5,
-      "src": "castriota.com",
-      "url": "https://www.castriota.com/used-Hudson-2025-Chevrolet-Silverado+2500+HD-Custom-1GC5KME70SF128476",
-      "thumb": "https://www.castriota.com/inventoryphotos/21281/1gc5kme70sf128476/ip/1.jpg",
-      "vin": "1GC5KME70SF128476",
-      "tow": "14,500 est. conv.",
-      "tow_lb": 14500,
-      "tsrc": "GM trailering chart, verify sticker",
-      "rec_n": 1,
-      "flags": "Price excludes dealer fee (~$1,594); +$1,594 fee; Wheels: not shown; Verify tow on sticker.",
-      "flag_tags": [
-        "us19_lookup"
-      ],
-      "dd_status": "kept",
-      "dd_reason": "excluded (double cab, not crew); kept per CoS Oct 27 (the #14 double cab stays)",
-      "first_seen": "2026-10-27",
-      "last_checked": "2026-10-27"
-    },
-    {
-      "rank": 14,
       "g": 5,
       "grp": "US 19 · GM HD gas (dealers on 19)",
       "grade": "B",
@@ -1157,7 +1153,7 @@
       "last_checked": "2026-10-27"
     },
     {
-      "rank": 15,
+      "rank": 14,
       "g": 5,
       "grp": "US 19 · GM HD gas (dealers on 19)",
       "grade": "B",
@@ -1196,10 +1192,10 @@
         "us19_lookup"
       ],
       "first_seen": "2026-10-27",
-      "last_checked": "2026-10-27"
+      "last_checked": "2026-10-29"
     },
     {
-      "rank": 16,
+      "rank": 15,
       "g": 5,
       "grp": "US 19 · GM HD gas (dealers on 19)",
       "grade": "B",
@@ -1241,10 +1237,10 @@
       ],
       "dd_status": "confirmed",
       "first_seen": "2026-10-27",
-      "last_checked": "2026-10-27"
+      "last_checked": "2026-10-29"
     },
     {
-      "rank": 17,
+      "rank": 16,
       "g": 5,
       "grp": "US 19 · GM HD gas (dealers on 19)",
       "grade": "B",
@@ -1282,10 +1278,10 @@
         "us19_lookup"
       ],
       "first_seen": "2026-10-27",
-      "last_checked": "2026-10-27"
+      "last_checked": "2026-10-29"
     },
     {
-      "rank": 18,
+      "rank": 17,
       "g": 5,
       "grp": "US 19 · GM HD gas (dealers on 19)",
       "grade": "C",
@@ -1324,10 +1320,10 @@
         "us19_lookup"
       ],
       "first_seen": "2026-10-27",
-      "last_checked": "2026-10-27"
+      "last_checked": "2026-10-29"
     },
     {
-      "rank": 19,
+      "rank": 18,
       "g": 5,
       "grp": "US 19 · GM HD gas (dealers on 19)",
       "grade": "C",
@@ -1366,10 +1362,10 @@
         "us19_lookup"
       ],
       "first_seen": "2026-10-27",
-      "last_checked": "2026-10-27"
+      "last_checked": "2026-10-29"
     },
     {
-      "rank": 20,
+      "rank": 19,
       "g": 5,
       "grp": "US 19 · GM HD gas (dealers on 19)",
       "grade": "C",
@@ -1408,10 +1404,10 @@
         "us19_lookup"
       ],
       "first_seen": "2026-10-27",
-      "last_checked": "2026-10-27"
+      "last_checked": "2026-10-29"
     },
     {
-      "rank": 21,
+      "rank": 20,
       "g": 5,
       "grp": "US 19 · GM HD gas (dealers on 19)",
       "grade": "C",
@@ -1450,10 +1446,10 @@
         "us19_lookup"
       ],
       "first_seen": "2026-10-27",
-      "last_checked": "2026-10-27"
+      "last_checked": "2026-10-29"
     },
     {
-      "rank": 22,
+      "rank": 21,
       "g": 6,
       "grp": "Used finds · Truck Deal Finder deep dive",
       "status": "Confirmed (Truck Deal Finder deep dive)",
@@ -1495,7 +1491,7 @@
       "last_checked": "2026-10-27"
     },
     {
-      "rank": 23,
+      "rank": 22,
       "g": 6,
       "grp": "Used finds · Truck Deal Finder deep dive",
       "status": "Confirmed (Truck Deal Finder deep dive)",
@@ -1538,7 +1534,7 @@
       "last_checked": "2026-10-27"
     },
     {
-      "rank": 24,
+      "rank": 23,
       "g": 6,
       "grp": "Used finds · Truck Deal Finder deep dive",
       "status": "Confirmed (Truck Deal Finder deep dive)",
@@ -1581,7 +1577,7 @@
       "last_checked": "2026-10-27"
     },
     {
-      "rank": 25,
+      "rank": 24,
       "g": 6,
       "grp": "Used finds · Truck Deal Finder deep dive",
       "status": "Confirmed (Truck Deal Finder deep dive)",
@@ -1625,7 +1621,7 @@
       "last_checked": "2026-10-27"
     },
     {
-      "rank": 26,
+      "rank": 25,
       "g": 6,
       "grp": "Used finds · Truck Deal Finder deep dive",
       "status": "Confirmed (Truck Deal Finder deep dive)",
@@ -1668,7 +1664,7 @@
       "last_checked": "2026-10-27"
     },
     {
-      "rank": 27,
+      "rank": 26,
       "g": 6,
       "grp": "Used finds · Truck Deal Finder deep dive",
       "status": "Confirmed (Truck Deal Finder deep dive)",
@@ -1710,7 +1706,7 @@
       "last_checked": "2026-10-27"
     },
     {
-      "rank": 28,
+      "rank": 27,
       "g": 6,
       "grp": "Used finds · Truck Deal Finder deep dive",
       "status": "Confirmed (Truck Deal Finder deep dive)",
@@ -1752,7 +1748,7 @@
       "last_checked": "2026-10-27"
     },
     {
-      "rank": 29,
+      "rank": 28,
       "g": 6,
       "grp": "Used finds · Truck Deal Finder deep dive",
       "status": "Confirmed (Truck Deal Finder deep dive)",
@@ -1792,7 +1788,7 @@
       "last_checked": "2026-10-27"
     },
     {
-      "rank": 30,
+      "rank": 29,
       "g": 6,
       "grp": "Used finds · Truck Deal Finder deep dive",
       "status": "Confirmed (Truck Deal Finder deep dive)",
@@ -1834,7 +1830,7 @@
       "last_checked": "2026-10-27"
     },
     {
-      "rank": 31,
+      "rank": 30,
       "g": 6,
       "grp": "Used finds · Truck Deal Finder deep dive",
       "status": "Confirmed (Truck Deal Finder deep dive)",
@@ -1875,7 +1871,7 @@
       "last_checked": "2026-10-27"
     },
     {
-      "rank": 32,
+      "rank": 31,
       "g": 6,
       "grp": "Used finds · Truck Deal Finder deep dive",
       "status": "Confirmed (Truck Deal Finder deep dive)",
@@ -1916,7 +1912,7 @@
       "last_checked": "2026-10-27"
     },
     {
-      "rank": 33,
+      "rank": 32,
       "g": 6,
       "grp": "Used finds · Truck Deal Finder deep dive",
       "status": "Confirmed (Truck Deal Finder deep dive)",
@@ -1961,7 +1957,7 @@
       "last_checked": "2026-10-27"
     },
     {
-      "rank": 34,
+      "rank": 33,
       "g": 6,
       "grp": "Used finds · Truck Deal Finder deep dive",
       "status": "Confirmed (Truck Deal Finder deep dive)",
@@ -2002,7 +1998,7 @@
       "last_checked": "2026-10-27"
     },
     {
-      "rank": 35,
+      "rank": 34,
       "g": 6,
       "grp": "Used finds · Truck Deal Finder deep dive",
       "status": "Confirmed (Truck Deal Finder deep dive)",
@@ -2044,7 +2040,7 @@
       "last_checked": "2026-10-27"
     },
     {
-      "rank": 36,
+      "rank": 35,
       "g": 6,
       "grp": "Used finds · Truck Deal Finder deep dive",
       "status": "Confirmed (Truck Deal Finder deep dive)",
@@ -2149,6 +2145,10 @@
         {
           "date": "2026-10-28",
           "price": 18999
+        },
+        {
+          "date": "2026-10-29",
+          "price": 18999
         }
       ],
       "doc": 969,
@@ -2180,7 +2180,7 @@
         "below_market"
       ],
       "first_seen": "2026-10-18",
-      "last_checked": "2026-10-28",
+      "last_checked": "2026-10-29",
       "lat": 28.685799,
       "lng": -81.330998
     },
@@ -2246,6 +2246,10 @@
         {
           "date": "2026-10-28",
           "price": 25990
+        },
+        {
+          "date": "2026-10-29",
+          "price": 25990
         }
       ],
       "doc": 969,
@@ -2276,7 +2280,7 @@
         "far"
       ],
       "first_seen": "2026-10-18",
-      "last_checked": "2026-10-28",
+      "last_checked": "2026-10-29",
       "lat": 30.283779,
       "lng": -81.730308
     },
@@ -2346,6 +2350,10 @@
         {
           "date": "2026-10-28",
           "price": 17995
+        },
+        {
+          "date": "2026-10-29",
+          "price": 17995
         }
       ],
       "doc": 969,
@@ -2377,7 +2385,7 @@
         "high_miles"
       ],
       "first_seen": "2026-10-17",
-      "last_checked": "2026-10-28",
+      "last_checked": "2026-10-29",
       "lat": 27.998851,
       "lng": -82.459494
     },
@@ -2447,6 +2455,10 @@
         {
           "date": "2026-10-28",
           "price": 10500
+        },
+        {
+          "date": "2026-10-29",
+          "price": 10500
         }
       ],
       "doc": null,
@@ -2479,7 +2491,7 @@
         "high_miles"
       ],
       "first_seen": "2026-10-17",
-      "last_checked": "2026-10-28",
+      "last_checked": "2026-10-29",
       "lat": 27.909467,
       "lng": -82.787324
     },
@@ -2526,7 +2538,7 @@
       "dd_status": "needs_check",
       "dd_reason": "title not shown on dealer site (TrueCar earlier said clean)",
       "first_seen": "2026-10-27",
-      "last_checked": "2026-10-27"
+      "last_checked": "2026-10-29"
     },
     {
       "rank": "C6",
@@ -3470,5 +3482,5 @@
       "last_checked": "2026-10-27"
     }
   ],
-  "sources": "Checked Oct 28, 2026, 7:37-7:45 AM ET. Craigslist Hudson-centered city search (radius 150 mi, 17 queries at 4 s spacing, all HTTP 200; 791 unique posts, 24 not seen in the last four pulls, 2 of them GM HD pickups, both reposts already passed over) plus every Craigslist listing page in the feed (all 200); AutoNation fetcher: ONE narrow GM-HD-only run (150 mi, no detail pages, status ok, 6 loads, 43 vehicles, no Cloudflare block); AutoNation Chevrolet South Clearwater store VDPs and used Silverado HD page; gatortruckcenter.com and avinenterprises.com inventory and detail pages; Coast Buick GMC, Castriota, and Century Buick GMC detail pages (curl 200; Ferman, Tasca, and Jenkins pages returned 403). NHTSA recalls by model year; OEM towing guides on file. Not used: Cars.com, AutoTrader, CarGurus, Carfax, Edmunds, Carvana, CarMax, Facebook, browser. Research only: nobody contacted."
+  "sources": "Checked Oct 29, 2026, 7:37-7:44 AM ET. Craigslist Hudson-centered city search (radius 150 mi, 17 queries at 4 s spacing, all HTTP 200; 811 unique posts, 153 not seen in the last four pulls, 3 GM HD crew-cab posts read, none A-grade) plus every Craigslist listing page in the feed (all 200); AutoNation fetcher: ONE narrow GM-HD-only run (150 mi, no detail pages, status ok, 6 loads, 43 vehicles, no Cloudflare block); AutoNation Chevrolet South Clearwater store VDP and used Silverado HD page; gatortruckcenter.com and avinenterprises.com inventory and detail pages; Coast Buick GMC, Castriota, and Century Buick GMC detail pages (curl; Ferman, Tasca, and Jenkins skipped, 403 by curl on Oct 28). NHTSA recalls by model year; OEM towing guides on file. Not used: Cars.com, AutoTrader, CarGurus, Carfax, Edmunds, Carvana, CarMax, Facebook, browser. Research only: nobody contacted."
 }
