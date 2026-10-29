@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-29T07:41:25-04:00",
+  "updated_at": "2026-10-29T17:39:21-04:00",
   "groups": {
     "1": "G1 · GM 6.6L gas L8T 2024-26",
     "2": "G2 · GM 6.6L gas L8T 2020-23",
@@ -212,7 +212,7 @@
         "24V894",
         "26V530"
       ],
-      "flags": "LOCATION CONFLICT (still, Oct 29 7:39 AM ET): Clearwater store site lists it, but the autonation.com search lists it at Mercedes-Benz of Sarasota (75.5 mi, entry 10/11): https://www.autonation.com/cars/2gc4yme70r1111477/chevrolet-silverado-2500hd-2024 . Confirm where it is.",
+      "flags": "LOCATION CONFLICT (still, Oct 29 5:39 PM ET): Clearwater store site lists it, but the autonation.com search lists it at Mercedes-Benz of Sarasota (75.5 mi, entry 10/11): https://www.autonation.com/cars/2gc4yme70r1111477/chevrolet-silverado-2500hd-2024 . Confirm where it is.",
       "flag_tags": [
         "possibly_unavailable",
         "location_conflict",
@@ -3482,5 +3482,5 @@
       "last_checked": "2026-10-27"
     }
   ],
-  "sources": "Checked Oct 29, 2026, 7:37-7:44 AM ET. Craigslist Hudson-centered city search (radius 150 mi, 17 queries at 4 s spacing, all HTTP 200; 811 unique posts, 153 not seen in the last four pulls, 3 GM HD crew-cab posts read, none A-grade) plus every Craigslist listing page in the feed (all 200); AutoNation fetcher: ONE narrow GM-HD-only run (150 mi, no detail pages, status ok, 6 loads, 43 vehicles, no Cloudflare block); AutoNation Chevrolet South Clearwater store VDP and used Silverado HD page; gatortruckcenter.com and avinenterprises.com inventory and detail pages; Coast Buick GMC, Castriota, and Century Buick GMC detail pages (curl; Ferman, Tasca, and Jenkins skipped, 403 by curl on Oct 28). NHTSA recalls by model year; OEM towing guides on file. Not used: Cars.com, AutoTrader, CarGurus, Carfax, Edmunds, Carvana, CarMax, Facebook, browser. Research only: nobody contacted."
+  "sources": "Checked Oct 29, 2026, 5:36-5:50 PM ET. Craigslist Hudson-centered city search (radius 150 mi, 17 queries at 4 s spacing, all HTTP 200; 828 unique posts, 64 not seen in the last four pulls, none a GM HD crew-cab pickup) plus every Craigslist listing page in the feed (all 200); AutoNation fetcher: ONE narrow GM-HD-only run (150 mi, no detail pages, status ok, 6 loads, 42 vehicles, no Cloudflare block); AutoNation Chevrolet South Clearwater store VDP and used Silverado HD page; gatortruckcenter.com and avinenterprises.com inventory and detail pages; Coast Buick GMC, Castriota, and Century Buick GMC detail pages (curl; Ferman, Tasca, and Jenkins skipped, 403 by curl on Oct 28). NHTSA recalls by model year; OEM towing guides on file. Not used: Cars.com, AutoTrader, CarGurus, Carfax, Edmunds, Carvana, CarMax, Facebook, browser. Research only: nobody contacted."
 }
