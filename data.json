@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-31T17:43:46-04:00",
+  "updated_at": "2026-10-31T20:55:29-04:00",
   "groups": {
     "1": "G1 · GM 6.6L gas L8T 2024-26",
     "2": "G2 · GM 6.6L gas L8T 2020-23",
@@ -1958,14 +1958,14 @@
       "yr": 2025,
       "mk": "Chevrolet",
       "model": "Silverado 2500HD",
-      "trim": "Custom 4WD (CPO)",
+      "trim": "Custom 4WD (CarBravo CPO)",
       "eng": "Gasoline 6.6L (L8T)",
       "fuel": "gas",
       "cond_new": false,
-      "cab": "Crew Cab (Edmunds)",
+      "cab": "Crew Cab (dealer VDP + Edmunds: Custom 4dr Crew Cab 4WD SB)",
       "mi": 32970,
-      "price": 44996,
-      "prev": 46634,
+      "price": 44179,
+      "prev": 44996,
       "price_history": [
         {
           "date": "2026-10-27",
@@ -1974,26 +1974,31 @@
         {
           "date": "2026-10-27",
           "price": 44996
+        },
+        {
+          "date": "2026-10-31",
+          "price": 44179
         }
       ],
+      "doc": 1638,
       "dealer": true,
       "loc": "Chevrolet of Wesley Chapel, 26922 Wesley Chapel Blvd, Wesley Chapel, FL 33544",
       "lat": 28.232766,
       "lng": -82.371241,
       "d": 21.6,
-      "src": "Edmunds (Driveway) + Carfax",
+      "src": "Edmunds + Chevrolet of Wesley Chapel site (Carfax history per dealer)",
       "url": "https://www.edmunds.com/chevrolet/silverado-2500hd/2025/vin/2GC4KME72S1105588/?radius=50",
       "vin": "2GC4KME72S1105588",
-      "tow": "14,500-16,000 est.",
-      "tow_lb": 14500,
+      "tow": "16,000 (GM 2025 guide: 6.6 gas crew 4x4 std bed, 18-22\" wheels; truck has 20\" wheels)",
+      "tow_lb": 16000,
       "rec_n": 1,
-      "flags": "Title: clean, 0 accidents, 1 owner. 1 NHTSA campaign(s) for this make/model/year (not VIN-specific). Phone (877) 884-1909. CPO. VIN evidence: vPIC's GM 2020-21 schema reads VIN position 4 as cab+GVWR (1=crew Class 2H, 4=crew Class 3, 2/5=double, 3=regular; tested 10/27); vPIC does not decode cab for 2022+ GM HD, so this is consistent-with, not proof. Edmunds lists it via 'Driveway, Online Only, Wesley Chapel FL 33544' (Driveway is the online listing; dealer kept as Chevrolet of Wesley Chapel). Price $44,996 on Edmunds (fees not disclosed) vs $46,634 on Carfax at Chevrolet of Wesley Chapel. 6'10\" bed. Wheel size unknown. Deep-dive rank 2.",
+      "flags": "Title: clean, 0 accidents, 1 owner (Edmunds history + dealer \"Clean CARFAX. CARFAX One-Owner\"). Wheels: 20\" 10-spoke machined aluminum (dealer VDP). 1 NHTSA campaign(s) for this make/model/year (not VIN-specific). Phone (877) 884-1909. Price drop Oct 29-30 2026 (Edmunds alert): $44,996 -> $44,179. Verified 2026-10-31 ~8:55 PM ET on Edmunds VDP ($44,179, fees not disclosed) and dealer VDP https://www.chevyofwesleychapel.com/used-Wesley+Chapel-2025-Chevrolet-Silverado+2500+HD-Custom-2GC4KME72S1105588 (Was $47,996, Now $44,179, + $1,199 doc fee + $439 tag agency fee = $45,817 dealer price; optional $2,895 Platinum Protection package not included; 'Reduced by $4,713 since Sep 23, 2026'). Stock C105588A, CarBravo certified. VIN pos 8 = 7 (6.6L L8T gas, vPIC), pos 4 = 4; dealer and Edmunds both say Crew Cab. 6'10\" bed, 3.73 axle, Z71, 20\" wheels; dealer lists 16,000 lb trailering. Edmunds 'Up to 18,500 lbs' is not this config. Earlier Carfax price at this dealer $46,634 (Oct 27). Deep-dive rank 2.",
       "flag_tags": [
         "deep_dive"
       ],
       "dd_status": "confirmed",
       "first_seen": "2026-10-27",
-      "last_checked": "2026-10-27"
+      "last_checked": "2026-10-31"
     },
     {
       "rank": 32,
