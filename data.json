@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-01T17:37:00-05:00",
+  "updated_at": "2026-11-02T07:44:22-05:00",
   "groups": {
     "1": "G1 · GM 6.6L gas L8T 2024-26",
     "2": "G2 · GM 6.6L gas L8T 2020-23",
@@ -103,6 +103,10 @@
         {
           "date": "2026-11-01",
           "price": 48491
+        },
+        {
+          "date": "2026-11-02",
+          "price": 48491
         }
       ],
       "doc": 0,
@@ -128,7 +132,7 @@
         "price_drop"
       ],
       "first_seen": "2026-10-17",
-      "last_checked": "2026-11-01",
+      "last_checked": "2026-11-02",
       "lat": 28.552869,
       "lng": -81.42359
     },
@@ -214,6 +218,10 @@
         {
           "date": "2026-11-01",
           "price": 46732
+        },
+        {
+          "date": "2026-11-02",
+          "price": 46732
         }
       ],
       "doc": 0,
@@ -236,14 +244,14 @@
         "24V894",
         "26V530"
       ],
-      "flags": "LOCATION CONFLICT (still, Nov 1 5:35 PM ET): Clearwater store site lists it, but the autonation.com search lists it at Mercedes-Benz of Sarasota (75.5 mi, entry 10/11): https://www.autonation.com/cars/2gc4yme70r1111477/chevrolet-silverado-2500hd-2024 . Confirm where it is.",
+      "flags": "LOCATION CONFLICT (still, Nov 2 7:41 AM ET): Clearwater store site lists it, but the autonation.com search lists it at Mercedes-Benz of Sarasota (75.5 mi, entry 10/11): https://www.autonation.com/cars/2gc4yme70r1111477/chevrolet-silverado-2500hd-2024 . Confirm where it is.",
       "flag_tags": [
         "possibly_unavailable",
         "location_conflict",
         "price_drop"
       ],
       "first_seen": "2026-10-17",
-      "last_checked": "2026-11-01",
+      "last_checked": "2026-11-02",
       "lat": 27.909106,
       "lng": -82.728962
     },
@@ -329,6 +337,10 @@
         {
           "date": "2026-11-01",
           "price": 63229
+        },
+        {
+          "date": "2026-11-02",
+          "price": 63229
         }
       ],
       "doc": 0,
@@ -355,7 +367,7 @@
       ],
       "dd_status": "confirmed",
       "first_seen": "2026-10-17",
-      "last_checked": "2026-11-01",
+      "last_checked": "2026-11-02",
       "lat": 27.848398,
       "lng": -82.690074
     },
@@ -441,6 +453,10 @@
         {
           "date": "2026-11-01",
           "price": 55978
+        },
+        {
+          "date": "2026-11-02",
+          "price": 55978
         }
       ],
       "doc": 0,
@@ -466,122 +482,12 @@
         "price_drop"
       ],
       "first_seen": "2026-10-17",
-      "last_checked": "2026-11-01",
+      "last_checked": "2026-11-02",
       "lat": 28.552869,
       "lng": -81.42359
     },
     {
       "rank": 5,
-      "g": 1,
-      "grp": "G1 · GM 6.6L gas L8T 2024-26",
-      "grade": "A",
-      "status": "live, no change",
-      "yr": 2026,
-      "mk": "Chevrolet",
-      "model": "Silverado 2500HD",
-      "trim": "LT",
-      "eng": "6.6L V8 gas L8T",
-      "fuel": "gas",
-      "cond_new": true,
-      "cab": "Crew / LONG box",
-      "drv": "4WD",
-      "mi": 5,
-      "price": 64492,
-      "prev": 64492,
-      "price_history": [
-        {
-          "date": "2026-10-17",
-          "price": 64734
-        },
-        {
-          "date": "2026-10-18",
-          "price": 64734
-        },
-        {
-          "date": "2026-10-19",
-          "price": 64734
-        },
-        {
-          "date": "2026-10-20",
-          "price": 64492
-        },
-        {
-          "date": "2026-10-21",
-          "price": 64492
-        },
-        {
-          "date": "2026-10-22",
-          "price": 64492
-        },
-        {
-          "date": "2026-10-23",
-          "price": 64492
-        },
-        {
-          "date": "2026-10-24",
-          "price": 64492
-        },
-        {
-          "date": "2026-10-25",
-          "price": 64492
-        },
-        {
-          "date": "2026-10-26",
-          "price": 64492
-        },
-        {
-          "date": "2026-10-27",
-          "price": 64492
-        },
-        {
-          "date": "2026-10-28",
-          "price": 64492
-        },
-        {
-          "date": "2026-10-29",
-          "price": 64492
-        },
-        {
-          "date": "2026-10-30",
-          "price": 64492
-        },
-        {
-          "date": "2026-10-31",
-          "price": 64492
-        },
-        {
-          "date": "2026-11-01",
-          "price": 64492
-        }
-      ],
-      "doc": 0,
-      "dealer": true,
-      "loc": "AutoNation Chevrolet South Clearwater",
-      "d": 31.0,
-      "src": "AutoNation",
-      "url": "https://www.autonation.com/cars/1gc4kne76tf384978/chevrolet-silverado-2500hd-2026",
-      "vin": "1GC4KNE76TF384978",
-      "tow": "14,500 (17\") / 16,000 (18-22\")",
-      "tow_lb": 14500,
-      "tsrc": "2026 Chevrolet Silverado 2500HD chart (tow/gm26_2500)",
-      "pay_lo": 1106,
-      "pay_hi": 1598,
-      "pay": "$1,106–$1,598/mo",
-      "rec": [
-        "25V815",
-        "26V114"
-      ],
-      "flags": "$5,606 under MSRP. Only new A-grade long box found.",
-      "flag_tags": [
-        "price_drop"
-      ],
-      "first_seen": "2026-10-17",
-      "last_checked": "2026-11-01",
-      "lat": 27.909106,
-      "lng": -82.728962
-    },
-    {
-      "rank": 6,
       "g": 1,
       "grp": "G1 · GM 6.6L gas L8T 2024-26",
       "grade": "A",
@@ -662,6 +568,10 @@
         {
           "date": "2026-11-01",
           "price": 69884
+        },
+        {
+          "date": "2026-11-02",
+          "price": 69884
         }
       ],
       "doc": 0,
@@ -687,12 +597,12 @@
         "in_transit"
       ],
       "first_seen": "2026-10-17",
-      "last_checked": "2026-11-01",
+      "last_checked": "2026-11-02",
       "lat": 27.909106,
       "lng": -82.728962
     },
     {
-      "rank": 7,
+      "rank": 6,
       "g": 2,
       "grp": "G2 · GM 6.6L gas L8T 2020-23",
       "grade": "A",
@@ -773,6 +683,10 @@
         {
           "date": "2026-11-01",
           "price": 33900
+        },
+        {
+          "date": "2026-11-02",
+          "price": 33900
         }
       ],
       "doc": 969,
@@ -797,12 +711,12 @@
         "high_miles"
       ],
       "first_seen": "2026-10-17",
-      "last_checked": "2026-11-01",
+      "last_checked": "2026-11-02",
       "lat": 29.228349,
       "lng": -82.148864
     },
     {
-      "rank": 8,
+      "rank": 7,
       "g": 2,
       "grp": "G2 · GM 6.6L gas L8T 2020-23",
       "grade": "A",
@@ -883,6 +797,10 @@
         {
           "date": "2026-11-01",
           "price": 21700
+        },
+        {
+          "date": "2026-11-02",
+          "price": 21700
         }
       ],
       "doc": null,
@@ -922,12 +840,12 @@
       "dd_status": "needs_check",
       "dd_reason": "no VIN, private, scam check",
       "first_seen": "2026-10-17",
-      "last_checked": "2026-11-01",
+      "last_checked": "2026-11-02",
       "lat": 27.909467,
       "lng": -82.787324
     },
     {
-      "rank": 9,
+      "rank": 8,
       "g": 3,
       "grp": "G3 · GM L5P Duramax 2017-19 (2500 crew long box / 3500 long or DRW)",
       "grade": "A",
@@ -1004,6 +922,10 @@
         {
           "date": "2026-11-01",
           "price": 40990
+        },
+        {
+          "date": "2026-11-02",
+          "price": 40990
         }
       ],
       "doc": 0,
@@ -1033,12 +955,12 @@
         "price_drop"
       ],
       "first_seen": "2026-10-18",
-      "last_checked": "2026-11-01",
+      "last_checked": "2026-11-02",
       "lat": 26.599028,
       "lng": -81.84027
     },
     {
-      "rank": 10,
+      "rank": 9,
       "g": 5,
       "grp": "US 19 · GM HD gas (dealers on 19)",
       "grade": "B",
@@ -1078,10 +1000,10 @@
         "fleet"
       ],
       "first_seen": "2026-10-27",
-      "last_checked": "2026-11-01"
+      "last_checked": "2026-11-02"
     },
     {
-      "rank": 11,
+      "rank": 10,
       "g": 5,
       "grp": "US 19 · GM HD gas (dealers on 19)",
       "grade": "B",
@@ -1121,10 +1043,10 @@
         "fleet"
       ],
       "first_seen": "2026-10-27",
-      "last_checked": "2026-11-01"
+      "last_checked": "2026-11-02"
     },
     {
-      "rank": 12,
+      "rank": 11,
       "g": 5,
       "grp": "US 19 · GM HD gas (dealers on 19)",
       "grade": "B",
@@ -1170,7 +1092,7 @@
       "last_checked": "2026-10-27"
     },
     {
-      "rank": 13,
+      "rank": 12,
       "g": 5,
       "grp": "US 19 · GM HD gas (dealers on 19)",
       "grade": "B",
@@ -1213,10 +1135,10 @@
         "us19_lookup"
       ],
       "first_seen": "2026-10-27",
-      "last_checked": "2026-11-01"
+      "last_checked": "2026-11-02"
     },
     {
-      "rank": 14,
+      "rank": 13,
       "g": 5,
       "grp": "US 19 · GM HD gas (dealers on 19)",
       "grade": "B",
@@ -1258,10 +1180,10 @@
       ],
       "dd_status": "confirmed",
       "first_seen": "2026-10-27",
-      "last_checked": "2026-11-01"
+      "last_checked": "2026-11-02"
     },
     {
-      "rank": 15,
+      "rank": 14,
       "g": 5,
       "grp": "US 19 · GM HD gas (dealers on 19)",
       "grade": "B",
@@ -1300,10 +1222,10 @@
         "us19_lookup"
       ],
       "first_seen": "2026-10-27",
-      "last_checked": "2026-11-01"
+      "last_checked": "2026-11-02"
     },
     {
-      "rank": 16,
+      "rank": 15,
       "g": 5,
       "grp": "US 19 · GM HD gas (dealers on 19)",
       "grade": "C",
@@ -1342,10 +1264,10 @@
         "us19_lookup"
       ],
       "first_seen": "2026-10-27",
-      "last_checked": "2026-11-01"
+      "last_checked": "2026-11-02"
     },
     {
-      "rank": 17,
+      "rank": 16,
       "g": 5,
       "grp": "US 19 · GM HD gas (dealers on 19)",
       "grade": "C",
@@ -1384,10 +1306,10 @@
         "us19_lookup"
       ],
       "first_seen": "2026-10-27",
-      "last_checked": "2026-11-01"
+      "last_checked": "2026-11-02"
     },
     {
-      "rank": 18,
+      "rank": 17,
       "g": 5,
       "grp": "US 19 · GM HD gas (dealers on 19)",
       "grade": "C",
@@ -1426,10 +1348,10 @@
         "us19_lookup"
       ],
       "first_seen": "2026-10-27",
-      "last_checked": "2026-11-01"
+      "last_checked": "2026-11-02"
     },
     {
-      "rank": 19,
+      "rank": 18,
       "g": 6,
       "grp": "Used finds · Truck Deal Finder deep dive",
       "status": "Confirmed (Truck Deal Finder deep dive)",
@@ -1454,7 +1376,7 @@
       "loc": "Nissan of Clearwater, 15232 US Highway 19 N, Clearwater, FL 33764",
       "lat": 27.910769,
       "lng": -82.728118,
-      "d": 31.4,
+      "d": 32.4,
       "src": "CarGurus",
       "url": "https://www.cargurus.com/Cars/listing/461589208",
       "vin": "1GC1KNE71TF262760",
@@ -1471,7 +1393,7 @@
       "last_checked": "2026-10-27"
     },
     {
-      "rank": 20,
+      "rank": 19,
       "g": 6,
       "grp": "Used finds · Truck Deal Finder deep dive",
       "status": "Confirmed (Truck Deal Finder deep dive)",
@@ -1497,7 +1419,7 @@
       "loc": "Tasca Buick GMC Clearwater, 18200 US Highway 19 N, Clearwater, FL 33764",
       "lat": 27.937761,
       "lng": -82.730996,
-      "d": 29.6,
+      "d": 30.6,
       "src": "CarGurus",
       "url": "https://www.cargurus.com/Cars/listing/461180488",
       "vin": "1GC4YPE79RF331906",
@@ -1514,7 +1436,7 @@
       "last_checked": "2026-10-27"
     },
     {
-      "rank": 21,
+      "rank": 20,
       "g": 6,
       "grp": "Used finds · Truck Deal Finder deep dive",
       "status": "Confirmed (Truck Deal Finder deep dive)",
@@ -1540,7 +1462,7 @@
       "loc": "Tasca Buick GMC Palm Harbor, 30777 US Highway 19 N, Palm Harbor, FL 34684",
       "lat": 28.051885,
       "lng": -82.738664,
-      "d": 21.8,
+      "d": 23.1,
       "src": "dealer site",
       "url": "https://www.tascabuickgmcpalmharbor.com/inventory/used-2026-gmc-sierra-2500-hd-slt-four-wheel-drive-crew-cab-1gt4une71tf182267/",
       "vin": "1GT4UNE71TF182267",
@@ -1557,7 +1479,7 @@
       "last_checked": "2026-10-27"
     },
     {
-      "rank": 22,
+      "rank": 21,
       "g": 6,
       "grp": "Used finds · Truck Deal Finder deep dive",
       "status": "Confirmed (Truck Deal Finder deep dive)",
@@ -1583,7 +1505,7 @@
       "loc": "Fields Motorcars Lakeland, 4141 N Florida Ave, Lakeland, FL 33805",
       "lat": 28.094141,
       "lng": -81.955657,
-      "d": 48.6,
+      "d": 44.8,
       "src": "CarGurus",
       "url": "https://www.cargurus.com/Cars/listing/437748055",
       "vin": "1GC4KME77SF101741",
@@ -1601,7 +1523,7 @@
       "last_checked": "2026-10-27"
     },
     {
-      "rank": 23,
+      "rank": 22,
       "g": 6,
       "grp": "Used finds · Truck Deal Finder deep dive",
       "status": "Confirmed (Truck Deal Finder deep dive)",
@@ -1627,7 +1549,7 @@
       "loc": "Kia of Wesley Chapel, 28555 State Road 54, Wesley Chapel, FL 33543",
       "lat": 28.238567,
       "lng": -82.34204,
-      "d": 23.1,
+      "d": 19.3,
       "src": "CarGurus",
       "url": "https://www.cargurus.com/Cars/listing/462110335",
       "vin": "2GC1KME7XS1177111",
@@ -1644,7 +1566,7 @@
       "last_checked": "2026-10-27"
     },
     {
-      "rank": 24,
+      "rank": 23,
       "g": 6,
       "grp": "Used finds · Truck Deal Finder deep dive",
       "status": "Confirmed (Truck Deal Finder deep dive)",
@@ -1669,7 +1591,7 @@
       "loc": "Dimmitt Chevrolet, 25485 US Hwy 19 N, Clearwater, FL 33763",
       "lat": 28.004237,
       "lng": -82.729219,
-      "d": 25.0,
+      "d": 26.1,
       "src": "Carfax",
       "url": "https://www.carfax.com/vehicle/2GC4AME72T1182790",
       "vin": "2GC4AME72T1182790",
@@ -1686,7 +1608,7 @@
       "last_checked": "2026-10-27"
     },
     {
-      "rank": 25,
+      "rank": 24,
       "g": 6,
       "grp": "Used finds · Truck Deal Finder deep dive",
       "status": "Confirmed (Truck Deal Finder deep dive)",
@@ -1711,7 +1633,7 @@
       "loc": "Dimmitt Chevrolet, 25485 US Hwy 19 N, Clearwater, FL 33763",
       "lat": 28.004237,
       "lng": -82.729219,
-      "d": 25.0,
+      "d": 26.1,
       "src": "Carfax",
       "url": "https://www.carfax.com/vehicle/1GC4WNE78RF118729",
       "vin": "1GC4WNE78RF118729",
@@ -1728,7 +1650,7 @@
       "last_checked": "2026-10-27"
     },
     {
-      "rank": 26,
+      "rank": 25,
       "g": 6,
       "grp": "Used finds · Truck Deal Finder deep dive",
       "status": "Confirmed (Truck Deal Finder deep dive)",
@@ -1753,7 +1675,7 @@
       "loc": "Courtesy Toyota of Brandon, 9210 E Adamo Dr, Tampa, FL 33619",
       "lat": 27.949556,
       "lng": -82.353742,
-      "d": 35.4,
+      "d": 33.3,
       "src": "Carfax",
       "url": "https://www.carfax.com/vehicle/2GC4YLE7XR1128362",
       "vin": "2GC4YLE7XR1128362",
@@ -1768,7 +1690,7 @@
       "last_checked": "2026-10-27"
     },
     {
-      "rank": 27,
+      "rank": 26,
       "g": 6,
       "grp": "Used finds · Truck Deal Finder deep dive",
       "status": "Confirmed (Truck Deal Finder deep dive)",
@@ -1793,7 +1715,7 @@
       "loc": "Jarrett Ford Dade City, 12621 U.S. 301, Dade City, FL 33525",
       "lat": 28.347021,
       "lng": -82.187618,
-      "d": 30.8,
+      "d": 26.4,
       "src": "Carfax",
       "url": "https://www.carfax.com/vehicle/1GC4YME75LF219111",
       "vin": "1GC4YME75LF219111",
@@ -1810,7 +1732,7 @@
       "last_checked": "2026-10-27"
     },
     {
-      "rank": 28,
+      "rank": 27,
       "g": 6,
       "grp": "Used finds · Truck Deal Finder deep dive",
       "status": "Confirmed (Truck Deal Finder deep dive)",
@@ -1835,7 +1757,7 @@
       "loc": "Wesley Chapel Honda, 27750 Wesley Chapel Blvd, Wesley Chapel, FL 33544",
       "lat": 28.237284,
       "lng": -82.356618,
-      "d": 22.3,
+      "d": 18.5,
       "src": "Carfax",
       "url": "https://www.carfax.com/vehicle/2GC4YNE74R1236391",
       "vin": "2GC4YNE74R1236391",
@@ -1851,7 +1773,7 @@
       "last_checked": "2026-10-27"
     },
     {
-      "rank": 29,
+      "rank": 28,
       "g": 6,
       "grp": "Used finds · Truck Deal Finder deep dive",
       "status": "Confirmed (Truck Deal Finder deep dive)",
@@ -1876,7 +1798,7 @@
       "loc": "Lee Auto Group Tampa, 4027 S 50th St, Tampa, FL 33619",
       "lat": 27.911539,
       "lng": -82.401968,
-      "d": 36.0,
+      "d": 34.4,
       "src": "Carfax",
       "url": "https://www.carfax.com/vehicle/1GC4YNE76RF102782",
       "vin": "1GC4YNE76RF102782",
@@ -1892,7 +1814,7 @@
       "last_checked": "2026-10-27"
     },
     {
-      "rank": 30,
+      "rank": 29,
       "g": 6,
       "grp": "Used finds · Truck Deal Finder deep dive",
       "status": "Confirmed (Truck Deal Finder deep dive)",
@@ -1926,7 +1848,7 @@
       "loc": "Chevrolet of Wesley Chapel, 26922 Wesley Chapel Blvd, Wesley Chapel, FL 33544",
       "lat": 28.232766,
       "lng": -82.371241,
-      "d": 21.6,
+      "d": 17.9,
       "src": "Edmunds + Chevrolet of Wesley Chapel site (Carfax history per dealer)",
       "url": "https://www.edmunds.com/chevrolet/silverado-2500hd/2025/vin/2GC4KME72S1105588/?radius=50",
       "vin": "2GC4KME72S1105588",
@@ -1942,7 +1864,7 @@
       "last_checked": "2026-10-31"
     },
     {
-      "rank": 31,
+      "rank": 30,
       "g": 6,
       "grp": "Used finds · Truck Deal Finder deep dive",
       "status": "Confirmed (Truck Deal Finder deep dive)",
@@ -1968,7 +1890,7 @@
       "loc": "Jenkins Chevrolet of Homosassa, 1035 S Suncoast Blvd, Homosassa, FL 34448",
       "lat": 28.847501,
       "lng": -82.579391,
-      "d": 34.1,
+      "d": 33.1,
       "src": "dealer site",
       "url": "https://www.jenkinschevroletofhomosassa.com/used/Chevrolet/2025-Chevrolet-Silverado-2500HD-ac7632f7ac182917f2b47494db1752af.htm",
       "vin": "2GC4KME74S1123333",
@@ -1983,7 +1905,7 @@
       "last_checked": "2026-10-27"
     },
     {
-      "rank": 32,
+      "rank": 31,
       "g": 6,
       "grp": "Used finds · Truck Deal Finder deep dive",
       "status": "Confirmed (Truck Deal Finder deep dive)",
@@ -2009,7 +1931,7 @@
       "loc": "Jenkins Chevrolet of Homosassa, 1035 S Suncoast Blvd, Homosassa, FL 34448",
       "lat": 28.847501,
       "lng": -82.579391,
-      "d": 34.1,
+      "d": 33.1,
       "src": "dealer site",
       "url": "https://www.jenkinschevroletofhomosassa.com/certified/Chevrolet/2025-Chevrolet-Silverado-2500-HD-caad5193ac1808057ad62de0b1a49eba.htm",
       "thumb": "https://pictures.dealer.com/j/jenkinschevroletofvenicelend/1034/e6461b269f53e3a20f25caf7fb700035x.jpg",
@@ -2025,7 +1947,7 @@
       "last_checked": "2026-10-27"
     },
     {
-      "rank": 33,
+      "rank": 32,
       "g": 6,
       "grp": "Used finds · Truck Deal Finder deep dive",
       "status": "Confirmed (Truck Deal Finder deep dive)",
@@ -2051,7 +1973,7 @@
       "loc": "Jenkins Chevrolet of Homosassa, 1035 S Suncoast Blvd, Homosassa, FL 34448",
       "lat": 28.847501,
       "lng": -82.579391,
-      "d": 34.1,
+      "d": 33.1,
       "src": "dealer site",
       "url": "https://www.jenkinschevroletofhomosassa.com/used/Chevrolet/2022-Chevrolet-Silverado-2500HD-6d22927aac180c02c600039468ecec83.htm",
       "thumb": "https://pictures.dealer.com/j/jenkinssubaruofocalasoa/0492/c22bbe16c106656ee12be569560e498ex.jpg",
@@ -2146,6 +2068,10 @@
         {
           "date": "2026-11-01",
           "price": 17999
+        },
+        {
+          "date": "2026-11-02",
+          "price": 17999
         }
       ],
       "doc": 969,
@@ -2178,7 +2104,7 @@
         "price_drop"
       ],
       "first_seen": "2026-10-18",
-      "last_checked": "2026-11-01",
+      "last_checked": "2026-11-02",
       "lat": 28.685799,
       "lng": -81.330998
     },
@@ -2260,6 +2186,10 @@
         {
           "date": "2026-11-01",
           "price": 25990
+        },
+        {
+          "date": "2026-11-02",
+          "price": 25990
         }
       ],
       "doc": 969,
@@ -2290,7 +2220,7 @@
         "far"
       ],
       "first_seen": "2026-10-18",
-      "last_checked": "2026-11-01",
+      "last_checked": "2026-11-02",
       "lat": 30.283779,
       "lng": -81.730308
     },
@@ -2376,6 +2306,10 @@
         {
           "date": "2026-11-01",
           "price": 17995
+        },
+        {
+          "date": "2026-11-02",
+          "price": 17995
         }
       ],
       "doc": 969,
@@ -2407,7 +2341,7 @@
         "high_miles"
       ],
       "first_seen": "2026-10-17",
-      "last_checked": "2026-11-01",
+      "last_checked": "2026-11-02",
       "lat": 27.998851,
       "lng": -82.459494
     },
@@ -2493,6 +2427,10 @@
         {
           "date": "2026-11-01",
           "price": 10400
+        },
+        {
+          "date": "2026-11-02",
+          "price": 10400
         }
       ],
       "doc": null,
@@ -2526,7 +2464,7 @@
         "price_drop"
       ],
       "first_seen": "2026-10-17",
-      "last_checked": "2026-11-01",
+      "last_checked": "2026-11-02",
       "lat": 27.909467,
       "lng": -82.787324
     },
@@ -2561,7 +2499,7 @@
       "loc": "Century Buick GMC, 3308 W Hillsborough Ave, Tampa, FL 33614",
       "lat": 27.995951,
       "lng": -82.49692,
-      "d": 28.1,
+      "d": 26.9,
       "src": "TrueCar",
       "url": "https://www.centurybuickgmc.com/used-Tampa-2024-Chevrolet-Silverado+2500+HD-Custom-2GC4YME75R1113743",
       "thumb": "https://www.centurybuickgmc.com/inventoryphotos/15064/2gc4yme75r1113743/ip/1.jpg",
@@ -2577,7 +2515,7 @@
       "dd_status": "needs_check",
       "dd_reason": "title not shown on dealer site (TrueCar earlier said clean)",
       "first_seen": "2026-10-27",
-      "last_checked": "2026-11-01"
+      "last_checked": "2026-11-02"
     },
     {
       "rank": "C6",
@@ -2645,7 +2583,7 @@
       "loc": "Ferman Buick GMC Lutz, 24252 State Road 54, Lutz, FL 33559",
       "lat": 28.185714,
       "lng": -82.415375,
-      "d": 20.9,
+      "d": 17.9,
       "src": "CarGurus",
       "url": "https://www.cargurus.com/Cars/listing/462096427",
       "vin": "1GC4KME78SF149779",
@@ -2689,7 +2627,7 @@
       "loc": "Rivard Buick GMC, 9740 E Adamo Dr, Tampa, FL 33619",
       "lat": 27.949415,
       "lng": -82.346225,
-      "d": 35.6,
+      "d": 33.5,
       "src": "CarGurus",
       "url": "https://www.cargurus.com/Cars/listing/461826536",
       "vin": "2GC4YME72P1729588",
@@ -2733,7 +2671,7 @@
       "loc": "CarMax Tampa, 14920 N Nebraska Ave, Tampa, FL 33613",
       "lat": 28.086398,
       "lng": -82.451431,
-      "d": 24.2,
+      "d": 22.2,
       "src": "CarMax + CarGurus",
       "url": "https://www.carmax.com/car/28875956",
       "vin": "1GC4WNE73NF230705",
@@ -2815,7 +2753,7 @@
       "loc": "Unique Motors of Tampa, 8440 N Florida Ave, Tampa, FL 33604",
       "lat": 28.026862,
       "lng": -82.459571,
-      "d": 27.3,
+      "d": 25.7,
       "src": "CarGurus",
       "url": "https://www.cargurus.com/Cars/listing/461806127",
       "vin": "2GC4YME7XR1105086",
@@ -2858,7 +2796,7 @@
       "loc": "Maus Nissan of Brooksville, 15220 Wiscon Rd, Brooksville, FL 34601",
       "lat": 28.533748,
       "lng": -82.476675,
-      "d": 17.6,
+      "d": 14.3,
       "src": "CarGurus",
       "url": "https://www.cargurus.com/Cars/listing/462579463",
       "vin": "2GC4KNE70T1148088",
@@ -2902,7 +2840,7 @@
       "loc": "Maher Chevrolet, 2901 34th St N, St. Petersburg, FL 33713",
       "lat": 27.79745,
       "lng": -82.679407,
-      "d": 39.2,
+      "d": 39.7,
       "src": "TrueCar",
       "url": "https://www.google.com/search?q=2GC1KME71S1197585",
       "vin": "2GC1KME71S1197585",
@@ -2945,7 +2883,7 @@
       "loc": "Jim Browne CJDR Dade City, 12020 US Highway 301, Dade City, FL 33525",
       "lat": 28.331571,
       "lng": -82.187436,
-      "d": 30.9,
+      "d": 26.5,
       "src": "CarGurus",
       "url": "https://www.cargurus.com/Cars/listing/461431898",
       "vin": "1GC4YPE76NF158386",
@@ -2987,7 +2925,7 @@
       "loc": "Ferman Buick GMC Lutz, 24252 State Road 54, Lutz, FL 33559",
       "lat": 28.185714,
       "lng": -82.415375,
-      "d": 20.9,
+      "d": 17.9,
       "src": "CarGurus",
       "url": "https://www.google.com/search?q=1GT49PE74RF155909",
       "vin": "1GT49PE74RF155909",
@@ -3031,7 +2969,7 @@
       "loc": "Ferman Chevrolet Tampa, 9751 E Adamo Dr, Tampa, FL 33619",
       "lat": 27.949232,
       "lng": -82.346013,
-      "d": 35.7,
+      "d": 33.6,
       "src": "TrueCar",
       "url": "https://www.carfax.com/vehicle/1GC4YRE76LF132234",
       "vin": "1GC4YRE76LF132234",
@@ -3072,7 +3010,7 @@
       "loc": "Maher Chevrolet, 2901 34th St N, St. Petersburg, FL 33713",
       "lat": 27.79745,
       "lng": -82.679407,
-      "d": 39.2,
+      "d": 39.7,
       "src": "CarGurus",
       "url": "https://www.cargurus.com/Cars/listing/462316608",
       "vin": "2GC4KRE79T1183137",
@@ -3116,7 +3054,7 @@
       "loc": "Discovery Auto Center, 10536 N Florida Ave, Tampa, FL 33612",
       "lat": 28.046171,
       "lng": -82.459483,
-      "d": 26.2,
+      "d": 24.4,
       "src": "CarGurus",
       "url": "https://www.google.com/search?q=1GT49PE75MF293564",
       "vin": "1GT49PE75MF293564",
@@ -3156,7 +3094,7 @@
       "loc": "Sun Toyota, 3001 US Highway 19, Holiday, FL 34691",
       "lat": 28.202075,
       "lng": -82.739942,
-      "d": 11.6,
+      "d": 13.7,
       "src": "CarGurus",
       "url": "https://www.google.com/search?q=1GT4URE75TF156813",
       "vin": "1GT4URE75TF156813",
@@ -3199,7 +3137,7 @@
       "loc": "Coast Buick GMC, 10133 US Hwy 19, Port Richey, FL 34668",
       "lat": 28.301899,
       "lng": -82.704585,
-      "d": 4.4,
+      "d": 6.9,
       "src": "CarGurus",
       "url": "https://www.google.com/search?q=1GT4UPE7XTF412366",
       "vin": "1GT4UPE7XTF412366",
@@ -3242,7 +3180,7 @@
       "loc": "Brooksville Ford, 7200 S Broad St, Brooksville, FL 34601",
       "lat": 28.539193,
       "lng": -82.40428,
-      "d": 21.3,
+      "d": 17.6,
       "src": "CarGurus",
       "url": "https://www.google.com/search?q=1GT49ZE75RF172651",
       "vin": "1GT49ZE75RF172651",
@@ -3286,7 +3224,7 @@
       "loc": "Chevrolet of Wesley Chapel, 26922 Wesley Chapel Blvd, Wesley Chapel, FL 33544",
       "lat": 28.232766,
       "lng": -82.371241,
-      "d": 21.6,
+      "d": 17.9,
       "src": "Carfax",
       "url": "https://www.carfax.com/vehicle/2GC4KME72S1227738",
       "vin": "2GC4KME72S1227738",
@@ -3330,7 +3268,7 @@
       "loc": "Stingray Chevrolet, 2002 N Frontage Rd, Plant City, FL 33563",
       "lat": 28.039222,
       "lng": -82.104327,
-      "d": 42.3,
+      "d": 38.9,
       "src": "Carfax",
       "url": "https://www.carfax.com/vehicle/2GC4YME78R1123571",
       "vin": "2GC4YME78R1123571",
@@ -3372,7 +3310,7 @@
       "loc": "Brandon Ford, 9090 E Adamo Dr, Tampa, FL 33619",
       "lat": 27.949378,
       "lng": -82.355461,
-      "d": 35.3,
+      "d": 33.3,
       "src": "Carfax",
       "url": "https://www.carfax.com/vehicle/1GC4KPE71TF201031",
       "vin": "1GC4KPE71TF201031",
@@ -3415,7 +3353,7 @@
       "loc": "Lovering Auto Sales, 111 Bartow Rd, Lakeland, FL 33801",
       "lat": 28.043645,
       "lng": -81.946631,
-      "d": 50.6,
+      "d": 46.9,
       "src": "Carfax",
       "url": "https://www.carfax.com/vehicle/1GC4YRE79PF148210",
       "vin": "1GC4YRE79PF148210",
@@ -3459,7 +3397,7 @@
       "loc": "Ferman Chevrolet Tampa, 9751 E Adamo Dr, Tampa, FL 33619",
       "lat": 27.949232,
       "lng": -82.346013,
-      "d": 35.7,
+      "d": 33.6,
       "src": "Carfax",
       "url": "https://www.carfax.com/vehicle/1GC4YME70MF163077",
       "vin": "1GC4YME70MF163077",
@@ -3503,7 +3441,7 @@
       "loc": "CarMax Bradenton, 5324 14th St W, Bradenton, FL 34207",
       "lat": 27.446684,
       "lng": -82.575481,
-      "d": 63.8,
+      "d": 63.9,
       "src": "Edmunds",
       "url": "https://www.edmunds.com/chevrolet/silverado-2500hd/2024/vin/2GC4YME78R1127300/?radius=50",
       "vin": "2GC4YME78R1127300",
@@ -3521,5 +3459,5 @@
       "last_checked": "2026-10-27"
     }
   ],
-  "sources": "Checked Nov 1, 2026, 5:34-5:40 PM ET. Craigslist Hudson-centered city search (radius 150 mi, 17 queries at 4 s spacing, all HTTP 200; 824 unique posts, 49 not seen in recent pulls) plus every Craigslist listing page in the feed and the older duplicate post of the Casselberry 3500HD (all 200); AutoNation fetcher: ONE narrow GM-HD-only run (status ok, 6 page loads, 40 vehicles, no 403); AutoNation Chevrolet South Clearwater store VDP and used Silverado HD page (200); AutoNation Chevrolet Airport store VDP for the 2025 LTZ (404, no longer available); gatortruckcenter.com and avinenterprises.com inventory and detail pages; Coast Buick GMC, Castriota, and Century Buick GMC detail pages (curl; Ferman, Tasca, and Jenkins skipped, 403 by curl on Oct 28). NHTSA recalls by model year; OEM towing guides on file. Not used: Cars.com, AutoTrader, CarGurus, Carfax, Edmunds, Carvana, CarMax, Facebook, browser. Research only: nobody contacted."
+  "sources": "Checked Nov 2, 2026, 7:40-7:50 AM ET. Craigslist Hudson-centered city search (radius 150 mi, 17 queries at 4 s spacing, all HTTP 200; 819 unique posts, 17 not seen in recent pulls, none a GM HD pickup) plus every Craigslist listing page in the feed (all 200); AutoNation fetcher: ONE narrow GM-HD-only run (status ok, 6 page loads, 39 vehicles, no 403); AutoNation Chevrolet South Clearwater store VDPs (used 2024 Custom 200; new 2026 LT 1GC4KNE76TF384978 404 'no longer available', control VDP 200); gatortruckcenter.com and avinenterprises.com inventory and detail pages; Coast Buick GMC, Castriota, and Century Buick GMC detail pages (curl; Ferman, Tasca, and Jenkins skipped, 403 by curl on Oct 28). NHTSA recalls by model year; OEM towing guides on file. Not used: Cars.com, AutoTrader, CarGurus, Carfax, Edmunds, Carvana, CarMax, Facebook, browser. Research only: nobody contacted."
 }
