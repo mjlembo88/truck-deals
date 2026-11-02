@@ -1,6 +1,8 @@
 /* Truck Deals service worker.
-   CACHE_VERSION: bump this when the app shell changes. */
-const CACHE_VERSION = "td-v8-grid";
+   CACHE_VERSION: bump this when the app shell changes.
+   Updates only swap Cache Storage entries. A service worker cannot read or clear localStorage,
+   so favorites (td_marks_v2), hidden trucks, filters and the sync code survive every update. */
+const CACHE_VERSION = "td-v9-favsync";
 /* Cached thumbnail copies (./thumbs/*.jpg) are runtime-cached here, not precached. */
 const THUMB_CACHE = "td-thumbs-v1";
 const THUMB_MAX = 150;
@@ -9,6 +11,7 @@ const SHELL = [
   "./",
   "./index.html",
   "./styles.css",
+  "./favstore.js",
   "./app.js",
   "./manifest.webmanifest",
   "./vendor/leaflet/leaflet.js",
@@ -47,7 +50,10 @@ self.addEventListener("activate", (event) => {
     (async () => {
       const keys = await caches.keys();
       await Promise.all(
-        keys.filter((key) => key !== CACHE_VERSION && key !== THUMB_CACHE).map((key) => caches.delete(key))
+        /* only our own old caches: mjlembo88.github.io is shared with other apps' caches */
+        keys
+          .filter((key) => /^td-/.test(key) && key !== CACHE_VERSION && key !== THUMB_CACHE)
+          .map((key) => caches.delete(key))
       );
       await self.clients.claim();
     })()

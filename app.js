@@ -13,13 +13,10 @@
   var GRADES = ["A", "B", "C", "D", "none"];
   /* 3 = adds favOnly (defaults off). v2 added the Ungraded grade. */
   var FILTER_SCHEMA = 4; /* 4 = adds showHidden (defaults off) */
-  /* Favorites live in their own key (never in filter state or data.json), mirroring
-     the home-hunt board: JSON string[] of listing keys = VIN (upper-case), else url. */
-  var FAV_KEY = "truck-deals-favorites-v1";
+  /* Favorites + hidden trucks live in favstore.js (td_marks_v2, VIN keys, merge + keyless sync).
+     The old keys truck-deals-favorites-v1 / truck-deals-hidden-v1 are migrated and kept current. */
   /* Grid / List view choice: its own key, so Reset filters never changes it. Default grid. */
   var VIEW_KEY = "td_view_v1";
-  /* Hidden ("ignore") listings: own key, same VIN-then-url keys as favorites. Never touches data. */
-  var HIDE_KEY = "truck-deals-hidden-v1";
 
   /* Payment estimator config. Edit rates here.
      Base APRs: credit-union research Oct 27, 2026 (PenFed / Suncoast best tier).
@@ -471,8 +468,9 @@
     var allGrades = filters.grades.length === GRADES.length;
     return (listings || []).filter(function (listing) {
       /* Deep-dive exclusions stay in the data but are hidden unless "Show excluded" is on. */
+      /* Favorites only = every favorite, whatever the other filters say (they used to hide stars). */
+      if (filters.favOnly) return isFavorite(listing);
       if (listing.excluded === true && !filters.showExcluded) return false;
-      if (filters.favOnly && !isFavorite(listing)) return false;
       if (!filters.showHidden && isHidden(listing)) return false;
       var grade = String(listing.grade || "").toUpperCase();
       if (!/^[ABCD]$/.test(grade)) grade = "none";
@@ -589,71 +587,69 @@
     );
   }
 
-  function cardHtml(listing, latest) {
-    var data = state.data || {};
-    var grade = String(listing.grade || "").toUpperCase();
-    var miles = isNum(listing.mi) ? intFmt(listing.mi) + " mi" : "";
-    var cond = condText(listing);
-    var milesLine = [miles, cond].filter(Boolean).join(" · ");
-    var cabLine = [listing.cab, listing.drv].filter(function (part) {
-      return part != null && String(part) !== "";
-    }).join(" · ");
-    var price = isNum(listing.price) ? money(listing.price) : "Price unavailable";
-    var was = isDrop(listing) ? '<span class="was">' + esc(money(listing.prev)) + "</span>" : "";
-    var locBits = [];
-    if (listing.loc) locBits.push(esc(listing.loc));
-    locBits.push(esc(listing.online === true ? "Online · delivery" : distanceText(listing.d)));
-    var tow = towText(listing);
-    var recallCount = recallsOf(listing).length;
-    var recallLabel = recallCount === 1 ? "1 recall" : recallCount + " recalls";
-    if (recallCount === 0) recallLabel = "No recalls";
-    var seen = [];
-    if (listing.first_seen) seen.push("First seen " + formatDay(listing.first_seen));
-    if (listing.last_checked) seen.push("Last checked " + formatDay(listing.last_checked));
-    var group = groupName(listing, data);
+  /* One big, full-width "View listing" button (48px+), opens the dealer page in a new tab. */
+  function viewBtnHtml(url, cls) {
+    var href = safeHttpUrl(url);
+    if (!href) return '<span class="view-btn none ' + (cls || "") + '" data-testid="view-listing-none">No listing link</span>';
+    var vinSearch = /^https:\/\/(www\.)?google\.[a-z.]+\/search/i.test(String(url || ""));
     return (
-      '<article class="card' + (isHidden(listing) ? " is-hidden" : "") + '" data-testid="card" data-rank="' +
-      esc(listing.rank) +
-      '" data-grade="' +
-      esc(grade) +
-      '" role="button" tabindex="0">' +
-      '<div class="card-top"><span class="rank">' +
-      esc(listing.rank) +
-      '</span><span class="grade grade-' +
-      esc(grade) +
-      '">' +
-      esc(grade || "–") +
-      "</span>" +
-      (group ? '<span class="grp">' + esc(group) + "</span>" : "") +
-      '<span class="badges">' +
-      badgeHtml(listing, latest) +
-      "</span>" +
-      favBtnHtml(listing) +
-      "</div>" +
-      thumbHtml(listing, "card-thumb") +
-      '<h3 class="title">' +
-      esc(titleOf(listing)) +
-      "</h3>" +
-      (listing.eng ? '<p class="sub">' + esc(listing.eng) + "</p>" : "") +
-      (cabLine ? '<p class="sub">' + esc(cabLine) + "</p>" : "") +
-      (milesLine ? '<p class="sub">' + esc(milesLine) + "</p>" : "") +
-      '<p class="price">' +
-      esc(price) +
-      was +
+      '<a class="view-btn ' + (cls || "") + '" data-testid="view-listing" href="' + esc(href) +
+      '" target="_blank" rel="noopener noreferrer">' + (vinSearch ? "Find listing (VIN search) ↗" : "View listing ↗") + "</a>"
+    );
+  }
+
+  function dealerShort(listing) {
+    if (listing.online === true) return (listing.loc ? dealerName(listing) + " · " : "") + "Online";
+    return dealerName(listing);
+  }
+
+  function cardHtml(listing, latest) {
+    var grade = String(listing.grade || "").toUpperCase();
+    var gradeOk = /^[ABCD]$/.test(grade);
+    var price = isNum(listing.price) ? money(listing.price) : "Price n/a";
+    var was = isDrop(listing) ? '<span class="was">' + esc(money(listing.prev)) + "</span>" : "";
+    var facts = [];
+    facts.push(isNum(listing.mi) ? intFmt(listing.mi) + " mi" : "Miles n/a");
+    var cond = condText(listing);
+    if (cond) facts.push(cond);
+    if (listing.online === true) facts.push("Delivery");
+    else if (isNum(listing.d)) facts.push(distanceText(listing.d) + " away");
+    var specBits = [cabStyleLabel(listing), listing.drv, listing.eng].filter(function (part) {
+      return part != null && String(part) !== "";
+    });
+    var tow = towText(listing);
+    if (tow) specBits.push(tow + " lb tow");
+    var est = estimatePayment(listing);
+    var recallCount = recallsOf(listing).length;
+    var chips = badgeHtml(listing, latest);
+    if (Array.isArray(listing.rec)) chips += '<span class="chip-sm" data-testid="card-recalls">' + esc(recallCount === 0 ? "No recalls" : recallCount + (recallCount === 1 ? " recall" : " recalls")) + "</span>";
+    else if (isNum(listing.rec_open)) chips += '<span class="chip-sm" data-testid="card-recalls">' + esc(listing.rec_open === 0 ? "0 open recalls" : listing.rec_open + " open recall" + (listing.rec_open === 1 ? "" : "s")) + "</span>";
+    return (
+      '<article class="card c2' + (isHidden(listing) ? " is-hidden" : "") + '" data-testid="card" data-rank="' +
+      esc(listing.rank) + '" data-grade="' + esc(grade) + '" data-key="' + esc(favKey(listing)) + '" role="button" tabindex="0">' +
+      '<div class="c2-main">' +
+      thumbHtml(listing, "c2-thumb") +
+      '<div class="c2-info">' +
+      '<div class="c2-head"><h3 class="title">' + esc(shortTitle(listing)) +
+      (listing.trim ? ' <span class="c2-trim">' + esc(listing.trim) + "</span>" : "") + "</h3>" +
+      favBtnHtml(listing) + "</div>" +
+      '<p class="price" data-testid="card-price">' + esc(price) + was + "</p>" +
+      '<p class="c2-facts" data-testid="card-miles">' + esc(facts.join(" · ")) + "</p>" +
+      '<p class="c2-dealer">' + esc(dealerShort(listing)) + "</p>" +
+      '<p class="c2-pay" data-testid="card-pay">' +
+      (est ? "Est. <strong>" + esc(money(Math.round(est.monthly))) + "/mo</strong> · " + esc(est.term + " mo, fee " + money(est.fee)) : "Est. payment n/a") +
       "</p>" +
-      '<p class="loc">' +
-      locBits.join(" · ") +
-      "</p>" +
-      (tow ? '<p class="tow">Conventional tow ' + esc(tow) + "</p>" : "") +
-      payLineHtml(listing) +
-      recallLineHtml(listing, recallLabel) +
+      "</div></div>" +
+      '<div class="c2-chips"><span class="grade grade-' + esc(grade) + '">' + esc(gradeOk ? grade : "–") + "</span>" +
+      '<span class="rank">#' + esc(listing.rank) + "</span>" + chips + "</div>" +
+      (specBits.length ? '<p class="c2-spec">' + esc(specBits.join(" · ")) + "</p>" : "") +
       ddLinesHtml(listing) +
       flagHtml(listing) +
-      (seen.length ? '<p class="seen">' + esc(seen.join(" · ")) + "</p>" : "") +
+      viewBtnHtml(listing.url, "c2-view") +
       '<div class="card-actions">' +
       (hasCoords(listing)
-        ? '<button type="button" class="btn btn-small" data-action="map" data-testid="card-map">Show on map</button>'
-        : '<span class="sub">' + (listing.online === true ? "Online · delivery, no map pin" : "No map location") + "</span>") +
+        ? '<button type="button" class="btn btn-small" data-action="map" data-testid="card-map">Map</button>'
+        : "") +
       '<button type="button" class="btn btn-small" data-action="details" data-testid="card-details">Details</button>' +
       hideBtnHtml(listing, "btn btn-small") +
       "</div>" +
@@ -661,46 +657,66 @@
     );
   }
 
-  /* ---------- favorites (localStorage FAV_KEY, separate from filters) ---------- */
+  function cabStyleLabel(listing) {
+    var c = cabStyle(listing);
+    return c === "crew" ? "Crew" : c === "double" ? "Double cab" : c === "regular" ? "Reg cab" : "";
+  }
+
+  /* A favorite whose truck is not in today's data: drawn from its saved snapshot. */
+  function goneCardHtml(key) {
+    var r = Favs.favRecord(key) || {};
+    var s = r.s || {};
+    var isVin = /^[A-HJ-NPR-Z0-9]{17}$/.test(key);
+    var title = s.title || [s.yr, s.model, s.trim].filter(Boolean).join(" ") || (isVin ? "Saved truck" : key.replace(/^url:/, ""));
+    var url = s.url || (/^url:/.test(key) ? "https://" + key.slice(4) : isVin ? "https://www.google.com/search?q=" + key : "");
+    var bits = [];
+    if (isNum(s.price)) bits.push("Last seen at " + money(s.price));
+    if (isNum(s.mi)) bits.push(intFmt(s.mi) + " mi");
+    var seen = s.seen ? formatET(s.seen) : "";
+    return (
+      '<article class="card c2 gone-card" data-testid="gone-card" data-key="' + esc(key) + '">' +
+      '<div class="c2-head"><h3 class="title">' + esc(title) + "</h3>" + favBtnHtml(null, key) + "</div>" +
+      '<p class="gone-tag">No longer listed' + (seen ? " · last in the data " + esc(seen) : "") + "</p>" +
+      (bits.length ? '<p class="c2-facts">' + esc(bits.join(" · ")) + "</p>" : "") +
+      (s.loc ? '<p class="c2-dealer">' + esc(s.loc) + "</p>" : "") +
+      (isVin ? '<p class="c2-spec">VIN ' + esc(key) + "</p>" : "") +
+      viewBtnHtml(url, "c2-view") +
+      "</article>"
+    );
+  }
+
+  /* ---------- favorites + hidden (favstore.js: localStorage td_marks_v2, VIN keys, sync) ---------- */
+  var Favs = window.TDFavs;
   function favKey(listing) {
-    var vin = String((listing && listing.vin) || "").trim().toUpperCase();
-    return vin || String((listing && listing.url) || "").trim();
+    return Favs.keyFor(listing);
   }
 
-  var favorites = loadFavorites();
-
-  function loadFavorites() {
-    try {
-      var arr = JSON.parse(localStorage.getItem(FAV_KEY) || "[]");
-      return Array.isArray(arr) ? arr.filter(function (x) { return typeof x === "string" && x; }) : [];
-    } catch (err) {
-      return [];
-    }
-  }
-
-  function saveFavorites() {
-    try {
-      localStorage.setItem(FAV_KEY, JSON.stringify(favorites));
-    } catch (err) {}
+  function snapOf(listing) {
+    return {
+      title: titleOf(listing),
+      yr: listing.yr,
+      model: listing.model,
+      trim: listing.trim,
+      price: listing.price,
+      mi: listing.mi,
+      loc: listing.loc,
+      d: listing.d,
+      url: listing.url,
+      vin: listing.vin,
+      thumb: listing.thumb,
+      online: listing.online === true,
+      seen: (state.data && state.data.updated_at) || ""
+    };
   }
 
   function isFavorite(listing) {
-    var key = favKey(listing);
-    return !!key && favorites.indexOf(key) !== -1;
+    return Favs.isFav(favKey(listing));
   }
 
-  function toggleFavoriteKey(key) {
-    var i = favorites.indexOf(key);
-    if (i === -1) favorites.push(key);
-    else favorites.splice(i, 1);
-    saveFavorites();
-    return i === -1;
-  }
-
-  function favBtnHtml(listing) {
-    var key = favKey(listing);
+  function favBtnHtml(listing, keyOverride) {
+    var key = keyOverride || favKey(listing);
     if (!key) return "";
-    var on = favorites.indexOf(key) !== -1;
+    var on = Favs.isFav(key);
     return (
       '<button type="button" class="fav-btn' + (on ? " is-fav" : "") + '" data-fav-id="' + esc(key) +
       '" data-testid="fav-btn" aria-pressed="' + (on ? "true" : "false") + '" aria-label="' +
@@ -722,37 +738,20 @@
     }
   }
 
-  /* ---------- hidden / ignored listings (localStorage HIDE_KEY) ---------- */
-  var hiddenKeys = loadKeyList(HIDE_KEY);
-
-  function loadKeyList(storageKey) {
-    try {
-      var arr = JSON.parse(localStorage.getItem(storageKey) || "[]");
-      return Array.isArray(arr) ? arr.filter(function (x) { return typeof x === "string" && x; }) : [];
-    } catch (err) {
-      return [];
-    }
+  function listingByKey(key) {
+    var all = allListings();
+    for (var i = 0; i < all.length; i++) if (favKey(all[i]) === key) return all[i];
+    return null;
   }
 
   function isHidden(listing) {
-    var key = favKey(listing);
-    return !!key && hiddenKeys.indexOf(key) !== -1;
-  }
-
-  function toggleHiddenKey(key) {
-    var i = hiddenKeys.indexOf(key);
-    if (i === -1) hiddenKeys.push(key);
-    else hiddenKeys.splice(i, 1);
-    try {
-      localStorage.setItem(HIDE_KEY, JSON.stringify(hiddenKeys));
-    } catch (err) {}
-    return i === -1;
+    return Favs.isHidden(favKey(listing));
   }
 
   function hideBtnHtml(listing, cls) {
     var key = favKey(listing);
     if (!key) return "";
-    var on = hiddenKeys.indexOf(key) !== -1;
+    var on = Favs.isHidden(key);
     return (
       '<button type="button" class="hide-btn ' + (cls || "") + (on ? " is-hidden-btn" : "") + '" data-hide-id="' + esc(key) +
       '" data-testid="' + (on ? "unhide-btn" : "hide-btn") + '" aria-label="' + (on ? "Unhide this truck" : "Hide this truck") + '">' +
@@ -766,19 +765,27 @@
     el.textContent = "(" + allListings().filter(isHidden).length + ")";
   }
 
+  /* Favorites that are not in the current data.json: kept, shown as "No longer listed". */
+  function unlistedFavKeys() {
+    var present = {};
+    allListings().forEach(function (l) { present[favKey(l)] = true; });
+    return Favs.favKeys().filter(function (k) { return !present[k]; });
+  }
+
   function updateFavCount() {
     var el = $("fav-count");
-    if (!el) return;
-    var keys = {};
-    allListings().forEach(function (l) { keys[favKey(l)] = true; });
-    el.textContent = "(" + favorites.filter(function (k) { return keys[k]; }).length + ")";
+    var gone = state.data ? unlistedFavKeys().length : 0;
+    var total = Favs.favKeys().length;
+    if (el) el.textContent = "(" + total + (gone ? " · " + gone + " not listed" : "") + ")";
+    var sum = $("favsync-summary");
+    if (sum) sum.textContent = total + (total === 1 ? " favorite" : " favorites") + " · " + syncShort();
   }
 
   /* Star taps on cards, map popups and the detail view (capture phase so the card's
      own tap-to-map handler and Leaflet never see them). */
   function bindFavorites() {
     document.addEventListener("click", function (event) {
-      var link = event.target.closest && event.target.closest("a.tile-link");
+      var link = event.target.closest && event.target.closest("a.tile-link, a.view-btn");
       if (link) {
         event.stopPropagation(); /* open the listing only; don't expand the tile */
         return;
@@ -787,7 +794,7 @@
       if (hide) {
         event.preventDefault();
         event.stopPropagation();
-        toggleHiddenKey(hide.getAttribute("data-hide-id"));
+        Favs.toggleHidden(hide.getAttribute("data-hide-id"));
         if (state.map) state.map.closePopup();
         renderList();
         return;
@@ -799,11 +806,13 @@
       event.preventDefault();
       event.stopPropagation();
       var key = btn.getAttribute("data-fav-id");
-      var on = toggleFavoriteKey(key);
+      var listing = listingByKey(key);
+      var rec = Favs.favRecord(key);
+      var on = Favs.toggleFav(key, listing ? snapOf(listing) : rec && rec.s);
       syncFavButtons(key, on);
       updateFavCount();
       var favOnlyBox = document.querySelector('[data-testid="filter-fav-only"]');
-      if (favOnlyBox && favOnlyBox.checked) renderList();
+      if ((favOnlyBox && favOnlyBox.checked) || btn.closest(".gone-card")) renderList();
     }, true);
     /* thumbnails that fail to load fall back to the placeholder */
     document.addEventListener("error", function (event) {
@@ -935,9 +944,9 @@
       (tags.length ? '<p class="tile-tags">' + tags.join("") + "</p>" : "") +
       '<div class="tile-actions">' +
       (href
-        ? '<a class="tile-link" data-testid="tile-link" href="' + esc(href) + '" target="_blank" rel="noopener noreferrer">' +
-          (vinSearch ? "VIN search ↗" : "Listing ↗") + "</a>"
-        : '<span class="tile-link none">No link</span>') +
+        ? '<a class="tile-link view-btn" data-testid="tile-link" href="' + esc(href) + '" target="_blank" rel="noopener noreferrer">' +
+          (vinSearch ? "VIN search ↗" : "View listing ↗") + "</a>"
+        : '<span class="tile-link view-btn none">No link</span>') +
       hideBtnHtml(listing, "tile-hide") +
       "</div></div></article>"
     );
@@ -991,7 +1000,12 @@
     var conditional = sortListings(applyFilters(state.data.conditional || [], filters, latest), filters.sort);
     var total = (state.data.ranked || []).length + (state.data.conditional || []).length;
     count.textContent = "Showing " + (ranked.length + conditional.length) + " of " + total;
-    list.innerHTML = sectionHtml("Ranked", "", ranked, latest) + sectionHtml("Conditional", "needs a check", conditional, latest);
+    var gone = filters.favOnly ? unlistedFavKeys() : [];
+    list.innerHTML = sectionHtml("Ranked", "", ranked, latest) + sectionHtml("Conditional", "needs a check", conditional, latest) +
+      (gone.length
+        ? '<section class="section" data-testid="gone-section"><h2><span>Favorites no longer listed</span><span class="section-label">kept, not in today\'s data</span><span class="count">' +
+          gone.length + '</span></h2><div class="cards">' + gone.map(goneCardHtml).join("") + "</div></section>"
+        : "");
     updateActiveCount(filters);
     renderMarkers(ranked.concat(conditional), state.refit);
     state.refit = false;
@@ -1202,12 +1216,13 @@
     foot.innerHTML = href
       ? '<a class="open-listing" data-testid="open-listing" href="' +
         esc(href) +
-        '" target="_blank" rel="noopener noreferrer">Open listing</a>'
+        '" target="_blank" rel="noopener noreferrer">View listing ↗</a>'
       : "";
   }
 
   function parseRoute() {
     var hash = location.hash || "";
+    if (/^#sync=/.test(hash)) return { view: "list" };
     if (hash === "#/specs" || hash === "#specs") return { view: "specs" };
     var match = /^#\/l\/(.+)$/.exec(hash);
     if (match) return { view: "detail", rank: decodeURIComponent(match[1]) };
@@ -1264,6 +1279,7 @@
     var saved = readSavedData() || state.data;
     if (saved) {
       state.data = saved;
+      Favs.reconcile(allListings(), snapOf);
       state.refit = true;
       renderDealerList();
       showOfflineNotice(saved);
@@ -1308,6 +1324,7 @@
           localStorage.setItem(DATA_KEY, JSON.stringify(result.data));
         } catch (err) {}
         state.data = result.data;
+        Favs.reconcile(allListings(), snapOf);
         state.refit = true;
         renderDealerList();
         if (result.fromCache || navigator.onLine === false) showOfflineNotice(result.data);
@@ -1805,8 +1822,9 @@
             ? '</div><div class="pf">fee ' +
               esc(money(estimatePayment(listing).fee) + " · " + feeSrcText(estimatePayment(listing).feeSrc))
             : "") +
-          '</div><div class="pl">' +
-          (href ? '<a href="' + esc(href) + '" target="_blank" rel="noopener noreferrer">Listing ↗</a>' : "") +
+          "</div>" +
+          (href ? '<a class="view-btn pop-view" data-testid="pop-view" href="' + esc(href) + '" target="_blank" rel="noopener noreferrer">View listing ↗</a>' : "") +
+          '<div class="pl">' +
           '<a href="#/l/' +
           esc(encodeURIComponent(String(listing.rank))) +
           '">Details</a>' +
@@ -2029,18 +2047,200 @@
       if (!button || !$("detail").contains(button)) return;
       copyVin(button);
     });
-    window.addEventListener("hashchange", applyRoute);
+    window.addEventListener("hashchange", function () {
+      if (linkFromHash()) return;
+      applyRoute();
+    });
     bindPullToRefresh();
     bindExtras();
     bindFavorites();
   }
 
+  /* ---------- favorites sync / backup panel ---------- */
+  function timeShort(ms) {
+    if (!ms) return "";
+    try {
+      return new Date(ms).toLocaleTimeString("en-US", { hour: "numeric", minute: "2-digit", timeZone: "America/New_York" }) + " ET";
+    } catch (err) {
+      return new Date(ms).toLocaleTimeString();
+    }
+  }
+
+  function syncShort() {
+    var st = Favs.sync.state();
+    if (!st.code) return "this device only";
+    if (st.status === "syncing") return "syncing…";
+    if (st.status === "offline") return "offline, will sync";
+    if (st.status === "error") return "sync problem";
+    return st.lastOk ? "synced " + timeShort(st.lastOk) : "sync on";
+  }
+
+  function toast(text) {
+    var el = $("toast");
+    if (!el) return;
+    el.textContent = text;
+    el.hidden = false;
+    clearTimeout(toast.timer);
+    toast.timer = setTimeout(function () { el.hidden = true; }, 4200);
+  }
+
+  function renderSyncPanel() {
+    var st = Favs.sync.state();
+    var on = !!st.code;
+    $("sync-off").hidden = on;
+    $("sync-on").hidden = !on;
+    var msg;
+    if (!on) msg = "Sync is off. Favorites are saved on this device only (use Export for a backup).";
+    else if (st.status === "syncing") msg = "Syncing…";
+    else if (st.status === "offline") msg = "Offline. Changes are saved here and will sync when you are back online.";
+    else if (st.status === "error") msg = "Could not reach the sync service (" + st.lastErr + "). Favorites are safe on this device; it will retry.";
+    else msg = "Sync is on" + (st.lastOk ? ", last synced " + timeShort(st.lastOk) : "") + ". Code " + st.code.slice(0, 12) + "…";
+    $("sync-status").textContent = msg;
+    $("sync-status").setAttribute("data-state", on ? st.status : "off");
+    if (on) {
+      $("sync-code").textContent = st.code;
+      $("sync-link").value = Favs.sync.link();
+    } else {
+      $("sync-link-box").hidden = true;
+    }
+    updateFavCount();
+  }
+
+  function linkDevice(code) {
+    if (!Favs.sync.validCode(code)) {
+      toast("That sync code doesn't look right.");
+      return false;
+    }
+    var already = Favs.sync.state().code === code;
+    Favs.sync.start(code).then(function (r) {
+      renderSyncPanel();
+      if (r && r.error) toast("Linked, but the first sync failed. It will retry.");
+      else if (!already) toast("This device is linked. Favorites now sync.");
+    });
+    renderSyncPanel();
+    return true;
+  }
+
+  /* #sync=<code> link from another device */
+  function linkFromHash() {
+    var code = Favs.sync.codeFromHash(location.hash);
+    if (!code) return false;
+    try {
+      history.replaceState(null, "", location.pathname + location.search + "#/");
+    } catch (err) {
+      location.hash = "#/";
+    }
+    linkDevice(code);
+    applyRoute();
+    return true;
+  }
+
+  function downloadText(name, text) {
+    var blob = new Blob([text], { type: "application/json" });
+    var a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = name;
+    document.body.appendChild(a);
+    a.click();
+    setTimeout(function () { URL.revokeObjectURL(a.href); a.remove(); }, 1000);
+  }
+
+  function bindFavSync() {
+    $("sync-start").addEventListener("click", function () {
+      Favs.sync.start().then(function (r) {
+        renderSyncPanel();
+        $("sync-link-box").hidden = false;
+        toast(r && r.error ? "Sync code made, but the service did not answer. It will retry." : "Sync is on. Use Link another device.");
+      });
+      renderSyncPanel();
+    });
+    $("sync-join").addEventListener("click", function () {
+      var v = String($("sync-code-input").value || "").trim();
+      var m = /#sync=([A-Za-z0-9_-]+)/.exec(v);
+      if (m) v = m[1];
+      if (linkDevice(v)) $("sync-code-input").value = "";
+    });
+    $("sync-link-btn").addEventListener("click", function () {
+      $("sync-link-box").hidden = !$("sync-link-box").hidden;
+      renderSyncPanel();
+    });
+    $("sync-copy").addEventListener("click", function () {
+      var link = Favs.sync.link();
+      var ok = function () { toast("Link copied"); };
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(link).then(ok, function () { try { fallbackCopy(link); ok(); } catch (e) { toast("Copy failed, select the link"); } });
+      else { try { fallbackCopy(link); ok(); } catch (e) { toast("Copy failed, select the link"); } }
+    });
+    $("sync-share").addEventListener("click", function () {
+      var link = Favs.sync.link();
+      if (navigator.share) navigator.share({ title: "Truck Deals favorites", text: "Open on your other device to sync Truck Deals favorites", url: link }).catch(function () {});
+      else $("sync-copy").click();
+    });
+    $("sync-now").addEventListener("click", function () { Favs.sync.now().then(renderSyncPanel); });
+    $("sync-stop").addEventListener("click", function () {
+      if (!confirm("Stop syncing on this device? Your favorites stay here, and the other devices keep the synced copy.")) return;
+      Favs.sync.stop();
+      renderSyncPanel();
+    });
+    $("fav-export").addEventListener("click", function () {
+      downloadText("truck-deals-favorites-" + new Date().toISOString().slice(0, 10) + ".json", Favs.exportJson());
+    });
+    $("fav-import").addEventListener("change", function (event) {
+      var file = event.target.files && event.target.files[0];
+      if (!file) return;
+      var reader = new FileReader();
+      reader.onload = function () {
+        try {
+          var r = Favs.importJson(String(reader.result || ""));
+          toast("Imported. " + r.favs + " favorites (" + r.added + " new).");
+        } catch (err) {
+          toast("That file is not a Truck Deals favorites backup.");
+        }
+        event.target.value = "";
+        renderList();
+      };
+      reader.readAsText(file);
+    });
+    Favs.onChange(function (why) {
+      if (why === "sync-status") { renderSyncPanel(); return; }
+      if (why === "remote" || why === "reload") { renderList(); }
+      renderSyncPanel();
+    });
+    window.addEventListener("online", function () { Favs.sync.schedule(200); });
+    var lastVis = 0;
+    document.addEventListener("visibilitychange", function () {
+      if (document.visibilityState !== "visible" || Date.now() - lastVis < 20000) return;
+      lastVis = Date.now();
+      Favs.sync.schedule(200);
+    });
+    /* another tab of the app changed the stars */
+    window.addEventListener("storage", function (event) {
+      if (event.key === Favs.STORE_KEY) Favs.reload();
+    });
+    /* ask Chrome not to evict this site's storage under pressure (best effort) */
+    try {
+      if (navigator.storage && navigator.storage.persist) navigator.storage.persist().catch(function () {});
+    } catch (err) {}
+    renderSyncPanel();
+    var mig = Favs.migrated();
+    if (mig.favs) toast("Recovered " + mig.favs + " saved favorite" + (mig.favs === 1 ? "" : "s") + " from this device.");
+  }
+
   function registerWorker() {
     if (!("serviceWorker" in navigator)) return;
+    var hadController = !!navigator.serviceWorker.controller;
     navigator.serviceWorker.register("./sw.js", { scope: "./" }).catch(function () {});
+    /* a new version took over: reload once so the new app code runs (localStorage is untouched) */
+    var reloaded = false;
+    navigator.serviceWorker.addEventListener("controllerchange", function () {
+      if (!hadController || reloaded) return;
+      reloaded = true;
+      location.reload();
+    });
   }
 
   bind();
+  bindFavSync();
+  linkFromHash();
   syncThemeButton();
   writeFiltersToDom(loadStoredFilters());
   writePayToDom(loadPay());
@@ -2049,5 +2249,6 @@
   $("list").innerHTML = '<p class="empty">Loading listings…</p>';
   applyRoute();
   loadData();
+  Favs.sync.schedule(800);
   registerWorker();
 })();

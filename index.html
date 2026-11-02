@@ -188,6 +188,46 @@
         <p class="pay-note">Estimate, not a quote. OTD = price + 6% FL tax (price minus trade) + $50 Pasco surtax + dealer fee + $400 tag/title. Base APRs from credit-union research Oct 27, 2026; the tier rates are estimates.</p>
       </details>
 
+      <details class="pay-panel favsync-panel" id="favsync-panel" data-testid="favsync-panel">
+        <summary><span class="pay-title">★ Favorites &amp; sync</span> <span class="pay-summary" id="favsync-summary" data-testid="favsync-summary"></span></summary>
+        <div class="favsync-body">
+          <p class="sync-status" id="sync-status" data-testid="sync-status" role="status"></p>
+          <div id="sync-off" data-testid="sync-off">
+            <button type="button" class="btn btn-accent btn-wide" id="sync-start" data-testid="sync-start">Turn on sync</button>
+            <div class="field">
+              <label class="lbl" for="sync-code-input">Have a sync code from another device?</label>
+              <div class="split">
+                <input id="sync-code-input" data-testid="sync-code-input" type="text" placeholder="tdfav-…" autocomplete="off" autocapitalize="off" spellcheck="false">
+                <button type="button" class="btn" id="sync-join" data-testid="sync-join">Link</button>
+              </div>
+            </div>
+          </div>
+          <div id="sync-on" data-testid="sync-on" hidden>
+            <button type="button" class="btn btn-accent btn-wide" id="sync-link-btn" data-testid="sync-link-btn">Link another device</button>
+            <div id="sync-link-box" class="sync-link-box" data-testid="sync-link-box" hidden>
+              <p>Open this link on the other phone or computer, or type the code there:</p>
+              <p class="sync-code" id="sync-code" data-testid="sync-code"></p>
+              <input id="sync-link" data-testid="sync-link" type="text" readonly aria-label="Sync link">
+              <div class="dealer-actions">
+                <button type="button" class="btn btn-small" id="sync-copy" data-testid="sync-copy">Copy link</button>
+                <button type="button" class="btn btn-small" id="sync-share" data-testid="sync-share">Share…</button>
+              </div>
+            </div>
+            <div class="dealer-actions">
+              <button type="button" class="btn btn-small" id="sync-now" data-testid="sync-now">Sync now</button>
+              <button type="button" class="btn btn-small" id="sync-stop" data-testid="sync-stop">Stop syncing here</button>
+            </div>
+          </div>
+          <p class="lbl favsync-h">Backup</p>
+          <div class="dealer-actions">
+            <button type="button" class="btn btn-small" id="fav-export" data-testid="fav-export">Export favorites</button>
+            <label class="btn btn-small" for="fav-import">Import…</label>
+            <input type="file" id="fav-import" data-testid="fav-import" accept="application/json,.json,text/plain" hidden>
+          </div>
+          <p class="pay-note">Stars are saved on this device by VIN and a data refresh never removes them; trucks that drop out show under "Favorites only" as No longer listed. Sync keeps a copy at textdb.dev (free, no account, no key) under your private code. Anyone with the code can see or change these stars, so only share it with your own devices.</p>
+        </div>
+      </details>
+
       <section class="map-panel" id="map-panel" data-testid="map-panel" aria-label="Dealer map">
         <div class="map-head">
           <h2>Dealer map</h2>
@@ -225,7 +265,10 @@
     <div id="detail-foot" class="detail-foot"></div>
   </div>
 
+  <div id="toast" class="toast" data-testid="toast" role="status" hidden></div>
+
   <script src="./vendor/leaflet/leaflet.js"></script>
+  <script src="./favstore.js"></script>
   <script src="./app.js"></script>
 </body>
 </html>
