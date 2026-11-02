@@ -657,6 +657,87 @@
     );
   }
 
+  /* ---------- v10 list card: title, price, miles, fuel, distance, View listing, star, hide. Nothing else. ---------- */
+  /* Distance origin: 14515 Giddyup Lane, Hudson FL 34669 (OSM/Nominatim street centroid, 2026-11-01;
+     the Census geocoder has no match for the house number). Was Hudson town center 28.3645,-82.6934. */
+  var HOME = { lat: 28.37004, lng: -82.62118, label: "14515 Giddyup Ln, Hudson FL 34669" };
+
+  function milesFromHome(lat, lng) {
+    var R = 3958.8;
+    var p1 = (HOME.lat * Math.PI) / 180;
+    var p2 = (lat * Math.PI) / 180;
+    var dp = p2 - p1;
+    var dl = ((lng - HOME.lng) * Math.PI) / 180;
+    var h = Math.sin(dp / 2) * Math.sin(dp / 2) + Math.cos(p1) * Math.cos(p2) * Math.sin(dl / 2) * Math.sin(dl / 2);
+    return Math.round(2 * R * Math.asin(Math.sqrt(h)) * 10) / 10;
+  }
+
+  /* Recompute d (straight-line miles) from HOME for every listing with coordinates; keeps the
+     published value in d_pub. Runs in the browser only, data.json and the publish flow are untouched. */
+  function applyHomeDistance(data) {
+    if (!data) return;
+    []
+      .concat(data.ranked || [])
+      .concat(data.conditional || [])
+      .forEach(function (l) {
+        if (l.online === true || !hasCoords(l)) return;
+        if (!("d_pub" in l)) l.d_pub = l.d;
+        l.d = milesFromHome(l.lat, l.lng);
+      });
+  }
+
+  var FUEL_LABEL = { gas: "Gas", gasoline: "Gas", diesel: "Diesel", hybrid: "Hybrid", electric: "Electric", ev: "Electric" };
+  /* data.json fuel when present (enrich_data.py fills it from eng / group); else derived from text. */
+  function fuelOf(listing) {
+    var f = String(listing.fuel || "").trim().toLowerCase();
+    if (FUEL_LABEL[f]) return FUEL_LABEL[f];
+    return deriveFuel(listing) || "—";
+  }
+
+  function deriveFuel(listing) {
+    var text = [listing.eng, listing.trim, listing.model, listing.grp].filter(Boolean).join(" ").toLowerCase();
+    if (!text) return "";
+    if (/diesel|duramax|power\s*stroke|powerstroke|cummins|ecodiesel|\btdi?\b|\b(l5p|lml|lmm|lbz|lly|lb7|lm2|lz0)\b/.test(text)) return "Diesel";
+    if (/plug-?in|\bphev\b|hybrid|powerboost/.test(text)) return "Hybrid";
+    if (/\bev\b|\bbev\b|electric|lightning|kwh|\be-?tron\b/.test(text)) return "Electric";
+    if (/\bgas\b|gasoline|ecoboost|hemi|\bv8\b|\bv6\b|\b(l8t|l96|l86|l87|l84|lmg|ly6|l92)\b|\b\d\.\dl\b|\b\d\.\d\s*l\b|vortec|triton|coyote|godzilla/.test(text)) return "Gas";
+    return "";
+  }
+
+  function shortDist(listing) {
+    if (listing.online === true) return "Online";
+    return isNum(listing.d) ? Math.round(listing.d) + " mi away" : "— mi away";
+  }
+
+  function listCardHtml(listing) {
+    var key = favKey(listing);
+    var hidden = isHidden(listing);
+    var title = [listing.yr, listing.mk, listing.model].filter(function (p) { return p != null && String(p) !== ""; }).join(" ");
+    var href = safeHttpUrl(listing.url);
+    var vinSearch = /^https:\/\/(www\.)?google\.[a-z.]+\/search/i.test(String(listing.url || ""));
+    var facts =
+      '<span data-f="miles">' + esc(isNum(listing.mi) ? intFmt(listing.mi) + " mi" : "— mi") + "</span>" +
+      '<span data-f="fuel">' + esc(fuelOf(listing)) + "</span>" +
+      '<span data-f="dist">' + esc(shortDist(listing)) + "</span>";
+    return (
+      '<article class="lc' + (hidden ? " is-hidden" : "") + '" data-testid="card" data-rank="' + esc(listing.rank) +
+      '" data-key="' + esc(key) + '" role="button" tabindex="0">' +
+      '<div class="lc-row1"><h3 class="lc-title" data-f="title">' + esc(title) + "</h3>" +
+      '<span class="lc-price" data-f="price" data-testid="card-price">' + esc(isNum(listing.price) ? money(listing.price) : "Price n/a") + "</span></div>" +
+      '<div class="lc-row2"><p class="lc-facts" data-testid="card-facts">' + facts + "</p>" +
+      (href
+        ? '<a class="view-btn lc-view" data-f="view" data-testid="view-listing" href="' + esc(href) + '" target="_blank" rel="noopener noreferrer">' +
+          (vinSearch ? "VIN search ↗" : "View listing ↗") + "</a>"
+        : '<span class="view-btn lc-view none" data-f="view" data-testid="view-listing-none">No link</span>') +
+      favBtnHtml(listing) +
+      (key
+        ? '<button type="button" class="hide-btn lc-hide" data-hide-id="' + esc(key) + '" data-testid="' + (hidden ? "unhide-btn" : "hide-btn") +
+          '" aria-label="' + (hidden ? "Unhide this truck" : "Hide this truck") + '" title="' + (hidden ? "Unhide" : "Hide") + '">' + (hidden ? "👁" : "🚫") + "</button>"
+        : "") +
+      "</div></article>"
+    );
+  }
+
   function cabStyleLabel(listing) {
     var c = cabStyle(listing);
     return c === "crew" ? "Crew" : c === "double" ? "Double cab" : c === "regular" ? "Reg cab" : "";
@@ -678,8 +759,7 @@
       '<div class="c2-head"><h3 class="title">' + esc(title) + "</h3>" + favBtnHtml(null, key) + "</div>" +
       '<p class="gone-tag">No longer listed' + (seen ? " · last in the data " + esc(seen) : "") + "</p>" +
       (bits.length ? '<p class="c2-facts">' + esc(bits.join(" · ")) + "</p>" : "") +
-      (s.loc ? '<p class="c2-dealer">' + esc(s.loc) + "</p>" : "") +
-      (isVin ? '<p class="c2-spec">VIN ' + esc(key) + "</p>" : "") +
+      (isVin && !s.title ? '<p class="c2-spec">VIN ' + esc(key) + "</p>" : "") +
       viewBtnHtml(url, "c2-view") +
       "</article>"
     );
@@ -964,7 +1044,7 @@
   function sectionHtml(title, label, listings, latest) {
     var grid = state.view !== "list";
     var cards = listings.map(function (listing) {
-      if (!grid) return cardHtml(listing, latest);
+      if (!grid) return listCardHtml(listing);
       return String(listing.rank) === String(state.expanded) ? expandedHtml(listing, latest) : tileHtml(listing);
     }).join("");
     var body = cards ? '<div class="cards' + (grid ? " grid" : "") + '" data-testid="cards">' + cards + "</div>" : '<p class="empty">None in this section.</p>';
@@ -1045,6 +1125,7 @@
       "<p><strong>Center.</strong> " +
       esc(specs.center || "Hudson FL") +
       "</p>" +
+      "<p><strong>Distances.</strong> Straight-line miles from " + esc(HOME.label) + " (computed in the app from each dealer's map location).</p>" +
       "<p><strong>Radius.</strong> " +
       esc(specs.radius_mi != null ? specs.radius_mi + " mi" : "150 mi") +
       "</p>" +
@@ -1279,6 +1360,7 @@
     var saved = readSavedData() || state.data;
     if (saved) {
       state.data = saved;
+      applyHomeDistance(state.data);
       Favs.reconcile(allListings(), snapOf);
       state.refit = true;
       renderDealerList();
@@ -1324,6 +1406,7 @@
           localStorage.setItem(DATA_KEY, JSON.stringify(result.data));
         } catch (err) {}
         state.data = result.data;
+        applyHomeDistance(state.data);
         Favs.reconcile(allListings(), snapOf);
         state.refit = true;
         renderDealerList();
@@ -1904,7 +1987,7 @@
 
   function focusDealer(rank, card) {
     var key = state.groupOf && state.groupOf[String(rank)];
-    var prev = document.querySelector(".card.focused");
+    var prev = document.querySelector(".card.focused, .lc.focused");
     if (prev) prev.classList.remove("focused");
     if (card) card.classList.add("focused");
     if (!key || !state.markers[key]) {

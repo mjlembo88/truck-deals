@@ -862,3 +862,32 @@ input[type="radio"] { width: 20px; height: 20px; accent-color: var(--accent); }
 }
 .favsync-body .split { grid-template-columns: minmax(0, 1fr) auto; }
 .pop .view-btn.pop-view { min-height: 44px; margin: 6px 0 2px; font-size: 0.92rem; color: var(--accent-ink); clear: both; }
+
+/* ---------- v10: minimal list cards (title, price, miles, fuel, distance, View listing, star, hide) ---------- */
+.cards:not(.grid) { gap: 6px; }
+.lc {
+  display: grid; gap: 4px; padding: 7px 8px 7px 10px; border-radius: 12px;
+  background: var(--bg-elev); border: 1px solid var(--line); color: var(--text); cursor: pointer; min-width: 0;
+}
+.lc:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.lc.focused { outline: 3px solid var(--accent); outline-offset: 2px; }
+.lc.is-hidden { opacity: 0.5; }
+.lc.is-hidden .hide-btn { opacity: 1; }
+.lc-row1 { display: flex; align-items: baseline; gap: 8px; min-width: 0; }
+.lc-title { margin: 0; flex: 1; min-width: 0; font-size: 0.95rem; font-weight: 700; line-height: 1.2; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.lc-price { flex: 0 0 auto; font-size: 1.12rem; font-weight: 800; font-variant-numeric: tabular-nums; letter-spacing: -0.02em; }
+.lc-row2 { display: flex; align-items: center; gap: 4px; min-width: 0; }
+.lc-facts { margin: 0; flex: 1; min-width: 0; display: flex; flex-wrap: wrap; gap: 0 8px; font-size: 0.84rem; font-weight: 600; color: var(--muted); line-height: 1.25; font-variant-numeric: tabular-nums; }
+.lc-facts span { white-space: nowrap; }
+.lc-facts [data-f="miles"] { color: var(--text); }
+.view-btn.lc-view { flex: 0 0 auto; width: auto; min-height: 48px; min-width: 112px; padding: 0 12px; font-size: 0.92rem; border-radius: 10px; }
+.lc .fav-btn { margin: 0; min-width: 44px; min-height: 48px; font-size: 1.5rem; }
+.lc-hide { flex: 0 0 auto; min-width: 40px; min-height: 48px; padding: 0; border: 0; border-radius: 10px; background: transparent; color: var(--muted); font-size: 1.15rem; cursor: pointer; }
+/* v10 density pass */
+.cards:not(.grid) { gap: 5px; }
+.lc { gap: 1px; padding: 4px 4px 4px 10px; }
+.lc-row1 { padding-right: 6px; }
+.lc-facts { gap: 0 6px; font-size: 0.8rem; }
+.view-btn.lc-view { min-width: 104px; padding: 0 10px; font-size: 0.88rem; }
+.lc .fav-btn { min-width: 44px; }
+.lc-hide { min-width: 44px; }
