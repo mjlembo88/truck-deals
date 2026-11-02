@@ -722,9 +722,12 @@
     return (
       '<article class="lc' + (hidden ? " is-hidden" : "") + '" data-testid="card" data-rank="' + esc(listing.rank) +
       '" data-key="' + esc(key) + '" role="button" tabindex="0">' +
-      '<div class="lc-row1"><h3 class="lc-title" data-f="title">' + esc(title) + "</h3>" +
-      '<span class="lc-price" data-f="price" data-testid="card-price">' + esc(isNum(listing.price) ? money(listing.price) : "Price n/a") + "</span></div>" +
-      '<div class="lc-row2"><p class="lc-facts" data-testid="card-facts">' + facts + "</p>" +
+      lcThumbHtml(listing) +
+      '<div class="lc-body">' +
+      '<div class="lc-row1"><h3 class="lc-title" data-f="title">' + esc(title) + "</h3></div>" +
+      '<div class="lc-rowp"><span class="lc-price" data-f="price" data-testid="card-price">' + esc(isNum(listing.price) ? money(listing.price) : "Price n/a") + "</span>" +
+      '<p class="lc-facts" data-testid="card-facts">' + facts + "</p></div>" +
+      '<div class="lc-row2">' +
       (href
         ? '<a class="view-btn lc-view" data-f="view" data-testid="view-listing" href="' + esc(href) + '" target="_blank" rel="noopener noreferrer">' +
           (vinSearch ? "VIN search ↗" : "View listing ↗") + "</a>"
@@ -734,7 +737,24 @@
         ? '<button type="button" class="hide-btn lc-hide" data-hide-id="' + esc(key) + '" data-testid="' + (hidden ? "unhide-btn" : "hide-btn") +
           '" aria-label="' + (hidden ? "Unhide this truck" : "Hide this truck") + '" title="' + (hidden ? "Unhide" : "Hide") + '">' + (hidden ? "👁" : "🚫") + "</button>"
         : "") +
-      "</div></article>"
+      "</div></div></article>"
+    );
+  }
+
+  /* v11 list thumbnail: thumbUrl() = cached repo copy (thumbs/…) or the hotlinked photo; else a plain
+     gray truck placeholder. Always an <img loading=lazy>; a failed load swaps to the placeholder. */
+  var LC_PLACEHOLDER =
+    "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 84 84'%3E%3Crect width='84' height='84' fill='%23394150'/%3E" +
+    "%3Cg fill='%238a94a6'%3E%3Cpath d='M10 52V43l5-2 8-9h20l6 9h6V34h19v18h-4a7 7 0 0 0-14 0H31a7 7 0 0 0-14 0z'/%3E" +
+    "%3Ccircle cx='24' cy='54' r='5'/%3E%3Ccircle cx='62' cy='54' r='5'/%3E%3C/g%3E%3C/svg%3E";
+
+  function lcThumbHtml(listing) {
+    var src = thumbUrl(listing);
+    return (
+      '<div class="lc-thumb' + (src ? "" : " lc-ph") + '" data-f="thumb">' +
+      '<img class="lc-img" src="' + esc(src || LC_PLACEHOLDER) + '" alt="" width="84" height="84" loading="lazy" decoding="async"' +
+      (src ? ' referrerpolicy="strict-origin-when-cross-origin"' : "") + ">" +
+      "</div>"
     );
   }
 
@@ -893,6 +913,15 @@
       updateFavCount();
       var favOnlyBox = document.querySelector('[data-testid="filter-fav-only"]');
       if ((favOnlyBox && favOnlyBox.checked) || btn.closest(".gone-card")) renderList();
+    }, true);
+    /* list-card thumbnails that fail to load show the gray truck placeholder */
+    document.addEventListener("error", function (event) {
+      var img = event.target;
+      if (!img || img.tagName !== "IMG" || !img.classList.contains("lc-img")) return;
+      if (img.src.indexOf("data:") === 0) return;
+      img.removeAttribute("referrerpolicy");
+      img.src = LC_PLACEHOLDER;
+      if (img.parentNode) img.parentNode.classList.add("lc-ph");
     }, true);
     /* thumbnails that fail to load fall back to the placeholder */
     document.addEventListener("error", function (event) {

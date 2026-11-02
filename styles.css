@@ -891,3 +891,19 @@ input[type="radio"] { width: 20px; height: 20px; accent-color: var(--accent); }
 .view-btn.lc-view { min-width: 104px; padding: 0 10px; font-size: 0.88rem; }
 .lc .fav-btn { min-width: 44px; }
 .lc-hide { min-width: 44px; }
+
+/* ---------- v11: list-card thumbnail (left, 84px square) ---------- */
+.lc { grid-template-columns: 84px minmax(0, 1fr); column-gap: 9px; align-items: center; padding: 5px 4px 5px 5px; }
+.lc-thumb { width: 84px; height: 84px; border-radius: 10px; overflow: hidden; background: #394150; }
+.lc-img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.lc-body { min-width: 0; display: grid; gap: 1px; }
+.lc-row1 { padding-right: 4px; }
+.lc-title { font-size: 0.9rem; }
+.lc-rowp { display: flex; align-items: baseline; gap: 8px; min-width: 0; }
+.lc-rowp .lc-price { font-size: 1.05rem; }
+.lc-rowp .lc-facts { flex: 1; min-width: 0; flex-wrap: nowrap; overflow: hidden; }
+.lc-row2 .view-btn.lc-view { flex: 1 1 auto; min-width: 0; }
+.lc { padding-top: 3px; padding-bottom: 3px; }
+.lc-body { gap: 0; }
+.lc-title { line-height: 1.15; }
+.lc-rowp { line-height: 1.2; }

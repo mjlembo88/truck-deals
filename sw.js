@@ -2,7 +2,7 @@
    CACHE_VERSION: bump this when the app shell changes.
    Updates only swap Cache Storage entries. A service worker cannot read or clear localStorage,
    so favorites (td_marks_v2), hidden trucks, filters and the sync code survive every update. */
-const CACHE_VERSION = "td-v10-compact";
+const CACHE_VERSION = "td-v11-thumbs";
 /* Cached thumbnail copies (./thumbs/*.jpg) are runtime-cached here, not precached. */
 const THUMB_CACHE = "td-thumbs-v1";
 const THUMB_MAX = 150;
